@@ -15,25 +15,24 @@ class MainTableViewCell: UITableViewCell {
     private weak var collecttionView: UICollectionView!
     
     init (collection: UICollectionView) {
-        collection.frame = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: heightCollectionView)
-        collection.showsHorizontalScrollIndicator = false
-        collection.backgroundColor = UIColor.cyanColor()
-        
-        if let layout = collection.collectionViewLayout as? UICollectionViewFlowLayout {
-            let itemWidth = screenSize.width / 3.0
-            let itemHeight = heightCollectionView - 10
-            layout.itemSize = CGSize(width: Int(itemWidth), height: itemHeight)
-            layout.invalidateLayout()
-        }
+        super.init(style: UITableViewCellStyle.Default, reuseIdentifier: "idCellSourses")
         
         collection.registerNib(UINib(nibName: "CoursesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "idCoursesCell")
         collection.registerNib(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "idCategoriesCell")
         
         self.collecttionView = collection
-        super.init(style: UITableViewCellStyle.Default, reuseIdentifier: "idCellSourses")
+        self.contentView.addSubview(self.collecttionView)
+        self.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
+       // self.addSubview(self.collecttionView)
+        //self.selectionStyle = .None
+    }
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
     required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
         fatalError("init(coder:) has not been implemented")
     }
 }

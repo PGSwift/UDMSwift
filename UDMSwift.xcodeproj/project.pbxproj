@@ -20,6 +20,7 @@
 		4A4535741D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4535731D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift */; };
 		4A4535761D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4535751D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib */; };
 		4A4535791D6202B800CFFFC5 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4535781D6202B800CFFFC5 /* MainTableViewCell.swift */; };
+		92D18E461D630CC000E7793C /* MyCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D18E451D630CC000E7793C /* MyCoursesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		4A4535731D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A4535751D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonCategoriesCollectionViewCell.xib; sourceTree = "<group>"; };
 		4A4535781D6202B800CFFFC5 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		92D18E451D630CC000E7793C /* MyCoursesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCoursesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				4A4535651D61FE4600CFFFC5 /* Main.storyboard */,
 				4A4535671D61FE7700CFFFC5 /* MainViewController.swift */,
+				92D18E451D630CC000E7793C /* MyCoursesViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				TargetAttributes = {
 					4A4535481D61FAEF00CFFFC5 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = WRETXPU7JD;
 					};
 				};
 			};
@@ -227,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A4535681D61FE7700CFFFC5 /* MainViewController.swift in Sources */,
+				92D18E461D630CC000E7793C /* MyCoursesViewController.swift in Sources */,
 				4A45356D1D6200B800CFFFC5 /* CoursesCollectionViewCell.swift in Sources */,
 				4A45354F1D61FAEF00CFFFC5 /* ViewController.swift in Sources */,
 				4A4535791D6202B800CFFFC5 /* MainTableViewCell.swift in Sources */,
@@ -339,10 +344,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = UDMSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vinh.UDMSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -350,10 +358,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = UDMSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vinh.UDMSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -376,6 +387,7 @@
 				4A45355D1D61FAEF00CFFFC5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

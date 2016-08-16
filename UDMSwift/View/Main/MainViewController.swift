@@ -17,61 +17,109 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         mainTableView.tableFooterView = UIView()
-    }
+        mainTableView.registerClass(MainTableViewCell.self, forCellReuseIdentifier: "idCellSourses")
+        mainTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "idDefauleCell")
+        }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 1
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 0 || indexPath.row == 2 || indexPath.row == 4 {
-            return 80
-        } else if indexPath.row == 3 {
-            return 150
-        } else if indexPath.row == 1 || indexPath.row == 5 {
+        if indexPath.section == 0 || indexPath.section == 2 {
             return 260
         }
-        return 50
+        return 150
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellTable = UITableViewCell.init(style: .Default, reuseIdentifier: "idDefauleCell")
-        cellTable.textLabel?.textColor = UIColor.redColor()
-        cellTable.backgroundColor = UIColor.greenColor()
+//        let cellTable = tableView.dequeueReusableCellWithIdentifier("idDefauleCell", forIndexPath: indexPath)
+//        cellTable.textLabel?.textColor = UIColor.redColor()
+//        cellTable.backgroundColor = UIColor.clearColor()
+//        cellTable.selectionStyle = .None
+//        
+//        if indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 3 {
+//            return configTableViewCellCollectionView(indexPath.row)
+//        } else {
+//            configTableViewCellNormal(cellTable, index: indexPath.row)
+//        }
         
-        if indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5 {
-            let cellCourses = MainTableViewCell.init(collection: UICollectionView.init(frame: CGRect(0, 0, screenSize.width, 260), collectionViewLayout: UICollectionViewLayout(coder: <#T##NSCoder#>))
-            return cellCourses
-        } else if indexPath.row == 0 {
-            cellTable.textLabel?.text = "On Sale1111"
-            let button: UIButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-            button.backgroundColor = UIColor.brownColor()
-            button.setTitle("vinh button111", forState: UIControlState.Normal)
-            cellTable.accessoryView = button
-            
-        } else if indexPath.row == 2 {
-            cellTable.textLabel?.text = "On Sale2222"
-            let button: UIButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-            button.backgroundColor = UIColor.brownColor()
-            button.setTitle("vinh button2222", forState: UIControlState.Normal)
-            cellTable.accessoryView = button
-        } else if indexPath.row == 4 {
-            cellTable.textLabel?.text = "On Sale3333"
-            let button: UIButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-            button.backgroundColor = UIColor.brownColor()
-            button.setTitle("vinh button333", forState: UIControlState.Normal)
-            cellTable.accessoryView = button
-        }
-        
-        return cellTable
+        return  configTableViewCellCollectionView(indexPath)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         guard let tableViewCell = cell as? MainTableViewCell else { return }
-        tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
+        tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("row selected \(indexPath)")
+    }
+        
+    //MARK: Config cell
+    func configTableViewCellCollectionView(index: NSIndexPath) -> MainTableViewCell {
+        var frameUICollection: CGRect!
+        var sizeItemCollection: CGSize!
+
+        switch index.section {
+        case 0,2:
+            frameUICollection = CGRect(x: 0, y: 0, width: screenSize.width, height: 260)
+            sizeItemCollection = CGSize(width: screenSize.width / 3, height: 250)
+            break
+        case 1:
+            frameUICollection = CGRect(x: 0, y: 0, width: screenSize.width, height: 150)
+            sizeItemCollection = CGSize(width: screenSize.width / 3, height: 140)
+            break
+        default:
+            break
+        }
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .Horizontal
+        layout.sectionInset = UIEdgeInsetsMake(20, 10, 10, 10)
+        layout.itemSize = sizeItemCollection
+        let collectionView = UICollectionView(frame: frameUICollection, collectionViewLayout: layout)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = UIColor.whiteColor()
+
+        let cellCourses = MainTableViewCell.init(collection: collectionView)
+        
+        return cellCourses
+    }
+    
+    func configTableViewCellNormal(cellConfig: UITableViewCell, index: Int) {
+        let button: UIButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        button.backgroundColor = UIColor.brownColor()
+        
+        switch index {
+        case 0:
+            cellConfig.textLabel?.text = "On Sale1111"
+            button.setTitle("vinh button111", forState: UIControlState.Normal)
+            cellConfig.accessoryView = button
+            break
+        case 2:
+            cellConfig.textLabel?.text = "On Sale222"
+            button.setTitle("vinh button222", forState: UIControlState.Normal)
+            cellConfig.accessoryView = button
+            break
+        case 4:
+            cellConfig.textLabel?.text = "On Sale333"
+            button.setTitle("vinh button333", forState: UIControlState.Normal)
+            cellConfig.accessoryView = button
+            break
+        default:
+            break
+        }
     }
 }
 
@@ -83,13 +131,13 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         var cellCollection = UICollectionViewCell.init()
         
-        if collectionView.tag == 1 {
+        if collectionView.tag == 0 {
             cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier("idCoursesCell", forIndexPath: indexPath)
             
-        } else if collectionView.tag == 3 {
+        } else if collectionView.tag == 1 {
             cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier("idCategoriesCell", forIndexPath: indexPath)
             
-        } else if collectionView.tag == 5 {
+        } else if collectionView.tag == 2 {
             cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier("idCategoriesCell", forIndexPath: indexPath)
 
         }
