@@ -16,9 +16,10 @@ final class MainViewController: UIViewController {
     //MARK: View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainTableView.tableFooterView = UIView()
-        mainTableView.registerClass(MainTableViewCell.self, forCellReuseIdentifier: "idCellSourses")
-        mainTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "idDefauleCell")
+        self.mainTableView.tableFooterView = UIView()
+        self.mainTableView.registerClass(MainTableViewCell.self, forCellReuseIdentifier: "idCellSourses")
+        self.mainTableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "idHeaderDefauleCell")
+        self.navigationController?.navigationBar.barTintColor = FlatUIColors.emeraldColor()
         }
 }
 
@@ -42,17 +43,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cellTable = tableView.dequeueReusableCellWithIdentifier("idDefauleCell", forIndexPath: indexPath)
-//        cellTable.textLabel?.textColor = UIColor.redColor()
-//        cellTable.backgroundColor = UIColor.clearColor()
-//        cellTable.selectionStyle = .None
-//        
-//        if indexPath.row == 1 || indexPath.row == 5 || indexPath.row == 3 {
-//            return configTableViewCellCollectionView(indexPath.row)
-//        } else {
-//            configTableViewCellNormal(cellTable, index: indexPath.row)
-//        }
-        
         return  configTableViewCellCollectionView(indexPath)
     }
     
@@ -60,6 +50,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let tableViewCell = cell as? MainTableViewCell else { return }
         tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let viewHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier("idHeaderDefauleCell")
+        configTableViewCellNormal(viewHeader!, index: section)
+        viewHeader?.textLabel?.text = "Demo 1"
+        return viewHeader
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -73,7 +70,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 
         switch index.section {
         case 0,2:
-            frameUICollection = CGRect(x: 0, y: 0, width: screenSize.width, height: 260)
+            frameUICollection = CGRect(x: 0, y: 0, width: screenSize.width, height: 270)
             sizeItemCollection = CGSize(width: screenSize.width / 3, height: 250)
             break
         case 1:
@@ -90,36 +87,40 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         layout.itemSize = sizeItemCollection
         let collectionView = UICollectionView(frame: frameUICollection, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = UIColor.whiteColor()
+        collectionView.backgroundColor = FlatUIColors.cloudsColor()
 
         let cellCourses = MainTableViewCell.init(collection: collectionView)
         
         return cellCourses
     }
     
-    func configTableViewCellNormal(cellConfig: UITableViewCell, index: Int) {
-        let button: UIButton = UIButton.init(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+    func configTableViewCellNormal(cellConfig: UITableViewHeaderFooterView, index: Int) {
+        let button: UIButton = UIButton.init(frame: CGRect(x: screenSize.width - 100, y: (80/2 - 50/2) , width: 50, height: 50))
         button.backgroundColor = UIColor.brownColor()
+        button.tag = index
+        button.addTarget(self, action: #selector(MainViewController.pressed(_:)), forControlEvents: .TouchUpInside)
+        cellConfig.contentView.addSubview(button)
         
         switch index {
         case 0:
             cellConfig.textLabel?.text = "On Sale1111"
             button.setTitle("vinh button111", forState: UIControlState.Normal)
-            cellConfig.accessoryView = button
             break
-        case 2:
+        case 1:
             cellConfig.textLabel?.text = "On Sale222"
             button.setTitle("vinh button222", forState: UIControlState.Normal)
-            cellConfig.accessoryView = button
             break
-        case 4:
+        case 2:
             cellConfig.textLabel?.text = "On Sale333"
             button.setTitle("vinh button333", forState: UIControlState.Normal)
-            cellConfig.accessoryView = button
             break
         default:
             break
         }
+    }
+    //MARK: action button
+    func pressed(sender: UIButton!) {
+        print("tab = \(sender.tag)")
     }
 }
 

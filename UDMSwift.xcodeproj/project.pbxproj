@@ -20,6 +20,7 @@
 		4A4535741D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4535731D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift */; };
 		4A4535761D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4535751D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib */; };
 		4A4535791D6202B800CFFFC5 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4535781D6202B800CFFFC5 /* MainTableViewCell.swift */; };
+		4A58132F1D63628E0044BFEB /* UDMFlatUIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A58132E1D63628E0044BFEB /* UDMFlatUIColors.swift */; };
 		92D18E461D630CC000E7793C /* MyCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D18E451D630CC000E7793C /* MyCoursesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		4A4535731D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		4A4535751D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonCategoriesCollectionViewCell.xib; sourceTree = "<group>"; };
 		4A4535781D6202B800CFFFC5 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		4A58132E1D63628E0044BFEB /* UDMFlatUIColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMFlatUIColors.swift; sourceTree = "<group>"; };
 		92D18E451D630CC000E7793C /* MyCoursesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCoursesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 		4A4535611D61FBDE00CFFFC5 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				4A58132E1D63628E0044BFEB /* UDMFlatUIColors.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A58132F1D63628E0044BFEB /* UDMFlatUIColors.swift in Sources */,
 				4A4535681D61FE7700CFFFC5 /* MainViewController.swift in Sources */,
 				92D18E461D630CC000E7793C /* MyCoursesViewController.swift in Sources */,
 				4A45356D1D6200B800CFFFC5 /* CoursesCollectionViewCell.swift in Sources */,

@@ -19,37 +19,39 @@ final class MyCoursesViewController: UIViewController {
         super.viewDidLoad()
         scoursesTableView.tableFooterView = UIView()
         scoursesTableView.registerClass(MainTableViewCell.self, forCellReuseIdentifier: "idCellSourses")
-        scoursesTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "idDefauleCell")
+        scoursesTableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "idHeaderDefauleCell")
     }
 }
 
 extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.row == 1 {
-            return 500
-        }
+        return 900
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 250
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellTable = tableView.dequeueReusableCellWithIdentifier("idDefauleCell", forIndexPath: indexPath)
-        cellTable.textLabel?.textColor = UIColor.redColor()
-        cellTable.backgroundColor = UIColor.greenColor()
-        cellTable.selectionStyle = .None
-        
-        if indexPath.row == 1 {
-            return configTableViewCellCollectionView(indexPath.row)
-        }
-        
-        return cellTable
+        return configTableViewCellCollectionView(indexPath.row)
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cellHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier("idHeaderDefauleCell") as UITableViewHeaderFooterView!
+        cellHeader.backgroundColor = UIColor.blueColor()
+        cellHeader.textLabel?.text = "ho xuan vinh demo"
+        return cellHeader
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        
         guard let tableViewCell = cell as? MainTableViewCell else { return }
         tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
     }
@@ -63,9 +65,9 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
         var sizeItemCollection: CGSize!
         
         switch index {
-        case 1:
-            frameUICollection = CGRect(x: 0, y: 0, width: screenSize.width, height: 500)
-            sizeItemCollection = CGSize(width: screenSize.width / 3, height: 80)
+        case 0:
+            frameUICollection = CGRect(x: 0, y: 0, width: screenSize.width, height: 900)
+            sizeItemCollection = CGSize(width: screenSize.width / 2 - 15, height: 80)
             break
         default:
             break
@@ -77,7 +79,7 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
         layout.itemSize = sizeItemCollection
         let collectionView = UICollectionView(frame: frameUICollection, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = UIColor.clearColor()
+        collectionView.backgroundColor = UIColor.grayColor()
         collectionView.scrollEnabled = false
         
         let cellCourses = MainTableViewCell.init(collection: collectionView)

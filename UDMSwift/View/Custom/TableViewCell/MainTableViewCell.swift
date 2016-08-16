@@ -22,9 +22,7 @@ class MainTableViewCell: UITableViewCell {
         
         self.collecttionView = collection
         self.contentView.addSubview(self.collecttionView)
-        self.selectedBackgroundView?.backgroundColor = UIColor.clearColor()
-       // self.addSubview(self.collecttionView)
-        //self.selectionStyle = .None
+        self.backgroundColor = UIColor.clearColor()
     }
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {

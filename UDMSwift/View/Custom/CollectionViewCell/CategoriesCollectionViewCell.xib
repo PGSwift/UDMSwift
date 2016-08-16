@@ -26,6 +26,9 @@
                 <constraint firstItem="aoG-o3-5Zo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Gnb-xD-DDQ"/>
             </constraints>
             <size key="customSize" width="233" height="127"/>
+            <connections>
+                <outlet property="myImage" destination="aoG-o3-5Zo" id="pig-Ya-Q4T"/>
+            </connections>
             <point key="canvasLocation" x="514.5" y="389.5"/>
         </collectionViewCell>
     </objects>
