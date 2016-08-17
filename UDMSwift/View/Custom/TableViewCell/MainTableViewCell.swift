@@ -12,10 +12,12 @@ class MainTableViewCell: UITableViewCell {
     
     private let heightCollectionView = 260
     private let screenSize = UIScreen.mainScreen().bounds
-    private weak var collecttionView: UICollectionView!
+    weak var collecttionView: UICollectionView!
     
     init (collection: UICollectionView) {
         super.init(style: UITableViewCellStyle.Default, reuseIdentifier: "idCellSourses")
+        self.layoutMargins = UIEdgeInsetsZero
+        self.preservesSuperviewLayoutMargins = false
         
         collection.registerNib(UINib(nibName: "CoursesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "idCoursesCell")
         collection.registerNib(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "idCategoriesCell")

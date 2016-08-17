@@ -21,6 +21,11 @@
 		4A4535761D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4535751D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib */; };
 		4A4535791D6202B800CFFFC5 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4535781D6202B800CFFFC5 /* MainTableViewCell.swift */; };
 		4A58132F1D63628E0044BFEB /* UDMFlatUIColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A58132E1D63628E0044BFEB /* UDMFlatUIColors.swift */; };
+		9264E9F21D64188500D8B066 /* SearchCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F11D64188500D8B066 /* SearchCoursesViewController.swift */; };
+		9264E9F41D64285B00D8B066 /* CoureseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F31D64285B00D8B066 /* CoureseDetailViewController.swift */; };
+		9264E9F71D644F1500D8B066 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F61D644F1500D8B066 /* SettingViewController.swift */; };
+		9264E9F91D64500100D8B066 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F81D64500100D8B066 /* WishListViewController.swift */; };
+		9264E9FE1D64626F00D8B066 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9FD1D64626F00D8B066 /* CategoryViewController.swift */; };
 		92D18E461D630CC000E7793C /* MyCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D18E451D630CC000E7793C /* MyCoursesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +46,11 @@
 		4A4535751D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonCategoriesCollectionViewCell.xib; sourceTree = "<group>"; };
 		4A4535781D6202B800CFFFC5 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		4A58132E1D63628E0044BFEB /* UDMFlatUIColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMFlatUIColors.swift; sourceTree = "<group>"; };
+		9264E9F11D64188500D8B066 /* SearchCoursesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCoursesViewController.swift; sourceTree = "<group>"; };
+		9264E9F31D64285B00D8B066 /* CoureseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoureseDetailViewController.swift; path = ../Main/CoureseDetailViewController.swift; sourceTree = "<group>"; };
+		9264E9F61D644F1500D8B066 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		9264E9F81D64500100D8B066 /* WishListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
+		9264E9FD1D64626F00D8B066 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		92D18E451D630CC000E7793C /* MyCoursesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCoursesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,10 +84,11 @@
 		4A45354B1D61FAEF00CFFFC5 /* UDMSwift */ = {
 			isa = PBXGroup;
 			children = (
-				4A4535611D61FBDE00CFFFC5 /* Helper */,
-				4A4535601D61FBD500CFFFC5 /* Controller */,
-				4A45355F1D61FBB900CFFFC5 /* Model */,
-				4A45355E1D61FB9C00CFFFC5 /* View */,
+				9264E9F51D644CB000D8B066 /* Stores */,
+				4A4535611D61FBDE00CFFFC5 /* Helpers */,
+				4A4535601D61FBD500CFFFC5 /* Controllers */,
+				4A45355F1D61FBB900CFFFC5 /* Models */,
+				4A45355E1D61FB9C00CFFFC5 /* Views */,
 				4A45354C1D61FAEF00CFFFC5 /* AppDelegate.swift */,
 				4A45354E1D61FAEF00CFFFC5 /* ViewController.swift */,
 				4A4535531D61FAEF00CFFFC5 /* Assets.xcassets */,
@@ -87,34 +98,40 @@
 			path = UDMSwift;
 			sourceTree = "<group>";
 		};
-		4A45355E1D61FB9C00CFFFC5 /* View */ = {
+		4A45355E1D61FB9C00CFFFC5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9264E9FC1D64620A00D8B066 /* Categories */,
+				9264E9FB1D6461BD00D8B066 /* Sourses */,
 				4A4535691D61FFA800CFFFC5 /* Custom */,
 				4A4535621D61FC8600CFFFC5 /* Main */,
 			);
+			name = Views;
 			path = View;
 			sourceTree = "<group>";
 		};
-		4A45355F1D61FBB900CFFFC5 /* Model */ = {
+		4A45355F1D61FBB900CFFFC5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 			);
+			name = Models;
 			path = Model;
 			sourceTree = "<group>";
 		};
-		4A4535601D61FBD500CFFFC5 /* Controller */ = {
+		4A4535601D61FBD500CFFFC5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 			);
+			name = Controllers;
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		4A4535611D61FBDE00CFFFC5 /* Helper */ = {
+		4A4535611D61FBDE00CFFFC5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				4A58132E1D63628E0044BFEB /* UDMFlatUIColors.swift */,
 			);
+			name = Helpers;
 			path = Helper;
 			sourceTree = "<group>";
 		};
@@ -124,6 +141,9 @@
 				4A4535651D61FE4600CFFFC5 /* Main.storyboard */,
 				4A4535671D61FE7700CFFFC5 /* MainViewController.swift */,
 				92D18E451D630CC000E7793C /* MyCoursesViewController.swift */,
+				9264E9F11D64188500D8B066 /* SearchCoursesViewController.swift */,
+				9264E9F61D644F1500D8B066 /* SettingViewController.swift */,
+				9264E9F81D64500100D8B066 /* WishListViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -156,6 +176,29 @@
 				4A4535781D6202B800CFFFC5 /* MainTableViewCell.swift */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		9264E9F51D644CB000D8B066 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		9264E9FB1D6461BD00D8B066 /* Sourses */ = {
+			isa = PBXGroup;
+			children = (
+				9264E9F31D64285B00D8B066 /* CoureseDetailViewController.swift */,
+			);
+			path = Sourses;
+			sourceTree = "<group>";
+		};
+		9264E9FC1D64620A00D8B066 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				9264E9FD1D64626F00D8B066 /* CategoryViewController.swift */,
+			);
+			path = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +276,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9264E9F41D64285B00D8B066 /* CoureseDetailViewController.swift in Sources */,
 				4A58132F1D63628E0044BFEB /* UDMFlatUIColors.swift in Sources */,
+				9264E9FE1D64626F00D8B066 /* CategoryViewController.swift in Sources */,
+				9264E9F21D64188500D8B066 /* SearchCoursesViewController.swift in Sources */,
 				4A4535681D61FE7700CFFFC5 /* MainViewController.swift in Sources */,
 				92D18E461D630CC000E7793C /* MyCoursesViewController.swift in Sources */,
 				4A45356D1D6200B800CFFFC5 /* CoursesCollectionViewCell.swift in Sources */,
@@ -242,6 +288,8 @@
 				4A4535741D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift in Sources */,
 				4A45354D1D61FAEF00CFFFC5 /* AppDelegate.swift in Sources */,
 				4A4535711D6200F500CFFFC5 /* CategoriesCollectionViewCell.swift in Sources */,
+				9264E9F91D64500100D8B066 /* WishListViewController.swift in Sources */,
+				9264E9F71D644F1500D8B066 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

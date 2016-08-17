@@ -1,15 +1,15 @@
 //
-//  MyCoursesViewController.swift
+//  WishListViewController.swift
 //  UDMSwift
 //
-//  Created by Hanbiro on 8/16/16.
+//  Created by Hanbiro on 8/17/16.
 //  Copyright © 2016 XUANVINHTD. All rights reserved.
 //
 
 import UIKit
 
-final class MyCoursesViewController: UIViewController {
-    
+class WishListViewController: UIViewController {
+
     //MARK: Properties
     private let heightHeader: CGFloat = 250
     private let heightSection: CGFloat = 900
@@ -21,28 +21,15 @@ final class MyCoursesViewController: UIViewController {
     //MARK: View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         scoursesTableView.tableFooterView = UIView()
         scoursesTableView.registerClass(MainTableViewCell.self, forCellReuseIdentifier: "idCellSourses")
         scoursesTableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "idHeaderDefauleCell")
         
-        //NOTE: Custom navigationBar
-        self.navigationItem.title = "My Scourses"
-        let rightAddBarButtonItem = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: #selector(MyCoursesViewController.actionAddBarButtonItem))
-        let rightSearchBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(MyCoursesViewController.actionSearchBarButtonItem))
-        self.navigationItem.setRightBarButtonItems([rightAddBarButtonItem, rightSearchBarButtonItem], animated: true)
-    }
-    //MARK: Event Handling
-    func actionAddBarButtonItem(sender: UIButton) {
-        print("click button add bar !")
-    }
-    
-    func actionSearchBarButtonItem(sender: UIButton) {
-        print("click button search bar !")
+        self.navigationItem.title = "Wishlish"
     }
 }
 //MARK: TableView
-extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
+extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -83,8 +70,14 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
         var frameUICollection: CGRect!
         var sizeItemCollection: CGSize!
         
-        frameUICollection = CGRect(x: 0, y: 0, width: screenSize.width, height: heightSection)
-        sizeItemCollection = CGSize(width: screenSize.width/2 - 15, height: 80)
+        switch index {
+        case 0:
+            frameUICollection = CGRect(x: 0, y: 0, width: screenSize.width, height: heightSection)
+            sizeItemCollection = CGSize(width: screenSize.width/2 - 15, height: 80)
+            break
+        default:
+            break
+        }
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.scrollDirection = .Horizontal
@@ -101,7 +94,7 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 //MARK: CollectionView
-extension MyCoursesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension WishListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 20
     }
@@ -118,5 +111,3 @@ extension MyCoursesViewController: UICollectionViewDelegate, UICollectionViewDat
         print("CollectionView view at row \(collectionView.tag) selected index path \(indexPath)")
     }
 }
-
-

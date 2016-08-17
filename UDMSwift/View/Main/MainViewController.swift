@@ -8,21 +8,29 @@
 
 import UIKit
 
+
 final class MainViewController: UIViewController {
     //MARK: Properties
     private let screenSize = UIScreen.mainScreen().bounds
+    private let heightHeader = 40
+    private let heightCoursesSection = 260
+    private let heightCategoriSection = 150
+    
+    //MARK: IBOutlet propertes
     @IBOutlet weak var mainTableView: UITableView!
     
     //MARK: View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.mainTableView.tableFooterView = UIView()
         self.mainTableView.registerClass(MainTableViewCell.self, forCellReuseIdentifier: "idCellSourses")
         self.mainTableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "idHeaderDefauleCell")
-        self.navigationController?.navigationBar.barTintColor = FlatUIColors.emeraldColor()
-        }
+        
+        self.navigationItem.title = "Featured"
+    }
 }
-
+//MARK: TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 3
@@ -33,29 +41,29 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == 0 || indexPath.section == 2 {
-            return 260
+            return CGFloat(heightCoursesSection)
         }
-        return 150
+        return CGFloat(heightCategoriSection)
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80
+        return CGFloat(heightHeader)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return  configTableViewCellCollectionView(indexPath)
+        return  configTableViewCellCollectionView(at: indexPath)
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         guard let tableViewCell = cell as? MainTableViewCell else { return }
         tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
+        
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let viewHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier("idHeaderDefauleCell")
-        configTableViewCellNormal(viewHeader!, index: section)
-        viewHeader?.textLabel?.text = "Demo 1"
+        configTableViewCellNormal(with: viewHeader!, at: section)
         return viewHeader
     }
     
@@ -64,18 +72,18 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
         
     //MARK: Config cell
-    func configTableViewCellCollectionView(index: NSIndexPath) -> MainTableViewCell {
+    func configTableViewCellCollectionView(at index: NSIndexPath) -> MainTableViewCell {
         var frameUICollection: CGRect!
         var sizeItemCollection: CGSize!
 
         switch index.section {
         case 0,2:
-            frameUICollection = CGRect(x: 0, y: 0, width: screenSize.width, height: 270)
-            sizeItemCollection = CGSize(width: screenSize.width / 3, height: 250)
+            frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: heightCoursesSection + 30)
+            sizeItemCollection = CGSize(width: Int(screenSize.width / 3), height: heightCoursesSection - 10)
             break
         case 1:
-            frameUICollection = CGRect(x: 0, y: 0, width: screenSize.width, height: 150)
-            sizeItemCollection = CGSize(width: screenSize.width / 3, height: 140)
+            frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: heightCategoriSection + 20)
+            sizeItemCollection = CGSize(width: Int(screenSize.width / 3), height: heightCategoriSection - 10)
             break
         default:
             break
@@ -88,31 +96,40 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let collectionView = UICollectionView(frame: frameUICollection, collectionViewLayout: layout)
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = FlatUIColors.cloudsColor()
+        collectionView.clipsToBounds = true
 
         let cellCourses = MainTableViewCell.init(collection: collectionView)
         
         return cellCourses
     }
     
-    func configTableViewCellNormal(cellConfig: UITableViewHeaderFooterView, index: Int) {
-        let button: UIButton = UIButton.init(frame: CGRect(x: screenSize.width - 100, y: (80/2 - 50/2) , width: 50, height: 50))
-        button.backgroundColor = UIColor.brownColor()
-        button.tag = index
+    func configTableViewCellNormal(with cellConfig: UITableViewHeaderFooterView, at index: Int) {
+        if let buttonDetalt = cellConfig.viewWithTag(333) as? UIButton {
+            
+        }
+        
+        let button: UIButton = UIButton.init(frame: CGRect(x: screenSize.width - 100, y: CGFloat(heightHeader/2 - (heightHeader - 15)/2) , width: 80, height: CGFloat(heightHeader - 10)))
+        button.setTitleColor(FlatUIColors.emeraldColor(), forState: .Normal)
+        button.layer.borderColor = FlatUIColors.emeraldColor().CGColor
+        button.layer.borderWidth = 1.5
+        button.layer.cornerRadius = 3.5
+        button.layer.masksToBounds = true
+        button.tag = 333
         button.addTarget(self, action: #selector(MainViewController.pressed(_:)), forControlEvents: .TouchUpInside)
         cellConfig.contentView.addSubview(button)
         
         switch index {
         case 0:
             cellConfig.textLabel?.text = "On Sale1111"
-            button.setTitle("vinh button111", forState: UIControlState.Normal)
+            button.setTitle("button 1", forState: .Normal)
             break
         case 1:
             cellConfig.textLabel?.text = "On Sale222"
-            button.setTitle("vinh button222", forState: UIControlState.Normal)
+            button.setTitle("button 2", forState: .Normal)
             break
         case 2:
             cellConfig.textLabel?.text = "On Sale333"
-            button.setTitle("vinh button333", forState: UIControlState.Normal)
+            button.setTitle("button 3", forState: .Normal)
             break
         default:
             break
@@ -123,7 +140,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         print("tab = \(sender.tag)")
     }
 }
-
+//MARK: CollectionView
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 20

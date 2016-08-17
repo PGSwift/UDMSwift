@@ -20,17 +20,15 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         let markView = UIView(frame: bounds)
         markView.backgroundColor = UIColor.blackColor()
         markView.alpha = 0.5
-        
-        let yourLabel = UILabel(frame: CGRectMake(0, 0, 100, 100))
-        yourLabel.textColor = UIColor.whiteColor()
-        yourLabel.textAlignment = .Right
-        //yourLabel.sizeToFit()
-        yourLabel.backgroundColor = UIColor.clearColor()
-        yourLabel.text = "mylabel text"
-        
-        yourLabel.center = self.myImage.center
-        
         self.myImage.addSubview(markView)
-        self.myImage.addSubview(yourLabel)
+    }
+    
+    override func layoutSubviews() {
+        let nameCategory = UILabel(frame: CGRectMake(0, 0, self.bounds.width, self.bounds.height))
+        nameCategory.textColor = UIColor.whiteColor()
+        nameCategory.textAlignment = .Center
+        nameCategory.backgroundColor = UIColor.clearColor()
+        nameCategory.text = "mylabel text"
+        self.myImage.addSubview(nameCategory)
     }
 }
