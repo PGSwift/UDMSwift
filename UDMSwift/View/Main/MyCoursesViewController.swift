@@ -12,7 +12,7 @@ final class MyCoursesViewController: UIViewController {
     
     //MARK: Properties
     private let heightHeader: CGFloat = 250
-    private let heightSection: CGFloat = 900
+    private let heightSection: CGFloat = 650
     private let screenSize = UIScreen.mainScreen().bounds
     
     //MARK: IBOutlet properties
@@ -23,8 +23,6 @@ final class MyCoursesViewController: UIViewController {
         super.viewDidLoad()
         
         scoursesTableView.tableFooterView = UIView()
-        scoursesTableView.registerClass(MainTableViewCell.self, forCellReuseIdentifier: "idCellSourses")
-        scoursesTableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "idHeaderDefauleCell")
         
         //NOTE: Custom navigationBar
         self.navigationItem.title = "My Scourses"
@@ -60,14 +58,26 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return configTableViewCellCollectionView(at: indexPath.row)
+        var cellTable = tableView.dequeueReusableCellWithIdentifier(idSoursesCell) as? MainTableViewCell
+        if cellTable == nil {
+            self.scoursesTableView.registerClass(MainTableViewCell.self, forCellReuseIdentifier: idSoursesCell)
+            cellTable = tableView.dequeueReusableCellWithIdentifier(idSoursesCell) as? MainTableViewCell
+            configTableViewCellCollectionView(with:cellTable!, at: indexPath)
+        } else {
+            configTableViewCellCollectionView(with:cellTable!, at: indexPath)
+        }
+        return cellTable!
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cellHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier("idHeaderDefauleCell") as UITableViewHeaderFooterView!
-        cellHeader.backgroundColor = UIColor.blueColor()
-        cellHeader.textLabel?.text = "ho xuan vinh demo"
-        return cellHeader
+        var cellHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier(idHeaderDefauleCell) as UITableViewHeaderFooterView?
+        if cellHeader == nil {
+            cellHeader = UITableViewHeaderFooterView.init(reuseIdentifier: idHeaderDefauleCell)
+            cellHeader!.backgroundColor = UIColor.blueColor()
+            cellHeader!.textLabel?.text = "ho xuan vinh demo"
+        }
+        
+        return cellHeader!
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -79,31 +89,26 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
         print("row selected \(indexPath)")
     }
     //MARK: Config cell
-    func configTableViewCellCollectionView(at index: Int) -> MainTableViewCell {
+    func configTableViewCellCollectionView(with cellConfig:MainTableViewCell ,at index: NSIndexPath) {
+        guard let layout = cellConfig.collecttionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            print("Not yet init collectionViewLayout")
+            return
+        }
+        
         var frameUICollection: CGRect!
         var sizeItemCollection: CGSize!
         
-        frameUICollection = CGRect(x: 0, y: 0, width: screenSize.width, height: heightSection)
-        sizeItemCollection = CGSize(width: screenSize.width/2 - 15, height: 80)
+        frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: Int(heightSection))
+        sizeItemCollection = CGSize(width: Int(screenSize.width / 3) - 15, height: 80)
         
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Horizontal
-        layout.sectionInset = UIEdgeInsetsMake(20, 10, 10, 10)
+        cellConfig.collecttionView.frame = frameUICollection
         layout.itemSize = sizeItemCollection
-        let collectionView = UICollectionView(frame: frameUICollection, collectionViewLayout: layout)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = FlatUIColors.cloudsColor()
-        collectionView.scrollEnabled = false
-        
-        let cellCourses = MainTableViewCell.init()
-        
-        return cellCourses
     }
 }
 //MARK: CollectionView
 extension MyCoursesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 21
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

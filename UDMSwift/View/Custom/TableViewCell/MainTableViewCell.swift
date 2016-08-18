@@ -14,15 +14,6 @@ class MainTableViewCell: UITableViewCell {
     private let screenSize = UIScreen.mainScreen().bounds
     var collecttionView: UICollectionView!
     
-    var collectionViewOffset: CGFloat {
-        set {
-            collecttionView.contentOffset.x = newValue
-        }
-        get {
-            return collecttionView.contentOffset.x
-        }
-    }
-    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         //super.init(style: UITableViewCellStyle.Default, reuseIdentifier: "idCellSourses")

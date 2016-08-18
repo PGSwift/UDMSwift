@@ -11,7 +11,6 @@ import UIKit
 class SearchCoursesViewController: UIViewController {
 
     //MARK: Properties
-    private let screenSize = UIScreen.mainScreen().bounds
     private var mySearchBar: UISearchBar!
     //MARK: IBOutlet properties
     @IBOutlet weak var tableTopKeySearch: UITableView!
