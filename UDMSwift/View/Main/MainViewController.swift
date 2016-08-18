@@ -8,13 +8,17 @@
 
 import UIKit
 
+let idHeaderDefauleCell = "idHeaderDefauleCell"
+let idSoursesCell = "idCellSourses"
 
 final class MainViewController: UIViewController {
     //MARK: Properties
     private let screenSize = UIScreen.mainScreen().bounds
     private let heightHeader = 40
-    private let heightCoursesSection = 260
-    private let heightCategoriSection = 150
+    private let heightCoursesSection = 250
+    private let heightCategoriSection = 180
+    
+    private var storedOffsets = [Int: CGFloat]()
     
     //MARK: IBOutlet propertes
     @IBOutlet weak var mainTableView: UITableView!
@@ -24,9 +28,6 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         
         self.mainTableView.tableFooterView = UIView()
-        self.mainTableView.registerClass(MainTableViewCell.self, forCellReuseIdentifier: "idCellSourses")
-        self.mainTableView.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "idHeaderDefauleCell")
-        
         self.navigationItem.title = "Featured"
     }
 }
@@ -47,89 +48,103 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 100
+        }
         return CGFloat(heightHeader)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return  configTableViewCellCollectionView(at: indexPath)
+        var cellTable = tableView.dequeueReusableCellWithIdentifier(idSoursesCell) as? MainTableViewCell
+        if cellTable == nil {
+            self.mainTableView.registerClass(MainTableViewCell.self, forCellReuseIdentifier: idSoursesCell)
+            cellTable = tableView.dequeueReusableCellWithIdentifier(idSoursesCell) as? MainTableViewCell
+            configTableViewCellCollectionView(with:cellTable! , at: indexPath)
+        } else {
+            configTableViewCellCollectionView(with:cellTable! , at: indexPath)
+        }
+        return cellTable!
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         
         guard let tableViewCell = cell as? MainTableViewCell else { return }
         tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
-        
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let viewHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier("idHeaderDefauleCell")
-        configTableViewCellNormal(with: viewHeader!, at: section)
+        var viewHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier(idHeaderDefauleCell)
+        if viewHeader == nil {
+            viewHeader = UITableViewHeaderFooterView(reuseIdentifier: idHeaderDefauleCell)
+
+            let button: UIButton = UIButton.init(frame: CGRect(x: screenSize.width - 110, y: 0, width: 100, height: CGFloat(heightHeader)))
+            button.setTitleColor(FlatUIColors.emeraldColor(), forState: .Normal)
+            button.layer.borderColor = FlatUIColors.emeraldColor().CGColor
+            button.layer.borderWidth = 1.5
+            button.layer.cornerRadius = 3.5
+            button.layer.masksToBounds = true
+            button.tag = 101
+            button.addTarget(self, action: #selector(MainViewController.pressed(_:)), forControlEvents: .TouchUpInside)
+            viewHeader!.contentView.insertSubview(button, atIndex: 1)
+            configTableViewCellNormal(with: viewHeader!, at: section)
+        } else {
+            configTableViewCellNormal(with: viewHeader!, at: section)
+        }
         return viewHeader
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         print("row selected \(indexPath)")
     }
-        
+    
     //MARK: Config cell
-    func configTableViewCellCollectionView(at index: NSIndexPath) -> MainTableViewCell {
+    func configTableViewCellCollectionView(with cellConfig:MainTableViewCell ,at index: NSIndexPath) {
+        guard let layout = cellConfig.collecttionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            print("Not yet init collectionViewLayout")
+            return
+        }
+        
         var frameUICollection: CGRect!
         var sizeItemCollection: CGSize!
-
+        
         switch index.section {
         case 0,2:
-            frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: heightCoursesSection + 30)
-            sizeItemCollection = CGSize(width: Int(screenSize.width / 3), height: heightCoursesSection - 10)
+            frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: heightCoursesSection + 20)
+            sizeItemCollection = CGSize(width: Int(screenSize.width / 3), height: heightCoursesSection)
             break
         case 1:
-            frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: heightCategoriSection + 20)
-            sizeItemCollection = CGSize(width: Int(screenSize.width / 3), height: heightCategoriSection - 10)
+            frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: heightCategoriSection)
+            sizeItemCollection = CGSize(width: Int(screenSize.width / 3), height: heightCategoriSection - 20)
             break
         default:
             break
         }
         
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Horizontal
-        layout.sectionInset = UIEdgeInsetsMake(20, 10, 10, 10)
+        cellConfig.collecttionView.frame = frameUICollection
         layout.itemSize = sizeItemCollection
-        let collectionView = UICollectionView(frame: frameUICollection, collectionViewLayout: layout)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = FlatUIColors.cloudsColor()
-        collectionView.clipsToBounds = true
-
-        let cellCourses = MainTableViewCell.init(collection: collectionView)
-        
-        return cellCourses
     }
     
     func configTableViewCellNormal(with cellConfig: UITableViewHeaderFooterView, at index: Int) {
-        if let buttonDetalt = cellConfig.viewWithTag(333) as? UIButton {
-            
+        guard let buttonDetalt = cellConfig.contentView.viewWithTag(101) as? UIButton else {
+            print("Not yet init button in Header")
+            return
         }
-        
-        let button: UIButton = UIButton.init(frame: CGRect(x: screenSize.width - 100, y: CGFloat(heightHeader/2 - (heightHeader - 15)/2) , width: 80, height: CGFloat(heightHeader - 10)))
-        button.setTitleColor(FlatUIColors.emeraldColor(), forState: .Normal)
-        button.layer.borderColor = FlatUIColors.emeraldColor().CGColor
-        button.layer.borderWidth = 1.5
-        button.layer.cornerRadius = 3.5
-        button.layer.masksToBounds = true
-        button.tag = 333
-        button.addTarget(self, action: #selector(MainViewController.pressed(_:)), forControlEvents: .TouchUpInside)
-        cellConfig.contentView.addSubview(button)
         
         switch index {
         case 0:
             cellConfig.textLabel?.text = "On Sale1111"
-            button.setTitle("button 1", forState: .Normal)
+            buttonDetalt.frame = CGRect(x: screenSize.width - 110, y: 10, width: 100, height: CGFloat(heightHeader))
+            buttonDetalt.setTitle("button 1", forState: .Normal)
             break
         case 1:
             cellConfig.textLabel?.text = "On Sale222"
-            button.setTitle("button 2", forState: .Normal)
+            buttonDetalt.frame = CGRect(x: screenSize.width - 110, y: 0, width: 100, height: CGFloat(heightHeader))
+            buttonDetalt.setTitle("button 2", forState: .Normal)
             break
         case 2:
             cellConfig.textLabel?.text = "On Sale333"
-            button.setTitle("button 3", forState: .Normal)
+            buttonDetalt.frame = CGRect(x: screenSize.width - 110, y: 0, width: 100, height: CGFloat(heightHeader))
+            buttonDetalt.setTitle("button 3", forState: .Normal)
             break
         default:
             break
@@ -143,7 +158,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
 //MARK: CollectionView
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 10
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -157,7 +172,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
         } else if collectionView.tag == 2 {
             cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier("idCategoriesCell", forIndexPath: indexPath)
-
+            
         }
         
         return cellCollection

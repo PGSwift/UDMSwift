@@ -95,7 +95,7 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
         collectionView.backgroundColor = FlatUIColors.cloudsColor()
         collectionView.scrollEnabled = false
         
-        let cellCourses = MainTableViewCell.init(collection: collectionView)
+        let cellCourses = MainTableViewCell.init()
         
         return cellCourses
     }

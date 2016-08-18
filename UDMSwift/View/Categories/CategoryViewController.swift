@@ -90,7 +90,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         collectionView.backgroundColor = FlatUIColors.cloudsColor()
         collectionView.clipsToBounds = true
         
-        let cellCourses = MainTableViewCell.init(collection: collectionView)
+        let cellCourses = MainTableViewCell.init()
         
         return cellCourses
     }
