@@ -23,7 +23,6 @@ class CategoryViewController: UIViewController {
         arrCategory = ["v", "c", "d", "e", "f", "g", "v", "c", "d", "e", "f", "g", "x", "u", "l"]
 
         self.tableCategory.tableFooterView = UIView()
-        self.tableCategory.registerClass(MainTableViewCell.self, forCellReuseIdentifier: "idCellSourses")
         self.tableCategory.registerClass(UITableViewCell.self, forCellReuseIdentifier: "idDefauleCell")
     }
 }
@@ -56,13 +55,25 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            return configTableViewCellCollectionView(at: indexPath)
+            var cellTable = tableView.dequeueReusableCellWithIdentifier(idSoursesCell) as? MainTableViewCell
+            if cellTable == nil {
+                self.tableCategory.registerClass(MainTableViewCell.self, forCellReuseIdentifier: idSoursesCell)
+                cellTable = tableView.dequeueReusableCellWithIdentifier(idSoursesCell) as? MainTableViewCell
+                configTableViewCellCollectionView(with:cellTable!, at: indexPath)
+            } else {
+                configTableViewCellCollectionView(with:cellTable!, at: indexPath)
+            }
+            return cellTable!
         }
         
-        let cellTable = tableView.dequeueReusableCellWithIdentifier("idDefauleCell", forIndexPath: indexPath)
-        cellTable.textLabel?.text = arrCategory[indexPath.row]
-        cellTable.accessoryType = .DisclosureIndicator
-        return cellTable
+        var cellTable = tableView.dequeueReusableCellWithIdentifier(idDefauleCell)
+        if cellTable == nil {
+            cellTable = UITableViewCell.init(style: .Default, reuseIdentifier: idDefauleCell)
+        }
+        cellTable!.accessoryType = .DisclosureIndicator
+        cellTable!.textLabel?.text = arrCategory[indexPath.row]
+        
+        return cellTable!
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -74,27 +85,20 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         print("Selected row: \(indexPath.row) in section: \(indexPath.section)")
     }
     //MARK: Config cell
-    func configTableViewCellCollectionView(at index: NSIndexPath) -> MainTableViewCell {
+    func configTableViewCellCollectionView(with cellConfig:MainTableViewCell ,at index: NSIndexPath) {
+        guard let layout = cellConfig.collecttionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            print("Not yet init collectionViewLayout")
+            return
+        }
+        
         var frameUICollection: CGRect!
         var sizeItemCollection: CGSize!
-        
-        frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: heightCoursesSection + 30)
-        sizeItemCollection = CGSize(width: Int(screenSize.width / 3), height: heightCoursesSection - 10)
-        
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Horizontal
-        layout.sectionInset = UIEdgeInsetsMake(20, 10, 10, 10)
+ 
+        frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: heightCoursesSection + 20)
+        sizeItemCollection = CGSize(width: Int(screenSize.width / 3), height: heightCoursesSection)
+        cellConfig.collecttionView.frame = frameUICollection
         layout.itemSize = sizeItemCollection
-        let collectionView = UICollectionView(frame: frameUICollection, collectionViewLayout: layout)
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.backgroundColor = FlatUIColors.cloudsColor()
-        collectionView.clipsToBounds = true
-        
-        let cellCourses = MainTableViewCell.init()
-        
-        return cellCourses
-    }
-}
+    }}
 
 //MARK: CollectionView
 extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource {

@@ -38,6 +38,7 @@
 		9264E9F71D644F1500D8B066 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F61D644F1500D8B066 /* SettingViewController.swift */; };
 		9264E9F91D64500100D8B066 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F81D64500100D8B066 /* WishListViewController.swift */; };
 		9264E9FE1D64626F00D8B066 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9FD1D64626F00D8B066 /* CategoryViewController.swift */; };
+		92CCCD571D66B73000723789 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CCCD561D66B73000723789 /* CourseDetailViewController.swift */; };
 		92D18E461D630CC000E7793C /* MyCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D18E451D630CC000E7793C /* MyCoursesViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		9264E9F61D644F1500D8B066 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		9264E9F81D64500100D8B066 /* WishListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WishListViewController.swift; sourceTree = "<group>"; };
 		9264E9FD1D64626F00D8B066 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		92CCCD561D66B73000723789 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseDetailViewController.swift; path = UDMSwift/View/Sourse/CourseDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		92D18E451D630CC000E7793C /* MyCoursesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCoursesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -225,8 +227,10 @@
 		9264E9FB1D6461BD00D8B066 /* Sourse */ = {
 			isa = PBXGroup;
 			children = (
+				92CCCD561D66B73000723789 /* CourseDetailViewController.swift */,
 			);
-			path = Sourse;
+			name = Sourse;
+			path = Sourses;
 			sourceTree = "<group>";
 		};
 		9264E9FC1D64620A00D8B066 /* Categories */ = {
@@ -331,6 +335,7 @@
 				4A45354F1D61FAEF00CFFFC5 /* ViewController.swift in Sources */,
 				4A6E037A1D66181400C2717C /* CourseInstructorCell.swift in Sources */,
 				4A4535791D6202B800CFFFC5 /* MainTableViewCell.swift in Sources */,
+				92CCCD571D66B73000723789 /* CourseDetailViewController.swift in Sources */,
 				4A4535741D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift in Sources */,
 				4A45354D1D61FAEF00CFFFC5 /* AppDelegate.swift in Sources */,
 				4A6E036D1D66160E00C2717C /* CourseCell.swift in Sources */,

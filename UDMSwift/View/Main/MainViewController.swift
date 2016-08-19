@@ -10,6 +10,7 @@ import UIKit
 
 let idHeaderDefauleCell0 = "idHeaderDefauleCell0"
 let idHeaderDefauleCell = "idHeaderDefauleCell"
+let idDefauleCell = "idDefauleCell"
 let idSoursesCell = "idCellSourses"
 
 let screenSize = UIScreen.mainScreen().bounds
@@ -20,6 +21,7 @@ final class MainViewController: UIViewController {
     private let heightHeader = 40
     private let heightCoursesSection = 250
     private let heightCategoriSection = 200
+    private let tabButton = 101
     
     //MARK: IBOutlet propertes
     @IBOutlet weak var mainTableView: UITableView!
@@ -89,7 +91,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 button.layer.borderWidth = 1.5
                 button.layer.cornerRadius = 3.5
                 button.layer.masksToBounds = true
-                button.tag = 101
+                button.tag = tabButton
                 button.addTarget(self, action: #selector(MainViewController.pressed(_:)), forControlEvents: .TouchUpInside)
                 viewHeader0!.contentView.insertSubview(button, atIndex: 1)
                 configTableViewCellNormal(with: viewHeader0!, at: section)
@@ -152,7 +154,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func configTableViewCellNormal(with cellConfig: UITableViewHeaderFooterView, at index: Int) {
-        guard let buttonDetalt = cellConfig.contentView.viewWithTag(101) as? UIButton else {
+        guard let buttonDetalt = cellConfig.contentView.viewWithTag(tabButton) as? UIButton else {
             print("Not yet init button in Header")
             return
         }

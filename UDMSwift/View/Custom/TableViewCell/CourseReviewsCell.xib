@@ -1,10 +1,72 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCourseReviewsCell" rowHeight="475" id="CO8-q1-4WD" customClass="CourseReviewsCell" customModule="UDMSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="335" height="475"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CO8-q1-4WD" id="QrD-zM-l7K">
+                <rect key="frame" x="0.0" y="0.0" width="335" height="474"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="n4j-Kp-nB9">
+                        <rect key="frame" x="8" y="94" width="319" height="300"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="300" id="hm2-c7-IfL"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="dataSource" destination="-1" id="bnm-wj-vy9"/>
+                            <outlet property="delegate" destination="-1" id="TBV-5w-gfR"/>
+                        </connections>
+                    </tableView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZd-AC-enR">
+                        <rect key="frame" x="146" y="8" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cx-UE-dQl">
+                        <rect key="frame" x="99" y="37" width="136" height="47"/>
+                        <color key="backgroundColor" red="0.67884751450000003" green="1" blue="0.41213792960000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="47" id="5Bt-oI-37g"/>
+                            <constraint firstAttribute="width" constant="136" id="UoT-1v-lq2"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5JC-VO-Qaz">
+                        <rect key="frame" x="144" y="404" width="47" height="30"/>
+                        <state key="normal" title="See All"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="5JC-VO-Qaz" firstAttribute="centerX" secondItem="QrD-zM-l7K" secondAttribute="centerX" id="0sl-W4-AqV"/>
+                    <constraint firstItem="5JC-VO-Qaz" firstAttribute="top" secondItem="n4j-Kp-nB9" secondAttribute="bottom" constant="10" id="3Vg-tc-yfB"/>
+                    <constraint firstItem="3cx-UE-dQl" firstAttribute="centerX" secondItem="QrD-zM-l7K" secondAttribute="centerX" id="ESM-Kg-Gm8"/>
+                    <constraint firstItem="n4j-Kp-nB9" firstAttribute="top" secondItem="3cx-UE-dQl" secondAttribute="bottom" constant="10" id="cRT-fh-uTj"/>
+                    <constraint firstItem="3cx-UE-dQl" firstAttribute="top" secondItem="gZd-AC-enR" secondAttribute="bottom" constant="8" id="dRM-0q-B8A"/>
+                    <constraint firstAttribute="trailing" secondItem="n4j-Kp-nB9" secondAttribute="trailing" constant="8" id="r8c-s3-vYZ"/>
+                    <constraint firstItem="n4j-Kp-nB9" firstAttribute="leading" secondItem="QrD-zM-l7K" secondAttribute="leading" constant="8" id="sfz-LY-ima"/>
+                    <constraint firstItem="gZd-AC-enR" firstAttribute="top" secondItem="QrD-zM-l7K" secondAttribute="top" constant="8" id="zHQ-uv-IGi"/>
+                    <constraint firstItem="gZd-AC-enR" firstAttribute="centerX" secondItem="QrD-zM-l7K" secondAttribute="centerX" id="zKf-00-Kdd"/>
+                    <constraint firstItem="n4j-Kp-nB9" firstAttribute="centerX" secondItem="QrD-zM-l7K" secondAttribute="centerX" id="zUJ-Uw-Kdz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="buttonSeeAll" destination="5JC-VO-Qaz" id="YYH-xh-asD"/>
+                <outlet property="scoresReviews" destination="3cx-UE-dQl" id="E6D-uu-ex1"/>
+                <outlet property="tableReviews" destination="n4j-Kp-nB9" id="FET-K0-WDA"/>
+                <outlet property="titleReview" destination="gZd-AC-enR" id="eR7-70-rhe"/>
+            </connections>
+            <point key="canvasLocation" x="269.5" y="455.5"/>
+        </tableViewCell>
     </objects>
 </document>

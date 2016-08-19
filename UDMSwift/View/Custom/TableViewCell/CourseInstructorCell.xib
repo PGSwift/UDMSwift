@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,13 +7,87 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CourseInstructorCell" customModule="UDMSwift" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCourseInstructorCell" rowHeight="373" id="KGk-i7-Jjw" customClass="CourseInstructorCell" customModule="UDMSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="366" height="373"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="366" height="372"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCe-Jx-ohG">
+                        <rect key="frame" x="97" y="50" width="40" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lle-Fj-wiR">
+                        <rect key="frame" x="162" y="8" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cTJ-5b-hQk">
+                        <rect key="frame" x="8" y="40" width="81" height="81"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="81" id="FBT-IP-4Ih"/>
+                            <constraint firstAttribute="width" constant="81" id="vmC-xk-hWU"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2q-ou-3zB">
+                        <rect key="frame" x="97" y="78" width="33" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJq-7t-03K">
+                        <rect key="frame" x="97" y="102" width="31" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="syH-om-AMd">
+                        <rect key="frame" x="8" y="131" width="350" height="200"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="AdX-hy-V1p"/>
+                        </constraints>
+                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buO-EM-SoR">
+                        <rect key="frame" x="160" y="339" width="47" height="30"/>
+                        <state key="normal" title="See All"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="e2q-ou-3zB" firstAttribute="top" secondItem="OCe-Jx-ohG" secondAttribute="bottom" constant="8" id="BJ5-6G-OVK"/>
+                    <constraint firstItem="buO-EM-SoR" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="BLd-Vy-Irc"/>
+                    <constraint firstItem="cTJ-5b-hQk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="BsQ-BH-rlW"/>
+                    <constraint firstItem="buO-EM-SoR" firstAttribute="top" secondItem="syH-om-AMd" secondAttribute="bottom" constant="8" id="FiP-PF-eZP"/>
+                    <constraint firstItem="cTJ-5b-hQk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="40" id="ICG-Xn-lsJ"/>
+                    <constraint firstItem="syH-om-AMd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="O8a-Nb-uY6"/>
+                    <constraint firstItem="syH-om-AMd" firstAttribute="top" secondItem="cTJ-5b-hQk" secondAttribute="bottom" constant="10" id="PYH-vJ-kN6"/>
+                    <constraint firstItem="OCe-Jx-ohG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="50" id="RmD-WZ-8CY"/>
+                    <constraint firstItem="nJq-7t-03K" firstAttribute="top" secondItem="e2q-ou-3zB" secondAttribute="bottom" constant="8" id="W2x-D4-LiM"/>
+                    <constraint firstAttribute="trailing" secondItem="syH-om-AMd" secondAttribute="trailing" constant="8" id="Wbx-Uf-3e9"/>
+                    <constraint firstItem="lle-Fj-wiR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="YMi-xy-x1H"/>
+                    <constraint firstItem="lle-Fj-wiR" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="eoI-T9-57j"/>
+                    <constraint firstItem="nJq-7t-03K" firstAttribute="leading" secondItem="OCe-Jx-ohG" secondAttribute="leading" id="jPb-T0-zOW"/>
+                    <constraint firstItem="e2q-ou-3zB" firstAttribute="leading" secondItem="OCe-Jx-ohG" secondAttribute="leading" id="su7-ho-Z2p"/>
+                    <constraint firstItem="OCe-Jx-ohG" firstAttribute="leading" secondItem="cTJ-5b-hQk" secondAttribute="trailing" constant="8" id="yNg-fy-dGo"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="addressIntructor" destination="nJq-7t-03K" id="nbq-w4-r3A"/>
+                <outlet property="avataIntructor" destination="cTJ-5b-hQk" id="Flj-aI-uKz"/>
+                <outlet property="buttonSeeAll" destination="buO-EM-SoR" id="6oJ-C0-I7y"/>
+                <outlet property="detailIntructor" destination="e2q-ou-3zB" id="hBr-Bx-vBa"/>
+                <outlet property="nameIntructor" destination="OCe-Jx-ohG" id="SFL-TV-x4N"/>
+                <outlet property="textViewContent" destination="syH-om-AMd" id="gFn-pS-rjK"/>
+                <outlet property="titleInstructor" destination="lle-Fj-wiR" id="AS5-Tr-GqL"/>
+            </connections>
+            <point key="canvasLocation" x="274" y="486.5"/>
         </tableViewCell>
     </objects>
 </document>

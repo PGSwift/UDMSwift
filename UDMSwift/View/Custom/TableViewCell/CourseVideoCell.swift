@@ -9,5 +9,14 @@
 import UIKit
 
 class CourseVideoCell: UITableViewCell {
-
+    //MARK: Properties
+    @IBOutlet weak var courseVideo: UIImageView!
+    @IBOutlet weak var courseName: UILabel!
+    @IBOutlet weak var labelPesonName: UILabel!
+    @IBOutlet weak var labelReiviewCourse: UILabel!
+    @IBOutlet weak var costSourse: UILabel!
+    
+    //MARK: Method
+    
+    
 }

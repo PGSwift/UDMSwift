@@ -81,11 +81,8 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
         
-        var frameUICollection: CGRect!
-        var sizeItemCollection: CGSize!
-        
-        frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: Int(heightSection))
-        sizeItemCollection = CGSize(width: Int(screenSize.width / 3) - 15, height: 80)
+        let frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: Int(heightSection))
+        let sizeItemCollection = CGSize(width: Int(screenSize.width / 3) - 15, height: 80)
         
         cellConfig.collecttionView.frame = frameUICollection
         cellConfig.collecttionView.scrollEnabled = false

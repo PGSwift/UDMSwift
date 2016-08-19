@@ -1,22 +1,29 @@
 //
-//  CourseCurriculumCell.swift
+//  CourseDetailViewController.swift
 //  UDMSwift
 //
-//  Created by OSXVN on 8/18/16.
+//  Created by Hanbiro on 8/19/16.
 //  Copyright © 2016 XUANVINHTD. All rights reserved.
 //
 
 import UIKit
 
-class CourseCurriculumCell: UITableViewCell {
+class CourseDetailViewController: UIViewController {
     //MARK: Properties
-    @IBOutlet weak var titleCurriculumCell: UILabel!
-    @IBOutlet weak var titleNumber: UILabel!
-    @IBOutlet weak var buttonSeeAll: UIButton!
-    @IBOutlet weak var tableCurriculum: UITableView!
+    
+    @IBOutlet weak var tableCourseDetail: UITableView!
+    
+    //MARK: Life view cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }
-
-extension CourseCurriculumCell: UITableViewDataSource, UITableViewDelegate {
+//MARK: Table view
+extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 6
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -26,10 +33,14 @@ extension CourseCurriculumCell: UITableViewDataSource, UITableViewDelegate {
         if cellTable == nil {
             cellTable = UITableViewCell.init(style: .Default, reuseIdentifier: idDefauleCell)
         }
+        cellTable!.textLabel?.text = String(indexPath.section)
+        
         return cellTable!
+
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Clicked row: \(indexPath.row)")
+        print("click row \(indexPath.row)")
     }
 }
+

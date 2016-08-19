@@ -9,16 +9,12 @@
 import UIKit
 
 class CourseInstructorCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
+    //MARK: Properties
+    @IBOutlet weak var titleInstructor: UILabel!
+    @IBOutlet weak var avataIntructor: UIImageView!
+    @IBOutlet weak var nameIntructor: UILabel!
+    @IBOutlet weak var detailIntructor: UILabel!
+    @IBOutlet weak var addressIntructor: UILabel!
+    @IBOutlet weak var textViewContent: UITextView!
+    @IBOutlet weak var buttonSeeAll: UIButton!
 }

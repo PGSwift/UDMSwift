@@ -9,5 +9,11 @@
 import UIKit
 
 class CourseDescriptionCell: UITableViewCell {
-
+    //MARK: Properties
+    @IBOutlet weak var titleDescription: UILabel!
+    @IBOutlet weak var textViewContent: UITextView!
+    @IBOutlet weak var buttonSeeAll: UIButton!
+    
+    //MARK: Method
+    
 }
