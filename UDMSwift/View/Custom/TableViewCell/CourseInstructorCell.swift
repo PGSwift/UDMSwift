@@ -17,4 +17,11 @@ class CourseInstructorCell: UITableViewCell {
     @IBOutlet weak var addressIntructor: UILabel!
     @IBOutlet weak var textViewContent: UITextView!
     @IBOutlet weak var buttonSeeAll: UIButton!
+    
+    //MARK: Method
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        textViewContent.sizeToFit()
+        textViewContent.scrollEnabled = false
+    }
 }

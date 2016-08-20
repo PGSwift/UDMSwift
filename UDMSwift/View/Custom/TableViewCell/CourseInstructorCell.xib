@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -26,7 +26,7 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cTJ-5b-hQk">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="x" translatesAutoresizingMaskIntoConstraints="NO" id="cTJ-5b-hQk">
                         <rect key="frame" x="8" y="40" width="81" height="81"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="81" id="FBT-IP-4Ih"/>
@@ -46,17 +46,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="syH-om-AMd">
-                        <rect key="frame" x="8" y="131" width="350" height="200"/>
+                        <rect key="frame" x="8" y="131" width="350" height="195"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="200" id="AdX-hy-V1p"/>
-                        </constraints>
-                        <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="buO-EM-SoR">
-                        <rect key="frame" x="160" y="339" width="47" height="30"/>
+                        <rect key="frame" x="160" y="334" width="47" height="30"/>
                         <state key="normal" title="See All"/>
                     </button>
                 </subviews>
@@ -74,6 +71,7 @@
                     <constraint firstItem="lle-Fj-wiR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="YMi-xy-x1H"/>
                     <constraint firstItem="lle-Fj-wiR" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="eoI-T9-57j"/>
                     <constraint firstItem="nJq-7t-03K" firstAttribute="leading" secondItem="OCe-Jx-ohG" secondAttribute="leading" id="jPb-T0-zOW"/>
+                    <constraint firstAttribute="bottom" secondItem="buO-EM-SoR" secondAttribute="bottom" constant="8" id="rPu-cv-DSw"/>
                     <constraint firstItem="e2q-ou-3zB" firstAttribute="leading" secondItem="OCe-Jx-ohG" secondAttribute="leading" id="su7-ho-Z2p"/>
                     <constraint firstItem="OCe-Jx-ohG" firstAttribute="leading" secondItem="cTJ-5b-hQk" secondAttribute="trailing" constant="8" id="yNg-fy-dGo"/>
                 </constraints>
@@ -90,4 +88,7 @@
             <point key="canvasLocation" x="274" y="486.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="x" width="616" height="357"/>
+    </resources>
 </document>

@@ -23,6 +23,12 @@ class CoursesCollectionViewCell: UICollectionViewCell {
         self.layer.masksToBounds = false
         
         self.backgroundColor = FlatUIColors.emeraldColor()
+        
+//        blueView.layer.shadowColor = UIColor.blackColor().CGColor
+//        blueView.layer.shadowOffset = CGSize(width: 3, height: 3)
+//        blueView.layer.shadowOpacity = 0.7
+//        blueView.layer.shadowRadius = 4.0
+        //http://stackoverflow.com/questions/4754392/uiview-with-rounded-corners-and-drop-shadow/34984063#34984063
     }
 
 }

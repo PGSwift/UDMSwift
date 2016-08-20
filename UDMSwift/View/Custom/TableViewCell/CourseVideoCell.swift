@@ -15,8 +15,11 @@ class CourseVideoCell: UITableViewCell {
     @IBOutlet weak var labelPesonName: UILabel!
     @IBOutlet weak var labelReiviewCourse: UILabel!
     @IBOutlet weak var costSourse: UILabel!
+    @IBOutlet weak var buttonBuy: UIButton!
     
     //MARK: Method
-    
-    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        print("print")
+    }
 }

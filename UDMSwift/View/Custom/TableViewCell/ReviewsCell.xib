@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idReviewsCell" rowHeight="130" id="KGk-i7-Jjw" customClass="ReviewsCell" customModule="UDMSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="413" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="413" height="129"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbE-LZ-ywH">
+                        <rect key="frame" x="14" y="8" width="105" height="21"/>
+                        <color key="backgroundColor" red="0.13947877287864685" green="0.94789546728134155" blue="0.18312028050422668" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="105" id="GBc-9T-7Ck"/>
+                            <constraint firstAttribute="height" constant="21" id="GgG-I1-uNH"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015/10/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4X-qb-Gvm">
+                        <rect key="frame" x="101" y="37" width="72" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="amX-v4-w3M">
+                        <rect key="frame" x="8" y="62" width="397" height="59"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure </string>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xuan Vinh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7b-VG-H2o">
+                        <rect key="frame" x="8" y="37" width="78" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="h4X-qb-Gvm" firstAttribute="top" secondItem="SbE-LZ-ywH" secondAttribute="bottom" constant="8" id="HBI-GU-AtP"/>
+                    <constraint firstAttribute="trailing" secondItem="amX-v4-w3M" secondAttribute="trailing" constant="8" id="IHe-hb-103"/>
+                    <constraint firstItem="amX-v4-w3M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="KUv-RV-6j3"/>
+                    <constraint firstItem="amX-v4-w3M" firstAttribute="top" secondItem="h4X-qb-Gvm" secondAttribute="bottom" constant="8" id="LUu-Np-OCX"/>
+                    <constraint firstItem="k7b-VG-H2o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="ScB-E4-0VI"/>
+                    <constraint firstItem="h4X-qb-Gvm" firstAttribute="leading" secondItem="k7b-VG-H2o" secondAttribute="trailing" constant="15" id="Too-3f-3Qh"/>
+                    <constraint firstItem="SbE-LZ-ywH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="YZ4-kR-BH1"/>
+                    <constraint firstAttribute="bottom" secondItem="amX-v4-w3M" secondAttribute="bottom" constant="8" id="dzH-f4-BYD"/>
+                    <constraint firstItem="SbE-LZ-ywH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="k0x-6k-gGt"/>
+                    <constraint firstItem="k7b-VG-H2o" firstAttribute="top" secondItem="SbE-LZ-ywH" secondAttribute="bottom" constant="8" id="qAQ-q2-zE2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="dateReview" destination="h4X-qb-Gvm" id="37a-tQ-vCP"/>
+                <outlet property="labelStar" destination="SbE-LZ-ywH" id="Gyh-F4-sDs"/>
+                <outlet property="nameReviewer" destination="k7b-VG-H2o" id="MtP-sd-5Z8"/>
+                <outlet property="textViewContents" destination="amX-v4-w3M" id="tNF-Ev-nPr"/>
+            </connections>
+            <point key="canvasLocation" x="479.5" y="370"/>
+        </tableViewCell>
+    </objects>
+</document>

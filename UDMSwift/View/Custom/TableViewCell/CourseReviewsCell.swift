@@ -14,17 +14,31 @@ class CourseReviewsCell: UITableViewCell {
     @IBOutlet weak var scoresReviews: UILabel!
     @IBOutlet weak var tableReviews: UITableView!
     @IBOutlet weak var buttonSeeAll: UIButton!
+    
+    let idReviewsCell = "idReviewsCell"
+    
+    var arrayReview = [String]()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        tableReviews.estimatedRowHeight = 44.0
+        tableReviews.rowHeight = UITableViewAutomaticDimension
+        arrayReview = ["1", "2", "3", "4", "5", "6", "7"]
+        tableReviews.dataSource = self
+        tableReviews.delegate = self
+    }
 }
 //MARK: Table View
 extension CourseReviewsCell : UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return arrayReview.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cellTable = tableView.dequeueReusableCellWithIdentifier(idDefauleCell)
+        var cellTable = tableView.dequeueReusableCellWithIdentifier(idReviewsCell) as? ReviewsCell
         if cellTable == nil {
-            cellTable = UITableViewCell.init(style: .Default, reuseIdentifier: idDefauleCell)
+            tableReviews.registerNib(UINib(nibName: "ReviewsCell", bundle: nil), forCellReuseIdentifier: idReviewsCell)
+            cellTable = tableView.dequeueReusableCellWithIdentifier(idReviewsCell) as? ReviewsCell
         }
         return cellTable!
     }

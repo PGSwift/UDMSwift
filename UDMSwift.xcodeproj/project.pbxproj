@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A351AEA1D675F780053B4A2 /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A351AE81D675F780053B4A2 /* ReviewsCell.swift */; };
+		4A351AEB1D675F780053B4A2 /* ReviewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A351AE91D675F780053B4A2 /* ReviewsCell.xib */; };
 		4A45354D1D61FAEF00CFFFC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45354C1D61FAEF00CFFFC5 /* AppDelegate.swift */; };
 		4A45354F1D61FAEF00CFFFC5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45354E1D61FAEF00CFFFC5 /* ViewController.swift */; };
 		4A4535541D61FAEF00CFFFC5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4535531D61FAEF00CFFFC5 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 		4A6E03771D66172B00C2717C /* CourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6E03761D66172B00C2717C /* CourseCell.xib */; };
 		4A6E037A1D66181400C2717C /* CourseInstructorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03781D66181400C2717C /* CourseInstructorCell.swift */; };
 		4A6E037B1D66181400C2717C /* CourseInstructorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6E03791D66181400C2717C /* CourseInstructorCell.xib */; };
+		4A7DD4AC1D680C2B00AB0BD2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7DD4AB1D680C2B00AB0BD2 /* SignInViewController.swift */; };
+		4A7DD4AF1D680EBF00AB0BD2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7DD4AE1D680EBF00AB0BD2 /* User.swift */; };
 		925301451D657F27003BBC68 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925301441D657F27003BBC68 /* testViewController.swift */; };
 		9264E9F21D64188500D8B066 /* SearchCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F11D64188500D8B066 /* SearchCoursesViewController.swift */; };
 		9264E9F71D644F1500D8B066 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F61D644F1500D8B066 /* SettingViewController.swift */; };
@@ -43,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A351AE81D675F780053B4A2 /* ReviewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
+		4A351AE91D675F780053B4A2 /* ReviewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewsCell.xib; sourceTree = "<group>"; };
 		4A4535491D61FAEF00CFFFC5 /* UDMSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UDMSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A45354C1D61FAEF00CFFFC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A45354E1D61FAEF00CFFFC5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +77,8 @@
 		4A6E03761D66172B00C2717C /* CourseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseCell.xib; sourceTree = "<group>"; };
 		4A6E03781D66181400C2717C /* CourseInstructorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseInstructorCell.swift; sourceTree = "<group>"; };
 		4A6E03791D66181400C2717C /* CourseInstructorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseInstructorCell.xib; sourceTree = "<group>"; };
+		4A7DD4AB1D680C2B00AB0BD2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		4A7DD4AE1D680EBF00AB0BD2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Account/User.swift; sourceTree = SOURCE_ROOT; };
 		925301441D657F27003BBC68 /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		9264E9F11D64188500D8B066 /* SearchCoursesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCoursesViewController.swift; sourceTree = "<group>"; };
 		9264E9F61D644F1500D8B066 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -127,6 +135,7 @@
 		4A45355E1D61FB9C00CFFFC5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4A7DD4AA1D680B3400AB0BD2 /* SignIn */,
 				9264E9FC1D64620A00D8B066 /* Categories */,
 				9264E9FB1D6461BD00D8B066 /* Sourse */,
 				4A4535691D61FFA800CFFFC5 /* Custom */,
@@ -139,6 +148,7 @@
 		4A45355F1D61FBB900CFFFC5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4A7DD4AD1D680E6400AB0BD2 /* Account */,
 			);
 			name = Models;
 			path = Model;
@@ -171,6 +181,7 @@
 				9264E9F61D644F1500D8B066 /* SettingViewController.swift */,
 				9264E9F81D64500100D8B066 /* WishListViewController.swift */,
 				925301441D657F27003BBC68 /* testViewController.swift */,
+				4A7DD4AB1D680C2B00AB0BD2 /* SignInViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -213,8 +224,26 @@
 				4A6E03761D66172B00C2717C /* CourseCell.xib */,
 				4A6E03781D66181400C2717C /* CourseInstructorCell.swift */,
 				4A6E03791D66181400C2717C /* CourseInstructorCell.xib */,
+				4A351AE81D675F780053B4A2 /* ReviewsCell.swift */,
+				4A351AE91D675F780053B4A2 /* ReviewsCell.xib */,
 			);
 			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		4A7DD4AA1D680B3400AB0BD2 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SignIn;
+			path = Account;
+			sourceTree = "<group>";
+		};
+		4A7DD4AD1D680E6400AB0BD2 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				4A7DD4AE1D680EBF00AB0BD2 /* User.swift */,
+			);
+			path = Account;
 			sourceTree = "<group>";
 		};
 		9264E9F51D644CB000D8B066 /* Stores */ = {
@@ -305,6 +334,7 @@
 				4A4535661D61FE4600CFFFC5 /* Main.storyboard in Resources */,
 				4A4535721D6200F500CFFFC5 /* CategoriesCollectionViewCell.xib in Resources */,
 				4A45356E1D6200B800CFFFC5 /* CoursesCollectionViewCell.xib in Resources */,
+				4A351AEB1D675F780053B4A2 /* ReviewsCell.xib in Resources */,
 				4A4535571D61FAEF00CFFFC5 /* LaunchScreen.storyboard in Resources */,
 				4A6E03751D66171800C2717C /* CourseReviewsCell.xib in Resources */,
 				4A6E03771D66172B00C2717C /* CourseCell.xib in Resources */,
@@ -327,6 +357,7 @@
 				925301451D657F27003BBC68 /* testViewController.swift in Sources */,
 				9264E9F21D64188500D8B066 /* SearchCoursesViewController.swift in Sources */,
 				4A4535681D61FE7700CFFFC5 /* MainViewController.swift in Sources */,
+				4A351AEA1D675F780053B4A2 /* ReviewsCell.swift in Sources */,
 				92D18E461D630CC000E7793C /* MyCoursesViewController.swift in Sources */,
 				4A45356D1D6200B800CFFFC5 /* CoursesCollectionViewCell.swift in Sources */,
 				4A6E03671D6613C400C2717C /* CourseDescriptionCell.swift in Sources */,
@@ -341,7 +372,9 @@
 				4A6E036D1D66160E00C2717C /* CourseCell.swift in Sources */,
 				4A4535711D6200F500CFFFC5 /* CategoriesCollectionViewCell.swift in Sources */,
 				9264E9F91D64500100D8B066 /* WishListViewController.swift in Sources */,
+				4A7DD4AF1D680EBF00AB0BD2 /* User.swift in Sources */,
 				4A6E03691D66144200C2717C /* CourseCurriculumCell.swift in Sources */,
+				4A7DD4AC1D680C2B00AB0BD2 /* SignInViewController.swift in Sources */,
 				9264E9F71D644F1500D8B066 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
