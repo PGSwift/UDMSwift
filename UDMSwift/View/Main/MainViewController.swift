@@ -8,13 +8,6 @@
 
 import UIKit
 
-let idHeaderDefauleCell0 = "idHeaderDefauleCell0"
-let idHeaderDefauleCell = "idHeaderDefauleCell"
-let idDefauleCell = "idDefauleCell"
-let idSoursesCell = "idCellSourses"
-
-let screenSize = UIScreen.mainScreen().bounds
-
 final class MainViewController: UIViewController {
     //MARK: Properties
     private let heightHeader0:CGFloat = 300

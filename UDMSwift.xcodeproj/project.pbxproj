@@ -37,6 +37,14 @@
 		4A6E037B1D66181400C2717C /* CourseInstructorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6E03791D66181400C2717C /* CourseInstructorCell.xib */; };
 		4A7DD4AC1D680C2B00AB0BD2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7DD4AB1D680C2B00AB0BD2 /* SignInViewController.swift */; };
 		4A7DD4AF1D680EBF00AB0BD2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7DD4AE1D680EBF00AB0BD2 /* User.swift */; };
+		4A8075591D689FC6006536A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A8075581D689FC6006536A8 /* GoogleService-Info.plist */; };
+		4A80755D1D68AA19006536A8 /* CouresListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80755C1D68AA19006536A8 /* CouresListViewController.swift */; };
+		4A80755F1D68AC5C006536A8 /* Containt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80755E1D68AC5C006536A8 /* Containt.swift */; };
+		4A8075611D68B1C5006536A8 /* CourseInfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8075601D68B1C5006536A8 /* CourseInfoDetailViewController.swift */; };
+		4A8075631D68B55F006536A8 /* DetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8075621D68B55F006536A8 /* DetailListViewController.swift */; };
+		4A80756B1D68BAD2006536A8 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8075691D68BAD2006536A8 /* FBSDKCoreKit.framework */; };
+		4A80756C1D68BAD2006536A8 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A80756A1D68BAD2006536A8 /* FBSDKLoginKit.framework */; };
+		4A80756E1D68BB91006536A8 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A80756D1D68BB91006536A8 /* Bolts.framework */; };
 		925301451D657F27003BBC68 /* testViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 925301441D657F27003BBC68 /* testViewController.swift */; };
 		9264E9F21D64188500D8B066 /* SearchCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F11D64188500D8B066 /* SearchCoursesViewController.swift */; };
 		9264E9F71D644F1500D8B066 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F61D644F1500D8B066 /* SettingViewController.swift */; };
@@ -44,9 +52,11 @@
 		9264E9FE1D64626F00D8B066 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9FD1D64626F00D8B066 /* CategoryViewController.swift */; };
 		92CCCD571D66B73000723789 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CCCD561D66B73000723789 /* CourseDetailViewController.swift */; };
 		92D18E461D630CC000E7793C /* MyCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D18E451D630CC000E7793C /* MyCoursesViewController.swift */; };
+		B01DA42C595FBB70139A4F79 /* Pods_UDMSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE630F250369024552306D0C /* Pods_UDMSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D08753B785755DECEA78367 /* Pods-UDMSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UDMSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-UDMSwift/Pods-UDMSwift.release.xcconfig"; sourceTree = "<group>"; };
 		4A351AE81D675F780053B4A2 /* ReviewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
 		4A351AE91D675F780053B4A2 /* ReviewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewsCell.xib; sourceTree = "<group>"; };
 		4A4535491D61FAEF00CFFFC5 /* UDMSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UDMSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +89,15 @@
 		4A6E03791D66181400C2717C /* CourseInstructorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseInstructorCell.xib; sourceTree = "<group>"; };
 		4A7DD4AB1D680C2B00AB0BD2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		4A7DD4AE1D680EBF00AB0BD2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Account/User.swift; sourceTree = SOURCE_ROOT; };
+		4A7DD4B11D681C1200AB0BD2 /* UDMSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UDMSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		4A8075581D689FC6006536A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4A80755C1D68AA19006536A8 /* CouresListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CouresListViewController.swift; path = UDMSwift/View/Sourse/CouresListViewController.swift; sourceTree = SOURCE_ROOT; };
+		4A80755E1D68AC5C006536A8 /* Containt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Containt.swift; sourceTree = "<group>"; };
+		4A8075601D68B1C5006536A8 /* CourseInfoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseInfoDetailViewController.swift; sourceTree = "<group>"; };
+		4A8075621D68B55F006536A8 /* DetailListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailListViewController.swift; sourceTree = "<group>"; };
+		4A8075691D68BAD2006536A8 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		4A80756A1D68BAD2006536A8 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		4A80756D1D68BB91006536A8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		925301441D657F27003BBC68 /* testViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testViewController.swift; sourceTree = "<group>"; };
 		9264E9F11D64188500D8B066 /* SearchCoursesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchCoursesViewController.swift; sourceTree = "<group>"; };
 		9264E9F61D644F1500D8B066 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +105,8 @@
 		9264E9FD1D64626F00D8B066 /* CategoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		92CCCD561D66B73000723789 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CourseDetailViewController.swift; path = UDMSwift/View/Sourse/CourseDetailViewController.swift; sourceTree = SOURCE_ROOT; };
 		92D18E451D630CC000E7793C /* MyCoursesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCoursesViewController.swift; sourceTree = "<group>"; };
+		AA6C0C05FE1FD4C1259ECFA9 /* Pods-UDMSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UDMSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UDMSwift/Pods-UDMSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		CE630F250369024552306D0C /* Pods_UDMSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UDMSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,17 +114,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01DA42C595FBB70139A4F79 /* Pods_UDMSwift.framework in Frameworks */,
+				4A80756B1D68BAD2006536A8 /* FBSDKCoreKit.framework in Frameworks */,
+				4A80756C1D68BAD2006536A8 /* FBSDKLoginKit.framework in Frameworks */,
+				4A80756E1D68BB91006536A8 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		391D6DA63AF1EC7A05BC353E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AA6C0C05FE1FD4C1259ECFA9 /* Pods-UDMSwift.debug.xcconfig */,
+				3D08753B785755DECEA78367 /* Pods-UDMSwift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3E01993272E45336A60C63AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CE630F250369024552306D0C /* Pods_UDMSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4A4535401D61FAEF00CFFFC5 = {
 			isa = PBXGroup;
 			children = (
 				4A45354B1D61FAEF00CFFFC5 /* UDMSwift */,
 				4A45354A1D61FAEF00CFFFC5 /* Products */,
+				391D6DA63AF1EC7A05BC353E /* Pods */,
+				3E01993272E45336A60C63AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +162,7 @@
 		4A45354B1D61FAEF00CFFFC5 /* UDMSwift */ = {
 			isa = PBXGroup;
 			children = (
+				4A8075641D68B6E2006536A8 /* Library */,
 				9264E9F51D644CB000D8B066 /* Stores */,
 				4A4535611D61FBDE00CFFFC5 /* Helpers */,
 				4A4535601D61FBD500CFFFC5 /* Controllers */,
@@ -127,6 +172,7 @@
 				4A45354E1D61FAEF00CFFFC5 /* ViewController.swift */,
 				4A4535531D61FAEF00CFFFC5 /* Assets.xcassets */,
 				4A4535551D61FAEF00CFFFC5 /* LaunchScreen.storyboard */,
+				4A8075581D689FC6006536A8 /* GoogleService-Info.plist */,
 				4A4535581D61FAEF00CFFFC5 /* Info.plist */,
 			);
 			path = UDMSwift;
@@ -135,7 +181,6 @@
 		4A45355E1D61FB9C00CFFFC5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4A7DD4AA1D680B3400AB0BD2 /* SignIn */,
 				9264E9FC1D64620A00D8B066 /* Categories */,
 				9264E9FB1D6461BD00D8B066 /* Sourse */,
 				4A4535691D61FFA800CFFFC5 /* Custom */,
@@ -166,6 +211,8 @@
 			isa = PBXGroup;
 			children = (
 				4A58132E1D63628E0044BFEB /* UDMFlatUIColors.swift */,
+				4A80755E1D68AC5C006536A8 /* Containt.swift */,
+				4A7DD4B11D681C1200AB0BD2 /* UDMSwift-Bridging-Header.h */,
 			);
 			name = Helpers;
 			path = Helper;
@@ -182,6 +229,8 @@
 				9264E9F81D64500100D8B066 /* WishListViewController.swift */,
 				925301441D657F27003BBC68 /* testViewController.swift */,
 				4A7DD4AB1D680C2B00AB0BD2 /* SignInViewController.swift */,
+				4A8075601D68B1C5006536A8 /* CourseInfoDetailViewController.swift */,
+				4A8075621D68B55F006536A8 /* DetailListViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -230,20 +279,22 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
-		4A7DD4AA1D680B3400AB0BD2 /* SignIn */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = SignIn;
-			path = Account;
-			sourceTree = "<group>";
-		};
 		4A7DD4AD1D680E6400AB0BD2 /* Account */ = {
 			isa = PBXGroup;
 			children = (
 				4A7DD4AE1D680EBF00AB0BD2 /* User.swift */,
 			);
 			path = Account;
+			sourceTree = "<group>";
+		};
+		4A8075641D68B6E2006536A8 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				4A80756D1D68BB91006536A8 /* Bolts.framework */,
+				4A8075691D68BAD2006536A8 /* FBSDKCoreKit.framework */,
+				4A80756A1D68BAD2006536A8 /* FBSDKLoginKit.framework */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		9264E9F51D644CB000D8B066 /* Stores */ = {
@@ -257,9 +308,9 @@
 			isa = PBXGroup;
 			children = (
 				92CCCD561D66B73000723789 /* CourseDetailViewController.swift */,
+				4A80755C1D68AA19006536A8 /* CouresListViewController.swift */,
 			);
-			name = Sourse;
-			path = Sourses;
+			path = Sourse;
 			sourceTree = "<group>";
 		};
 		9264E9FC1D64620A00D8B066 /* Categories */ = {
@@ -277,9 +328,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4A45355B1D61FAEF00CFFFC5 /* Build configuration list for PBXNativeTarget "UDMSwift" */;
 			buildPhases = (
+				F1CA742594A7B03B363EC39C /* 📦 Check Pods Manifest.lock */,
 				4A4535451D61FAEF00CFFFC5 /* Sources */,
 				4A4535461D61FAEF00CFFFC5 /* Frameworks */,
 				4A4535471D61FAEF00CFFFC5 /* Resources */,
+				A8A21E997020CFC53F8DD30F /* 📦 Embed Pods Frameworks */,
+				14DC4979EE2893A0D6FCDB7B /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -342,10 +396,59 @@
 				4A4535761D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib in Resources */,
 				4A6E03711D6616F300C2717C /* CourseDescriptionCell.xib in Resources */,
 				4A6E037B1D66181400C2717C /* CourseInstructorCell.xib in Resources */,
+				4A8075591D689FC6006536A8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14DC4979EE2893A0D6FCDB7B /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UDMSwift/Pods-UDMSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A8A21E997020CFC53F8DD30F /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UDMSwift/Pods-UDMSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1CA742594A7B03B363EC39C /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4A4535451D61FAEF00CFFFC5 /* Sources */ = {
@@ -367,14 +470,18 @@
 				4A6E037A1D66181400C2717C /* CourseInstructorCell.swift in Sources */,
 				4A4535791D6202B800CFFFC5 /* MainTableViewCell.swift in Sources */,
 				92CCCD571D66B73000723789 /* CourseDetailViewController.swift in Sources */,
+				4A8075631D68B55F006536A8 /* DetailListViewController.swift in Sources */,
 				4A4535741D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift in Sources */,
 				4A45354D1D61FAEF00CFFFC5 /* AppDelegate.swift in Sources */,
 				4A6E036D1D66160E00C2717C /* CourseCell.swift in Sources */,
 				4A4535711D6200F500CFFFC5 /* CategoriesCollectionViewCell.swift in Sources */,
+				4A8075611D68B1C5006536A8 /* CourseInfoDetailViewController.swift in Sources */,
 				9264E9F91D64500100D8B066 /* WishListViewController.swift in Sources */,
 				4A7DD4AF1D680EBF00AB0BD2 /* User.swift in Sources */,
 				4A6E03691D66144200C2717C /* CourseCurriculumCell.swift in Sources */,
 				4A7DD4AC1D680C2B00AB0BD2 /* SignInViewController.swift in Sources */,
+				4A80755F1D68AC5C006536A8 /* Containt.swift in Sources */,
+				4A80755D1D68AA19006536A8 /* CouresListViewController.swift in Sources */,
 				9264E9F71D644F1500D8B066 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,29 +587,44 @@
 		};
 		4A45355C1D61FAEF00CFFFC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA6C0C05FE1FD4C1259ECFA9 /* Pods-UDMSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UDMSwift/Library",
+				);
 				INFOPLIST_FILE = UDMSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vinh.UDMSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "UDMSwift/Helper/UDMSwift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		4A45355D1D61FAEF00CFFFC5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D08753B785755DECEA78367 /* Pods-UDMSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UDMSwift/Library",
+				);
 				INFOPLIST_FILE = UDMSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vinh.UDMSwift;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "UDMSwift/Helper/UDMSwift-Bridging-Header.h";
 			};
 			name = Release;
 		};

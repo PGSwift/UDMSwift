@@ -8,17 +8,12 @@
 
 import UIKit
 
-enum tabButtonSeeAll: Int {
-    case Description = 1, Curriculum, Review, Instructor
-}
-
 class CourseDetailViewController: UIViewController {
     //MARK: Properties
     let idCourseVideoCell = "idCourseVideoCell"
     let idCourseDescriptionCell = "idCourseDescriptionCell"
     let idCourseCurriculumCell = "idCourseCurriculumCell"
     let idCourseReviewsCell = "idCourseReviewsCell"
-    let idCourseCell = "idCourseCell"
     let idCourseInstructorCell = "idCourseInstructorCell"
     
     
@@ -116,7 +111,6 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
         cellTable!.textLabel?.text = String(indexPath.section)
         
         return cellTable!
-
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
