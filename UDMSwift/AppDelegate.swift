@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ChameleonFramework
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,19 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        //Set Color NavigationBar
-        let navigationBarAppearace = UINavigationBar.appearance()
-        navigationBarAppearace.barTintColor = FlatUIColors.emeraldColor()
-        navigationBarAppearace.tintColor = UIColor.whiteColor()
-        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        // MARK: - Set Theme App
+        Chameleon.setGlobalThemeUsingPrimaryColor(FlatMint(),
+                                                  withSecondaryColor: FlatGreen(),
+                                                  andContentStyle: UIContentStyle.Contrast)
         
-        //MARK: config Facebook
+        // MARK: - Init and configuration Facebook
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }
 
-    //MARK: [START openurl]
+    // MARK: - [START openurl]
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
         let stringURL = url.absoluteString
         if stringURL.containsString("fb1615266445438059") {

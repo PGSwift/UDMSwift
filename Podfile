@@ -8,4 +8,5 @@ use_frameworks!
 pod 'Alamofire', '~> 3.4'
 pod 'Freddy'
 pod 'Google/SignIn'
+pod 'ChameleonFramework/Swift'
 end

@@ -8,16 +8,22 @@
 
 let screenSize = UIScreen.mainScreen().bounds
 
-//MARK: idcell
+// MARK: - UIStoryboard instance
+let MainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+
+// MARK: - IDCell Default
 let idHeaderDefauleCell0 = "idHeaderDefauleCell0"
 let idHeaderDefauleCell = "idHeaderDefauleCell"
 let idDefauleCell = "idDefauleCell"
-let idSoursesCell = "idCellSourses"
-let idCourseCell = "idCourseCell"
 
-//MARK: number Tab
+// MARK: - number Tab
 enum tabButtonSeeAll: Int {
     case Description = 1, Curriculum, Review, Instructor
+}
+
+// MARK: - All Notification names
+struct GlobalNotifications {
+    static let NFReceive = "Receive"
 }
 
 
