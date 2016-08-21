@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+final class SignInViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var loginFacebook: FBSDKLoginButton!
     

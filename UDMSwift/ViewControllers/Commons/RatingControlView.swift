@@ -6,7 +6,7 @@
 //  Copyright © 2016 XUANVINHTD. All rights reserved.
 //
 
-class RatingControlView: UIView {
+final class RatingControlView: UIView {
     // MARK: - Properties
     var rating = 0 {
         didSet {

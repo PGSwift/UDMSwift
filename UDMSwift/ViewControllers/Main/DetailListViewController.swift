@@ -6,11 +6,15 @@
 //  Copyright © 2016 XUANVINHTD. All rights reserved.
 //
 
-class DetailListViewController: UIViewController {
+final class DetailListViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var tableDetail: UITableView!
     
     var courseList: [String] = []
+    
+    struct Notification {
+        static let updateDraft = "UpdateDraftOfConversation"
+    }
     
     // MARK: - Initialzation
     static func createInstance() -> UIViewController {

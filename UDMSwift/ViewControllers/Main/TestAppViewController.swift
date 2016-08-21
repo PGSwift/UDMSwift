@@ -17,6 +17,31 @@ class TestAppViewController: UIViewController {
         return NSBundle.mainBundle().loadNibNamed(nibName, owner: nil, options: nil)[0] as! CustomView
     } */
     
+    // MARK: - Name Notificatoin ---------xxxxxxxxxx---------
+    func demoPostNotification() {
+        NSNotificationCenter.defaultCenter().postNotificationName(DetailListViewController.Notification.updateDraft, object: nil)
+    }
+    
+    struct Notification {
+        static let updateDraft = "UpdateDraftOfConversation"
+    }
+    func demoaddObserverNotification() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TestAppViewController.demoPostNotification), name: Notification.updateDraft, object: nil)
+    }
+    // ---------xxxxxxxxxx---------
+
+    // MAKR: - Using lazy 
+    lazy var moreButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(), forState: .Normal)
+        button.tintColor = UIColor.lightGrayColor()
+        button.tintAdjustmentMode = .Normal
+        button.addTarget(self, action: #selector(TestAppViewController.demoPostNotification), forControlEvents: UIControlEvents.TouchUpInside)
+        return button
+    }()
+    // ---------xxxxxxxxxx---------
+    
+    
     let petName = "Krakey-poo"
     lazy var businessCardName: () -> String = { [unowned self] in
         return "Mr. Kraken AKA " + self.petName

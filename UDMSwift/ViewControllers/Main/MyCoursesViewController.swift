@@ -67,9 +67,9 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var cellHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier(idHeaderDefauleCell) as UITableViewHeaderFooterView?
+        var cellHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier(UDMConfig.HeaderCellID.defaulCell) as UITableViewHeaderFooterView?
         if cellHeader == nil {
-            cellHeader = UITableViewHeaderFooterView.init(reuseIdentifier: idHeaderDefauleCell)
+            cellHeader = UITableViewHeaderFooterView.init(reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)
             cellHeader!.backgroundColor = UIColor.blueColor()
             cellHeader!.textLabel?.text = "ho xuan vinh demo"
         }
@@ -89,8 +89,8 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
         guard let layout = cellConfig.collecttionView.collectionViewLayout as? UICollectionViewFlowLayout else {
             fatalError("cellConfig cannot be nil here")
         }
-        let frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: Int(heightSection))
-        let sizeItemCollection = CGSize(width: Int(screenSize.width / 3) - 15, height: 80)
+        let frameUICollection = CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: Int(heightSection))
+        let sizeItemCollection = CGSize(width: Int(UDMConfig.getScreenRect().width / 3) - 15, height: 80)
         
         cellConfig.collecttionView.frame = frameUICollection
         layout.itemSize = sizeItemCollection

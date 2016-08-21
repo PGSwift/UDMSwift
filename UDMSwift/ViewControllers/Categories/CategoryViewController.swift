@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
+final class CategoryViewController: UIViewController {
     // MARK: - Properties
     private let screenSize = UIScreen.mainScreen().bounds
     private let heightCoursesSection = 260
@@ -66,9 +66,9 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
             return cellTable!
         }
         
-        var cellTable = tableView.dequeueReusableCellWithIdentifier(idDefauleCell)
+        var cellTable = tableView.dequeueReusableCellWithIdentifier(UDMConfig.HeaderCellID.defaulCell)
         if cellTable == nil {
-            cellTable = UITableViewCell.init(style: .Default, reuseIdentifier: idDefauleCell)
+            cellTable = UITableViewCell.init(style: .Default, reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)
         }
         cellTable!.accessoryType = .DisclosureIndicator
         cellTable!.textLabel?.text = arrCategory[indexPath.row]

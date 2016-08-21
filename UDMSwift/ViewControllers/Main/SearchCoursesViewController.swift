@@ -8,13 +8,13 @@
 
 import UIKit
 
-class SearchCoursesViewController: UIViewController {
+final class SearchCoursesViewController: UIViewController {
     // MARK: - Properties
     private var mySearchBar: UISearchBar!
 
     @IBOutlet weak var topKeySearchTable: UITableView!
 
-    var listTopKeySearch: [String]!
+    var listTopKeySearch: [String] = []
     
     // MARK: - View life cycle
     override func viewDidLoad() {

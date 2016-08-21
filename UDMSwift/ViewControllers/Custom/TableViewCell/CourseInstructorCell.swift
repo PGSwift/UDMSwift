@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CourseInstructorCell: UITableViewCell, ReusableView {
+final class CourseInstructorCell: UITableViewCell, ReusableView {
     // MARK: - Properties
     static let ReuseIdentifier: String = "idCourseInstructorCell"
     static let NibName: String = "CourseInstructorCell"

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingViewController: UITableViewController {
+final class SettingViewController: UITableViewController {
     // MARK: - Properties
     
     // MARK: - Initialzation

@@ -71,16 +71,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         // Custommer header 0
-        var viewHeader0 = tableView.dequeueReusableHeaderFooterViewWithIdentifier(idHeaderDefauleCell0)
+        var viewHeader0 = tableView.dequeueReusableHeaderFooterViewWithIdentifier(UDMConfig.HeaderCellID.defaulCell0)
         if section == 0 {
             if viewHeader0 == nil {
-                viewHeader0 = UITableViewHeaderFooterView(reuseIdentifier: idHeaderDefauleCell0)
+                viewHeader0 = UITableViewHeaderFooterView(reuseIdentifier: UDMConfig.HeaderCellID.defaulCell0)
                 
-                let imageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: Int(screenSize.width), height: Int(heightHeader0 - 50)))
+                let imageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: Int(heightHeader0 - 50)))
                 imageView.image = UIImage(named: "x")
                 viewHeader0?.contentView .addSubview(imageView)
                 
-                let button: UIButton = UIButton.init(frame: CGRect(x: screenSize.width - 110, y: heightHeader0 - 40, width: 100, height: CGFloat(heightHeader)))
+                let button: UIButton = UIButton.init(frame: CGRect(x: UDMConfig.getScreenRect().width - 110, y: heightHeader0 - 40, width: 100, height: CGFloat(heightHeader)))
                 button.setTitleColor(UIColor.flatWhiteColor(), forState: .Normal)
                 button.layer.borderColor = UIColor.flatGreenColor().CGColor
                 button.layer.borderWidth = 1.5
@@ -100,11 +100,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        var viewHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier(idHeaderDefauleCell)
+        var viewHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier(UDMConfig.HeaderCellID.defaulCell)
         if viewHeader == nil {
-            viewHeader = UITableViewHeaderFooterView(reuseIdentifier: idHeaderDefauleCell)
+            viewHeader = UITableViewHeaderFooterView(reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)
             
-            let button: UIButton = UIButton.init(frame: CGRect(x: screenSize.width - 110, y: 0, width: 100, height: CGFloat(heightHeader)))
+            let button: UIButton = UIButton.init(frame: CGRect(x: CGFloat(UDMConfig.getScreenRect().width) - 110, y: 0, width: 100, height: CGFloat(heightHeader)))
             button.setTitleColor(UIColor.flatWhiteColor(), forState: .Normal)
             button.layer.borderColor = UIColor.flatGreenColor().CGColor
             button.layer.borderWidth = 1.5
@@ -137,12 +137,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         
         switch index.section {
         case 0,2:
-            frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: heightCoursesSection + 20)
-            sizeItemCollection = CGSize(width: Int(screenSize.width / 3), height: heightCoursesSection)
+            frameUICollection = CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: heightCoursesSection + 20)
+            sizeItemCollection = CGSize(width: Int(UDMConfig.getScreenRect().width / 3), height: heightCoursesSection)
             break
         case 1:
-            frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: heightCategoriSection + 20)
-            sizeItemCollection = CGSize(width: Int(screenSize.width / 3), height: heightCategoriSection)
+            frameUICollection = CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: heightCategoriSection + 20)
+            sizeItemCollection = CGSize(width: Int(UDMConfig.getScreenRect().width / 3), height: heightCategoriSection)
             break
         default:
             break

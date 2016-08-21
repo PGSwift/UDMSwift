@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CourseDetailViewController: UIViewController {
+final class CourseDetailViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var courseDetailTable: UITableView!
     
@@ -55,7 +55,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             if cellDescription == nil {
                 tableView.registerNib(UINib(nibName: CourseDescriptionCell.NibName, bundle: nil), forCellReuseIdentifier: CourseDescriptionCell.ReuseIdentifier)
                 cellDescription = tableView.dequeueReusableCellWithIdentifier(CourseDescriptionCell.ReuseIdentifier) as? CourseDescriptionCell
-                cellDescription?.buttonSeeAll.tag = tabButtonSeeAll.Description.rawValue
+                cellDescription?.buttonSeeAll.tag = TabButtonSeeAll.Description.rawValue
                 cellDescription?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
             return cellDescription!
@@ -64,7 +64,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             if cellCurriculum == nil {
                 tableView.registerNib(UINib(nibName: CourseCurriculumCell.NibName, bundle: nil), forCellReuseIdentifier: CourseCurriculumCell.ReuseIdentifier)
                 cellCurriculum = tableView.dequeueReusableCellWithIdentifier(CourseCurriculumCell.ReuseIdentifier) as? CourseCurriculumCell
-                cellCurriculum?.buttonSeeAll.tag = tabButtonSeeAll.Curriculum.rawValue
+                cellCurriculum?.buttonSeeAll.tag = TabButtonSeeAll.Curriculum.rawValue
                 cellCurriculum?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
             return cellCurriculum!
@@ -73,7 +73,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             if cellReviews == nil {
                 tableView.registerNib(UINib(nibName: CourseReviewsCell.NibName, bundle: nil), forCellReuseIdentifier: CourseReviewsCell.ReuseIdentifier)
                 cellReviews = tableView.dequeueReusableCellWithIdentifier(CourseReviewsCell.ReuseIdentifier) as? CourseReviewsCell
-                cellReviews?.buttonSeeAll.tag = tabButtonSeeAll.Review.rawValue
+                cellReviews?.buttonSeeAll.tag = TabButtonSeeAll.Review.rawValue
                 cellReviews?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
             return cellReviews!
@@ -82,7 +82,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             if cellInstructor == nil {
                 tableView.registerNib(UINib(nibName: CourseInstructorCell.NibName, bundle: nil), forCellReuseIdentifier: CourseInstructorCell.ReuseIdentifier)
                 cellInstructor = tableView.dequeueReusableCellWithIdentifier(CourseInstructorCell.ReuseIdentifier) as? CourseInstructorCell
-                cellInstructor?.buttonSeeAll.tag = tabButtonSeeAll.Instructor.rawValue
+                cellInstructor?.buttonSeeAll.tag = TabButtonSeeAll.Instructor.rawValue
                 cellInstructor?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
             return cellInstructor!
@@ -98,9 +98,9 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             break
         }
 
-        var cellTable = tableView.dequeueReusableCellWithIdentifier(idDefauleCell)
+        var cellTable = tableView.dequeueReusableCellWithIdentifier(UDMConfig.HeaderCellID.defaulCell)
         if cellTable == nil {
-            cellTable = UITableViewCell.init(style: .Default, reuseIdentifier: idDefauleCell)
+            cellTable = UITableViewCell.init(style: .Default, reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)
         }
         cellTable!.textLabel?.text = String(indexPath.section)
         
@@ -117,16 +117,16 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
     
     func actionButtonSeeAll(sender: UIButton) {
         switch sender.tag {
-        case tabButtonSeeAll.Description.rawValue:
+        case TabButtonSeeAll.Description.rawValue:
             print("show page See all Description!")
             break
-        case tabButtonSeeAll.Curriculum.rawValue:
+        case TabButtonSeeAll.Curriculum.rawValue:
             print("show page See all Curriculum!")
             break
-        case tabButtonSeeAll.Review.rawValue:
+        case TabButtonSeeAll.Review.rawValue:
             print("show page See all Review!")
             break
-        case tabButtonSeeAll.Instructor.rawValue:
+        case TabButtonSeeAll.Instructor.rawValue:
             print("show page See all Instructor!")
             break
         default:

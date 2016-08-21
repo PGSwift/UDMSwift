@@ -6,7 +6,7 @@
 //  Copyright © 2016 XUANVINHTD. All rights reserved.
 //
 
-class CouresListViewController: UIViewController {
+final class CouresListViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var courseTable: UITableView!
     

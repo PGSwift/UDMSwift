@@ -8,15 +8,28 @@
 
 import UIKit
 
-class MainTableViewCell: UITableViewCell, ReusableView {
+final class MainTableViewCell: UITableViewCell, ReusableView {
     // MARK: - Properties
     static let ReuseIdentifier: String = "idMainTableViewCell"
     static let NibName: String = "MainTableViewCell"
     
     private let heightCollectionView = 260
-    private let screenSize = UIScreen.mainScreen().bounds
     
-    var collecttionView: UICollectionView!
+    lazy var collecttionView: UICollectionView = {
+        let frameUICollection = CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: 260 + 30)
+        let sizeItemCollection = CGSize(width: Int(UDMConfig.getScreenRect().width / 3), height: 260 - 10)
+        
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .Horizontal
+        layout.sectionInset = UIEdgeInsetsMake(5, 10, 10, 10)
+        layout.itemSize = sizeItemCollection
+        
+        let collecttion = UICollectionView(frame: frameUICollection, collectionViewLayout: layout)
+        collecttion.showsHorizontalScrollIndicator = false
+        collecttion.backgroundColor = UIColor.flatWhiteColor()
+        collecttion.clipsToBounds = true
+        return collecttion
+    }()
     
     // MARK: - Initializetion
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -25,20 +38,8 @@ class MainTableViewCell: UITableViewCell, ReusableView {
         self.layoutMargins = UIEdgeInsetsZero
         self.preservesSuperviewLayoutMargins = false
         
-       let frameUICollection = CGRect(x: 0, y: 0, width: Int(screenSize.width), height: 260 + 30)
-       let sizeItemCollection = CGSize(width: Int(screenSize.width / 3), height: 260 - 10)
-        
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .Horizontal
-        layout.sectionInset = UIEdgeInsetsMake(5, 10, 10, 10)
-        layout.itemSize = sizeItemCollection
-        self.collecttionView = UICollectionView(frame: frameUICollection, collectionViewLayout: layout)
-        self.collecttionView.showsHorizontalScrollIndicator = false
-        self.collecttionView.backgroundColor = UIColor.flatWhiteColor()
-        self.collecttionView.clipsToBounds = true
-        
-        self.collecttionView.registerNib(UINib(nibName: CoursesCollectionViewCell.NibName, bundle: nil), forCellWithReuseIdentifier: CoursesCollectionViewCell.ReuseIdentifier)
-        self.collecttionView.registerNib(UINib(nibName: CategoriesCollectionViewCell.NibName, bundle: nil), forCellWithReuseIdentifier: CategoriesCollectionViewCell.ReuseIdentifier)
+        collecttionView.registerNib(UINib(nibName: CoursesCollectionViewCell.NibName, bundle: nil), forCellWithReuseIdentifier: CoursesCollectionViewCell.ReuseIdentifier)
+        collecttionView.registerNib(UINib(nibName: CategoriesCollectionViewCell.NibName, bundle: nil), forCellWithReuseIdentifier: CategoriesCollectionViewCell.ReuseIdentifier)
         
         self.contentView.addSubview(self.collecttionView)
         self.backgroundColor = UIColor.clearColor()

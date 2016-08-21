@@ -6,7 +6,7 @@ project 'UDMSwift.xcodeproj'
 target 'UDMSwift' do
 use_frameworks!
 pod 'Alamofire', '~> 3.4'
-pod 'Freddy'
+pod 'AlamofireObjectMapper', '~> 3.0'
 pod 'Google/SignIn'
 pod 'ChameleonFramework/Swift'
 end

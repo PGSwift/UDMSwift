@@ -7,7 +7,7 @@
 //
 import UIKit
 
-class CourseInfoDetailViewController: UIViewController {
+final class CourseInfoDetailViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var uiView: UIView!
     @IBOutlet weak var textViewContants: UITextView!

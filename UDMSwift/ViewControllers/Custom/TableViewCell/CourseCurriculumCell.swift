@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CourseCurriculumCell: UITableViewCell, ReusableView {
+final class CourseCurriculumCell: UITableViewCell, ReusableView {
     // MARK: - Properties
     static let ReuseIdentifier: String = "idCourseCurriculumCell"
     static let NibName: String = "CourseCurriculumCell"
@@ -34,9 +34,9 @@ extension CourseCurriculumCell: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cellTable = tableView.dequeueReusableCellWithIdentifier(idDefauleCell)
+        var cellTable = tableView.dequeueReusableCellWithIdentifier(UDMConfig.HeaderCellID.defaulCell)
         if cellTable == nil {
-            cellTable = UITableViewCell.init(style: .Subtitle, reuseIdentifier: idDefauleCell)
+            cellTable = UITableViewCell.init(style: .Subtitle, reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)
             cellTable?.imageView?.image = UIImage(named: "x")
             let label = UILabel(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
             label.layer.cornerRadius = 12.5
