@@ -28,6 +28,24 @@ class TestAppViewController: UIViewController {
     func demoaddObserverNotification() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TestAppViewController.demoPostNotification), name: Notification.updateDraft, object: nil)
     }
+
+    private var handlerNotificationABC: AnyObject?
+    
+    func registerNotification() {
+       handlerNotificationABC = NSNotificationCenter.defaultCenter().addObserverForName(Notification.updateDraft, object: self, queue: nil, usingBlock: { (notification)  in
+        print("observer \(notification.name)")
+       })
+    }
+    
+    func deregisterNofitication() {
+        if let handlerNotificationABC = handlerNotificationABC {
+            NSNotificationCenter.defaultCenter().removeObserver(handlerNotificationABC)
+        }
+    }
+    
+    deinit {
+        deregisterNofitication()
+    }
     // ---------xxxxxxxxxx---------
 
     // MAKR: - Using lazy 
@@ -42,22 +60,22 @@ class TestAppViewController: UIViewController {
     // ---------xxxxxxxxxx---------
     
     
-    let petName = "Krakey-poo"
-    lazy var businessCardName: () -> String = { [unowned self] in
-        return "Mr. Kraken AKA " + self.petName
+    @IBAction func demoButton(sender: AnyObject) {
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        registerNotification()
     }
     
     @IBAction func postNotification(sender: AnyObject) {
-        self.presentViewController(DetailListViewController.createInstance(), animated: true, completion: nil)
+       // self.presentViewController(DetailListViewController.createInstance(), animated: true, completion: nil)
+    NSNotificationCenter.defaultCenter().postNotificationName(Notification.updateDraft, object: self)
     }
     
     override func viewWillAppear(animated: Bool) {
-        //NSNotificationCenter.defaultCenter().postNotification("Demo where post notification in viewcontroller")
+        //NSNotificationCenter.defaultCenter().postNotification("Demo where post notification in viewcontroller")  // Remove init Notification
     }
     
     override func viewWillDisappear(animated: Bool) {
