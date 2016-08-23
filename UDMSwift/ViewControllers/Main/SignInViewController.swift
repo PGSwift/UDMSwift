@@ -10,7 +10,7 @@ import UIKit
 
 final class SignInViewController: UIViewController {
     // MARK: - Properties
-    @IBOutlet weak var loginFacebook: FBSDKLoginButton!
+    var buttonloginFacebook: FBSDKLoginButton!
     
     // MARK: - Initialzation
     static func createInstance() -> UIViewController {
@@ -28,32 +28,40 @@ final class SignInViewController: UIViewController {
         
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signInSilently()
-        
-        // MARK: - Initialize sign-in Facebook
-        if FBSDKAccessToken.currentAccessToken() != nil {
-            loginFacebook.readPermissions = ["public_profile", "email"]
-            loginFacebook.delegate = self
-            self.returnUserData()
-        } else {
-            loginFacebook.readPermissions = ["public_profile", "email"]
-            loginFacebook.delegate = self
-        }
     }
     
     override func viewWillDisappear(animated: Bool) {
         GIDSignIn.sharedInstance().signOut()
     }
+    
     // MARK: - Action button Sign
+    @IBAction func signWithFacebook(sender: AnyObject) {
+        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+        fbLoginManager.logInWithReadPermissions(["email"], fromViewController: self) { (result, error) -> Void in
+            if (error == nil){
+               let fbloginresult : FBSDKLoginManagerLoginResult = result
+                if(fbloginresult.grantedPermissions != nil && fbloginresult.grantedPermissions.contains("email"))
+                {
+                    self.getFBUserData()
+                }
+            }
+        }
+    }
+    @IBAction func signWithGoogle(sender: AnyObject) {
+        GIDSignIn.sharedInstance().signIn()
+    }
     @IBAction func LoginAccount(sender: AnyObject) {
         
     }
 
     @IBAction func signWithEmail(sender: AnyObject) {
-        
+        let signUpViewController = SignUpViewController.createInstance()
+        self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
 }
 // MARK: - Google Sign
 extension SignInViewController:GIDSignInUIDelegate, GIDSignInDelegate {
+
     func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
         print("ActivityIndicator")
     }
@@ -79,46 +87,20 @@ extension SignInViewController:GIDSignInUIDelegate, GIDSignInDelegate {
     }
 }
 // MARK: - Facebook Sign
-extension SignInViewController: FBSDKLoginButtonDelegate {
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        print("User Logged In")
-        
-        if ((error) != nil) {
-            // Process error
-        }
-        else if result.isCancelled {
-            // Handle cancellations
-        }
-        else {
-            if result.grantedPermissions.contains("email") {
-                // Do work
-            }
-            self.returnUserData()
-        }
-    }
+extension SignInViewController {
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         print("User Logged Out")
     }
     
-    func returnUserData()
-    {
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"])
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            
-            if ((error) != nil)
-            {
-                // Process error
-                print("Error: \(error)")
-            }
-            else
-            {
-                print("fetched user: \(result)")
-                let userName : NSString = result.valueForKey("name") as! NSString
-                print("User Name is: \(userName)")
-                let userEmail : NSString = result.valueForKey("email") as! NSString
-                print("User Email is: \(userEmail)")
-            }
-        })
+    func getFBUserData(){
+        if((FBSDKAccessToken.currentAccessToken()) != nil){
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
+                if (error == nil){
+                    //everything works print the user data
+                    print(result)
+                }
+            })
+        }
     }
 }

@@ -7,12 +7,17 @@
 //
 
 class SignUpViewController: UIViewController {
+    // MARK: - Properties
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var contentView: UIView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Initialzation
+    static func createInstance() -> UIViewController {
+        return MainStoryboard.instantiateViewControllerWithIdentifier("SignUpViewControllerID") as! SignUpViewController
     }
     
-    override func viewDidLayoutSubviews() {
-        self.automaticallyAdjustsScrollViewInsets = false
+    // MARK: - View life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 }
