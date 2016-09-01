@@ -79,6 +79,7 @@
 		4ACBE32F1D787DB500360B9A /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3141D787DB500360B9A /* Rule.swift */; };
 		4ACBE3301D787DB500360B9A /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3151D787DB500360B9A /* ValidationRule.swift */; };
 		4ACBE3311D787DB500360B9A /* ZipCodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3161D787DB500360B9A /* ZipCodeRule.swift */; };
+		4ACBE3331D7890FA00360B9A /* EdidAccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3321D7890FA00360B9A /* EdidAccountSettingViewController.swift */; };
 		4AEF4F071D6F570500800244 /* UDMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF4F061D6F570500800244 /* UDMLog.swift */; };
 		4AEF4F091D6F571C00800244 /* UDMAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF4F081D6F571C00800244 /* UDMAlert.swift */; };
 		4AEF4F0B1D6F591300800244 /* UDMHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF4F0A1D6F591300800244 /* UDMHUD.swift */; };
@@ -169,6 +170,7 @@
 		4ACBE3151D787DB500360B9A /* ValidationRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidationRule.swift; sourceTree = "<group>"; };
 		4ACBE3161D787DB500360B9A /* ZipCodeRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeRule.swift; sourceTree = "<group>"; };
 		4ACBE3171D787DB500360B9A /* SwiftValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftValidator.h; sourceTree = "<group>"; };
+		4ACBE3321D7890FA00360B9A /* EdidAccountSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdidAccountSettingViewController.swift; sourceTree = "<group>"; };
 		4AEF4F061D6F570500800244 /* UDMLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMLog.swift; sourceTree = "<group>"; };
 		4AEF4F081D6F571C00800244 /* UDMAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMAlert.swift; sourceTree = "<group>"; };
 		4AEF4F0A1D6F591300800244 /* UDMHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMHUD.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 			children = (
 				4AC8551F1D71C5DC00B6D4B8 /* SettingDetailViewController.swift */,
 				4AC855211D71C5FC00B6D4B8 /* AccountSettingViewController.swift */,
+				4ACBE3321D7890FA00360B9A /* EdidAccountSettingViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				4ACBE3261D787DB500360B9A /* HexColorRule.swift in Sources */,
 				4A6E036B1D66148D00C2717C /* CourseReviewsCell.swift in Sources */,
 				4ACBE32A1D787DB500360B9A /* MinLengthRule.swift in Sources */,
+				4ACBE3331D7890FA00360B9A /* EdidAccountSettingViewController.swift in Sources */,
 				4A6E03651D6612EC00C2717C /* CourseVideoCell.swift in Sources */,
 				4ACBE3281D787DB500360B9A /* ISBNRule.swift in Sources */,
 				4AC2FB171D69795E007615C8 /* CouresListViewController.swift in Sources */,
