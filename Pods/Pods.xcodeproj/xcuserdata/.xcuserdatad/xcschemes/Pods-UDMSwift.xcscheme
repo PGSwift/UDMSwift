@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'AE4056C34BDCBC5A9A6CFE10F5D4DC26'
+               BlueprintIdentifier = 'C0580E7E6469B6B6B1A7FB649B04FBA4'
                BlueprintName = 'Pods-UDMSwift'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods-UDMSwift.framework'>

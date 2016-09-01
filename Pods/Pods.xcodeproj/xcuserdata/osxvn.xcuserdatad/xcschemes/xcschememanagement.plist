@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ActionSheetPicker-3.0.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -42,6 +47,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>053617A05C5A952CF2888B88D119FE01</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5172ACAB7FEA22813859DC97CA0AA16F</key>
 		<dict>
 			<key>primary</key>
@@ -53,6 +63,11 @@
 			<true/>
 		</dict>
 		<key>AE4056C34BDCBC5A9A6CFE10F5D4DC26</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C0580E7E6469B6B6B1A7FB649B04FBA4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

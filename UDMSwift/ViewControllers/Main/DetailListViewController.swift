@@ -25,6 +25,8 @@ final class DetailListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println("Init screen DetailListViewController")
+        
         tableDetail.estimatedRowHeight = 44.0
         tableDetail.rowHeight = UITableViewAutomaticDimension
         
@@ -47,7 +49,7 @@ extension DetailListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("clicked cell row: \(indexPath.row)")
+        println("Clicked cell row: \(indexPath.row)")
     }
 }
 

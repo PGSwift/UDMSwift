@@ -19,6 +19,9 @@ final class SearchCoursesViewController: UIViewController {
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        println("Init screen SearchCoursesViewController")
+        
         listTopKeySearch = ["ios", "c++", "java", "swift", ".Net", "python", "web"]
         
         // Search bar
@@ -61,7 +64,7 @@ extension SearchCoursesViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("click row \(indexPath.row)")
+        println("Click row \(indexPath.row)")
     }
 }
 // MARK: - SearchBar

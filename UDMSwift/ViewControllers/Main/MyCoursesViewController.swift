@@ -19,6 +19,8 @@ final class MyCoursesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println("Init screen MyCoursesViewController")
+        
         scoursesTableView.tableFooterView = UIView()
         
         //NOTE: Custom navigationBar
@@ -29,11 +31,11 @@ final class MyCoursesViewController: UIViewController {
     }
     // MARK: - Event Handling
     func actionAddBarButtonItem(sender: UIButton) {
-        print("click button add bar !")
+        println("Click button add bar sender = \(sender)")
     }
     
     func actionSearchBarButtonItem(sender: UIButton) {
-        print("click button search bar !")
+       println("Click button add bar sender = \(sender)")
     }
 }
 // MARK: - TableView
@@ -77,17 +79,21 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        guard let tableViewCell = cell as? MainTableViewCell else { fatalError("tableViewCell cannot be nil here") }
+        guard let tableViewCell = cell as? MainTableViewCell else {
+            println("MainTableViewCell cannot be nil at MyCoursesViewController")
+            fatalError()
+        }
         tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("row selected \(indexPath)")
+        println("Row \(indexPath) selected")
     }
     // MARK: - Config cell
     func configTableViewCellCollectionView(with cellConfig:MainTableViewCell ,at index: NSIndexPath) {
         guard let layout = cellConfig.collecttionView.collectionViewLayout as? UICollectionViewFlowLayout else {
-            fatalError("cellConfig cannot be nil here")
+            println("Layout cellConfig cannot be nil at MyCoursesViewController")
+            fatalError()
         }
         let frameUICollection = CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: Int(heightSection))
         let sizeItemCollection = CGSize(width: Int(UDMConfig.getScreenRect().width / 3) - 15, height: 80)
@@ -109,7 +115,7 @@ extension MyCoursesViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("CollectionView view at row \(collectionView.tag) selected index path \(indexPath)")
+        println("Clicked CollectionView at row \(collectionView.tag) and index path \(indexPath)")
     }
 }
 

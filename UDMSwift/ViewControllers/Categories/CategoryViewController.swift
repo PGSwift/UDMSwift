@@ -20,6 +20,8 @@ final class CategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println("Init Screen CategoryViewController")
+        
         arrCategory = ["v", "c", "d", "e", "f", "g", "v", "c", "d", "e", "f", "g", "x", "u", "l"]
 
         self.tableCategory.tableFooterView = UIView()
@@ -77,17 +79,21 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        guard let myCell = cell as? MainTableViewCell else { fatalError("myCell cannot be nil here") }
+        guard let myCell = cell as? MainTableViewCell else {
+            println("myCell cannot be nil here")
+            fatalError()
+        }
         myCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Selected row: \(indexPath.row) in section: \(indexPath.section)")
+        println("Selected row: \(indexPath.row) in section: \(indexPath.section)")
     }
     // MARK: - Config cell
     func configTableViewCellCollectionView(with cellConfig:MainTableViewCell ,at index: NSIndexPath) {
         guard let layout = cellConfig.collecttionView.collectionViewLayout as? UICollectionViewFlowLayout else {
-            fatalError("cellConfig cannot be nil here")
+            println("cellConfig cannot be nil here")
+            fatalError()
         }
         
         var frameUICollection: CGRect!
@@ -112,6 +118,6 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("CollectionView view at row \(collectionView.tag) selected index path \(indexPath)")
+        print("Clicked CollectionView view at row \(collectionView.tag) and index path \(indexPath)")
     }
 }

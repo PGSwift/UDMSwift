@@ -16,6 +16,8 @@ final class CouresListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println("Init screen CouresListViewController")
+        
         courseTable.estimatedRowHeight = 44.0
         courseTable.rowHeight = UITableViewAutomaticDimension
         
@@ -24,6 +26,7 @@ final class CouresListViewController: UIViewController {
 }
 // MARK: - Table view
 extension CouresListViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return courseList.count
     }
@@ -38,6 +41,6 @@ extension CouresListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("clicked cell row: \(indexPath.row)")
+        println("Clicked cell row: \(indexPath.row)")
     }
 }

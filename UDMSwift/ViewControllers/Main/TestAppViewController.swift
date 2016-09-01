@@ -71,7 +71,20 @@ class TestAppViewController: UIViewController {
     
     @IBAction func postNotification(sender: AnyObject) {
        // self.presentViewController(DetailListViewController.createInstance(), animated: true, completion: nil)
-    NSNotificationCenter.defaultCenter().postNotificationName(Notification.updateDraft, object: self)
+    //NSNotificationCenter.defaultCenter().postNotificationName(Notification.updateDraft, object: self)
+        // alert 
+//        UDMAlert.alert(title: "VINH DEMO", message: "Sorry everyone", dismissTitle: "Thanks all", inViewController: self) { 
+//            println("action run")
+//        }
+//        UDMAlert.textInput(title: "VINH", placeholder: "input name", oldText: "old text", dismissTitle: "OK", inViewController: self) { (text) in
+//            self.showText(text)
+//        }
+        UDMHUD.showActivityIndicator()
+        
+    }
+    
+    func showText(txt: String) -> Void {
+        println("result = \(txt)")
     }
     
     override func viewWillAppear(animated: Bool) {

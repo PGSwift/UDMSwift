@@ -18,7 +18,7 @@ final class WishListViewController: UIViewController {
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        println("Init Screen WishLishViewController")
         scoursesTableView.tableFooterView = UIView()
         
         self.navigationItem.title = "Wishlish"
@@ -65,17 +65,20 @@ extension WishListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        guard let tableViewCell = cell as? MainTableViewCell else { fatalError("tableViewCell cannot be nil here") }
+        guard let tableViewCell = cell as? MainTableViewCell else {
+            println("TableViewCell cannot be nil here")
+            fatalError() }
         tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("row selected \(indexPath)")
+        println("Row selected \(indexPath)")
     }
     // MARK: - Config cell
     func configTableViewCellCollectionView(with cellConfig:MainTableViewCell ,at index: NSIndexPath) {
         guard let layout = cellConfig.collecttionView.collectionViewLayout as? UICollectionViewFlowLayout else {
-            fatalError("cellConfig cannot be nil here")
+            println("CellConfig cannot be nil here")
+            fatalError()
         }
         
         let frameUICollection = CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: Int(heightSection))
@@ -100,6 +103,6 @@ extension WishListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("CollectionView view at row \(collectionView.tag) selected index path \(indexPath)")
+        print("Clicked CollectionView at row \(collectionView.tag) and index path \(indexPath)")
     }
 }

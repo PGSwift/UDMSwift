@@ -14,7 +14,7 @@ final class SettingViewController: UITableViewController {
     // MARK: - Initialzation
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        println("Init screen SettingViewController")
         self.navigationItem.title = "Settings"
     }
 

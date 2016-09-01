@@ -16,8 +16,10 @@ enum TabButtonSeeAll: Int {
     case Description = 1, Curriculum, Review, Instructor
 }
 
+
 final class UDMConfig {
     
+    static let forcedHideActivityIndicatorTimeInterval: NSTimeInterval = 30
 //    static let minMessageTextLabelWidth: CGFloat = 20.0
 //    
 //    static let minMessageSampleViewWidth: CGFloat = 25.0
@@ -49,7 +51,7 @@ final class UDMConfig {
 //        
 //        static let introInset: CGFloat = 20 + userCellAvatarSize + 20 + 10 + 11 + 20
 //    }
-
+    
     //  MARK: - Method ReadOnly
     class func getScreenRect() -> CGRect {
         return UIScreen.mainScreen().bounds
@@ -60,6 +62,20 @@ final class UDMConfig {
 //    }
     
     // MARK: - API
+    struct APIService {
+        static let doman = "http://192.168.1.3/server/api/"
+        
+        // MARK: - Social Network
+        enum FuncName: String {
+            case LoginMail = "login_email"
+            case Register_email = "register_email"
+        }
+        
+        struct Account {
+            //static let signUp = doman + "?model=user";
+            //static let signIn = doman + "login";
+        }
+    }
 //    struct ChinaSocialNetwork {
 //        
 //        struct WeChat {

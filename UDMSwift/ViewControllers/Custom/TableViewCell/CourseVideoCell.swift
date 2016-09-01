@@ -23,6 +23,5 @@ final class CourseVideoCell: UITableViewCell, ReusableView {
     // MARK: - Method
     override func awakeFromNib() {
         super.awakeFromNib()
-        print("print")
     }
 }

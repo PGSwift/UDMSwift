@@ -20,5 +20,7 @@ final class CourseInfoDetailViewController: UIViewController {
     // MARK: - View life cycle
     override func viewDidLoad() {
          super.viewDidLoad()
+        
+        println("Init screen CourseInDetailViewController")
     }
 }

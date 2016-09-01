@@ -9,4 +9,5 @@ pod 'Alamofire', '~> 3.4'
 pod 'AlamofireObjectMapper', '~> 3.0'
 pod 'Google/SignIn'
 pod 'ChameleonFramework/Swift'
+pod 'ActionSheetPicker-3.0'
 end

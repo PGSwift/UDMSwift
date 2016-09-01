@@ -16,12 +16,24 @@ final class MainViewController: UIViewController {
     private let heightCategoriSection = 200
     private let tabButton = 101
     
-    // MARK: - IBOutlet propertes
+    var numberSecction = 0
+
     @IBOutlet weak var mainTableView: UITableView!
     
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("Init main screen)")
+        // Init screen Sign
+        let signInViewController = SignInViewController.createInstance()
+        self.navigationController?.pushViewController(signInViewController, animated: true)
+//        animated: true
+//            , completion: {
+//                // Get data
+//                
+//               self.mainTableView.reloadData()
+//            self.numberSecction = 3
+//        })
         
         self.mainTableView.tableFooterView = UIView()
         
@@ -31,7 +43,7 @@ final class MainViewController: UIViewController {
 // MARK: - TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return numberSecction
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -65,7 +77,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        guard let tableViewCell = cell as? MainTableViewCell else { fatalError("tableViewCell cannot be nil here") }
+        guard let tableViewCell = cell as? MainTableViewCell else {
+            println("MainTableViewCell cannot be nil at MainViewController")
+            fatalError()
+        }
         tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
     }
     
@@ -123,13 +138,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("row selected \(indexPath)")
+        println("Row selected \(indexPath)")
     }
     
     // MARK: - Config cell
     func configTableViewCellCollectionView(with cellConfig:MainTableViewCell ,at index: NSIndexPath) {
         guard let layout = cellConfig.collecttionView.collectionViewLayout as? UICollectionViewFlowLayout else {
-            fatalError("cellConfig cannot be nil here")
+            println("Layout cellConfig cannot be nil at MainViewController")
+            fatalError()
         }
         
         var frameUICollection: CGRect!
@@ -154,7 +170,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func configTableViewCellNormal(with cellConfig: UITableViewHeaderFooterView, at index: Int) {
         guard let buttonDetalt = cellConfig.contentView.viewWithTag(tabButton) as? UIButton else {
-            fatalError("cellConfig cannot be nil here")
+            println("CellConfig cannot be nil at MainViewController")
+            fatalError()
         }
         
         switch index {
@@ -176,7 +193,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     // MARK: - action button
     func pressed(sender: UIButton!) {
-        print("tab = \(sender.tag)")
+        println("Seleted button with tab = \(sender.tag)")
     }
 }
 // MARK: - CollectionView
@@ -199,6 +216,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        print("CollectionView view at row \(collectionView.tag) selected index path \(indexPath)")
+        println("Click collectionView at row \(collectionView.tag) and index path \(indexPath)")
     }
 }

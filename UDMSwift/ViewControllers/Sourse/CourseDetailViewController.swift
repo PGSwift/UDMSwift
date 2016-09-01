@@ -94,7 +94,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             }
             return cellCourse!
         default:
-            print("cannot create cell table at section: \(indexPath.section)")
+            println("Cannot create cell table at section: \(indexPath.section)")
             break
         }
 
@@ -108,29 +108,29 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("click row \(indexPath.section)")
+        println("Click row \(indexPath.section)")
     }
     // MARK: - Event handling
     func actionButtonBuy(sender: UIButton) {
-        print("Click button buy!")
+        println("Click button buy!")
     }
     
     func actionButtonSeeAll(sender: UIButton) {
         switch sender.tag {
         case TabButtonSeeAll.Description.rawValue:
-            print("show page See all Description!")
+            println("show page See all Description!")
             break
         case TabButtonSeeAll.Curriculum.rawValue:
-            print("show page See all Curriculum!")
+            println("show page See all Curriculum!")
             break
         case TabButtonSeeAll.Review.rawValue:
-            print("show page See all Review!")
+            println("show page See all Review!")
             break
         case TabButtonSeeAll.Instructor.rawValue:
-            print("show page See all Instructor!")
+            println("show page See all Instructor!")
             break
         default:
-            print("Click button See all Not Found action!")
+            println("Click button See all Not Found action!")
             break
         }
     }

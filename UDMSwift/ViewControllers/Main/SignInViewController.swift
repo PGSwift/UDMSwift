@@ -14,13 +14,14 @@ final class SignInViewController: UIViewController {
     
     // MARK: - Initialzation
     static func createInstance() -> UIViewController {
-        return MainStoryboard.instantiateViewControllerWithIdentifier("DetailListViewControllerID") as! SignInViewController
+        return MainStoryboard.instantiateViewControllerWithIdentifier("SignInViewControllerID") as! SignInViewController
     }
     
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println("Init Screen SignInViewControler")
         // MARK: - Initialize sign-in Google
         var configureError: NSError?
         GGLContext.sharedInstance().configureWithError(&configureError)
@@ -50,12 +51,15 @@ final class SignInViewController: UIViewController {
     @IBAction func signWithGoogle(sender: AnyObject) {
         GIDSignIn.sharedInstance().signIn()
     }
-    @IBAction func LoginAccount(sender: AnyObject) {
-        
-    }
-
+    
     @IBAction func signWithEmail(sender: AnyObject) {
         let signUpViewController = SignUpViewController.createInstance()
+        self.navigationController?.pushViewController(signUpViewController, animated: true)
+    }
+    
+    @IBAction func loginAccount(sender: AnyObject) {
+        let signUpViewController = SignUpViewController.createInstance() as! SignUpViewController
+        signUpViewController.isPageSignIn = true
         self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
 }
@@ -63,7 +67,7 @@ final class SignInViewController: UIViewController {
 extension SignInViewController:GIDSignInUIDelegate, GIDSignInDelegate {
 
     func signInWillDispatch(signIn: GIDSignIn!, error: NSError!) {
-        print("ActivityIndicator")
+        println("ActivityIndicator")
     }
     
     func signIn(signIn: GIDSignIn!, presentViewController viewController: UIViewController!) {
@@ -76,7 +80,20 @@ extension SignInViewController:GIDSignInUIDelegate, GIDSignInDelegate {
     
     func signIn(signIn: GIDSignIn!, didSignInForUser user: GIDGoogleUser!, withError error: NSError!) {
         if (error == nil) {
-            print("Infor user xxx: \(user.profile)")
+            //get infor send to server
+            guard let accessToken = user.authentication.accessToken else {
+                //Log
+                fatalError()
+            }
+            let data = ["accessToken": accessToken]
+            UDMService.signInUpAccount(WithInfo: data, withCompletion: { (data) in
+
+                _ = data["accessToken"]
+                
+                self.navigationController?.popViewControllerAnimated(true)
+            })
+            
+            println("Infor user from Google : \(user.profile)")
         } else {
             print("\(error.localizedDescription)")
         }
@@ -84,19 +101,35 @@ extension SignInViewController:GIDSignInUIDelegate, GIDSignInDelegate {
     
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
                 withError error: NSError!) {
+        let data = ["fullname":"", "email":"", "password":""]
+        UDMService.signInUpAccount(WithInfo: data, withCompletion: { (data) in
+            
+            _ = data["accessToken"]
+            
+            self.navigationController?.popViewControllerAnimated(true)
+        })
     }
 }
 // MARK: - Facebook Sign
 extension SignInViewController {
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("User Logged Out")
+        //println("\(UDMUser.shareManager.getInforUser().fullName) Logged Out")
     }
     
     func getFBUserData(){
         if((FBSDKAccessToken.currentAccessToken()) != nil){
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, picture.type(large), email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
+                    println("Infor user from Facebook : \(result)")
+                    let data = ["accessToken": String(result["accessToken"])]
+                    UDMService.signInUpAccount(WithInfo: data, withCompletion: { (data) in
+                        
+                        _ = data["accessToken"]
+                        
+                        self.navigationController?.popViewControllerAnimated(true)
+                    })
+
                     //everything works print the user data
                     print(result)
                 }
