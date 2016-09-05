@@ -55,7 +55,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             if cellDescription == nil {
                 tableView.registerNib(UINib(nibName: CourseDescriptionCell.NibName, bundle: nil), forCellReuseIdentifier: CourseDescriptionCell.ReuseIdentifier)
                 cellDescription = tableView.dequeueReusableCellWithIdentifier(CourseDescriptionCell.ReuseIdentifier) as? CourseDescriptionCell
-                cellDescription?.buttonSeeAll.tag = TabButtonSeeAll.Description.rawValue
+                cellDescription?.buttonSeeAll.tag = TabConfig.TabButtonSeeAll.Description
                 cellDescription?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
             return cellDescription!
@@ -64,7 +64,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             if cellCurriculum == nil {
                 tableView.registerNib(UINib(nibName: CourseCurriculumCell.NibName, bundle: nil), forCellReuseIdentifier: CourseCurriculumCell.ReuseIdentifier)
                 cellCurriculum = tableView.dequeueReusableCellWithIdentifier(CourseCurriculumCell.ReuseIdentifier) as? CourseCurriculumCell
-                cellCurriculum?.buttonSeeAll.tag = TabButtonSeeAll.Curriculum.rawValue
+                cellCurriculum?.buttonSeeAll.tag = TabConfig.TabButtonSeeAll.Curriculum
                 cellCurriculum?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
             return cellCurriculum!
@@ -73,7 +73,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             if cellReviews == nil {
                 tableView.registerNib(UINib(nibName: CourseReviewsCell.NibName, bundle: nil), forCellReuseIdentifier: CourseReviewsCell.ReuseIdentifier)
                 cellReviews = tableView.dequeueReusableCellWithIdentifier(CourseReviewsCell.ReuseIdentifier) as? CourseReviewsCell
-                cellReviews?.buttonSeeAll.tag = TabButtonSeeAll.Review.rawValue
+                cellReviews?.buttonSeeAll.tag = TabConfig.TabButtonSeeAll.Review
                 cellReviews?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
             return cellReviews!
@@ -82,7 +82,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             if cellInstructor == nil {
                 tableView.registerNib(UINib(nibName: CourseInstructorCell.NibName, bundle: nil), forCellReuseIdentifier: CourseInstructorCell.ReuseIdentifier)
                 cellInstructor = tableView.dequeueReusableCellWithIdentifier(CourseInstructorCell.ReuseIdentifier) as? CourseInstructorCell
-                cellInstructor?.buttonSeeAll.tag = TabButtonSeeAll.Instructor.rawValue
+                cellInstructor?.buttonSeeAll.tag = TabConfig.TabButtonSeeAll.Instructor
                 cellInstructor?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
             return cellInstructor!
@@ -117,16 +117,16 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
     
     func actionButtonSeeAll(sender: UIButton) {
         switch sender.tag {
-        case TabButtonSeeAll.Description.rawValue:
+        case TabConfig.TabButtonSeeAll.Description:
             println("show page See all Description!")
             break
-        case TabButtonSeeAll.Curriculum.rawValue:
+        case TabConfig.TabButtonSeeAll.Curriculum:
             println("show page See all Curriculum!")
             break
-        case TabButtonSeeAll.Review.rawValue:
+        case TabConfig.TabButtonSeeAll.Review:
             println("show page See all Review!")
             break
-        case TabButtonSeeAll.Instructor.rawValue:
+        case TabConfig.TabButtonSeeAll.Instructor:
             println("show page See all Instructor!")
             break
         default:

@@ -12,7 +12,7 @@ import Alamofire
 
 public struct UDMService {
     // MARK: - Account
-    static func signInUpAccount(WithInfo info: [String: String]?,withCompletion completion: ((withData: [String: AnyObject]) ->Void)?) {
+    static func signInUpAccount(WithInfo info: [String: String]?, withCompletion completion: ((withData: [String: AnyObject]) ->Void)?) {
         var result: [String: AnyObject] = [:]
         
         Alamofire.request(.POST, UDMConfig.APIService.doman, parameters: info, encoding: .URLEncodedInURL)
@@ -43,6 +43,39 @@ public struct UDMService {
                 //Log
         }
     }
+    
+    static func editProfile(WithInfo info: [String: String]?, withCompletion completion: ((withData: [String: AnyObject]) ->Void)?) {
+        var result: [String: AnyObject] = [:]
+        
+        Alamofire.request(.POST, UDMConfig.APIService.doman, parameters: info, encoding: .URLEncodedInURL)
+            .responseJSON { response in
+                print(response.request)
+                if response.result.isSuccess {
+                    guard let resultQ = convertStringToDictionary(String(data: response.data!, encoding:NSUTF8StringEncoding)!) else {
+                        fatalError()
+                    }
+                    result = resultQ
+                } else {
+                    result = [:]
+                }
+                
+                if (info!["model"] == UDMConfig.APIService.FuncName.LoginMail.rawValue) {
+                    print("Infor login Success: \(NSString(data: response.data!, encoding:NSUTF8StringEncoding))")
+                } else {
+                    print("Infor Sign Success: \(NSString(data: response.data!, encoding:NSUTF8StringEncoding))")
+                }
+                
+                guard let completion = completion else {
+                    println("Not found Clouse Completion")
+                    fatalError()
+                }
+                
+                completion(withData: result)
+                
+                //Log
+        }
+    }
+
     
 //    static func signInAccountWith(info paramaters: [String: String]?) -> AnyObject? {
 //        var result: AnyObject?

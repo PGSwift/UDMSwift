@@ -10,13 +10,23 @@
 let MainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
 
 
-
-// MARK: - number Tab
-enum TabButtonSeeAll: Int {
-    case Description = 1, Curriculum, Review, Instructor
+// MARK: - Manager TAB number in Views
+final class TabConfig {
+    
+    struct TabButtonSeeAll {
+        static let Description = 1
+        static let Curriculum = 2
+        static let Review = 3
+        static let Instructor = 4
+    }
+    
+    struct PickerView {
+        static let Date = 101
+        static let ListView = 102
+    }
 }
 
-
+// MARK: - Config All UDM
 final class UDMConfig {
     
     static let forcedHideActivityIndicatorTimeInterval: NSTimeInterval = 30
@@ -35,7 +45,7 @@ final class UDMConfig {
 //        static let blockedFeedsByCreator = "YepConfig.Notification.blockedFeedsByCreator"
 //    }
   
-    // MARK: - IDCell Default
+    // MARK: - Default Cell ID
     struct HeaderCellID {
         static let defaulCell0  = "idHeaderDefauleCell0"
         static let defaulCell1  = "idHeaderDefauleCell"
@@ -68,7 +78,8 @@ final class UDMConfig {
         // MARK: - Social Network
         enum FuncName: String {
             case LoginMail = "login_email"
-            case Register_email = "register_email"
+            case RegisterEmail = "register_email"
+            case UpdateProfile = "Update_profile"
         }
         
         struct Account {

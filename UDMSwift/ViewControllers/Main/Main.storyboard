@@ -43,10 +43,10 @@
             </objects>
             <point key="canvasLocation" x="1329" y="217"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Edid Account Setting View Controller-->
         <scene sceneID="wkn-NN-fnG">
             <objects>
-                <tableViewController id="z5B-hy-SUf" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="EdidAccountSettingViewControllerID" id="z5B-hy-SUf" customClass="EdidAccountSettingViewController" customModule="UDMSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="ooT-0C-9dv">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -468,6 +468,27 @@
                             <outlet property="delegate" destination="z5B-hy-SUf" id="HtK-0c-Jq9"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="RePassworldErrorLabel" destination="1M7-zG-FGC" id="Kne-Bx-UCj"/>
+                        <outlet property="RePassworldTextFeild" destination="u1N-U6-iTd" id="mKn-Ra-UX4"/>
+                        <outlet property="addressErrorLabel" destination="fd0-d2-rWs" id="lTJ-mk-dHY"/>
+                        <outlet property="addressTextField" destination="NeU-en-7lx" id="0K3-1K-1sd"/>
+                        <outlet property="birthDayLabel" destination="joU-3C-T9H" id="xkS-mG-ncr"/>
+                        <outlet property="buttonAddMoney" destination="teD-eK-nfy" id="Yut-5W-QHP"/>
+                        <outlet property="emailErrorLabel" destination="pZV-rX-Pst" id="DeM-4K-qQ2"/>
+                        <outlet property="emailTextFeild" destination="uZ8-oq-znQ" id="fPS-03-GFw"/>
+                        <outlet property="genderLabel" destination="dnH-Tt-NHg" id="5J5-Eg-FJE"/>
+                        <outlet property="intructionTextView" destination="a4V-od-7Zo" id="3bq-qA-HTG"/>
+                        <outlet property="locationTextField" destination="pIg-Hv-Gro" id="I64-ft-ZpB"/>
+                        <outlet property="moneyLabel" destination="7XH-J5-Ou4" id="dec-k8-SxK"/>
+                        <outlet property="myAvataImage" destination="lID-MT-rHQ" id="sKv-KS-kCI"/>
+                        <outlet property="nameErrorLabel" destination="jS8-yZ-pCQ" id="azl-PF-Tnd"/>
+                        <outlet property="nameTextField" destination="nsU-Ug-4tE" id="pPE-5V-KE7"/>
+                        <outlet property="passworldErrorLabel" destination="b24-ms-FZS" id="tRU-EZ-rjJ"/>
+                        <outlet property="passworldTextField" destination="AzU-08-I0G" id="9If-Zf-wj6"/>
+                        <outlet property="phoneErrorLabel" destination="YoG-fg-l47" id="Vkb-r6-y4C"/>
+                        <outlet property="phoneTextField" destination="q1D-dX-9RK" id="ZmE-Id-X2E"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7I-t6-JTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1560,7 +1581,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jwd-JO-Kdg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2077" y="-1146"/>
+            <point key="canvasLocation" x="2110" y="-1146"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0ER-7C-vkc">

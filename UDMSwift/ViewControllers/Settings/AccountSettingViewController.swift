@@ -19,10 +19,23 @@ class AccountSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add RightBarButtonItem
+        let rightBarButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(clickedBarButtonAction(_:)))
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
         settingTable.tableFooterView = UIView()
-        arrSetting = UDMUser.shareManager.getListDataUser()
+       // arrSetting = ["OK": "OK", "1": "2", "OK": "OK", "1": "2","OK": "OK", "1": "2","OK": "OK", "1": "2","OK": "OK", "1": "2"]
+        keysName = ["1", "2", "3", "4", "5", "6", "7"]
+       // arrSetting = UDMUser.shareManager.getListDataUser()
+    }
+    
+    // MARK: - Action RightBarButton
+    func clickedBarButtonAction(sender: UIButton) {
+        let edidAccountSettingViewController = EdidAccountSettingViewController.createInstance()
+        self.navigationController?.pushViewController(edidAccountSettingViewController, animated: true)
     }
 }
+
 // MARK: - UITableView
 extension AccountSettingViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -40,18 +53,15 @@ extension AccountSettingViewController: UITableViewDelegate, UITableViewDataSour
             fatalError()
         }
         
-        title.text = Array(arrSetting.keys)[indexPath.row]
+        title.text = keysName[indexPath.row]
         
-        guard let value = cellProfile?.contentView.viewWithTag(11) as? UILabel else {
-            fatalError()
-        }
-        value.text = Array(arrSetting.values)[indexPath.row]
+//        title.text = Array(arrSetting.keys)[indexPath.row]
+//        
+//        guard let value = cellProfile?.contentView.viewWithTag(11) as? UILabel else {
+//            fatalError()
+//        }
+//        value.text = Array(arrSetting.values)[indexPath.row]
         
         return cellProfile!
     }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-    }
-    
 }

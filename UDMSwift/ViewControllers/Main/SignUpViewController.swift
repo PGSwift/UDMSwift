@@ -66,6 +66,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Sign Account
     @IBAction func signUpAccount(sender: AnyObject) {
         
+        var viewControllers = self.navigationController?.viewControllers
+        viewControllers?.removeLast(2)
+        self.navigationController?.setViewControllers(viewControllers!, animated: true)
+        
+        return
         
         //check error
         guard let fullName = textBoxFullName.text,  email = textBoxEmail.text, passwd = textBoxPassword.text else {
@@ -82,7 +87,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             })
         } else {
             
-            let data = ["model":"user","func": UDMConfig.APIService.FuncName.Register_email.rawValue, "fullName":fullName, "email":email, "password":passwd]
+            let data = ["model":"user","func": UDMConfig.APIService.FuncName.RegisterEmail.rawValue, "fullName":fullName, "email":email, "password":passwd]
             UDMService.signInUpAccount(WithInfo: data, withCompletion: { (data) in
                 self.saveUser(withData: data)
             })
