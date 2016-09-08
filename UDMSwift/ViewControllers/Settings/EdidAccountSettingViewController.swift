@@ -27,6 +27,7 @@ class EdidAccountSettingViewController: UITableViewController {
     @IBOutlet weak var phoneErrorLabel: UILabel!
     
     @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var locationErrorLabel: UILabel!
     
     @IBOutlet weak var emailTextFeild: UITextField!
     @IBOutlet weak var emailErrorLabel: UILabel!
@@ -40,6 +41,8 @@ class EdidAccountSettingViewController: UITableViewController {
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var buttonAddMoney: UIButton!
     
+    let validator = Validator()
+    
     // MARK: - Initialzation
     static func createInstance() -> UIViewController {
         return MainStoryboard.instantiateViewControllerWithIdentifier("EdidAccountSettingViewControllerID") as! EdidAccountSettingViewController
@@ -48,6 +51,8 @@ class EdidAccountSettingViewController: UITableViewController {
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         println("Init screen EdidAccountSettingViewController")
         
         // Add RightBarButtonItem
         let rightBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(clickedBarButtonAction(_:)))
@@ -61,6 +66,8 @@ class EdidAccountSettingViewController: UITableViewController {
         birthDayLabel.tag = TabConfig.PickerView.Date
         
         myAvataImage.userInteractionEnabled = true
+        myAvataImage.layer.cornerRadius = myAvataImage.frame.width / 2
+        myAvataImage.clipsToBounds = true
         
         // Add action for label birthDay, gender, myAvata
         let recognizerGender = UITapGestureRecognizer(target: self, action: #selector(showPickerView(_:)))
@@ -71,13 +78,78 @@ class EdidAccountSettingViewController: UITableViewController {
         
         let recognizerAvata = UITapGestureRecognizer(target: self, action: #selector(showUIPickerImageView(_:)))
         myAvataImage.addGestureRecognizer(recognizerAvata)
+        
+        initDataForProfile()
+        
+        validatorDataInput()
+    }
+    
+    func initDataForProfile() {
+        
+        guard let user = UDMUser.shareManager.inforUser else {
+            fatalError()
+        }
+        
+        if let birthday = user.birthday {
+            birthDayLabel.text = birthday
+        } else {
+            let dateFormat = NSDateFormatter()
+            dateFormat.dateFormat = "yyyy/MM/dd"
+            birthDayLabel.text = dateFormat.stringFromDate(NSDate())
+        }
+        
+        if let city = user.city {
+            locationTextField.text = city
+        }
+        
+        if let fullName = user.fullName {
+            nameTextField.text = fullName
+        }
+        
+        if let phoneNumber = user.phoneNumber {
+            phoneTextField.text = phoneNumber
+        }
+        
+        if let sex = user.sex {
+            genderLabel.text = (sex == "0" ? "Female":"Male")
+        }
+    }
+    
+    
+    func validatorDataInput() {
+        
+        validator.styleTransformers(success:{ (validationRule) -> Void in
+            println("here")
+            // clear error label
+            validationRule.errorLabel?.hidden = true
+            validationRule.errorLabel?.text = ""
+            if let textField = validationRule.field as? UITextField {
+                textField.layer.borderColor = UIColor.greenColor().CGColor
+                textField.layer.borderWidth = 0.5
+                
+            }
+            }, error:{ (validationError) -> Void in
+                println("error")
+                validationError.errorLabel?.hidden = false
+                validationError.errorLabel?.text = validationError.errorMessage
+                if let textField = validationError.field as? UITextField {
+                    textField.layer.borderColor = UIColor.redColor().CGColor
+                    textField.layer.borderWidth = 1.0
+                }
+        })
+        
+        validator.registerField(nameTextField, errorLabel: nameErrorLabel , rules: [RequiredRule(), FullNameRule()])
+        validator.registerField(phoneTextField, errorLabel: phoneErrorLabel , rules: [RequiredRule(), PhoneNumberRule()])
+        validator.registerField(locationTextField, errorLabel: locationErrorLabel , rules: [RequiredRule(), PhoneNumberRule()])
+        validator.registerField(passworldTextField, errorLabel: passworldErrorLabel , rules: [RequiredRule(), PasswordRule()])
+        validator.registerField(RePassworldTextFeild, errorLabel: RePassworldErrorLabel , rules: [RequiredRule(), PasswordRule()])
     }
     
     // MARK: - Action RightBarButton
     func clickedBarButtonAction(sender: UIButton) {
         
-        self.navigationController?.popViewControllerAnimated(true)
-        
+        validator.validate(self)
+        //self.navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: - acction of label birthDay, gender, myAvata
@@ -147,5 +219,36 @@ extension EdidAccountSettingViewController: UINavigationControllerDelegate, UIIm
         let selectImage: UIImage = image
         myAvataImage.image = selectImage
         self.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
+// MARK: - Validator data input
+extension EdidAccountSettingViewController: ValidationDelegate {
+    
+    func validationSuccessful() {
+        println("Validation Success!")
+        
+        guard let fullName = nameTextField.text else { fatalError() }
+        let data = ["fullName":fullName]
+        
+        UDMService.editProfile(WithInfo: data) { withData in
+            println("----> \(withData)")
+        }
+//        let alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertControllerStyle.Alert)
+//        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+//        alert.addAction(defaultAction)
+//        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+    func validationFailed(errors:[(Validatable, ValidationError)]) {
+        println("Validation FAILED!")
+        
+        guard let fullName = nameTextField.text else { fatalError() }
+        let data = ["fullName":fullName]
+        
+        UDMService.editProfile(WithInfo: data) { withData in
+            println("----> \(withData)")
+        }
+
     }
 }

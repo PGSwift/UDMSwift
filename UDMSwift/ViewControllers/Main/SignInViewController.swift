@@ -86,7 +86,7 @@ extension SignInViewController:GIDSignInUIDelegate, GIDSignInDelegate {
                 fatalError()
             }
             let data = ["accessToken": accessToken]
-            UDMService.signInUpAccount(WithInfo: data, withCompletion: { (data) in
+            UDMService.signInAccount(WithInfo: data, Completion: { (data) in
 
                 _ = data["accessToken"]
                 
@@ -102,7 +102,7 @@ extension SignInViewController:GIDSignInUIDelegate, GIDSignInDelegate {
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
                 withError error: NSError!) {
         let data = ["fullname":"", "email":"", "password":""]
-        UDMService.signInUpAccount(WithInfo: data, withCompletion: { (data) in
+        UDMService.signInAccount(WithInfo: data, Completion: { (data) in
             
             _ = data["accessToken"]
             
@@ -123,7 +123,7 @@ extension SignInViewController {
                 if (error == nil){
                     println("Infor user from Facebook : \(result)")
                     let data = ["accessToken": String(result["accessToken"])]
-                    UDMService.signInUpAccount(WithInfo: data, withCompletion: { (data) in
+                    UDMService.signInAccount(WithInfo: data, Completion: { (data) in
                         
                         _ = data["accessToken"]
                         

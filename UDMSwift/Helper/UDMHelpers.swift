@@ -15,21 +15,14 @@ final class UDMUser: NSObject {
     
     static let shareManager = UDMUser()
     
-    var inforUser: User! {
-        get {
-            return self.inforUser
-        }
-        set(newValue) {
-            self.inforUser = newValue
-        }
-    }
+    var inforUser: User!
     
     func initInfoUserWith(info data: [String: AnyObject]) {
-        println("Init infor of user \(data["fullName"]) with data : \(data)")
-        inforUser = User(info: data)
+        inforUser = User(info: data["data"]!)
     }
     
     func getListDataUser() -> [String: String?] {
+        
         var data: [String: String?] = [:]
         data["FullName"] = inforUser.fullName
         data["Email"] = inforUser.mail
@@ -39,6 +32,7 @@ final class UDMUser: NSObject {
         data["Phone Number"] = inforUser.phoneNumber
         data["Level"] = inforUser.level
         data["Money"] = String(inforUser.money)
+        
         return data
     }
 }
@@ -51,6 +45,7 @@ enum SocialNetwork: String {
 }
 
 func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+    
     if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
         do {
             return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
@@ -58,6 +53,7 @@ func convertStringToDictionary(text: String) -> [String:AnyObject]? {
             print(error)
         }
     }
+    
     return nil
 }
 

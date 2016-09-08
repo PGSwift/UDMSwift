@@ -73,13 +73,13 @@ final class UDMConfig {
     
     // MARK: - API
     struct APIService {
-        static let doman = "http://192.168.1.3/server/api/"
+        static let doman = "http://192.168.1.6/server/api/"
         
-        // MARK: - Social Network
+        // MARK: - Function name
         enum FuncName: String {
             case LoginMail = "login_email"
             case RegisterEmail = "register_email"
-            case UpdateProfile = "Update_profile"
+            case UpdateProfile = "user_update"
         }
         
         struct Account {

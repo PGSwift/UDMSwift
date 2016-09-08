@@ -66,12 +66,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Sign Account
     @IBAction func signUpAccount(sender: AnyObject) {
         
-        var viewControllers = self.navigationController?.viewControllers
-        viewControllers?.removeLast(2)
-        self.navigationController?.setViewControllers(viewControllers!, animated: true)
-        
-        return
-        
         //check error
         guard let fullName = textBoxFullName.text,  email = textBoxEmail.text, passwd = textBoxPassword.text else {
             fatalError()
@@ -79,16 +73,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         if isPageSignIn {
             
-            let data = ["model":"user","func": UDMConfig.APIService.FuncName.LoginMail.rawValue, "email":"vinh@gmail.com", "password":"123456"]
+            let data = ["email":"v@gmail.com", "password":"1234567"]
             //let data = ["mode":"user","func": UDMConfig.APIService.FuncName.LoginMail.rawValue, "email":email, "password":passwd]
             
-            UDMService.signInUpAccount(WithInfo: data, withCompletion: { (data) in
+            UDMService.signInAccount(WithInfo: data, Completion: { (data) in
                 self.saveUser(withData: data)
             })
         } else {
             
-            let data = ["model":"user","func": UDMConfig.APIService.FuncName.RegisterEmail.rawValue, "fullName":fullName, "email":email, "password":passwd]
-            UDMService.signInUpAccount(WithInfo: data, withCompletion: { (data) in
+            let data = ["fullName":fullName, "email":email, "password":passwd]
+            UDMService.signUpAccount(WithInfo: data, Completion: { (data) in
                 self.saveUser(withData: data)
             })
         }

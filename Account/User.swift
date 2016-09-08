@@ -9,9 +9,9 @@
 import UIKit
 
 public struct User {
-    public var data: [String: AnyObject] = [:]
+    public var data: AnyObject
     
-    init(info: [String: AnyObject]) {
+    init(info: AnyObject) {
         self.data = info
     }
     
@@ -19,7 +19,7 @@ public struct User {
         get {
             return data["email"] as? String
         }
-        set(newValue) {
+        set {
             mail = newValue
         }
     }
@@ -29,7 +29,7 @@ public struct User {
             return data["avata"] as? String
         }
         
-        set(newValue) {
+        set {
             urlAvata = newValue
         }
     }
@@ -39,7 +39,7 @@ public struct User {
             return data["fullName"] as? String
         }
         
-        set(newValue) {
+        set {
             fullName = newValue
         }
     }
@@ -48,8 +48,8 @@ public struct User {
         get {
             return data["money"] as? Double
         }
-        set(newMoney) {
-            money = newMoney
+        set {
+            money = newValue
         }
     }
     
@@ -57,8 +57,8 @@ public struct User {
         get {
             return data["city"] as? String
         }
-        set(newCity) {
-            city = newCity
+        set {
+            city = newValue
         }
     }
     
@@ -66,8 +66,8 @@ public struct User {
         get {
             return data["phoneNumber"] as? String
         }
-        set(newPhoneNumber) {
-            phoneNumber = newPhoneNumber
+        set {
+            phoneNumber = newValue
         }
     }
     
@@ -75,8 +75,8 @@ public struct User {
         get {
             return data["token"] as? String
         }
-        set(newToken) {
-            token = newToken
+        set {
+            token = newValue
         }
     }
     
@@ -84,8 +84,8 @@ public struct User {
         get {
             return data["level"] as? String
         }
-        set(newLevel) {
-            level = newLevel
+        set {
+            level = newValue
         }
     }
     
@@ -93,8 +93,8 @@ public struct User {
         get {
             return data["sex"] as? String
         }
-        set(newSex) {
-            level = newSex
+        set {
+            level = newValue
         }
     }
     
@@ -102,8 +102,8 @@ public struct User {
         get {
             return data["birthday"] as? String
         }
-        set(newBirthday) {
-            level = newBirthday
+        set {
+            level = newValue
         }
     }
     

@@ -19,14 +19,17 @@ class AccountSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println("Init screen AccountSettingViewController")
+        
+        myAvata.layer.cornerRadius = myAvata.frame.width / 2
+        myAvata.clipsToBounds = true
+        
         // Add RightBarButtonItem
         let rightBarButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: #selector(clickedBarButtonAction(_:)))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
         settingTable.tableFooterView = UIView()
-       // arrSetting = ["OK": "OK", "1": "2", "OK": "OK", "1": "2","OK": "OK", "1": "2","OK": "OK", "1": "2","OK": "OK", "1": "2"]
-        keysName = ["1", "2", "3", "4", "5", "6", "7"]
-       // arrSetting = UDMUser.shareManager.getListDataUser()
+        arrSetting = UDMUser.shareManager.getListDataUser()
     }
     
     // MARK: - Action RightBarButton
@@ -49,18 +52,22 @@ extension AccountSettingViewController: UITableViewDelegate, UITableViewDataSour
         if cellProfile == nil {
             cellProfile = UITableViewCell(style: .Default, reuseIdentifier: "idProfileCell")
         }
+        
         guard let title = cellProfile?.contentView.viewWithTag(10) as? UILabel else {
             fatalError()
         }
         
-        title.text = keysName[indexPath.row]
+        title.text = Array(arrSetting.keys)[indexPath.row]
         
-//        title.text = Array(arrSetting.keys)[indexPath.row]
-//        
-//        guard let value = cellProfile?.contentView.viewWithTag(11) as? UILabel else {
-//            fatalError()
-//        }
-//        value.text = Array(arrSetting.values)[indexPath.row]
+        guard let value = cellProfile?.contentView.viewWithTag(11) as? UILabel else {
+            fatalError()
+        }
+        
+        value.text = Array(arrSetting.values)[indexPath.row]
+        
+        if title.text == "Sex" {
+            value.text = Array(arrSetting.values)[indexPath.row] == "0" ? "Female" : "Male"
+        }
         
         return cellProfile!
     }
