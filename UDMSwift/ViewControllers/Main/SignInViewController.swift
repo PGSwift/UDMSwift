@@ -29,6 +29,12 @@ final class SignInViewController: UIViewController {
         
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signInSilently()
+        
+        let data = ["fullName":"XXXXXX"]
+        
+        UDMService.editProfile(WithInfo: data) { withData in
+            println("----> \(withData)")
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -86,7 +92,7 @@ extension SignInViewController:GIDSignInUIDelegate, GIDSignInDelegate {
                 fatalError()
             }
             let data = ["accessToken": accessToken]
-            UDMService.signInAccount(WithInfo: data, Completion: { (data) in
+            UDMService.signInAccount(withInfo: data, Completion: { (data) in
 
                 _ = data["accessToken"]
                 
@@ -102,7 +108,7 @@ extension SignInViewController:GIDSignInUIDelegate, GIDSignInDelegate {
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
                 withError error: NSError!) {
         let data = ["fullname":"", "email":"", "password":""]
-        UDMService.signInAccount(WithInfo: data, Completion: { (data) in
+        UDMService.signInAccount(withInfo: data, Completion: { (data) in
             
             _ = data["accessToken"]
             
@@ -123,7 +129,7 @@ extension SignInViewController {
                 if (error == nil){
                     println("Infor user from Facebook : \(result)")
                     let data = ["accessToken": String(result["accessToken"])]
-                    UDMService.signInAccount(WithInfo: data, Completion: { (data) in
+                    UDMService.signInAccount(withInfo: data, Completion: { (data) in
                         
                         _ = data["accessToken"]
                         

@@ -42,20 +42,19 @@ public struct UDMService {
         }
     }
     
-    private static func executeUploadAPI(with info: [String: String]?, andCompletion completion: ((withData: [String: AnyObject]) ->Void)?, notification: ((String) ->Void)?) {
+    private static func executeUploadAPI(withInfo info: [String: String]?, andURL url: String,andCompletion completion: ((withData: [String: AnyObject]) ->Void)?, notification: ((String) ->Void)?) {
         
         var result: [String: AnyObject] = [:]
-        
-        let parameters :[String: AnyObject] = [
-            "func":"user_update",
-            "token":"63865e3c600e28efdb529a751deac27e",
-            "model":"user_update",
+
+        let parameters = [
             "data": [
-                "fullName": "VINH CUTE"
+                "fullName":"VINH CUTE",
+                "sex":"0"
             ]
         ]
-        //Alamofire.request(.POST, UDMConfig.APIService.doman, parameters: info, encoding: .URLEncodedInURL)
-        Alamofire.request(.POST, "http://192.168.1.6/server/api/?func=user_update&model=user&token=63865e3c600e28efdb529a751deac27e", parameters: parameters, encoding: .JSON)
+        
+        println("\(parameters)")
+        Alamofire.request(.POST, url, parameters: parameters)
             .responseJSON { response in
                 print(response.request)
                 if response.result.isSuccess {
@@ -74,7 +73,16 @@ public struct UDMService {
                 
                 completion(withData: result)
                 
-                notification!((result["status"] as! String))
+                guard let notification = notification else {
+                    println("Not found clouse notification")
+                    fatalError()
+                }
+                
+                guard let status = result["status"] as? String else {
+                    notification("FAIL !")
+                    return
+                }
+                notification(status)
                 
                 guard let data = response.data else { fatalError() }
                 println("--------------->DATA<---------------- \n \(NSString(data: data, encoding:NSUTF8StringEncoding)!)")
@@ -83,7 +91,7 @@ public struct UDMService {
 
     
     // MARK: - Account
-    static func signInAccount(WithInfo info: [String: String]?, Completion completion: ((withData: [String: AnyObject]) ->Void)?) {
+    static func signInAccount(withInfo info: [String: String]?, Completion completion: ((withData: [String: AnyObject]) ->Void)?) {
         
         guard let info = info as [String: String]? else { fatalError() }
         var data = info
@@ -109,13 +117,10 @@ public struct UDMService {
     
     static func editProfile(WithInfo info: [String: String]?, Completion completion: ((withData: [String: AnyObject]) ->Void)?) {
         
-        guard let info = info as [String: String]? else { fatalError() }
-        var data = info
-        data["model"] = "user"
-        data["func"] = UDMConfig.APIService.FuncName.UpdateProfile.rawValue
-        data["token"] = UDMUser.shareManager.inforUser.token
+        //let urlConfig = UDMConfig.APIService.urlUpdate(withFunc: UDMConfig.APIService.FuncName.UpdateProfile.rawValue, token: UDMUser.shareManager.inforUser.token!)
+        let urlConfig = "http://192.168.1.7/server/api/?func=user_update&model=user&token=f98a0771cfb419bb6631326c779c8a11"
         
-        executeUploadAPI(with: data, andCompletion: completion, notification:  { result in
+        executeUploadAPI(withInfo: info, andURL: urlConfig, andCompletion: completion, notification:  { result in
             println("Update profile \(result)!!!")
         })
     }

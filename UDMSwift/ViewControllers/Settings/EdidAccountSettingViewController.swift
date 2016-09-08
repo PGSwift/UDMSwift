@@ -229,7 +229,9 @@ extension EdidAccountSettingViewController: ValidationDelegate {
         println("Validation Success!")
         
         guard let fullName = nameTextField.text else { fatalError() }
-        let data = ["fullName":fullName]
+        let valueSex =  (genderLabel.text == "Female" ? "0":"1")
+        
+        let data = ["fullName":fullName,"sex":valueSex]
         
         UDMService.editProfile(WithInfo: data) { withData in
             println("----> \(withData)")

@@ -73,7 +73,11 @@ final class UDMConfig {
     
     // MARK: - API
     struct APIService {
-        static let doman = "http://192.168.1.6/server/api/"
+        static let doman = "http://192.168.1.7/server/api/"
+        
+        static func urlUpdate(withFunc funcName: String, token: String) -> String{
+            return "http://192.168.1.7/server/api/?func=\(funcName)&model=user&token=\(token)"
+        }
         
         // MARK: - Function name
         enum FuncName: String {

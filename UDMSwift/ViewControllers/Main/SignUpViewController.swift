@@ -76,7 +76,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             let data = ["email":"v@gmail.com", "password":"1234567"]
             //let data = ["mode":"user","func": UDMConfig.APIService.FuncName.LoginMail.rawValue, "email":email, "password":passwd]
             
-            UDMService.signInAccount(WithInfo: data, Completion: { (data) in
+            UDMService.signInAccount(withInfo: data, Completion: { (data) in
                 self.saveUser(withData: data)
             })
         } else {
