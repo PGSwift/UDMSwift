@@ -65,30 +65,51 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Sign Account
     @IBAction func signUpAccount(sender: AnyObject) {
+
+        guard let email = textBoxEmail.text, passwd = textBoxPassword.text else {
+            return
+        }
         
-        //check error
-        guard let fullName = textBoxFullName.text,  email = textBoxEmail.text, passwd = textBoxPassword.text else {
-            fatalError()
+        if email == "" && passwd == "" {
+            UDMAlert.alert(title: "Error", message: "Do not blank fields", dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
         }
         
         if isPageSignIn {
             
-            let data = ["email":"v@gmail.com", "password":"1234567"]
-            //let data = ["mode":"user","func": UDMConfig.APIService.FuncName.LoginMail.rawValue, "email":email, "password":passwd]
+            let data = UDMInfoDictionaryBuilder.login(withEmail: "admin@gmail.com", password: "123456")
             
-            UDMService.signInAccount(withInfo: data, Completion: { (data) in
-                self.saveUser(withData: data)
+            UDMService.signInAccount(withInfo: data, Completion: { (data, success) in
+                if success {
+                    self.saveUser(withData: data)
+                } else {
+                    println("ERROR message: \(data["message"]!)")
+                }
+
             })
         } else {
             
-            let data = ["fullName":fullName, "email":email, "password":passwd]
-            UDMService.signUpAccount(WithInfo: data, Completion: { (data) in
-                self.saveUser(withData: data)
+            guard let fullName = textBoxFullName.text else {
+                return
+            }
+            
+            if fullName == "" {
+                UDMAlert.alert(title: "Error", message: "Do not blank fields", dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+            }
+            
+            let data = UDMInfoDictionaryBuilder.signin(withFullName: fullName, email: email, password: passwd)
+            
+            UDMService.signUpAccount(WithInfo: data, Completion: { (data, success) in
+                if success {
+                    self.saveUser(withData: data)
+                } else {
+                     println("ERROR message: \(data["message"]!)")
+                }
             })
         }
     }
     
     func saveUser(withData data: [String: AnyObject]) -> Void{
+        println("Data--> \(data)")
         UDMUser.shareManager.initInfoUserWith(info: data)
         
         var viewControllers = self.navigationController?.viewControllers

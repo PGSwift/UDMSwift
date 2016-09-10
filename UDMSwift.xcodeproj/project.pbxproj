@@ -24,7 +24,7 @@
 		4A4535761D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4535751D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib */; };
 		4A4535791D6202B800CFFFC5 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4535781D6202B800CFFFC5 /* MainTableViewCell.swift */; };
 		4A515A131D6B6BF900D043DC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A515A121D6B6BF900D043DC /* SignUpViewController.swift */; };
-		4A5C50331D81BB26007F65E1 /* UDMDictionaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C50321D81BB26007F65E1 /* UDMDictionaryBuilder.swift */; };
+		4A5C50331D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C50321D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift */; };
 		4A6E03651D6612EC00C2717C /* CourseVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03641D6612EC00C2717C /* CourseVideoCell.swift */; };
 		4A6E03671D6613C400C2717C /* CourseDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03661D6613C400C2717C /* CourseDescriptionCell.swift */; };
 		4A6E03691D66144200C2717C /* CourseCurriculumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03681D66144200C2717C /* CourseCurriculumCell.swift */; };
@@ -46,6 +46,9 @@
 		4A80756B1D68BAD2006536A8 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8075691D68BAD2006536A8 /* FBSDKCoreKit.framework */; };
 		4A80756C1D68BAD2006536A8 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A80756A1D68BAD2006536A8 /* FBSDKLoginKit.framework */; };
 		4A80756E1D68BB91006536A8 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A80756D1D68BB91006536A8 /* Bolts.framework */; };
+		4A8ABF791D839D940025D6CA /* Dictionary+UDMSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8ABF781D839D940025D6CA /* Dictionary+UDMSwift.swift */; };
+		4A8ABF7B1D83BBEC0025D6CA /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8ABF7A1D83BBEC0025D6CA /* AlamofireManager.swift */; };
+		4A8ABF7D1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8ABF7C1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift */; };
 		4AC2FB141D694AD4007615C8 /* RatingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB131D694AD4007615C8 /* RatingControlView.swift */; };
 		4AC2FB171D69795E007615C8 /* CouresListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB151D69795E007615C8 /* CouresListViewController.swift */; };
 		4AC2FB181D69795E007615C8 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB161D69795E007615C8 /* CourseDetailViewController.swift */; };
@@ -114,7 +117,7 @@
 		4A4535751D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonCategoriesCollectionViewCell.xib; sourceTree = "<group>"; };
 		4A4535781D6202B800CFFFC5 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		4A515A121D6B6BF900D043DC /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		4A5C50321D81BB26007F65E1 /* UDMDictionaryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMDictionaryBuilder.swift; sourceTree = "<group>"; };
+		4A5C50321D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMInfoDictionaryBuilder.swift; sourceTree = "<group>"; };
 		4A6E03641D6612EC00C2717C /* CourseVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseVideoCell.swift; sourceTree = "<group>"; };
 		4A6E03661D6613C400C2717C /* CourseDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDescriptionCell.swift; sourceTree = "<group>"; };
 		4A6E03681D66144200C2717C /* CourseCurriculumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCurriculumCell.swift; sourceTree = "<group>"; };
@@ -137,6 +140,9 @@
 		4A8075691D68BAD2006536A8 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		4A80756A1D68BAD2006536A8 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		4A80756D1D68BB91006536A8 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		4A8ABF781D839D940025D6CA /* Dictionary+UDMSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+UDMSwift.swift"; sourceTree = "<group>"; };
+		4A8ABF7A1D83BBEC0025D6CA /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
+		4A8ABF7C1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChameleonFrameworkManager.swift; sourceTree = "<group>"; };
 		4AC2FB131D694AD4007615C8 /* RatingControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControlView.swift; sourceTree = "<group>"; };
 		4AC2FB151D69795E007615C8 /* CouresListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouresListViewController.swift; sourceTree = "<group>"; };
 		4AC2FB161D69795E007615C8 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +245,7 @@
 		4A45354B1D61FAEF00CFFFC5 /* UDMSwift */ = {
 			isa = PBXGroup;
 			children = (
+				4A8ABF771D839CDB0025D6CA /* Extensions */,
 				4AC2FB271D6A1D43007615C8 /* Caches */,
 				4AC2FB221D6A1AD7007615C8 /* Services */,
 				4A8075641D68B6E2006536A8 /* Library */,
@@ -285,7 +292,7 @@
 				4AEF4F081D6F571C00800244 /* UDMAlert.swift */,
 				4AEF4F0A1D6F591300800244 /* UDMHUD.swift */,
 				4A7DD4B11D681C1200AB0BD2 /* UDMSwift-Bridging-Header.h */,
-				4A5C50321D81BB26007F65E1 /* UDMDictionaryBuilder.swift */,
+				4A5C50321D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift */,
 			);
 			name = Helpers;
 			path = Helper;
@@ -371,8 +378,18 @@
 				4A80756D1D68BB91006536A8 /* Bolts.framework */,
 				4A8075691D68BAD2006536A8 /* FBSDKCoreKit.framework */,
 				4A80756A1D68BAD2006536A8 /* FBSDKLoginKit.framework */,
+				4A8ABF7A1D83BBEC0025D6CA /* AlamofireManager.swift */,
+				4A8ABF7C1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift */,
 			);
 			path = Library;
+			sourceTree = "<group>";
+		};
+		4A8ABF771D839CDB0025D6CA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4A8ABF781D839D940025D6CA /* Dictionary+UDMSwift.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4AC2FB121D694A8B007615C8 /* Commons */ = {
@@ -625,11 +642,14 @@
 				4A4535681D61FE7700CFFFC5 /* MainViewController.swift in Sources */,
 				4A351AEA1D675F780053B4A2 /* ReviewsCell.swift in Sources */,
 				4A214A9C1D70782F00525B06 /* Account.swift in Sources */,
+				4A8ABF7D1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift in Sources */,
+				4A8ABF7B1D83BBEC0025D6CA /* AlamofireManager.swift in Sources */,
 				92D18E461D630CC000E7793C /* MyCoursesViewController.swift in Sources */,
 				4AC2FB261D6A1C66007615C8 /* UDMService.swift in Sources */,
 				4AC855221D71C5FC00B6D4B8 /* AccountSettingViewController.swift in Sources */,
 				4ACBE3251D787DB500360B9A /* FullNameRule.swift in Sources */,
 				4A45356D1D6200B800CFFFC5 /* CoursesCollectionViewCell.swift in Sources */,
+				4A8ABF791D839D940025D6CA /* Dictionary+UDMSwift.swift in Sources */,
 				4AC2FB181D69795E007615C8 /* CourseDetailViewController.swift in Sources */,
 				4ACBE3211D787DB500360B9A /* ConfirmRule.swift in Sources */,
 				4A6E03671D6613C400C2717C /* CourseDescriptionCell.swift in Sources */,
@@ -649,7 +669,7 @@
 				4ACBE31A1D787DB500360B9A /* ValidationError.swift in Sources */,
 				4ACBE3241D787DB500360B9A /* FloatRule.swift in Sources */,
 				4A8075631D68B55F006536A8 /* DetailListViewController.swift in Sources */,
-				4A5C50331D81BB26007F65E1 /* UDMDictionaryBuilder.swift in Sources */,
+				4A5C50331D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift in Sources */,
 				4A4535741D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift in Sources */,
 				4AC2FB241D6A1BB0007615C8 /* StorageService.swift in Sources */,
 				4A45354D1D61FAEF00CFFFC5 /* AppDelegate.swift in Sources */,

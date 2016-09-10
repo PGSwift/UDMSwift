@@ -9,9 +9,10 @@ import ActionSheetPicker_3_0
 
 
 class EdidAccountSettingViewController: UITableViewController {
-
+    
     // MARK: - Properties
     @IBOutlet weak var myAvataImage: UIImageView!
+    @IBOutlet weak var chooseImageLabel: UILabel!
     @IBOutlet weak var intructionTextView: UITextView!
     
     @IBOutlet weak var nameTextField: UITextField!
@@ -29,9 +30,6 @@ class EdidAccountSettingViewController: UITableViewController {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var locationErrorLabel: UILabel!
     
-    @IBOutlet weak var emailTextFeild: UITextField!
-    @IBOutlet weak var emailErrorLabel: UILabel!
-    
     @IBOutlet weak var passworldTextField: UITextField!
     @IBOutlet weak var passworldErrorLabel: UILabel!
     
@@ -41,6 +39,9 @@ class EdidAccountSettingViewController: UITableViewController {
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var buttonAddMoney: UIButton!
     
+    @IBOutlet weak var passwordOldCell: UITableViewCell!
+    @IBOutlet weak var passwordNewCell: UITableViewCell!
+
     let validator = Validator()
     
     // MARK: - Initialzation
@@ -52,24 +53,40 @@ class EdidAccountSettingViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         println("Init screen EdidAccountSettingViewController")
+        println("Init screen EdidAccountSettingViewController")
         
         // Add RightBarButtonItem
         let rightBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(clickedBarButtonAction(_:)))
         self.navigationItem.rightBarButtonItem = rightBarButton
         
-        // Config label birthDay, gender
+        configItems()
+        
+        addRecognizer()
+        
+        //initDataForProfile()
+        
+        validatorDataInput()
+    }
+    
+    func configItems() {
+        
         genderLabel.userInteractionEnabled = true
         genderLabel.tag = TabConfig.PickerView.ListView
         
         birthDayLabel.userInteractionEnabled = true
         birthDayLabel.tag = TabConfig.PickerView.Date
         
+        chooseImageLabel.userInteractionEnabled = true
         myAvataImage.userInteractionEnabled = true
         myAvataImage.layer.cornerRadius = myAvataImage.frame.width / 2
         myAvataImage.clipsToBounds = true
         
-        // Add action for label birthDay, gender, myAvata
+        passwordNewCell.hidden = true
+        passwordOldCell.hidden = true
+    }
+    
+    func addRecognizer() {
+        
         let recognizerGender = UITapGestureRecognizer(target: self, action: #selector(showPickerView(_:)))
         genderLabel.addGestureRecognizer(recognizerGender)
         
@@ -79,9 +96,12 @@ class EdidAccountSettingViewController: UITableViewController {
         let recognizerAvata = UITapGestureRecognizer(target: self, action: #selector(showUIPickerImageView(_:)))
         myAvataImage.addGestureRecognizer(recognizerAvata)
         
-        initDataForProfile()
+        let recognizerChooseImage = UITapGestureRecognizer(target: self, action: #selector(showUIPickerImageView(_:)))
+        chooseImageLabel.addGestureRecognizer(recognizerChooseImage)
         
-        validatorDataInput()
+        //dissmis keyboard
+        let recognizerTableView = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(_:)))
+        self.tableView.addGestureRecognizer(recognizerTableView)
     }
     
     func initDataForProfile() {
@@ -145,22 +165,49 @@ class EdidAccountSettingViewController: UITableViewController {
         validator.registerField(RePassworldTextFeild, errorLabel: RePassworldErrorLabel , rules: [RequiredRule(), PasswordRule()])
     }
     
-    // MARK: - Action RightBarButton
+    // MARK: - Action
     func clickedBarButtonAction(sender: UIButton) {
         
-        validator.validate(self)
-        //self.navigationController?.popViewControllerAnimated(true)
+       // validator.validate(self)
+        
+        guard let fullName = nameTextField.text else { return }
+        guard let city = locationTextField.text else { return }
+        guard let phone = phoneTextField.text else { return }
+        let valueSex =  genderLabel.text == "Female" ? "0":"1"
+        
+        let data = UDMInfoDictionaryBuilder.updateProfile(withFullName: fullName, phoneNumber: phone, sex: valueSex, city: city)
+        
+        UDMService.editProfile(WithInfo: data) { data, success in
+            
+            if success {
+                println("Update profile success! with data: \(data)")
+            } else {
+                println("Update profile fail! with message: \(data["message"]!)")
+            }
+            
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+
     }
     
-    // MARK: - acction of label birthDay, gender, myAvata
+    @IBAction func changeSwich(sender: AnyObject) {
+        
+        let swich = sender as! UISwitch
+        
+        passwordNewCell.hidden = !swich.on
+        passwordOldCell.hidden = !swich.on
+    }
     func showPickerView(recognizer: UITapGestureRecognizer) {
+        
+        hideKeyboard(nil)
+        
         let tabNumber = recognizer.view?.tag
         
         if tabNumber == TabConfig.PickerView.Date {
             
-            let datePickerView = ActionSheetDatePicker(title: "Date", datePickerMode: UIDatePickerMode.Date, selectedDate: NSDate(),
+            let datePickerView = ActionSheetDatePicker(title: "Date Choose", datePickerMode: UIDatePickerMode.Date, selectedDate: NSDate(),
                                                        doneBlock: { picker, value, index in
-
+                                                        
                                                         let formatter = NSDateFormatter()
                                                         formatter.dateFormat = "yyyy/MM/dd"
                                                         let someDateTime = formatter.stringFromDate(value as! NSDate)
@@ -174,40 +221,72 @@ class EdidAccountSettingViewController: UITableViewController {
             datePickerView.minimumDate = NSDate(timeInterval: -secondsInWeek, sinceDate: NSDate())
             datePickerView.maximumDate = NSDate(timeInterval: secondsInWeek, sinceDate: NSDate())
             
+            datePickerView.toolbarButtonsColor = ChameleonManger.theme()
             datePickerView.showActionSheetPicker()
         }
         
         if tabNumber == TabConfig.PickerView.ListView {
-            ActionSheetStringPicker.showPickerWithTitle("Gender Choose", rows: ["Male", "Female"], initialSelection: 1,
-                                                        doneBlock: { picker, value, index in
-                                                            
-                                                            self.genderLabel.text = String(index)
-                                                            
-                                                            return
-                                                            },
-                                                        cancelBlock: { ActionStringCancelBlock in return },
-                                                        origin: recognizer.view?.superview)
+            let stringPickerView = ActionSheetStringPicker(title: "Gender Choose", rows: ["Male","Female"], initialSelection: 1, doneBlock: { picker, index, value in
+                self.genderLabel.text = String(index)
+                return
+                }, cancelBlock: { ActionSheetStringPicker in return
+                }, origin: recognizer.view?.superview)
+            
+            stringPickerView.toolbarButtonsColor = ChameleonManger.theme()
+            stringPickerView.showActionSheetPicker()
         }
     }
     
     func showUIPickerImageView(recognizer: UITapGestureRecognizer) {
         
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+        hideKeyboard(nil)
+        
+        let optionChooseImageMenu = UIAlertController(title: nil, message: "Option Choose", preferredStyle: .ActionSheet)
+        
+        let chooseLibrary = UIAlertAction(title: "Choose from Library", style: .Default) { (alert: UIAlertAction!) in
             
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            imagePicker.allowsEditing = false
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                imagePicker.allowsEditing = false
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            } else {
+                println("Not found PhotoLibrary")
+            }
         }
         
-//        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-//            let imagePicker = UIImagePickerController()
-//            imagePicker.delegate = self
-//            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-//            imagePicker.allowsEditing = false
-//            self.presentViewController(imagePicker, animated: true, completion: nil)
-//        }
+        let chooseCamera = UIAlertAction(title: "Take Photo from Camera", style: .Default) { (alert: UIAlertAction!) in
+            
+            if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+                let imagePicker = UIImagePickerController()
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+                imagePicker.allowsEditing = false
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            } else {
+                println("Not found Camera")
+            }
+        }
+        
+        let chooseCancel = UIAlertAction(title: "Cancel", style: .Default) { (alert: UIAlertAction!) in
+            optionChooseImageMenu.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        optionChooseImageMenu.addAction(chooseLibrary)
+        optionChooseImageMenu.addAction(chooseCamera)
+        optionChooseImageMenu.addAction(chooseCancel)
+        
+        self.presentViewController(optionChooseImageMenu, animated: true, completion: nil)
+    }
+    
+    func hideKeyboard(recognizer: UITapGestureRecognizer?) {
+        nameTextField.resignFirstResponder()
+        addressTextField.resignFirstResponder()
+        phoneTextField.resignFirstResponder()
+        passworldTextField.resignFirstResponder()
+        RePassworldTextFeild.resignFirstResponder()
+        locationTextField.resignFirstResponder()
     }
 }
 
@@ -228,29 +307,20 @@ extension EdidAccountSettingViewController: ValidationDelegate {
     func validationSuccessful() {
         println("Validation Success!")
         
-        guard let fullName = nameTextField.text else { fatalError() }
-        let valueSex =  (genderLabel.text == "Female" ? "0":"1")
+        guard let fullName = nameTextField.text else { return }
+        guard let city = locationTextField.text else { return }
+        guard let phone = phoneTextField.text else { return }
+        let valueSex =  genderLabel.text == "Female" ? "0":"1"
         
-        let data = ["fullName":fullName,"sex":valueSex]
+        let data = UDMInfoDictionaryBuilder.updateProfile(withFullName: fullName, phoneNumber: phone, sex: valueSex, city: city)
         
         UDMService.editProfile(WithInfo: data) { withData in
-            println("----> \(withData)")
+            println("Update profile success!!")
+            self.navigationController?.popViewControllerAnimated(true)
         }
-//        let alert = UIAlertController(title: "Success", message: "You are validated!", preferredStyle: UIAlertControllerStyle.Alert)
-//        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-//        alert.addAction(defaultAction)
-//        self.presentViewController(alert, animated: true, completion: nil)
-        
     }
+    
     func validationFailed(errors:[(Validatable, ValidationError)]) {
         println("Validation FAILED!")
-        
-        guard let fullName = nameTextField.text else { fatalError() }
-        let data = ["fullName":fullName]
-        
-        UDMService.editProfile(WithInfo: data) { withData in
-            println("----> \(withData)")
-        }
-
     }
 }

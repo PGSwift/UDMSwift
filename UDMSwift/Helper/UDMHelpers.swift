@@ -44,18 +44,25 @@ enum SocialNetwork: String {
     case FACEBOOK = "facebook"
 }
 
-func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+final class UDMHelpers {
     
-    if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
-        do {
-            return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
-        } catch let error as NSError {
-            print(error)
+    static func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        
+        if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
+            do {
+                return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String:AnyObject]
+            } catch let error as NSError {
+                print(error)
+            }
         }
+        
+        return nil
     }
     
-    return nil
+    
 }
+
+
 
 //// MARK: - Message receive from Service
 //public struct MessageServer {

@@ -73,10 +73,10 @@ final class UDMConfig {
     
     // MARK: - API
     struct APIService {
-        static let doman = "http://192.168.1.7/server/api/"
+        static let doman = "http://61.28.226.18/server/api/"
         
-        static func urlUpdate(withFunc funcName: String, token: String) -> String{
-            return "http://192.168.1.7/server/api/?func=\(funcName)&model=user&token=\(token)"
+        static func urlUpdateBulder(withFunc funcName: String, token: String) -> String{
+            return "\(doman)index.php?func=\(funcName)&model=user&token=\(token)"
         }
         
         // MARK: - Function name
@@ -84,6 +84,12 @@ final class UDMConfig {
             case LoginMail = "login_email"
             case RegisterEmail = "register_email"
             case UpdateProfile = "user_update"
+            case ChangePassword = "ChangePassword"
+        }
+        
+        // MARK: - Function name
+        enum ModelName: String {
+            case User = "user"
         }
         
         struct Account {

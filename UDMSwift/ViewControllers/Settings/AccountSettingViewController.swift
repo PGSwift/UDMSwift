@@ -29,7 +29,8 @@ class AccountSettingViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightBarButton
         
         settingTable.tableFooterView = UIView()
-        arrSetting = UDMUser.shareManager.getListDataUser()
+       // arrSetting = UDMUser.shareManager.getListDataUser()
+        arrSetting = ["a":"v", "c":"d","ax":"v", "cxx":"d","ae":"v", "tt":"d","ay":"v", "cu":"d","ae2":"v", "c3":"d","a4":"v", "c5":"d"]
     }
     
     // MARK: - Action RightBarButton

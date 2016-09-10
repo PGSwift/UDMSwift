@@ -19,7 +19,7 @@ final class UDMAlert {
             let action: UIAlertAction = UIAlertAction(title: dismissTitle, style: .Default, handler: { action in
                 guard let dismissAction = dismissAction else {
                 println("Not found action of Alert!")
-                    fatalError()
+                    return
                 }
                 dismissAction()
             })
@@ -53,12 +53,12 @@ final class UDMAlert {
             let action: UIAlertAction = UIAlertAction(title: title, style: .Default, handler: { action in
                 guard let finishedAction = finishedAction else {
                     println("Not found action of Alert Text Input")
-                    fatalError()
+                    return
                 }
                 
                 guard let textField = alertController.textFields?.first, text = textField.text else {
                     println("Not found text input in Alert text input")
-                    fatalError()
+                    return
                 }
                 
                 finishedAction(text: text)

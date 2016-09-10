@@ -23,17 +23,12 @@ final class MainViewController: UIViewController {
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         println("Init main screen)")
+        
         // Init screen Sign
         let signInViewController = SignInViewController.createInstance()
         self.navigationController?.pushViewController(signInViewController, animated: true)
-//        animated: true
-//            , completion: {
-//                // Get data
-//                
-//               self.mainTableView.reloadData()
-//            self.numberSecction = 3
-//        })
         
         self.mainTableView.tableFooterView = UIView()
         
@@ -42,6 +37,7 @@ final class MainViewController: UIViewController {
 }
 // MARK: - TableView
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return numberSecction
     }
@@ -65,6 +61,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         var cellTable = tableView.dequeueReusableCellWithIdentifier(MainTableViewCell.ReuseIdentifier) as? MainTableViewCell
         if cellTable == nil {
             self.mainTableView.registerClass(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.ReuseIdentifier)

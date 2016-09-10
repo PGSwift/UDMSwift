@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ChameleonFramework
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,20 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //setUpTheme()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : FlatGreen()]
-        self.window?.tintColor = FlatGreen()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : ChameleonManger.theme()]
+        self.window?.tintColor = ChameleonManger.theme()
         
         // MARK: - Init and configuration Facebook
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
-    }
-    
-    // MARK: - Set Theme App
-    func setUpTheme() {
-        Chameleon.setGlobalThemeUsingPrimaryColor(FlatMint(),
-                                                  withSecondaryColor: FlatGreen(),
-                                                  andContentStyle: UIContentStyle.Contrast)
     }
 
     // MARK: - [START openurl]
