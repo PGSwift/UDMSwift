@@ -8,20 +8,37 @@
 
 import UIKit
 
-final class WishListViewController: UIViewController {
+final class WishListViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
     private let heightHeader: CGFloat = 250
     private let heightSection: CGFloat = 650
     
     @IBOutlet weak var scoursesTableView: UITableView!
     
-    // MARK: - View life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        println("Init Screen WishLishViewController")
+    // MARK: - Initialzation
+    static func createInstance() -> UIViewController {
+        return MainStoryboard.instantiateViewControllerWithIdentifier("WishListViewControllerID") as! SignInViewController
+    }
+    
+    func configItems() {
+        
         scoursesTableView.tableFooterView = UIView()
         
         self.navigationItem.title = "Wishlish"
+    }
+    
+    func initData() {
+        
+    }
+    
+    // MARK: - View life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        println("Init Screen WishLishViewController")
+        
+        configItems()
+       
     }
 }
 // MARK: - TableView

@@ -49,25 +49,6 @@ class EdidAccountSettingViewController: UITableViewController {
         return MainStoryboard.instantiateViewControllerWithIdentifier("EdidAccountSettingViewControllerID") as! EdidAccountSettingViewController
     }
     
-    // MARK: - View life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        println("Init screen EdidAccountSettingViewController")
-        
-        // Add RightBarButtonItem
-        let rightBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(clickedBarButtonAction(_:)))
-        self.navigationItem.rightBarButtonItem = rightBarButton
-        
-        configItems()
-        
-        addRecognizer()
-        
-        //initDataForProfile()
-        
-        validatorDataInput()
-    }
-    
     func configItems() {
         
         genderLabel.userInteractionEnabled = true
@@ -84,27 +65,8 @@ class EdidAccountSettingViewController: UITableViewController {
         passwordNewCell.hidden = true
         passwordOldCell.hidden = true
     }
-    
-    func addRecognizer() {
-        
-        let recognizerGender = UITapGestureRecognizer(target: self, action: #selector(showPickerView(_:)))
-        genderLabel.addGestureRecognizer(recognizerGender)
-        
-        let recognizerBirtDay = UITapGestureRecognizer(target: self, action: #selector(showPickerView(_:)))
-        birthDayLabel.addGestureRecognizer(recognizerBirtDay)
-        
-        let recognizerAvata = UITapGestureRecognizer(target: self, action: #selector(showUIPickerImageView(_:)))
-        myAvataImage.addGestureRecognizer(recognizerAvata)
-        
-        let recognizerChooseImage = UITapGestureRecognizer(target: self, action: #selector(showUIPickerImageView(_:)))
-        chooseImageLabel.addGestureRecognizer(recognizerChooseImage)
-        
-        //dissmis keyboard
-        let recognizerTableView = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(_:)))
-        self.tableView.addGestureRecognizer(recognizerTableView)
-    }
-    
-    func initDataForProfile() {
+
+    func initData() {
         
         guard let user = UDMUser.shareManager.inforUser else {
             fatalError()
@@ -135,6 +97,43 @@ class EdidAccountSettingViewController: UITableViewController {
         }
     }
     
+    // MARK: - View life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        println("Init screen EdidAccountSettingViewController")
+        
+        // Add RightBarButtonItem
+        let rightBarButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(clickedBarButtonAction(_:)))
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        configItems()
+        
+        addRecognizer()
+        
+        //initData()
+        
+        validatorDataInput()
+    }
+    
+    func addRecognizer() {
+        
+        let recognizerGender = UITapGestureRecognizer(target: self, action: #selector(showPickerView(_:)))
+        genderLabel.addGestureRecognizer(recognizerGender)
+        
+        let recognizerBirtDay = UITapGestureRecognizer(target: self, action: #selector(showPickerView(_:)))
+        birthDayLabel.addGestureRecognizer(recognizerBirtDay)
+        
+        let recognizerAvata = UITapGestureRecognizer(target: self, action: #selector(showUIPickerImageView(_:)))
+        myAvataImage.addGestureRecognizer(recognizerAvata)
+        
+        let recognizerChooseImage = UITapGestureRecognizer(target: self, action: #selector(showUIPickerImageView(_:)))
+        chooseImageLabel.addGestureRecognizer(recognizerChooseImage)
+        
+        //dissmis keyboard
+        let recognizerTableView = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard(_:)))
+        self.tableView.addGestureRecognizer(recognizerTableView)
+    }
     
     func validatorDataInput() {
         

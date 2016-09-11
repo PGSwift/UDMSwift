@@ -1572,6 +1572,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="levelLabel" destination="Axb-HR-7OX" id="vTS-qO-AIy"/>
                         <outlet property="myAvata" destination="VAQ-Sa-a3O" id="jay-jj-YTL"/>
                         <outlet property="settingTable" destination="2SB-SR-Bjq" id="Wys-bg-v11"/>
                     </connections>

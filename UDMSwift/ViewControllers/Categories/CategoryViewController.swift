@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class CategoryViewController: UIViewController {
+final class CategoryViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
     private let screenSize = UIScreen.mainScreen().bounds
     private let heightCoursesSection = 260
@@ -16,16 +16,29 @@ final class CategoryViewController: UIViewController {
     
     var arrCategory: [String] = []
     
+    // MARK: - Initialzation
+    static func createInstance() -> UIViewController {
+        return MainStoryboard.instantiateViewControllerWithIdentifier("") as! CategoryViewController
+    }
+    
+    func configItems() {
+        self.tableCategory.tableFooterView = UIView()
+        self.tableCategory.registerClass(UITableViewCell.self, forCellReuseIdentifier: "idDefauleCell")
+    }
+    
+    func initData() {
+        arrCategory = ["v", "c", "d", "e", "f", "g", "v", "c", "d", "e", "f", "g", "x", "u", "l"]
+    }
+    
     // MARK: - View life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         println("Init Screen CategoryViewController")
         
-        arrCategory = ["v", "c", "d", "e", "f", "g", "v", "c", "d", "e", "f", "g", "x", "u", "l"]
-
-        self.tableCategory.tableFooterView = UIView()
-        self.tableCategory.registerClass(UITableViewCell.self, forCellReuseIdentifier: "idDefauleCell")
+        configItems()
+        
+        initData()
     }
 }
 // MARK: - TableView

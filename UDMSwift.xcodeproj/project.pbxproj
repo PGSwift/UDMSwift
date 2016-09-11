@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A1B71DA1D84EDB3006C3655 /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B71D91D84EDB3006C3655 /* ViewControllerProtocol.swift */; };
 		4A214A9A1D70765200525B06 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A214A991D70765200525B06 /* Teacher.swift */; };
 		4A214A9C1D70782F00525B06 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A214A9B1D70782F00525B06 /* Account.swift */; };
 		4A351AEA1D675F780053B4A2 /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A351AE81D675F780053B4A2 /* ReviewsCell.swift */; };
@@ -98,6 +99,7 @@
 
 /* Begin PBXFileReference section */
 		3D08753B785755DECEA78367 /* Pods-UDMSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UDMSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-UDMSwift/Pods-UDMSwift.release.xcconfig"; sourceTree = "<group>"; };
+		4A1B71D91D84EDB3006C3655 /* ViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProtocol.swift; sourceTree = "<group>"; };
 		4A214A991D70765200525B06 /* Teacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Teacher.swift; path = Account/Teacher.swift; sourceTree = SOURCE_ROOT; };
 		4A214A9B1D70782F00525B06 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Account/Account.swift; sourceTree = SOURCE_ROOT; };
 		4A351AE81D675F780053B4A2 /* ReviewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		4A45355E1D61FB9C00CFFFC5 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4A1B71D91D84EDB3006C3655 /* ViewControllerProtocol.swift */,
 				4AC8551E1D71C58F00B6D4B8 /* Settings */,
 				4AC2FB121D694A8B007615C8 /* Commons */,
 				9264E9FC1D64620A00D8B066 /* Categories */,
@@ -644,6 +647,7 @@
 				4A214A9C1D70782F00525B06 /* Account.swift in Sources */,
 				4A8ABF7D1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift in Sources */,
 				4A8ABF7B1D83BBEC0025D6CA /* AlamofireManager.swift in Sources */,
+				4A1B71DA1D84EDB3006C3655 /* ViewControllerProtocol.swift in Sources */,
 				92D18E461D630CC000E7793C /* MyCoursesViewController.swift in Sources */,
 				4AC2FB261D6A1C66007615C8 /* UDMService.swift in Sources */,
 				4AC855221D71C5FC00B6D4B8 /* AccountSettingViewController.swift in Sources */,

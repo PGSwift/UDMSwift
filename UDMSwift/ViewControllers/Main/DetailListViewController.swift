@@ -6,7 +6,7 @@
 //  Copyright © 2016 XUANVINHTD. All rights reserved.
 //
 
-final class DetailListViewController: UIViewController {
+final class DetailListViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
     @IBOutlet weak var tableDetail: UITableView!
     
@@ -21,16 +21,25 @@ final class DetailListViewController: UIViewController {
         return MainStoryboard.instantiateViewControllerWithIdentifier("DetailListViewControllerID") as! DetailListViewController
     }
     
+    func configItems() {
+        
+        tableDetail.estimatedRowHeight = 44.0
+        tableDetail.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    func initData() {
+        courseList = ["1","2","3","4","5","6","7", "8", "9"]
+    }
+    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         println("Init screen DetailListViewController")
         
-        tableDetail.estimatedRowHeight = 44.0
-        tableDetail.rowHeight = UITableViewAutomaticDimension
+        configItems()
         
-        courseList = ["1","2","3","4","5","6","7", "8", "9"]
+        initData()
     }
 }
 // MARK: - Table view

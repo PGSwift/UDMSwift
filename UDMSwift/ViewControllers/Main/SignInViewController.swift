@@ -8,7 +8,8 @@
 
 import UIKit
 
-final class SignInViewController: UIViewController {
+final class SignInViewController: UIViewController, ViewControllerProtocol {
+    
     // MARK: - Properties
     var buttonloginFacebook: FBSDKLoginButton!
     
@@ -17,11 +18,7 @@ final class SignInViewController: UIViewController {
         return MainStoryboard.instantiateViewControllerWithIdentifier("SignInViewControllerID") as! SignInViewController
     }
     
-    // MARK: - View life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        println("Init Screen SignInViewControler")
+    func configItems() {
         
         // MARK: - Initialize sign-in Google
         var configureError: NSError?
@@ -30,6 +27,21 @@ final class SignInViewController: UIViewController {
         
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signInSilently()
+    }
+    
+    func initData() {
+        
+    }
+    
+    // MARK: - View life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        println("Init Screen SignInViewControler")
+        
+        configItems()
+        
+        initData()
     }
     
     override func viewWillDisappear(animated: Bool) {

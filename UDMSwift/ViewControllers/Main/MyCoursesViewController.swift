@@ -8,12 +8,32 @@
 
 import UIKit
 
-final class MyCoursesViewController: UIViewController {
+final class MyCoursesViewController: UIViewController, ViewControllerProtocol {
+    
     // MARK: - Properties
     private let heightHeader: CGFloat = 250
     private let heightSection: CGFloat = 650
     
     @IBOutlet weak var scoursesTableView: UITableView!
+    
+    // MARK: - Initialzation
+    static func createInstance() -> UIViewController {
+        return MainStoryboard.instantiateViewControllerWithIdentifier("MyCoursesViewControllerID") as! MyCoursesViewController
+    }
+    
+    func configItems() {
+        
+        scoursesTableView.tableFooterView = UIView()
+        //NOTE: Custom navigationBar
+        self.navigationItem.title = "My Scourses"
+        let rightAddBarButtonItem = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: #selector(MyCoursesViewController.actionAddBarButtonItem))
+        let rightSearchBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(MyCoursesViewController.actionSearchBarButtonItem))
+        self.navigationItem.setRightBarButtonItems([rightAddBarButtonItem, rightSearchBarButtonItem], animated: true)
+    }
+    
+    func initData() {
+        
+    }
     
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -21,14 +41,9 @@ final class MyCoursesViewController: UIViewController {
         
         println("Init screen MyCoursesViewController")
         
-        scoursesTableView.tableFooterView = UIView()
-        
-        //NOTE: Custom navigationBar
-        self.navigationItem.title = "My Scourses"
-        let rightAddBarButtonItem = UIBarButtonItem(title: "Add", style: .Plain, target: self, action: #selector(MyCoursesViewController.actionAddBarButtonItem))
-        let rightSearchBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Search, target: self, action: #selector(MyCoursesViewController.actionSearchBarButtonItem))
-        self.navigationItem.setRightBarButtonItems([rightAddBarButtonItem, rightSearchBarButtonItem], animated: true)
+        configItems()
     }
+    
     // MARK: - Event Handling
     func actionAddBarButtonItem(sender: UIButton) {
         println("Click button add bar sender = \(sender)")

@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class SearchCoursesViewController: UIViewController {
+final class SearchCoursesViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
     private var mySearchBar: UISearchBar!
 
@@ -16,13 +16,12 @@ final class SearchCoursesViewController: UIViewController {
 
     var listTopKeySearch: [String] = []
     
-    // MARK: - View life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        println("Init screen SearchCoursesViewController")
-        
-        listTopKeySearch = ["ios", "c++", "java", "swift", ".Net", "python", "web"]
+    // MARK: - Initialzation
+    static func createInstance() -> UIViewController {
+        return MainStoryboard.instantiateViewControllerWithIdentifier("SearchCoursesControllerID") as! SearchCoursesViewController
+    }
+    
+    func configItems() {
         
         // Search bar
         mySearchBar = UISearchBar()
@@ -32,6 +31,22 @@ final class SearchCoursesViewController: UIViewController {
         self.navigationItem.titleView = mySearchBar
         
         topKeySearchTable.tableFooterView = UIView()
+    }
+    
+    func initData() {
+        
+         listTopKeySearch = ["ios", "c++", "java", "swift", ".Net", "python", "web"]
+    }
+    
+    // MARK: - View life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        println("Init screen SearchCoursesViewController")
+        
+        initData()
+        
+        configItems()
     }
 }
 // MARK: - TableView

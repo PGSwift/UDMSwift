@@ -15,13 +15,12 @@ final class AlamofireManager {
         
         var result: [String: AnyObject]? = [:]
         
-        let paramaterx = ["data":
+        let paramaterx: [String: AnyObject] = ["data":
                             ["fullName":"CCCCCC"
                             ,"sex":"1"]
                             ]
         
-        Alam
-        Alamofire.request(.POST, url, parameters: paramaterx, encoding: .JSON)
+        Alamofire.request(.POST, url, parameters: paramaterx)
             .responseJSON { response in
                 
                 print(response.request)

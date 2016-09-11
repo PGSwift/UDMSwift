@@ -6,7 +6,7 @@
 //  Copyright © 2016 XUANVINHTD. All rights reserved.
 //
 
-class AccountSettingViewController: UIViewController {
+class AccountSettingViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
     private var arrSetting: [String: String?] = [:]
     var keysName: [String] = []
@@ -14,12 +14,14 @@ class AccountSettingViewController: UIViewController {
     
     @IBOutlet weak var myAvata: UIImageView!
     @IBOutlet weak var settingTable: UITableView!
+    @IBOutlet weak var levelLabel: UILabel!
     
-    // MARK: - View life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        println("Init screen AccountSettingViewController")
+    // MARK: - Initialzation
+    static func createInstance() -> UIViewController {
+        return MainStoryboard.instantiateViewControllerWithIdentifier("AccountSettingViewControllerID") as! AccountSettingViewController
+    }
+    
+    func configItems() {
         
         myAvata.layer.cornerRadius = myAvata.frame.width / 2
         myAvata.clipsToBounds = true
@@ -29,8 +31,23 @@ class AccountSettingViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = rightBarButton
         
         settingTable.tableFooterView = UIView()
-       // arrSetting = UDMUser.shareManager.getListDataUser()
-        arrSetting = ["a":"v", "c":"d","ax":"v", "cxx":"d","ae":"v", "tt":"d","ay":"v", "cu":"d","ae2":"v", "c3":"d","a4":"v", "c5":"d"]
+        arrSetting = UDMUser.shareManager.getListDataUser()
+    }
+
+    func initData() {
+        
+        levelLabel.text = "Level: " + UDMUser.shareManager.inforUser.level!
+    }
+    
+    // MARK: - View life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        println("Init screen AccountSettingViewController")
+        
+        configItems()
+        
+        initData()
     }
     
     // MARK: - Action RightBarButton

@@ -30,7 +30,6 @@ final class UDMUser: NSObject {
         data["BirthDay"] = inforUser.birthday
         data["City"] = inforUser.city
         data["Phone Number"] = inforUser.phoneNumber
-        data["Level"] = inforUser.level
         data["Money"] = String(inforUser.money)
         
         return data
@@ -59,6 +58,28 @@ final class UDMHelpers {
         return nil
     }
     
+    // MARK: - Validation
+    static func isValidEmail(testStr:String) -> Bool {
+        
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluateWithObject(testStr)
+    }
+    
+    static func checkMaxLength(textField: UITextField!, maxLength: Int) -> Bool {
+        if (textField.text!.characters.count > maxLength) {
+            return true
+        }
+        return false
+    }
+    
+    static func checkMinLength(textField: UITextField!, minLength: Int) -> Bool{
+        if (textField.text!.characters.count > minLength) {
+            return true
+        }
+        return false
+    }
     
 }
 

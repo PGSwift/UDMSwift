@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MainViewController: UIViewController {
+final class MainViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
     private let heightHeader0:CGFloat = 300
     private let heightHeader = 40
@@ -20,12 +20,13 @@ final class MainViewController: UIViewController {
 
     @IBOutlet weak var mainTableView: UITableView!
     
-    // MARK: - View life cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        println("Init main screen)")
-        
+    // MARK: Initialzation
+    static func createInstance() -> UIViewController {
+        return MainStoryboard.instantiateViewControllerWithIdentifier("MainViewControllerID") as! MainViewController
+    }
+    
+    func configItems() {
+     
         // Init screen Sign
         let signInViewController = SignInViewController.createInstance()
         self.navigationController?.pushViewController(signInViewController, animated: true)
@@ -33,6 +34,19 @@ final class MainViewController: UIViewController {
         self.mainTableView.tableFooterView = UIView()
         
         self.navigationItem.title = "Featured"
+    }
+    
+    func initData() {
+        
+    }
+    
+    // MARK: - View life cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        println("Init main screen)")
+        
+        configItems()
     }
 }
 // MARK: - TableView
