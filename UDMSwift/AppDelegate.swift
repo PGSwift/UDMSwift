@@ -15,7 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        //setUpTheme()
+        
+        // Check NetWork
+        UDMHelpers.startCheckConnectNetwork()
+        
+        // setUp Theme()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : ChameleonManger.theme()]
         self.window?.tintColor = ChameleonManger.theme()
         
@@ -29,9 +33,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
         let stringURL = url.absoluteString
         if stringURL.containsString("fb1615266445438059") {
-            return FBSDKApplicationDelegate.sharedInstance().application(app, openURL: url, sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String?, annotation:options[UIApplicationOpenURLOptionsAnnotationKey])
+            if #available(iOS 9.0, *) {
+                return FBSDKApplicationDelegate.sharedInstance().application(app, openURL: url, sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String?, annotation:options[UIApplicationOpenURLOptionsAnnotationKey])
+            } else {
+                return true
+                // Fallback on earlier versions
+            }
         }
-        return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String?, annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+        if #available(iOS 9.0, *) {
+            return GIDSignIn.sharedInstance().handleURL(url, sourceApplication: options[UIApplicationOpenURLOptionsSourceApplicationKey] as! String?, annotation: options[UIApplicationOpenURLOptionsAnnotationKey])
+        } else {
+            // Fallback on earlier versions
+            return true
+        }
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -55,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        UDMHelpers.stopCheckConnectNetwork()
     }
 
 

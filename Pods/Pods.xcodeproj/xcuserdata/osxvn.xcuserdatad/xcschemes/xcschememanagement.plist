@@ -39,6 +39,11 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
+		<key>ReachabilitySwift.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -48,6 +53,16 @@
 			<true/>
 		</dict>
 		<key>053617A05C5A952CF2888B88D119FE01</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>182752149D86582AC3B57E3A5D14CDF8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2AFDB8921FA306EF61531FE7193C911F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -363,10 +364,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F9h-bY-B0u">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="F9h-bY-B0u">
                                                     <rect key="frame" x="130" y="31" width="463" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxF-Vi-FX5">
                                                     <rect key="frame" x="8" y="36" width="42" height="20"/>
@@ -500,6 +501,7 @@
                         <outlet property="birthDayLabel" destination="joU-3C-T9H" id="xkS-mG-ncr"/>
                         <outlet property="buttonAddMoney" destination="teD-eK-nfy" id="Yut-5W-QHP"/>
                         <outlet property="chooseImageLabel" destination="Jw8-tV-7jt" id="RA8-FO-YJN"/>
+                        <outlet property="emailTextFeild" destination="F9h-bY-B0u" id="thy-VZ-ETO"/>
                         <outlet property="genderLabel" destination="dnH-Tt-NHg" id="5J5-Eg-FJE"/>
                         <outlet property="intructionTextView" destination="a4V-od-7Zo" id="3bq-qA-HTG"/>
                         <outlet property="locationErrorLabel" destination="dRI-Ja-1XW" id="CZc-tg-azN"/>
@@ -519,6 +521,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7I-t6-JTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2795" y="-2549"/>
+        </scene>
+        <!--Empty View Controller-->
+        <scene sceneID="zJo-TW-h6x">
+            <objects>
+                <viewController storyboardIdentifier="EmptyViewControllerID" id="Dei-pr-4qG" userLabel="Empty View Controller" customClass="EmptyViewController" customModule="UDMSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="E01-Jw-Gef"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fnl-ah-5KH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oDq-DY-lFS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="NoInternet" translatesAutoresizingMaskIntoConstraints="NO" id="pc8-R2-5x3">
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="pc8-R2-5x3" secondAttribute="trailing" id="17N-jw-SOW"/>
+                            <constraint firstItem="pc8-R2-5x3" firstAttribute="leading" secondItem="oDq-DY-lFS" secondAttribute="leadingMargin" id="4jA-LC-8l7"/>
+                            <constraint firstItem="Fnl-ah-5KH" firstAttribute="top" secondItem="pc8-R2-5x3" secondAttribute="bottom" id="AtJ-ER-ruj"/>
+                            <constraint firstItem="pc8-R2-5x3" firstAttribute="top" secondItem="E01-Jw-Gef" secondAttribute="bottom" id="MXK-ln-L1t"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Br6-aY-eyT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3445" y="-2549"/>
         </scene>
         <!--Course Detail View Controller-->
         <scene sceneID="1F3-Eg-8Xu">
@@ -1676,6 +1707,7 @@
     </scenes>
     <resources>
         <image name="Email" width="25" height="25"/>
+        <image name="NoInternet" width="187" height="238"/>
         <image name="Password" width="24" height="24"/>
         <image name="User" width="25" height="25"/>
         <image name="x" width="616" height="357"/>

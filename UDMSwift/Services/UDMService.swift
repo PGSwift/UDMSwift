@@ -15,7 +15,7 @@ public struct UDMService {
     private static func executeRequestAPI(withInfo info: [String: String]?, andCompletion completion: ((data: [String: AnyObject], success: Bool) ->Void)?) {
         
         guard let _info = info else {
-            println("Infomation = nil")
+            println("executeRequestAPI Infomation = nil")
             return
         }
         
@@ -25,7 +25,7 @@ public struct UDMService {
     private static func executeUploadAPI(withInfo info: [String: AnyObject]?, url: String, andCompletion completion: ((data: [String: AnyObject], success: Bool) ->Void)?) {
         
         guard let _info = info else {
-            println("Infomation = nil")
+            println("executeUploadAPI Infomation = nil")
             return
         }
         

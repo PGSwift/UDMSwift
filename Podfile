@@ -5,8 +5,8 @@ project 'UDMSwift.xcodeproj'
 
 target 'UDMSwift' do
 use_frameworks!
-pod 'Alamofire', '~> 3.4'
-pod 'AlamofireObjectMapper', '~> 3.0'
+pod 'Alamofire'
+pod 'ReachabilitySwift'
 pod 'Google/SignIn'
 pod 'ChameleonFramework/Swift'
 pod 'ActionSheetPicker-3.0'

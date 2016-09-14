@@ -8,10 +8,14 @@
 
 import Foundation
 
-protocol ViewControllerProtocol {
+@objc protocol ViewControllerProtocol {
     
     static func createInstance() -> UIViewController
-    func configItems()
-    func initData()
+    
+    optional func configItems()
+    optional func initData()
+    
+    optional func registerNotification()
+    optional func deregisterNotification()
     
 }

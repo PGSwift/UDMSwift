@@ -55,10 +55,6 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
         }
     }
     
-    func initData() {
-        
-    }
-    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,11 +75,6 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
         guard let email = textBoxEmail.text, passwd = textBoxPassword.text else {
             return
         }
-
-        if email == "" || passwd == "" {
-            UDMAlert.alert(title: "Error", message: "Do not blank fields", dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
-            return
-        }
         
         if isPageSignIn {
             
@@ -97,6 +88,7 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
                 if success {
                     self.saveUser(withData: data)
                 } else {
+                    UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
                     println("ERROR message: \(data["message"]!)")
                 }
 
@@ -113,10 +105,11 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
             
             let data = UDMInfoDictionaryBuilder.signin(withFullName: fullName, email: email, password: passwd)
             
-            UDMService.signUpAccount(WithInfo: data, Completion: { (data, success) in
+            UDMService.signUpAccount(WithInfo: data, Completion: { data, success in
                 if success {
                     self.saveUser(withData: data)
                 } else {
+                     UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
                      println("ERROR message: \(data["message"]!)")
                 }
             })
@@ -133,6 +126,11 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
     }
     
     func checkError(flat: Bool) -> Bool {
+        
+        if textBoxEmail.text! == "" || textBoxPassword.text! == "" {
+            UDMAlert.alert(title: "Error", message: "Do not blank fields", dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+            return true
+        }
         //Error check
         var isError = false
         var strError = ""
@@ -142,7 +140,7 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
             isError = true
         }
         
-        if !UDMHelpers.checkMinLength(textBoxPassword, minLength: 8) {
+        if !UDMHelpers.checkMinLength(textBoxPassword, minLength: 7) {
             strError += "\nPassword must be >= 8 length"
             isError = true
         }
@@ -154,7 +152,7 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
 
         if !flat {
             
-            if !UDMHelpers.checkMinLength(textBoxRePassword, minLength: 8) {
+            if !UDMHelpers.checkMinLength(textBoxRePassword, minLength: 7) {
                 strError += "\nRePassword must be >= 8 length"
                 isError = true
             }

@@ -31,10 +31,6 @@ final class MyCoursesViewController: UIViewController, ViewControllerProtocol {
         self.navigationItem.setRightBarButtonItems([rightAddBarButtonItem, rightSearchBarButtonItem], animated: true)
     }
     
-    func initData() {
-        
-    }
-    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()

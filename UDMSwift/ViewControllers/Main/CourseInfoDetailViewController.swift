@@ -17,14 +17,6 @@ final class CourseInfoDetailViewController: UIViewController, ViewControllerProt
         return MainStoryboard.instantiateViewControllerWithIdentifier("DetailListViewControllerID") as! CourseInfoDetailViewController
     }
     
-    func configItems() {
-        
-    }
-    
-    func initData() {
-        
-    }
-    
     // MARK: - View life cycle
     override func viewDidLoad() {
          super.viewDidLoad()

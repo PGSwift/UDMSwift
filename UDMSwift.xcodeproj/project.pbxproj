@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A1A42361D88549A00FF5522 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1A42351D88549A00FF5522 /* EmptyViewController.swift */; };
 		4A1B71DA1D84EDB3006C3655 /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B71D91D84EDB3006C3655 /* ViewControllerProtocol.swift */; };
 		4A214A9A1D70765200525B06 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A214A991D70765200525B06 /* Teacher.swift */; };
 		4A214A9C1D70782F00525B06 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A214A9B1D70782F00525B06 /* Account.swift */; };
@@ -99,6 +100,7 @@
 
 /* Begin PBXFileReference section */
 		3D08753B785755DECEA78367 /* Pods-UDMSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UDMSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-UDMSwift/Pods-UDMSwift.release.xcconfig"; sourceTree = "<group>"; };
+		4A1A42351D88549A00FF5522 /* EmptyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyViewController.swift; sourceTree = "<group>"; };
 		4A1B71D91D84EDB3006C3655 /* ViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProtocol.swift; sourceTree = "<group>"; };
 		4A214A991D70765200525B06 /* Teacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Teacher.swift; path = Account/Teacher.swift; sourceTree = SOURCE_ROOT; };
 		4A214A9B1D70782F00525B06 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Account/Account.swift; sourceTree = SOURCE_ROOT; };
@@ -315,6 +317,7 @@
 				4A8075621D68B55F006536A8 /* DetailListViewController.swift */,
 				4AC2FB1C1D69B6BB007615C8 /* TestAppViewController.swift */,
 				4A515A121D6B6BF900D043DC /* SignUpViewController.swift */,
+				4A1A42351D88549A00FF5522 /* EmptyViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				4A8075631D68B55F006536A8 /* DetailListViewController.swift in Sources */,
 				4A5C50331D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift in Sources */,
 				4A4535741D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift in Sources */,
+				4A1A42361D88549A00FF5522 /* EmptyViewController.swift in Sources */,
 				4AC2FB241D6A1BB0007615C8 /* StorageService.swift in Sources */,
 				4A45354D1D61FAEF00CFFFC5 /* AppDelegate.swift in Sources */,
 				4A6E036D1D66160E00C2717C /* CourseCell.swift in Sources */,
@@ -753,7 +757,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
@@ -794,7 +798,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

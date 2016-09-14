@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import ReachabilitySwift
 
 // MARK: - Singletons
 
@@ -21,6 +21,10 @@ final class UDMUser: NSObject {
         inforUser = User(info: data["data"]!)
     }
     
+    func updateInforUser(withInfo data: [String: AnyObject]) {
+        inforUser = User(info: data["data"]!)
+    }
+    
     func getListDataUser() -> [String: String?] {
         
         var data: [String: String?] = [:]
@@ -30,7 +34,7 @@ final class UDMUser: NSObject {
         data["BirthDay"] = inforUser.birthday
         data["City"] = inforUser.city
         data["Phone Number"] = inforUser.phoneNumber
-        data["Money"] = String(inforUser.money)
+        data["Money"] = String(inforUser.money!)
         
         return data
     }
@@ -43,8 +47,52 @@ enum SocialNetwork: String {
     case FACEBOOK = "facebook"
 }
 
+// MARK: - UIStoryboard instance
+let MainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
+
 final class UDMHelpers {
     
+    // MARK: - REACHABILITY
+    private static var reachability: Reachability!
+    
+    static func startCheckConnectNetwork() {
+        
+        do {
+            reachability = try Reachability(hostname: "http://google.com/")
+            
+            reachability.whenReachable = { reachability in
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    
+                    if reachability.isReachableViaWiFi() {
+                        println("Reachable via Wifi")
+                    } else {
+                        println("Reachable via Cellular")
+                    }
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(UDMConfig.Notification.ConnectedInternet, object: nil, userInfo:nil)
+                })
+            }
+            
+            reachability.whenUnreachable = { reachability in
+                dispatch_async(dispatch_get_main_queue(), {
+                    println("Not reachable")
+                    NSNotificationCenter.defaultCenter().postNotificationName(UDMConfig.Notification.DisconnetedInternet, object: nil, userInfo: nil)
+                })
+            }
+            
+            try reachability.startNotifier()
+            
+        } catch let e {
+            println("Not init Reachability NetWork : \(e)")
+        }
+    }
+    
+    static func stopCheckConnectNetwork() {
+        reachability.stopNotifier()
+    }
+
+    // MARK: - COMMON FUNC
     static func convertStringToDictionary(text: String) -> [String:AnyObject]? {
         
         if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
@@ -56,6 +104,26 @@ final class UDMHelpers {
         }
         
         return nil
+    }
+    
+    static func currentDate() -> String {
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = UDMConfig.formatDate
+        let someDateTime = formatter.stringFromDate(NSDate())
+        return someDateTime
+        
+    }
+    
+    static func formatDateFromString(value: String) -> String? {
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        let someDateTime = formatter.dateFromString(value)
+        
+        formatter.dateFormat = UDMConfig.formatDate
+        
+        return formatter.stringFromDate(someDateTime!)
     }
     
     // MARK: - Validation

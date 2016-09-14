@@ -6,9 +6,6 @@
 //  Copyright © 2016 XUANVINHTD. All rights reserved.
 //
 
-// MARK: - UIStoryboard instance
-let MainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-
 
 // MARK: - Manager TAB number in Views
 final class TabConfig {
@@ -30,21 +27,14 @@ final class TabConfig {
 final class UDMConfig {
     
     static let forcedHideActivityIndicatorTimeInterval: NSTimeInterval = 30
-//    static let minMessageTextLabelWidth: CGFloat = 20.0
-//    
-//    static let minMessageSampleViewWidth: CGFloat = 25.0
+
+   //MARK: - Notification
+    struct Notification {
+        static let ConnectedInternet = "UDMConfig.Notification.ConnectedInternet"
+        static let DisconnetedInternet = "UDMConfig.Notification.DisconnetedInternet"
+    }
+  static let formatDate = "yyyy/MM/dd"
     
-//    static let termsURLString = "http://privacy.soyep.com"
-//    static let appURLString = "itms-apps://itunes.apple.com/app/id" + "983891256"
-//  MARK: - Setting Struct
-//    struct Notification {
-//        static let OAuthResult = "YepConfig.Notification.OAuthResult"
-//        static let createdFeed = "YepConfig.Notification.createdFeed"
-//        static let deletedFeed = "YepConfig.Notification.deletedFeed"
-//        static let switchedToOthersFromContactsTab = "YepConfig.Notification.switchedToOthersFromContactsTab"
-//        static let blockedFeedsByCreator = "YepConfig.Notification.blockedFeedsByCreator"
-//    }
-  
     // MARK: - Default Cell ID
     struct HeaderCellID {
         static let defaulCell0  = "idHeaderDefauleCell0"
@@ -73,7 +63,9 @@ final class UDMConfig {
     
     // MARK: - API
     struct APIService {
-        static let doman = "http://61.28.226.18/server/api/"
+        
+        static let rootDoman = "http://61.28.226.18"
+        static let doman = "\(rootDoman)/server/api/"
         
         static func urlUpdateBulder(withFunc funcName: String, token: String) -> String{
             return "\(doman)index.php?func=\(funcName)&model=user&token=\(token)"

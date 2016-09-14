@@ -16,6 +16,8 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
     private let heightCategoriSection = 200
     private let tabButton = 101
     
+    private var handlerNotificationDisConnetInternet: AnyObject?
+    
     var numberSecction = 0
 
     @IBOutlet weak var mainTableView: UITableView!
@@ -36,8 +38,23 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
         self.navigationItem.title = "Featured"
     }
     
-    func initData() {
+    // MARK: Notification
+    func registerNotification() {
+
+        handlerNotificationDisConnetInternet = NSNotificationCenter.defaultCenter().addObserverForName(UDMConfig.Notification.DisconnetedInternet, object: nil, queue: nil, usingBlock: { notification in
+            
+            println("Observer: \(notification.name)")
+            
+            let emptyViewController = EmptyViewController.createInstance()
+            self.presentViewController(emptyViewController, animated: true, completion: nil)
+        })
+    }
+    
+    func deregisterNotification() {
         
+        if let _ = handlerNotificationDisConnetInternet {
+            NSNotificationCenter.defaultCenter().removeObserver(handlerNotificationDisConnetInternet!)
+        }
     }
     
     // MARK: - View life cycle
@@ -46,7 +63,13 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
         
         println("Init main screen)")
         
+        registerNotification()
+        
         configItems()
+    }
+    
+    deinit {
+        deregisterNotification()
     }
 }
 // MARK: - TableView

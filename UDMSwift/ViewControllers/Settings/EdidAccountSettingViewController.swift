@@ -39,6 +39,7 @@ class EdidAccountSettingViewController: UITableViewController {
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var buttonAddMoney: UIButton!
     
+    @IBOutlet weak var emailTextFeild: UITextField!
     @IBOutlet weak var passwordOldCell: UITableViewCell!
     @IBOutlet weak var passwordNewCell: UITableViewCell!
 
@@ -68,8 +69,21 @@ class EdidAccountSettingViewController: UITableViewController {
 
     func initData() {
         
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            
+            let img = UDMUser.shareManager.inforUser.getAvata()
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.myAvataImage.image = img
+            })
+        }
+        
         guard let user = UDMUser.shareManager.inforUser else {
             fatalError()
+        }
+        
+        if let email = user.mail {
+            emailTextFeild.text = email
         }
         
         if let birthday = user.birthday {
@@ -94,6 +108,14 @@ class EdidAccountSettingViewController: UITableViewController {
         
         if let sex = user.sex {
             genderLabel.text = (sex == "0" ? "Female":"Male")
+        } else {
+            genderLabel.text = "Male"
+        }
+        
+        if let birthday = user.birthday {
+            birthDayLabel.text = birthday
+        } else {
+            birthDayLabel.text = UDMHelpers.currentDate()
         }
     }
     
@@ -111,7 +133,7 @@ class EdidAccountSettingViewController: UITableViewController {
         
         addRecognizer()
         
-        //initData()
+        initData()
         
         validatorDataInput()
     }
@@ -159,34 +181,35 @@ class EdidAccountSettingViewController: UITableViewController {
         
         validator.registerField(nameTextField, errorLabel: nameErrorLabel , rules: [RequiredRule(), FullNameRule()])
         validator.registerField(phoneTextField, errorLabel: phoneErrorLabel , rules: [RequiredRule(), PhoneNumberRule()])
-        validator.registerField(locationTextField, errorLabel: locationErrorLabel , rules: [RequiredRule(), PhoneNumberRule()])
-        validator.registerField(passworldTextField, errorLabel: passworldErrorLabel , rules: [RequiredRule(), PasswordRule()])
-        validator.registerField(RePassworldTextFeild, errorLabel: RePassworldErrorLabel , rules: [RequiredRule(), PasswordRule()])
+        validator.registerField(locationTextField, errorLabel: locationErrorLabel , rules: [RequiredRule(), MaxLengthRule()])
     }
     
     // MARK: - Action
     func clickedBarButtonAction(sender: UIButton) {
         
-       // validator.validate(self)
+        validator.validate(self)
         
-        guard let fullName = nameTextField.text else { return }
-        guard let city = locationTextField.text else { return }
-        guard let phone = phoneTextField.text else { return }
-        let valueSex =  genderLabel.text == "Female" ? "0":"1"
-        
-        let data = UDMInfoDictionaryBuilder.updateProfile(withFullName: fullName, phoneNumber: phone, sex: valueSex, city: city)
-        
-        UDMService.editProfile(WithInfo: data) { data, success in
-            
-            if success {
-                println("Update profile success! with data: \(data)")
-            } else {
-                println("Update profile fail! with message: \(data["message"]!)")
-            }
-            
-            self.navigationController?.popViewControllerAnimated(true)
-        }
-
+//        guard let fullName = nameTextField.text else { return }
+//        guard let city = locationTextField.text else { return }
+//        guard let phone = phoneTextField.text else { return }
+//        guard let birthday = birthDayLabel.text else { return }
+//        
+//        let valueSex =  genderLabel.text == "Female" ? "0":"1"
+//        
+//        let data = UDMInfoDictionaryBuilder.updateProfile(withFullName: fullName, phoneNumber: phone, sex: valueSex, birthday: birthday, city: city)
+//        
+//        UDMService.editProfile(WithInfo: data) { data, success in
+//            
+//            if success {
+//                UDMUser.shareManager.updateInforUser(withInfo: data)
+//                
+//                println("Update profile success! with data: \(data)")
+//            } else {
+//                println("Update profile fail! with message: \(data["message"]!)")
+//            }
+//            
+//            self.navigationController?.popViewControllerAnimated(true)
+//        }
     }
     
     @IBAction func changeSwich(sender: AnyObject) {
@@ -195,7 +218,16 @@ class EdidAccountSettingViewController: UITableViewController {
         
         passwordNewCell.hidden = !swich.on
         passwordOldCell.hidden = !swich.on
+        
+        if swich.on {
+            validator.registerField(passworldTextField, errorLabel: passworldErrorLabel , rules: [RequiredRule(), PasswordRule()])
+            validator.registerField(RePassworldTextFeild, errorLabel: RePassworldErrorLabel , rules: [RequiredRule(), PasswordRule()])
+        } else {
+            validator.unregisterField(passworldTextField)
+            validator.unregisterField(RePassworldTextFeild)
+        }
     }
+    
     func showPickerView(recognizer: UITapGestureRecognizer) {
         
         hideKeyboard(nil)
@@ -217,7 +249,7 @@ class EdidAccountSettingViewController: UITableViewController {
                                                        origin: recognizer.view?.superview)
             
             let secondsInWeek: NSTimeInterval = 7 * 24 * 60 * 60
-            datePickerView.minimumDate = NSDate(timeInterval: -secondsInWeek, sinceDate: NSDate())
+            datePickerView.minimumDate = NSDate(timeInterval: -secondsInWeek, sinceDate: NSDate(timeIntervalSince1970: -secondsInWeek))
             datePickerView.maximumDate = NSDate(timeInterval: secondsInWeek, sinceDate: NSDate())
             
             datePickerView.toolbarButtonsColor = ChameleonManger.theme()
@@ -225,11 +257,15 @@ class EdidAccountSettingViewController: UITableViewController {
         }
         
         if tabNumber == TabConfig.PickerView.ListView {
-            let stringPickerView = ActionSheetStringPicker(title: "Gender Choose", rows: ["Male","Female"], initialSelection: 1, doneBlock: { picker, index, value in
-                self.genderLabel.text = String(index)
+            
+            let indexSelection = genderLabel.text == "Male" ? 0 : 1
+            
+            let stringPickerView = ActionSheetStringPicker(title: "Gender Choose", rows: ["Male","Female"], initialSelection: indexSelection, doneBlock: { picker, index, value in
+                self.genderLabel.text = index == 0 ? "Male" : "Female"
                 return
                 }, cancelBlock: { ActionSheetStringPicker in return
                 }, origin: recognizer.view?.superview)
+            
             
             stringPickerView.toolbarButtonsColor = ChameleonManger.theme()
             stringPickerView.showActionSheetPicker()
@@ -309,17 +345,27 @@ extension EdidAccountSettingViewController: ValidationDelegate {
         guard let fullName = nameTextField.text else { return }
         guard let city = locationTextField.text else { return }
         guard let phone = phoneTextField.text else { return }
+        guard let birthday = birthDayLabel.text else { return }
+        
         let valueSex =  genderLabel.text == "Female" ? "0":"1"
         
-        let data = UDMInfoDictionaryBuilder.updateProfile(withFullName: fullName, phoneNumber: phone, sex: valueSex, city: city)
+        let data = UDMInfoDictionaryBuilder.updateProfile(withFullName: fullName, phoneNumber: phone, sex: valueSex, birthday: birthday, city: city)
         
-        UDMService.editProfile(WithInfo: data) { withData in
-            println("Update profile success!!")
+        UDMService.editProfile(WithInfo: data) { data, success in
+            
+            if success {
+                UDMUser.shareManager.updateInforUser(withInfo: data)
+                
+                println("Update profile success! with data: \(data)")
+            } else {
+                println("Update profile fail! with message: \(data["message"]!)")
+            }
+            
             self.navigationController?.popViewControllerAnimated(true)
         }
     }
     
     func validationFailed(errors:[(Validatable, ValidationError)]) {
-        println("Validation FAILED!")
+        println("Validation FAILED! : \(errors)")
     }
 }

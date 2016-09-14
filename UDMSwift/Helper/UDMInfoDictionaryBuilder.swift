@@ -10,7 +10,7 @@ import Foundation
 
 final class UDMInfoDictionaryBuilder {
     
-    private static func builder(withModel model: String?, funcName: String?,token: String?, email: String?, password: String?, fullName: String?, sex: String?, phoneNumber: String?, city: String?) -> [String: String]{
+    private static func builder(withModel model: String?, funcName: String?,token: String?, email: String?, password: String?, fullName: String?, sex: String?, phoneNumber: String?, birthday: String?, city: String?) -> [String: String]{
         
         var result: [String: String] = [:]
         
@@ -52,6 +52,10 @@ final class UDMInfoDictionaryBuilder {
             result["city"] = _city
         }
         
+        if let _birthday = birthday {
+            result["birthday"] = _birthday
+        }
+        
         return result
     }
     
@@ -62,7 +66,7 @@ final class UDMInfoDictionaryBuilder {
                              token: nil,
                              email: email,
                              password: password,
-                             fullName: nil, sex: nil, phoneNumber: nil, city: nil)
+                             fullName: nil, sex: nil, phoneNumber: nil, birthday: nil, city: nil)
     }
     
     static func signin(withFullName fullName: String, email: String, password: String) -> [String: String] {
@@ -73,19 +77,20 @@ final class UDMInfoDictionaryBuilder {
                               email: email,
                               password: password,
                               fullName: fullName,
-                              sex: nil, phoneNumber: nil, city: nil)
+                              sex: nil, phoneNumber: nil, birthday: nil, city: nil)
     }
     
-    static func updateProfile(withFullName fullName: String, phoneNumber: String, sex: String, city: String) -> [String: AnyObject] {
+    static func updateProfile(withFullName fullName: String, phoneNumber: String, sex: String, birthday: String, city: String) -> [String: AnyObject] {
         
-        return ["data": builder(withModel: nil,
+        return builder(withModel: nil,
                        funcName: nil,
                        token: nil,
                        email: nil, password: nil,
                        fullName: fullName,
                        sex: sex,
                        phoneNumber: phoneNumber,
-                       city: city)]
+                       birthday: birthday,
+                       city: city)
     }
     
     static func updatePassword(WithOldPassword oldPassworld: String, newPassworld: String) -> [String: String] {
@@ -95,7 +100,7 @@ final class UDMInfoDictionaryBuilder {
                        token: UDMUser.shareManager.inforUser.token,
                        email: nil,
                        password: oldPassworld,
-                       fullName: nil, sex: nil, phoneNumber: nil, city: nil)
+                       fullName: nil, sex: nil, phoneNumber: nil, birthday: nil, city: nil)
     }
     
     

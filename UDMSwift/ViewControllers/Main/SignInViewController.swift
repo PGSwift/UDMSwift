@@ -29,10 +29,6 @@ final class SignInViewController: UIViewController, ViewControllerProtocol {
         GIDSignIn.sharedInstance().signInSilently()
     }
     
-    func initData() {
-        
-    }
-    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +36,6 @@ final class SignInViewController: UIViewController, ViewControllerProtocol {
         println("Init Screen SignInViewControler")
         
         configItems()
-        
-        initData()
     }
     
     override func viewWillDisappear(animated: Bool) {

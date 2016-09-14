@@ -21,10 +21,6 @@ final class SettingViewController: UITableViewController, ViewControllerProtocol
         self.navigationItem.title = "Settings"
     }
     
-    func initData() {
-        
-    }
-    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()

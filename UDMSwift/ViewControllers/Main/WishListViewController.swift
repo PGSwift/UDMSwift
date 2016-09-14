@@ -27,10 +27,6 @@ final class WishListViewController: UIViewController, ViewControllerProtocol {
         self.navigationItem.title = "Wishlish"
     }
     
-    func initData() {
-        
-    }
-    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +34,6 @@ final class WishListViewController: UIViewController, ViewControllerProtocol {
         println("Init Screen WishLishViewController")
         
         configItems()
-       
     }
 }
 // MARK: - TableView

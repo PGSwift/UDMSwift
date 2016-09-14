@@ -17,8 +17,13 @@ public struct User {
     
     var mail: String? {
         get {
-            return data["email"] as? String
+            if let email = data["email"] as? String {
+              return email
+            } else {
+                return "vinh@gmail.com"
+            }
         }
+        
         set {
             mail = newValue
         }
@@ -26,7 +31,11 @@ public struct User {
     
     var urlAvata: String? {
         get {
-            return data["avata"] as? String
+            if let urlImage = data["avatar"] as? String {
+                return UDMConfig.APIService.rootDoman + urlImage
+            } else {
+                return ""
+            }
         }
         
         set {
@@ -36,7 +45,11 @@ public struct User {
     
     var fullName: String? {
         get {
-            return data["fullName"] as? String
+            if let name = data["fullName"] as? String {
+                return name
+            } else {
+                return ""
+            }
         }
         
         set {
@@ -44,10 +57,15 @@ public struct User {
         }
     }
     
-    var money: Double? {
+    var money: Int? {
         get {
-            return data["money"] as? Double
+            if let money = data["money"] as? String {
+                return Int(money)
+            } else {
+                return 0
+            }
         }
+        
         set {
             money = newValue
         }
@@ -55,8 +73,13 @@ public struct User {
     
     var city: String? {
         get {
-            return data["city"] as? String
+            if let city = data["city"] as? String {
+                return city
+            } else {
+                return "HCM"
+            }
         }
+        
         set {
             city = newValue
         }
@@ -64,8 +87,13 @@ public struct User {
     
     var phoneNumber: String? {
         get {
-            return data["phoneNumber"] as? String
+            if let phone = data["phoneNumber"] as? String {
+                return phone
+            } else {
+                return "0"
+            }
         }
+        
         set {
             phoneNumber = newValue
         }
@@ -75,6 +103,7 @@ public struct User {
         get {
             return data["token"] as? String
         }
+        
         set {
             token = newValue
         }
@@ -82,8 +111,13 @@ public struct User {
     
     var level: String? {
         get {
-            return data["level"] as? String
+            if let lvl = data["level"] as? String {
+                return lvl
+            } else {
+                return "0"
+            }
         }
+        
         set {
             level = newValue
         }
@@ -91,8 +125,13 @@ public struct User {
     
     var sex: String? {
         get {
-            return data["sex"] as? String
+            if let sex = data["sex"] as? String {
+                return sex
+            } else {
+                return "1"
+            }
         }
+        
         set {
             level = newValue
         }
@@ -100,24 +139,29 @@ public struct User {
     
     var birthday: String? {
         get {
-            return data["birthday"] as? String
+            if let stringBirthday = data["birthday"] as? String {
+                return UDMHelpers.formatDateFromString(stringBirthday)
+            } else {
+                return "1999/01/01"
+            }
         }
+        
         set {
             level = newValue
         }
     }
     
     func getAvata() -> UIImage? {
-        guard let urlAvata = urlAvata as String? else {
-            println("User \(mail) have not avata url")
-            return nil
-        }
         
-        guard let image = UIImage(data: NSData(contentsOfURL: NSURL(string: urlAvata)!)!) as UIImage? else {
-        println("User \(mail) cannot get avata to url = \(urlAvata)")
-        return nil
+        if urlAvata == "" {
+            return UIImage(named: "default_avatar")
+        } else {
+            guard let image = UIImage(data: NSData(contentsOfURL: NSURL(string: urlAvata!)!)!) as UIImage? else {
+                println("User \(mail) cannot get avata to url = \(urlAvata)")
+                return nil
+            }
+            
+            return image
         }
-        
-        return image
     }
 }

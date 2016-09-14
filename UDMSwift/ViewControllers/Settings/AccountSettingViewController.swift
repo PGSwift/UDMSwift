@@ -37,6 +37,15 @@ class AccountSettingViewController: UIViewController, ViewControllerProtocol {
     func initData() {
         
         levelLabel.text = "Level: " + UDMUser.shareManager.inforUser.level!
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            
+            let img = UDMUser.shareManager.inforUser.getAvata()
+            
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.myAvata.image = img
+            })
+        }
     }
     
     // MARK: - View life cycle
@@ -48,6 +57,13 @@ class AccountSettingViewController: UIViewController, ViewControllerProtocol {
         configItems()
         
         initData()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if animated {
+            arrSetting = UDMUser.shareManager.getListDataUser()
+            settingTable.reloadData()
+        }
     }
     
     // MARK: - Action RightBarButton
