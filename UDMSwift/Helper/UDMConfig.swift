@@ -31,12 +31,16 @@ final class UDMConfig {
     static let AppName = "UDMSwift"
     static let ParentIDRoot = "-1"
     
+    static let CourseLimit = "10"
+    static let CourseOffset = "10"
+    
     static let forcedHideActivityIndicatorTimeInterval: NSTimeInterval = 30
 
    //MARK: - Notification
     struct Notification {
         static let ConnectedInternet = "UDMConfig.Notification.ConnectedInternet"
         static let DisconnetedInternet = "UDMConfig.Notification.DisconnetedInternet"
+        static let GetDataCourseAndCategory = "UDMConfig.Notification.GetDataCourseAndCategory"
     }
   static let formatDate = "yyyy/MM/dd"
     
@@ -76,7 +80,7 @@ final class UDMConfig {
         enum ModelName: String {
             case User = "user"
             case Category = "category"
-            case Course = "course"
+            case Course = "courses"
         }
         
         struct Account {

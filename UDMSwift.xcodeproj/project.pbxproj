@@ -26,6 +26,7 @@
 		4A4535761D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4535751D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib */; };
 		4A4535791D6202B800CFFFC5 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4535781D6202B800CFFFC5 /* MainTableViewCell.swift */; };
 		4A515A131D6B6BF900D043DC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A515A121D6B6BF900D043DC /* SignUpViewController.swift */; };
+		4A5B7EF41D903F1800275788 /* Results+UDMSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5B7EF31D903F1800275788 /* Results+UDMSwift.swift */; };
 		4A5C50331D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C50321D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift */; };
 		4A6E03651D6612EC00C2717C /* CourseVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03641D6612EC00C2717C /* CourseVideoCell.swift */; };
 		4A6E03671D6613C400C2717C /* CourseDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03661D6613C400C2717C /* CourseDescriptionCell.swift */; };
@@ -124,6 +125,7 @@
 		4A4535751D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonCategoriesCollectionViewCell.xib; sourceTree = "<group>"; };
 		4A4535781D6202B800CFFFC5 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		4A515A121D6B6BF900D043DC /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4A5B7EF31D903F1800275788 /* Results+UDMSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Results+UDMSwift.swift"; sourceTree = "<group>"; };
 		4A5C50321D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMInfoDictionaryBuilder.swift; sourceTree = "<group>"; };
 		4A6E03641D6612EC00C2717C /* CourseVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseVideoCell.swift; sourceTree = "<group>"; };
 		4A6E03661D6613C400C2717C /* CourseDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDescriptionCell.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 			children = (
 				4A8ABF781D839D940025D6CA /* Dictionary+UDMSwift.swift */,
 				4AACAD9A1D8CE75E003E34A7 /* String+UDMSwift.swift */,
+				4A5B7EF31D903F1800275788 /* Results+UDMSwift.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -657,6 +660,7 @@
 				4AACAD991D8CE2CD003E34A7 /* ReachabilityManager.swift in Sources */,
 				4AF36B401D6F438200138BF7 /* UDMHelpers.swift in Sources */,
 				4A4535681D61FE7700CFFFC5 /* MainViewController.swift in Sources */,
+				4A5B7EF41D903F1800275788 /* Results+UDMSwift.swift in Sources */,
 				4A351AEA1D675F780053B4A2 /* ReviewsCell.swift in Sources */,
 				4A214A9C1D70782F00525B06 /* Account.swift in Sources */,
 				4A8ABF7D1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift in Sources */,

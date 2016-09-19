@@ -164,7 +164,7 @@ final class CacheManager {
         }
     }
     
-    // MARK: - Model RCategory
+    // MARK: - Model RUser
     
     func getRUserList() -> Results<RUser>? {
         
@@ -194,25 +194,25 @@ final class CacheManager {
     
     // MARK: - Model RCategory
     
-    func getRCategoryList() -> Results<RCategory>? {
+    func getRCategoryList() -> [RCategory]? {
         
         guard let realm = self.realm else {
             println("realm = nil")
             return nil
         }
-        
-        return realm.objects(RCategory.self)
+
+        return realm.objects(RCategory.self).toArray(RCategory.self)
     }
     // MARK: - Model RCourse
     
-    func getRCourseList() -> Results<RCourse>? {
+    func getRCourseList() ->[RCourse]? {
         
         guard let realm = self.realm else {
             println("realm = nil")
             return nil
         }
         
-        return realm.objects(RCourse.self)
+        return realm.objects(RCourse.self).toArray(RCourse.self)
     }
 
 }

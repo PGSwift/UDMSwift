@@ -191,13 +191,19 @@ final class UDMInfoDictionaryBuilder {
     }
     
     // MARK: - Model Course
-    private func builderCourse(withModel model: String?, funcName: String?,token: String?, idCategory: String?) -> [String: String]{
+    private func builderCourse(withModel model: String?, funcName: String?,token: String?, idCategory: String?, limit: String?, offset: String?) -> [String: String]{
         
         let commonDictionary = builder(withModel: model, funcName: funcName, token: token)
         var result: [String: String] = [:]
         
         if let _idCategory = idCategory {
-            result["idCategory"] = _idCategory
+            result["categoryID"] = _idCategory
+        }
+        if let _limit = limit {
+            result["limit"] = _limit
+        }
+        if let _offset = offset {
+            result["offset"] = _offset
         }
         
         result.update(commonDictionary)
@@ -205,12 +211,14 @@ final class UDMInfoDictionaryBuilder {
         return result
     }
     
-    func getCourseList(with idCategory: String?) -> [String: String] {
+    func getCourseList(with idCategory: String?, limit: String, offset: String) -> [String: String] {
         
-        return builderCourse(withModel: UDMConfig.APIService.ModelName.Category.rawValue,
+        return builderCourse(withModel: UDMConfig.APIService.ModelName.Course.rawValue,
                                funcName: UDMConfig.APIService.FuncName.GetData.rawValue,
                                token: UDMUser.shareManager.inforUser().token,
-                               idCategory: idCategory)
+                               idCategory: idCategory,
+                               limit: limit,
+                               offset: offset)
     }
     
 }

@@ -16,7 +16,11 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
     private let heightCategoriSection = 200
     private let tabButton = 101
     
+    private var categoryArr: [RCategory] = []
+    private var courseArr: [RCourse] = []
+    
     private var handlerNotificationDisConnetInternet: AnyObject?
+    private var handlerNotificationGetDataCourseAndCategory: AnyObject?
     
     var numberSecction = 0
 
@@ -39,31 +43,59 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
     }
     
     func initData() {
+
+        if !UDMUser.shareManager.isLoginSuccess {
+            return
+        }
         
-//        let data = UDMInfoDictionaryBuilder.shareInstance.getCategoryList(with: UDMConfig.ParentIDRoot)
-//        UDMService.shareInstance.getListDataFromServer(with: data, Completion: { (data, success) in
-//            if success {
-//                
-//                guard let Cdata = data["data"] as? [String: AnyObject] else {
-//                    println("Not found data caches")
-//                    return
-//                }
-//                println("dataCache--> \(Cdata)")
-//                
-//                CacheManager.shareInstance.update(with: Cdata, type: UDMConfig.APIService.ModelName.User)
-//                
-//                let categoryList = CacheManager.shareInstance.getRCategoryList()
-//                
-//                for category in categoryList! {
-//                    println("Category list: ---> \n \(category)")
-//                }
-//                
-//            } else {
-//                UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
-//                println("ERROR message: \(data["message"]!)")
-//            }
-//            
-//        })
+        let data = UDMInfoDictionaryBuilder.shareInstance.getCategoryList(with: UDMConfig.ParentIDRoot)
+        UDMService.shareInstance.getListDataFromServer(with: data, Completion: { (data, success) in
+            if success {
+                
+                guard let Cdata = data["data"] as? [[String: AnyObject]] else {
+                    println("Not found data caches")
+                    return
+                }
+                println("dataCache Category--> \(Cdata)")
+                
+                CacheManager.shareInstance.updateList(with: Cdata, type: UDMConfig.APIService.ModelName.Category)
+                
+                if let categoryArr = CacheManager.shareInstance.getRCategoryList() {
+                    for category in categoryArr {
+                        println("Category list: ---> \n \(category)")
+                    }
+                }
+                
+            } else {
+                UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                println("ERROR message: \(data["message"]!)")
+            }
+            
+        })
+        
+        let data1 = UDMInfoDictionaryBuilder.shareInstance.getCourseList(with: UDMConfig.ParentIDRoot, limit: UDMConfig.CourseLimit, offset: UDMConfig.CourseOffset)
+        UDMService.shareInstance.getListDataFromServer(with: data1, Completion: { (data, success) in
+            if success {
+                
+                guard let Cdata = data["data"] as? [[String: AnyObject]] else {
+                    println("Not found data caches")
+                    return
+                }
+                println("dataCache Course--> \(Cdata)")
+                
+                CacheManager.shareInstance.updateList(with: Cdata, type: UDMConfig.APIService.ModelName.Course)
+                
+                if let courseArr = CacheManager.shareInstance.getRCourseList() {
+                    for course in courseArr {
+                        println("Course list: ---> \n \(course)")
+                    }
+                }
+            } else {
+                UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                println("ERROR message: \(data["message"]!)")
+            }
+            
+        })
     }
     
     // MARK: Notification
@@ -76,12 +108,23 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
             let emptyViewController = EmptyViewController.createInstance()
             self.presentViewController(emptyViewController, animated: true, completion: nil)
         })
+        
+        handlerNotificationGetDataCourseAndCategory = NSNotificationCenter.defaultCenter().addObserverForName(UDMConfig.Notification.GetDataCourseAndCategory, object: nil, queue: nil, usingBlock: { notification in
+            
+            println("Class: \(NSStringFromClass(self.dynamicType)) recived: \(notification.name)")
+            
+            self.initData()
+        })
     }
     
     func deregisterNotification() {
         
         if let _ = handlerNotificationDisConnetInternet {
             NSNotificationCenter.defaultCenter().removeObserver(handlerNotificationDisConnetInternet!)
+        }
+        
+        if let _ = handlerNotificationGetDataCourseAndCategory {
+            NSNotificationCenter.defaultCenter().removeObserver(handlerNotificationGetDataCourseAndCategory!)
         }
     }
     
