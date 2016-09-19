@@ -13,11 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    let reachability = ReachabilityManager()
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         // Check NetWork
-        UDMHelpers.startCheckConnectNetwork()
+        reachability.startCheckConnectNetwork()
+        
+        //Caches
+        CacheManager.shareInstance
         
         // setUp Theme()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : ChameleonManger.theme()]
@@ -69,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        UDMHelpers.stopCheckConnectNetwork()
+        reachability.stopCheckConnectNetwork()
     }
 
 

@@ -31,21 +31,31 @@ class AccountSettingViewController: UIViewController, ViewControllerProtocol {
         self.navigationItem.rightBarButtonItem = rightBarButton
         
         settingTable.tableFooterView = UIView()
-        arrSetting = UDMUser.shareManager.getListDataUser()
+        
+        println("Data current: \(CacheManager.shareInstance.getRUserList()?.first)")
+        println("Data count: \(CacheManager.shareInstance.getRUserList()?.count)")
     }
 
     func initData() {
         
-        levelLabel.text = "Level: " + UDMUser.shareManager.inforUser.level!
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+        if UDMUser.shareManager.isLoginSuccess {
+            arrSetting = UDMUser.shareManager.getListDataUser()
             
-            let img = UDMUser.shareManager.inforUser.getAvata()
+            let user = UDMUser.shareManager.inforUser()
+            levelLabel.text = "Level: " + String(user.level)
             
-            dispatch_async(dispatch_get_main_queue(), { 
-                self.myAvata.image = img
-            })
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                
+                let img = UDMUser.shareManager.getAvata()
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.myAvata.image = img
+                })
+            }
+        } else {
+            self.myAvata.image = UIImage(named: "default_avatar")
         }
+        
     }
     
     // MARK: - View life cycle
@@ -61,15 +71,17 @@ class AccountSettingViewController: UIViewController, ViewControllerProtocol {
     
     override func viewWillAppear(animated: Bool) {
         if animated {
-            arrSetting = UDMUser.shareManager.getListDataUser()
+            initData()
             settingTable.reloadData()
         }
     }
     
     // MARK: - Action RightBarButton
     func clickedBarButtonAction(sender: UIButton) {
+        if UDMUser.shareManager.isLoginSuccess {
         let edidAccountSettingViewController = EdidAccountSettingViewController.createInstance()
         self.navigationController?.pushViewController(edidAccountSettingViewController, animated: true)
+        }
     }
 }
 

@@ -33,7 +33,7 @@ class TestAppViewController: UIViewController {
     
     func registerNotification() {
        handlerNotificationABC = NSNotificationCenter.defaultCenter().addObserverForName(Notification.updateDraft, object: self, queue: nil, usingBlock: { (notification)  in
-        print("observer \(notification.name)")
+        println("Class: \(NSStringFromClass(self.dynamicType)) recived: \(notification.name)")
        })
     }
     
@@ -66,6 +66,8 @@ class TestAppViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //UDMService.getListCategory(with: <#T##[String : String]?#>, Completion: <#T##((data: [String : AnyObject], success: Bool) -> Void)?##((data: [String : AnyObject], success: Bool) -> Void)?##(data: [String : AnyObject], success: Bool) -> Void#>)
         registerNotification()
     }
     

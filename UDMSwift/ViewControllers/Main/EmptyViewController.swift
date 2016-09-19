@@ -23,7 +23,7 @@ class EmptyViewController: UIViewController, ViewControllerProtocol {
         
         handlerNotificationConnetInternet = NSNotificationCenter.defaultCenter().addObserverForName(UDMConfig.Notification.ConnectedInternet, object: nil, queue: nil, usingBlock: { notification in
             
-            println("Observer: \(notification.name)")
+            println("Class: \(NSStringFromClass(self.dynamicType)) recived: \(notification.name)")
             self.dismissViewControllerAnimated(true, completion: nil)
         })
     }

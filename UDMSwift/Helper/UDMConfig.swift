@@ -6,6 +6,8 @@
 //  Copyright © 2016 XUANVINHTD. All rights reserved.
 //
 
+// MARK: - UIStoryboard instance
+let MainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
 
 // MARK: - Manager TAB number in Views
 final class TabConfig {
@@ -26,6 +28,9 @@ final class TabConfig {
 // MARK: - Config All UDM
 final class UDMConfig {
     
+    static let AppName = "UDMSwift"
+    static let ParentIDRoot = "-1"
+    
     static let forcedHideActivityIndicatorTimeInterval: NSTimeInterval = 30
 
    //MARK: - Notification
@@ -42,24 +47,10 @@ final class UDMConfig {
         static let defaulCell   = "idDefauleCell"
     }
     
-//    struct Settings {
-//        static let userCellAvatarSize: CGFloat = 80
-//        
-//        static let introFont: UIFont = {
-//            return UIFont.systemFontOfSize(12, weight: UIFontWeightLight)
-//        }()
-//        
-//        static let introInset: CGFloat = 20 + userCellAvatarSize + 20 + 10 + 11 + 20
-//    }
-    
     //  MARK: - Method ReadOnly
     class func getScreenRect() -> CGRect {
         return UIScreen.mainScreen().bounds
     }
-    
-//    class func avatarMaxSize() -> CGSize {
-//        return CGSize(width: 414, height: 414)
-//    }
     
     // MARK: - API
     struct APIService {
@@ -76,12 +67,16 @@ final class UDMConfig {
             case LoginMail = "login_email"
             case RegisterEmail = "register_email"
             case UpdateProfile = "user_update"
-            case ChangePassword = "ChangePassword"
+            case ChangePassword = "update_password"
+            case ResetPassword = "reset_password"
+            case GetData = "get"
         }
         
         // MARK: - Function name
         enum ModelName: String {
             case User = "user"
+            case Category = "category"
+            case Course = "course"
         }
         
         struct Account {
@@ -89,19 +84,4 @@ final class UDMConfig {
             //static let signIn = doman + "login";
         }
     }
-//    struct ChinaSocialNetwork {
-//        
-//        struct WeChat {
-//            
-//            static let appID = "wx10f099f798871364"
-//            
-//            static let sessionType = "com.Catch-Inc.Yep.WeChat.Session"
-//            static let sessionTitle = NSLocalizedString("WeChat Session", comment: "")
-//            static let sessionImage = UIImage.yep_wechatSession
-//            
-//            static let timelineType = "com.Catch-Inc.Yep.WeChat.Timeline"
-//            static let timelineTitle = NSLocalizedString("WeChat Timeline", comment: "")
-//            static let timelineImage = UIImage.yep_wechatTimeline
-//        }
-//    }
 }

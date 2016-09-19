@@ -10,4 +10,5 @@ pod 'ReachabilitySwift'
 pod 'Google/SignIn'
 pod 'ChameleonFramework/Swift'
 pod 'ActionSheetPicker-3.0'
+pod 'RealmSwift'
 end

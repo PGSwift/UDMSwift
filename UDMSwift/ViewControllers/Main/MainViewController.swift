@@ -38,12 +38,40 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
         self.navigationItem.title = "Featured"
     }
     
+    func initData() {
+        
+//        let data = UDMInfoDictionaryBuilder.shareInstance.getCategoryList(with: UDMConfig.ParentIDRoot)
+//        UDMService.shareInstance.getListDataFromServer(with: data, Completion: { (data, success) in
+//            if success {
+//                
+//                guard let Cdata = data["data"] as? [String: AnyObject] else {
+//                    println("Not found data caches")
+//                    return
+//                }
+//                println("dataCache--> \(Cdata)")
+//                
+//                CacheManager.shareInstance.update(with: Cdata, type: UDMConfig.APIService.ModelName.User)
+//                
+//                let categoryList = CacheManager.shareInstance.getRCategoryList()
+//                
+//                for category in categoryList! {
+//                    println("Category list: ---> \n \(category)")
+//                }
+//                
+//            } else {
+//                UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+//                println("ERROR message: \(data["message"]!)")
+//            }
+//            
+//        })
+    }
+    
     // MARK: Notification
     func registerNotification() {
 
         handlerNotificationDisConnetInternet = NSNotificationCenter.defaultCenter().addObserverForName(UDMConfig.Notification.DisconnetedInternet, object: nil, queue: nil, usingBlock: { notification in
             
-            println("Observer: \(notification.name)")
+            println("Class: \(NSStringFromClass(self.dynamicType)) recived: \(notification.name)")
             
             let emptyViewController = EmptyViewController.createInstance()
             self.presentViewController(emptyViewController, animated: true, completion: nil)
@@ -66,6 +94,8 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
         registerNotification()
         
         configItems()
+        
+        initData()
     }
     
     deinit {

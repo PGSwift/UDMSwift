@@ -40,7 +40,6 @@
 		4A6E037A1D66181400C2717C /* CourseInstructorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03781D66181400C2717C /* CourseInstructorCell.swift */; };
 		4A6E037B1D66181400C2717C /* CourseInstructorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6E03791D66181400C2717C /* CourseInstructorCell.xib */; };
 		4A7DD4AC1D680C2B00AB0BD2 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7DD4AB1D680C2B00AB0BD2 /* SignInViewController.swift */; };
-		4A7DD4AF1D680EBF00AB0BD2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7DD4AE1D680EBF00AB0BD2 /* User.swift */; };
 		4A8075591D689FC6006536A8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A8075581D689FC6006536A8 /* GoogleService-Info.plist */; };
 		4A80755F1D68AC5C006536A8 /* UDMConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80755E1D68AC5C006536A8 /* UDMConfig.swift */; };
 		4A8075611D68B1C5006536A8 /* CourseInfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8075601D68B1C5006536A8 /* CourseInfoDetailViewController.swift */; };
@@ -51,6 +50,8 @@
 		4A8ABF791D839D940025D6CA /* Dictionary+UDMSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8ABF781D839D940025D6CA /* Dictionary+UDMSwift.swift */; };
 		4A8ABF7B1D83BBEC0025D6CA /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8ABF7A1D83BBEC0025D6CA /* AlamofireManager.swift */; };
 		4A8ABF7D1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8ABF7C1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift */; };
+		4AACAD991D8CE2CD003E34A7 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACAD981D8CE2CD003E34A7 /* ReachabilityManager.swift */; };
+		4AACAD9B1D8CE75E003E34A7 /* String+UDMSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACAD9A1D8CE75E003E34A7 /* String+UDMSwift.swift */; };
 		4AC2FB141D694AD4007615C8 /* RatingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB131D694AD4007615C8 /* RatingControlView.swift */; };
 		4AC2FB171D69795E007615C8 /* CouresListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB151D69795E007615C8 /* CouresListViewController.swift */; };
 		4AC2FB181D69795E007615C8 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB161D69795E007615C8 /* CourseDetailViewController.swift */; };
@@ -86,6 +87,8 @@
 		4ACBE3301D787DB500360B9A /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3151D787DB500360B9A /* ValidationRule.swift */; };
 		4ACBE3311D787DB500360B9A /* ZipCodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3161D787DB500360B9A /* ZipCodeRule.swift */; };
 		4ACBE3331D7890FA00360B9A /* EdidAccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3321D7890FA00360B9A /* EdidAccountSettingViewController.swift */; };
+		4AE7B16C1D8D80E40004ACB0 /* ModelRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE7B16B1D8D80E40004ACB0 /* ModelRealm.swift */; };
+		4AE7B16E1D8D810B0004ACB0 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE7B16D1D8D810B0004ACB0 /* CacheManager.swift */; };
 		4AEF4F071D6F570500800244 /* UDMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF4F061D6F570500800244 /* UDMLog.swift */; };
 		4AEF4F091D6F571C00800244 /* UDMAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF4F081D6F571C00800244 /* UDMAlert.swift */; };
 		4AEF4F0B1D6F591300800244 /* UDMHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF4F0A1D6F591300800244 /* UDMHUD.swift */; };
@@ -135,7 +138,6 @@
 		4A6E03781D66181400C2717C /* CourseInstructorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseInstructorCell.swift; sourceTree = "<group>"; };
 		4A6E03791D66181400C2717C /* CourseInstructorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CourseInstructorCell.xib; sourceTree = "<group>"; };
 		4A7DD4AB1D680C2B00AB0BD2 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		4A7DD4AE1D680EBF00AB0BD2 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Account/User.swift; sourceTree = SOURCE_ROOT; };
 		4A7DD4B11D681C1200AB0BD2 /* UDMSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UDMSwift-Bridging-Header.h"; sourceTree = "<group>"; };
 		4A8075581D689FC6006536A8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4A80755E1D68AC5C006536A8 /* UDMConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMConfig.swift; sourceTree = "<group>"; };
@@ -147,6 +149,8 @@
 		4A8ABF781D839D940025D6CA /* Dictionary+UDMSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+UDMSwift.swift"; sourceTree = "<group>"; };
 		4A8ABF7A1D83BBEC0025D6CA /* AlamofireManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireManager.swift; sourceTree = "<group>"; };
 		4A8ABF7C1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChameleonFrameworkManager.swift; sourceTree = "<group>"; };
+		4AACAD981D8CE2CD003E34A7 /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		4AACAD9A1D8CE75E003E34A7 /* String+UDMSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UDMSwift.swift"; sourceTree = "<group>"; };
 		4AC2FB131D694AD4007615C8 /* RatingControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingControlView.swift; sourceTree = "<group>"; };
 		4AC2FB151D69795E007615C8 /* CouresListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CouresListViewController.swift; sourceTree = "<group>"; };
 		4AC2FB161D69795E007615C8 /* CourseDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDetailViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +187,8 @@
 		4ACBE3161D787DB500360B9A /* ZipCodeRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeRule.swift; sourceTree = "<group>"; };
 		4ACBE3171D787DB500360B9A /* SwiftValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwiftValidator.h; sourceTree = "<group>"; };
 		4ACBE3321D7890FA00360B9A /* EdidAccountSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdidAccountSettingViewController.swift; sourceTree = "<group>"; };
+		4AE7B16B1D8D80E40004ACB0 /* ModelRealm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelRealm.swift; sourceTree = "<group>"; };
+		4AE7B16D1D8D810B0004ACB0 /* CacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		4AEF4F061D6F570500800244 /* UDMLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMLog.swift; sourceTree = "<group>"; };
 		4AEF4F081D6F571C00800244 /* UDMAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMAlert.swift; sourceTree = "<group>"; };
 		4AEF4F0A1D6F591300800244 /* UDMHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMHUD.swift; sourceTree = "<group>"; };
@@ -296,8 +302,8 @@
 				4AEF4F061D6F570500800244 /* UDMLog.swift */,
 				4AEF4F081D6F571C00800244 /* UDMAlert.swift */,
 				4AEF4F0A1D6F591300800244 /* UDMHUD.swift */,
-				4A7DD4B11D681C1200AB0BD2 /* UDMSwift-Bridging-Header.h */,
 				4A5C50321D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift */,
+				4A7DD4B11D681C1200AB0BD2 /* UDMSwift-Bridging-Header.h */,
 			);
 			name = Helpers;
 			path = Helper;
@@ -370,7 +376,6 @@
 		4A7DD4AD1D680E6400AB0BD2 /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				4A7DD4AE1D680EBF00AB0BD2 /* User.swift */,
 				4A214A991D70765200525B06 /* Teacher.swift */,
 				4A214A9B1D70782F00525B06 /* Account.swift */,
 			);
@@ -386,6 +391,7 @@
 				4A80756A1D68BAD2006536A8 /* FBSDKLoginKit.framework */,
 				4A8ABF7A1D83BBEC0025D6CA /* AlamofireManager.swift */,
 				4A8ABF7C1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift */,
+				4AACAD981D8CE2CD003E34A7 /* ReachabilityManager.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -394,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				4A8ABF781D839D940025D6CA /* Dictionary+UDMSwift.swift */,
+				4AACAD9A1D8CE75E003E34A7 /* String+UDMSwift.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -418,6 +425,8 @@
 		4AC2FB271D6A1D43007615C8 /* Caches */ = {
 			isa = PBXGroup;
 			children = (
+				4AE7B16B1D8D80E40004ACB0 /* ModelRealm.swift */,
+				4AE7B16D1D8D810B0004ACB0 /* CacheManager.swift */,
 			);
 			path = Caches;
 			sourceTree = "<group>";
@@ -632,6 +641,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AE7B16E1D8D810B0004ACB0 /* CacheManager.swift in Sources */,
 				4AC2FB1D1D69B6BB007615C8 /* TestAppViewController.swift in Sources */,
 				4AEF4F0B1D6F591300800244 /* UDMHUD.swift in Sources */,
 				4AC2FB141D694AD4007615C8 /* RatingControlView.swift in Sources */,
@@ -644,6 +654,7 @@
 				9264E9FE1D64626F00D8B066 /* CategoryViewController.swift in Sources */,
 				9264E9F21D64188500D8B066 /* SearchCoursesViewController.swift in Sources */,
 				4ACBE3181D787DB500360B9A /* Validatable.swift in Sources */,
+				4AACAD991D8CE2CD003E34A7 /* ReachabilityManager.swift in Sources */,
 				4AF36B401D6F438200138BF7 /* UDMHelpers.swift in Sources */,
 				4A4535681D61FE7700CFFFC5 /* MainViewController.swift in Sources */,
 				4A351AEA1D675F780053B4A2 /* ReviewsCell.swift in Sources */,
@@ -686,6 +697,7 @@
 				4ACBE32B1D787DB500360B9A /* PasswordRule.swift in Sources */,
 				4ACBE3221D787DB500360B9A /* EmailRule.swift in Sources */,
 				4AC2FB1A1D6979CE007615C8 /* ReusableView.swift in Sources */,
+				4AACAD9B1D8CE75E003E34A7 /* String+UDMSwift.swift in Sources */,
 				4ACBE31B1D787DB500360B9A /* Validator.swift in Sources */,
 				4ACBE32D1D787DB500360B9A /* RegexRule.swift in Sources */,
 				4A4535711D6200F500CFFFC5 /* CategoriesCollectionViewCell.swift in Sources */,
@@ -694,7 +706,6 @@
 				4ACBE3271D787DB500360B9A /* IPV4Rule.swift in Sources */,
 				4AEF4F071D6F570500800244 /* UDMLog.swift in Sources */,
 				9264E9F91D64500100D8B066 /* WishListViewController.swift in Sources */,
-				4A7DD4AF1D680EBF00AB0BD2 /* User.swift in Sources */,
 				4A6E03691D66144200C2717C /* CourseCurriculumCell.swift in Sources */,
 				4A7DD4AC1D680C2B00AB0BD2 /* SignInViewController.swift in Sources */,
 				4ACBE3201D787DB500360B9A /* CharacterSetRule.swift in Sources */,
@@ -702,6 +713,7 @@
 				4AC855201D71C5DC00B6D4B8 /* SettingDetailViewController.swift in Sources */,
 				4AEF4F091D6F571C00800244 /* UDMAlert.swift in Sources */,
 				4A80755F1D68AC5C006536A8 /* UDMConfig.swift in Sources */,
+				4AE7B16C1D8D80E40004ACB0 /* ModelRealm.swift in Sources */,
 				9264E9F71D644F1500D8B066 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

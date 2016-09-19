@@ -30,19 +30,26 @@ class EdidAccountSettingViewController: UITableViewController {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var locationErrorLabel: UILabel!
     
-    @IBOutlet weak var passworldTextField: UITextField!
-    @IBOutlet weak var passworldErrorLabel: UILabel!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordErrorLabel: UILabel!
     
-    @IBOutlet weak var RePassworldTextFeild: UITextField!
-    @IBOutlet weak var RePassworldErrorLabel: UILabel!
+    @IBOutlet weak var rePasswordTextFeild: UITextField!
+    @IBOutlet weak var rePasswordErrorLabel: UILabel!
+    
+    @IBOutlet weak var rePasswordAgainTextFeild: UITextField!
+    @IBOutlet weak var rePasswordAgainErrorLable: UILabel!
+    
     
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var buttonAddMoney: UIButton!
     
     @IBOutlet weak var emailTextFeild: UITextField!
+    
     @IBOutlet weak var passwordOldCell: UITableViewCell!
     @IBOutlet weak var passwordNewCell: UITableViewCell!
-
+    @IBOutlet weak var RepasswordNewCell: UITableViewCell!
+    
+    @IBOutlet weak var changePassSwitch: UISwitch!
     let validator = Validator()
     
     // MARK: - Initialzation
@@ -64,57 +71,32 @@ class EdidAccountSettingViewController: UITableViewController {
         myAvataImage.clipsToBounds = true
         
         passwordNewCell.hidden = true
+        RepasswordNewCell.hidden = true
         passwordOldCell.hidden = true
+        
     }
 
     func initData() {
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             
-            let img = UDMUser.shareManager.inforUser.getAvata()
+            let img = UDMUser.shareManager.getAvata()
             
             dispatch_async(dispatch_get_main_queue(), {
                 self.myAvataImage.image = img
             })
         }
         
-        guard let user = UDMUser.shareManager.inforUser else {
-            fatalError()
-        }
+        let user = UDMUser.shareManager.inforUser()
         
-        if let email = user.mail {
-            emailTextFeild.text = email
-        }
+        emailTextFeild.text = user.email
+        birthDayLabel.text = user.birthday.formatDateFromString(user.birthday)
+        locationTextField.text = user.city
+        nameTextField.text = user.fullName
+        phoneTextField.text = user.phoneNumber
+        genderLabel.text = (user.sex == "0" ? "Female":"Male")
         
-        if let birthday = user.birthday {
-            birthDayLabel.text = birthday
-        } else {
-            let dateFormat = NSDateFormatter()
-            dateFormat.dateFormat = "yyyy/MM/dd"
-            birthDayLabel.text = dateFormat.stringFromDate(NSDate())
-        }
-        
-        if let city = user.city {
-            locationTextField.text = city
-        }
-        
-        if let fullName = user.fullName {
-            nameTextField.text = fullName
-        }
-        
-        if let phoneNumber = user.phoneNumber {
-            phoneTextField.text = phoneNumber
-        }
-        
-        if let sex = user.sex {
-            genderLabel.text = (sex == "0" ? "Female":"Male")
-        } else {
-            genderLabel.text = "Male"
-        }
-        
-        if let birthday = user.birthday {
-            birthDayLabel.text = birthday
-        } else {
+        if birthDayLabel.text == "" {
             birthDayLabel.text = UDMHelpers.currentDate()
         }
     }
@@ -160,7 +142,6 @@ class EdidAccountSettingViewController: UITableViewController {
     func validatorDataInput() {
         
         validator.styleTransformers(success:{ (validationRule) -> Void in
-            println("here")
             // clear error label
             validationRule.errorLabel?.hidden = true
             validationRule.errorLabel?.text = ""
@@ -170,7 +151,6 @@ class EdidAccountSettingViewController: UITableViewController {
                 
             }
             }, error:{ (validationError) -> Void in
-                println("error")
                 validationError.errorLabel?.hidden = false
                 validationError.errorLabel?.text = validationError.errorMessage
                 if let textField = validationError.field as? UITextField {
@@ -188,28 +168,6 @@ class EdidAccountSettingViewController: UITableViewController {
     func clickedBarButtonAction(sender: UIButton) {
         
         validator.validate(self)
-        
-//        guard let fullName = nameTextField.text else { return }
-//        guard let city = locationTextField.text else { return }
-//        guard let phone = phoneTextField.text else { return }
-//        guard let birthday = birthDayLabel.text else { return }
-//        
-//        let valueSex =  genderLabel.text == "Female" ? "0":"1"
-//        
-//        let data = UDMInfoDictionaryBuilder.updateProfile(withFullName: fullName, phoneNumber: phone, sex: valueSex, birthday: birthday, city: city)
-//        
-//        UDMService.editProfile(WithInfo: data) { data, success in
-//            
-//            if success {
-//                UDMUser.shareManager.updateInforUser(withInfo: data)
-//                
-//                println("Update profile success! with data: \(data)")
-//            } else {
-//                println("Update profile fail! with message: \(data["message"]!)")
-//            }
-//            
-//            self.navigationController?.popViewControllerAnimated(true)
-//        }
     }
     
     @IBAction func changeSwich(sender: AnyObject) {
@@ -218,13 +176,14 @@ class EdidAccountSettingViewController: UITableViewController {
         
         passwordNewCell.hidden = !swich.on
         passwordOldCell.hidden = !swich.on
+        RepasswordNewCell.hidden = !swich.on
         
         if swich.on {
-            validator.registerField(passworldTextField, errorLabel: passworldErrorLabel , rules: [RequiredRule(), PasswordRule()])
-            validator.registerField(RePassworldTextFeild, errorLabel: RePassworldErrorLabel , rules: [RequiredRule(), PasswordRule()])
+            validator.registerField(rePasswordTextFeild, errorLabel: rePasswordErrorLabel , rules: [RequiredRule(), PasswordRule()])
+            validator.registerField(rePasswordAgainTextFeild, errorLabel: rePasswordAgainErrorLable , rules: [RequiredRule(), PasswordRule()])
         } else {
-            validator.unregisterField(passworldTextField)
-            validator.unregisterField(RePassworldTextFeild)
+            validator.unregisterField(rePasswordTextFeild)
+            validator.unregisterField(rePasswordAgainTextFeild)
         }
     }
     
@@ -319,8 +278,9 @@ class EdidAccountSettingViewController: UITableViewController {
         nameTextField.resignFirstResponder()
         addressTextField.resignFirstResponder()
         phoneTextField.resignFirstResponder()
-        passworldTextField.resignFirstResponder()
-        RePassworldTextFeild.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        rePasswordTextFeild.resignFirstResponder()
+        rePasswordAgainTextFeild.resignFirstResponder()
         locationTextField.resignFirstResponder()
     }
 }
@@ -349,19 +309,75 @@ extension EdidAccountSettingViewController: ValidationDelegate {
         
         let valueSex =  genderLabel.text == "Female" ? "0":"1"
         
-        let data = UDMInfoDictionaryBuilder.updateProfile(withFullName: fullName, phoneNumber: phone, sex: valueSex, birthday: birthday, city: city)
+        let data = UDMInfoDictionaryBuilder.shareInstance.updateProfile(withFullName: fullName, phoneNumber: phone, sex: valueSex, birthday: birthday, city: city)
         
-        UDMService.editProfile(WithInfo: data) { data, success in
+        UDMService.shareInstance.editProfile(with: data) { data, success in
             
             if success {
-                UDMUser.shareManager.updateInforUser(withInfo: data)
+                println("Update profile success!")
+               
+                guard let Cdata = data["data"] as? [String: AnyObject] else {
+                    println("Not found data caches")
+                    return
+                }
+                let dataCache = UDMInfoDictionaryBuilder.shareInstance.builderRUser(with: Cdata, password: nil)
+                println("dataCache--> \(dataCache)")
                 
-                println("Update profile success! with data: \(data)")
+                CacheManager.shareInstance.update(with: dataCache, type: UDMConfig.APIService.ModelName.User)
+                
+                if !self.changePassSwitch.on {
+                    self.navigationController?.popViewControllerAnimated(true)
+                }
+                
             } else {
-                println("Update profile fail! with message: \(data["message"]!)")
+                guard let message = data["message"] as? String else {
+                    println("Not found message error")
+                    return
+                }
+                
+                UDMAlert.alert(title: "ERROR", message: message, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                return
+            }
+        }
+        
+        if changePassSwitch.on {
+            //Check change password
+            guard let passwordTextField = passwordTextField.text else {
+                return
             }
             
-            self.navigationController?.popViewControllerAnimated(true)
+            if passwordTextField != UDMUser.shareManager.inforUser().password {
+                UDMAlert.alert(title: "ERROR", message: "Password Old not correct!", dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                return
+            }
+            
+            if rePasswordAgainTextFeild.text != rePasswordTextFeild.text {
+                UDMAlert.alert(title: "ERROR", message: "Password new not same!", dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                return
+            }
+            
+            let data = UDMInfoDictionaryBuilder.shareInstance.updatePassword(withOldPassword: passwordTextField, newPassworld: rePasswordAgainTextFeild.text!)
+            
+            UDMService.shareInstance.changeAndResetPassword(with: data) { data, success in
+                
+                if success {
+
+                    println("Update password success!")
+                    CacheManager.shareInstance.updatePassword(with: self.rePasswordAgainTextFeild.text!)
+                    println("Data current: \(CacheManager.shareInstance.getRUserList()?.first)")
+                    
+                    self.navigationController?.popViewControllerAnimated(true)
+                    
+                } else {
+                    guard let message = data["message"] as? String else {
+                        println("Not found message error")
+                        return
+                    }
+                    
+                    UDMAlert.alert(title: "ERROR", message: message, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                    return
+                }
+            }
         }
     }
     

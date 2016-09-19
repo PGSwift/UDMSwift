@@ -462,7 +462,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Try again passworld" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1N-U6-iTd">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add new passworld" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="u1N-U6-iTd">
                                                     <rect key="frame" x="130" y="31" width="463" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -485,6 +485,42 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="Xpn-rJ-YcV" userLabel="RePassworldCell">
+                                        <rect key="frame" x="0.0" y="1162" width="600" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="Xpn-rJ-YcV" id="6Fi-py-py1">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="69"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NewPassworld" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o29-TX-mE2">
+                                                    <rect key="frame" x="8" y="36" width="114" height="20"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Try again passworld" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cWo-Ma-c6N">
+                                                    <rect key="frame" x="130" y="31" width="463" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="irk-Em-70S">
+                                                    <rect key="frame" x="555" y="8" width="37" height="18"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <color key="textColor" red="1" green="0.24079623820000001" blue="0.01498477533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="highlightedColor" red="1" green="0.24079623820000001" blue="0.01498477533" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="cWo-Ma-c6N" firstAttribute="leading" secondItem="o29-TX-mE2" secondAttribute="trailing" constant="8" id="1eq-xX-Wte"/>
+                                                <constraint firstAttribute="bottom" secondItem="cWo-Ma-c6N" secondAttribute="bottom" constant="8" id="A2R-tS-qQ4"/>
+                                                <constraint firstItem="cWo-Ma-c6N" firstAttribute="top" secondItem="irk-Em-70S" secondAttribute="bottom" constant="5" id="HsE-NZ-R0K"/>
+                                                <constraint firstItem="o29-TX-mE2" firstAttribute="top" secondItem="6Fi-py-py1" secondAttribute="top" constant="36" id="elL-2n-USn"/>
+                                                <constraint firstAttribute="trailing" secondItem="cWo-Ma-c6N" secondAttribute="trailing" constant="7" id="icD-f7-Ypv"/>
+                                                <constraint firstItem="o29-TX-mE2" firstAttribute="leading" secondItem="6Fi-py-py1" secondAttribute="leading" constant="8" id="jXE-IH-FyV"/>
+                                                <constraint firstAttribute="trailing" secondItem="irk-Em-70S" secondAttribute="trailing" constant="8" id="yyu-Wy-Fjf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -494,12 +530,12 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="RePassworldErrorLabel" destination="1M7-zG-FGC" id="Kne-Bx-UCj"/>
-                        <outlet property="RePassworldTextFeild" destination="u1N-U6-iTd" id="mKn-Ra-UX4"/>
+                        <outlet property="RepasswordNewCell" destination="Xpn-rJ-YcV" id="wsg-MP-i77"/>
                         <outlet property="addressErrorLabel" destination="fd0-d2-rWs" id="lTJ-mk-dHY"/>
                         <outlet property="addressTextField" destination="NeU-en-7lx" id="0K3-1K-1sd"/>
                         <outlet property="birthDayLabel" destination="joU-3C-T9H" id="xkS-mG-ncr"/>
                         <outlet property="buttonAddMoney" destination="teD-eK-nfy" id="Yut-5W-QHP"/>
+                        <outlet property="changePassSwitch" destination="uzL-pl-OLi" id="hU9-Sp-T9Z"/>
                         <outlet property="chooseImageLabel" destination="Jw8-tV-7jt" id="RA8-FO-YJN"/>
                         <outlet property="emailTextFeild" destination="F9h-bY-B0u" id="thy-VZ-ETO"/>
                         <outlet property="genderLabel" destination="dnH-Tt-NHg" id="5J5-Eg-FJE"/>
@@ -510,12 +546,16 @@
                         <outlet property="myAvataImage" destination="lID-MT-rHQ" id="sKv-KS-kCI"/>
                         <outlet property="nameErrorLabel" destination="jS8-yZ-pCQ" id="azl-PF-Tnd"/>
                         <outlet property="nameTextField" destination="nsU-Ug-4tE" id="pPE-5V-KE7"/>
+                        <outlet property="passwordErrorLabel" destination="b24-ms-FZS" id="W55-F6-5N5"/>
                         <outlet property="passwordNewCell" destination="Ka7-U7-vGc" id="kI9-u2-tPt"/>
                         <outlet property="passwordOldCell" destination="Zcw-Jt-9Ld" id="00p-Ls-W46"/>
-                        <outlet property="passworldErrorLabel" destination="b24-ms-FZS" id="tRU-EZ-rjJ"/>
-                        <outlet property="passworldTextField" destination="AzU-08-I0G" id="9If-Zf-wj6"/>
+                        <outlet property="passwordTextField" destination="AzU-08-I0G" id="P5e-d6-yCw"/>
                         <outlet property="phoneErrorLabel" destination="YoG-fg-l47" id="Vkb-r6-y4C"/>
                         <outlet property="phoneTextField" destination="q1D-dX-9RK" id="ZmE-Id-X2E"/>
+                        <outlet property="rePasswordAgainErrorLable" destination="irk-Em-70S" id="XBf-Wj-kMd"/>
+                        <outlet property="rePasswordAgainTextFeild" destination="cWo-Ma-c6N" id="KHR-9t-eIX"/>
+                        <outlet property="rePasswordErrorLabel" destination="1M7-zG-FGC" id="zBm-VG-RFW"/>
+                        <outlet property="rePasswordTextFeild" destination="u1N-U6-iTd" id="iyK-5y-Yxz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g7I-t6-JTM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -880,7 +920,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="E-Mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kro-9u-ZPB">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="admin@gmail.com" placeholder="E-Mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kro-9u-ZPB">
                                                 <rect key="frame" x="66" y="148" width="509" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="wLl-rZ-yI1"/>
@@ -888,7 +928,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cKe-2V-YFA">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="11111111Q" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cKe-2V-YFA">
                                                 <rect key="frame" x="65" y="186" width="510" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="EkV-0w-0s0"/>
@@ -978,6 +1018,17 @@
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1H-82-NfU">
+                                                <rect key="frame" x="8" y="355" width="121" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="121" id="Ilb-9W-RfF"/>
+                                                    <constraint firstAttribute="height" constant="30" id="ZnW-bu-FRC"/>
+                                                </constraints>
+                                                <state key="normal" title="Reset password"/>
+                                                <connections>
+                                                    <action selector="actionResetPassword:" destination="gGn-8l-VJe" eventType="touchUpInside" id="JLn-gU-373"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -1004,6 +1055,7 @@
                                             <constraint firstItem="Kro-9u-ZPB" firstAttribute="leading" secondItem="id1-lb-WpS" secondAttribute="trailing" constant="9" id="coI-Y9-jla"/>
                                             <constraint firstAttribute="trailing" secondItem="2E4-Mh-uNA" secondAttribute="trailing" constant="25" id="dfz-rs-d9p"/>
                                             <constraint firstAttribute="trailing" secondItem="wpb-Gc-OxQ" secondAttribute="trailing" constant="25" id="gkU-BC-Lw0"/>
+                                            <constraint firstItem="b1H-82-NfU" firstAttribute="leading" secondItem="Ztq-dy-lLs" secondAttribute="leading" constant="8" id="gnX-dj-rTs"/>
                                             <constraint firstAttribute="trailing" secondItem="tw6-JX-hJi" secondAttribute="trailing" constant="25" id="hse-Sm-89c"/>
                                             <constraint firstItem="6ua-AU-cOj" firstAttribute="top" secondItem="cKe-2V-YFA" secondAttribute="bottom" id="ifL-2d-WiI"/>
                                             <constraint firstItem="JKC-nq-Urt" firstAttribute="top" secondItem="Ztq-dy-lLs" secondAttribute="top" constant="20" id="it2-LK-1Ra"/>
@@ -1015,6 +1067,7 @@
                                             <constraint firstItem="oGa-9C-iTM" firstAttribute="leading" secondItem="Ztq-dy-lLs" secondAttribute="leading" constant="27" id="q5a-1g-qEa"/>
                                             <constraint firstItem="bl5-O5-fyg" firstAttribute="top" secondItem="id1-lb-WpS" secondAttribute="bottom" constant="5" id="qsO-gv-h4i"/>
                                             <constraint firstItem="6ua-AU-cOj" firstAttribute="leading" secondItem="Ztq-dy-lLs" secondAttribute="leading" constant="27" id="slp-X2-Bzw"/>
+                                            <constraint firstAttribute="bottom" secondItem="b1H-82-NfU" secondAttribute="bottom" constant="8" id="vct-J7-9LB"/>
                                             <constraint firstItem="cKe-2V-YFA" firstAttribute="leading" secondItem="bl5-O5-fyg" secondAttribute="trailing" constant="8" id="whf-uG-h9q"/>
                                             <constraint firstItem="esd-3c-gen" firstAttribute="leading" secondItem="Ztq-dy-lLs" secondAttribute="leading" constant="27" id="xKn-Av-qaq"/>
                                             <constraint firstItem="tw6-JX-hJi" firstAttribute="leading" secondItem="Ztq-dy-lLs" secondAttribute="leading" constant="27" id="zOI-cR-9EN"/>
@@ -1210,7 +1263,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Gx2-sc-7Cn" kind="show" id="Bzk-Ma-EVC"/>
+                                            <segue destination="Gx2-sc-7Cn" kind="show" identifier="settingDetailID" id="Bzk-Ma-EVC"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idAccountCell" textLabel="7te-zU-Yf7" style="IBUITableViewCellStyleDefault" id="0mT-nw-3v0">
@@ -1230,7 +1283,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="L2m-F4-uHS" kind="show" id="4Rq-nu-IWn"/>
+                                            <segue destination="L2m-F4-uHS" kind="show" identifier="settingAccountID" id="4Rq-nu-IWn"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

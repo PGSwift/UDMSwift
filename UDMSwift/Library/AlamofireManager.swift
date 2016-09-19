@@ -11,20 +11,22 @@ import Alamofire
 
 final class AlamofireManager {
     
-    static func requestUrlByPOST(withURL url: String, paramater: [String: AnyObject], Completion completion: ((data: [String: AnyObject], success: Bool) ->Void)?) {
+    static let shareInstance = AlamofireManager()
+    
+    func requestUrlByPOST(withURL url: String, paramater: [String: AnyObject], Completion completion: ((data: [String: AnyObject], success: Bool) ->Void)?) {
         
         var result: [String: AnyObject]? = [:]
-
+        
         var jsontext = ""
         
         do {
+            
             let jsonData = try NSJSONSerialization.dataWithJSONObject(paramater, options: NSJSONWritingOptions.PrettyPrinted)
             jsontext = String(data: jsonData, encoding: NSASCIIStringEncoding)!
-            
         } catch let error as NSError {
             println(error)
         }
-
+        
         jsontext = "data="+jsontext
         
         Alamofire.request(.POST, url, parameters: [:], encoding: .Custom({
@@ -34,54 +36,41 @@ final class AlamofireManager {
             mutableRequest.HTTPBody = data
             return (mutableRequest, nil)
         }))
-        .responseJSON { response in
-            
-            println("Url request: \(response.request)")
-
-            println("-----> Data from server: \(String(data: response.data!, encoding:NSUTF8StringEncoding)!)")
-            
-            if response.result.isSuccess {
+            .responseJSON { response in
                 
-                guard let resultQ = UDMHelpers.convertStringToDictionary(String(data: response.data!, encoding:NSUTF8StringEncoding)!) else {
-                    println("Do not convert data to dictionary at data get from Server")
+                println("Url request: \(response.request)")
+                
+                println("-----> Data from server: \(String(data: response.data!, encoding:NSUTF8StringEncoding)!)")
+                
+                if response.result.isSuccess {
+                    
+                    guard let resultQ = UDMHelpers.convertStringToDictionary(String(data: response.data!, encoding:NSUTF8StringEncoding)!) else {
+                        println("Do not convert data to dictionary at data get from Server")
+                        return
+                    }
+                    result = resultQ
+                } else {
+                    result = nil
+                }
+                
+                guard let completion = completion else {
+                    println("Not found clouse completion")
                     return
                 }
-                result = resultQ
-            } else {
-                result = nil
-            }
-            
-            guard let completion = completion else {
-                println("Not found clouse completion")
-                return
-            }
-            
-            guard let rs = result else {
-                println("Data from Server = \(result)")
-                completion(data: ["message":"Data get from server nil"],success: false)
-                return
-            }
-            
-            let isSuccess = rs["status"] as! String == "SUCCESS" ? true : false
-            
-            completion(data: rs, success: isSuccess)
+                
+                guard let rs = result else {
+                    println("Data from Server = \(result)")
+                    completion(data: ["message":"Data get from server nil"],success: false)
+                    return
+                }
+                
+                let isSuccess = rs["status"] as! String == "SUCCESS" ? true : false
+                
+                completion(data: rs, success: isSuccess)
         }
     }
-    
-    static func paramsFromJSON(json: String) -> [String : AnyObject]?
-    {
-        let objectData: NSData = (json.dataUsingEncoding(NSUTF8StringEncoding))!
-        var jsonDict: [ String : AnyObject]!
-        do {
-            jsonDict = try NSJSONSerialization.JSONObjectWithData(objectData, options: .MutableContainers) as! [ String : AnyObject]
-            return jsonDict
-        } catch {
-            print("JSON serialization failed:  \(error)")
-            return nil
-        }
-    }
-    
-    static func requestUrlByPOST(withURL url: String, paramater: [String: String], encode: ParameterEncoding, Completion completion: ((data: [String: AnyObject], success: Bool) ->Void)?) {
+
+    func requestUrlByPOST(withURL url: String, paramater: [String: String], encode: ParameterEncoding, Completion completion: ((data: [String: AnyObject], success: Bool) ->Void)?) {
         
         var result: [String: AnyObject]? = [:]
         

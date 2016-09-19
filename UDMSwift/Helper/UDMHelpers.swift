@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import ReachabilitySwift
 
 // MARK: - Singletons
 
@@ -15,84 +14,52 @@ final class UDMUser: NSObject {
     
     static let shareManager = UDMUser()
     
-    var inforUser: User!
+    var isLoginSuccess = false
     
-    func initInfoUserWith(info data: [String: AnyObject]) {
-        inforUser = User(info: data["data"]!)
-    }
-    
-    func updateInforUser(withInfo data: [String: AnyObject]) {
-        inforUser = User(info: data["data"]!)
+    func inforUser() -> RUser! {
+        guard let rUser = CacheManager.shareInstance.getRUserList()?.first else {
+            fatalError("No found inforUser")
+        }
+        return rUser
     }
     
     func getListDataUser() -> [String: String?] {
+
+        let user = inforUser()
         
         var data: [String: String?] = [:]
-        data["FullName"] = inforUser.fullName
-        data["Email"] = inforUser.mail
-        data["Sex"] = inforUser.sex
-        data["BirthDay"] = inforUser.birthday
-        data["City"] = inforUser.city
-        data["Phone Number"] = inforUser.phoneNumber
-        data["Money"] = String(inforUser.money!)
+        data["FullName"] = user.fullName
+        data["Email"] = user.email
+        data["Sex"] = user.sex
+        data["BirthDay"] = user.birthday.formatDateFromString(user.birthday)
+        data["City"] = user.city
+        data["Phone Number"] = user.phoneNumber
+        data["Money"] = String(user.money)
         
         return data
     }
-}
-
-// MARK: - Social Network
-enum SocialNetwork: String {
-    case MAIL = "email"
-    case GOOGLE = "google"
-    case FACEBOOK = "facebook"
-}
-
-// MARK: - UIStoryboard instance
-let MainStoryboard = UIStoryboard.init(name: "Main", bundle: nil)
-
-final class UDMHelpers {
     
-    // MARK: - REACHABILITY
-    private static var reachability: Reachability!
-    
-    static func startCheckConnectNetwork() {
+    func getAvata() -> UIImage? {
+        var url = ""
+        dispatch_async(dispatch_get_main_queue()) { 
+            url = self.inforUser().avatar
+        }
         
-        do {
-            reachability = try Reachability(hostname: "http://google.com/")
-            
-            reachability.whenReachable = { reachability in
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    
-                    if reachability.isReachableViaWiFi() {
-                        println("Reachable via Wifi")
-                    } else {
-                        println("Reachable via Cellular")
-                    }
-                    
-                    NSNotificationCenter.defaultCenter().postNotificationName(UDMConfig.Notification.ConnectedInternet, object: nil, userInfo:nil)
-                })
+        if url == "" {
+            return UIImage(named: "default_avatar")
+        } else {
+            guard let image = UIImage(data: NSData(contentsOfURL: NSURL(string: url)!)!) as UIImage? else {
+                println("User cannot get avata to url = \(url)")
+                return nil
             }
-            
-            reachability.whenUnreachable = { reachability in
-                dispatch_async(dispatch_get_main_queue(), {
-                    println("Not reachable")
-                    NSNotificationCenter.defaultCenter().postNotificationName(UDMConfig.Notification.DisconnetedInternet, object: nil, userInfo: nil)
-                })
-            }
-            
-            try reachability.startNotifier()
-            
-        } catch let e {
-            println("Not init Reachability NetWork : \(e)")
+            return image
         }
     }
-    
-    static func stopCheckConnectNetwork() {
-        reachability.stopNotifier()
-    }
+}
 
-    // MARK: - COMMON FUNC
+final class UDMHelpers {
+
+    // MARK: - Common func
     static func convertStringToDictionary(text: String) -> [String:AnyObject]? {
         
         if let data = text.dataUsingEncoding(NSUTF8StringEncoding) {
@@ -112,18 +79,6 @@ final class UDMHelpers {
         formatter.dateFormat = UDMConfig.formatDate
         let someDateTime = formatter.stringFromDate(NSDate())
         return someDateTime
-        
-    }
-    
-    static func formatDateFromString(value: String) -> String? {
-        
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-        let someDateTime = formatter.dateFromString(value)
-        
-        formatter.dateFormat = UDMConfig.formatDate
-        
-        return formatter.stringFromDate(someDateTime!)
     }
     
     // MARK: - Validation
@@ -148,21 +103,4 @@ final class UDMHelpers {
         }
         return false
     }
-    
 }
-
-
-
-//// MARK: - Message receive from Service
-//public struct MessageServer {
-//    let success: Bool
-//    let error: String?
-//    let title: String?
-//    
-//    init(info: [String: AnyObject]) {
-//        success = (info["success"] as? Bool) ?? false
-//        error = info["error"] as? String
-//        title = info["title"] as? String
-//    }
-//}
-

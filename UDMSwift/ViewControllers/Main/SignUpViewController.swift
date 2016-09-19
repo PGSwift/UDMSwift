@@ -82,9 +82,9 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
                 return
             }
             
-            let data = UDMInfoDictionaryBuilder.login(withEmail: "admin@gmail.com", password: "123456")
+            let data = UDMInfoDictionaryBuilder.shareInstance.login(withEmail: email, password: passwd)
             
-            UDMService.signInAccount(withInfo: data, Completion: { (data, success) in
+            UDMService.shareInstance.signInAndSignUpAccount(with: data, Completion: { (data, success) in
                 if success {
                     self.saveUser(withData: data)
                 } else {
@@ -103,9 +103,9 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
                 return
             }
             
-            let data = UDMInfoDictionaryBuilder.signin(withFullName: fullName, email: email, password: passwd)
+            let data = UDMInfoDictionaryBuilder.shareInstance.signin(withFullName: fullName, email: email, password: passwd)
             
-            UDMService.signUpAccount(WithInfo: data, Completion: { data, success in
+            UDMService.shareInstance.signInAndSignUpAccount(with: data, Completion: { data, success in
                 if success {
                     self.saveUser(withData: data)
                 } else {
@@ -117,8 +117,45 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
     }
     
     func saveUser(withData data: [String: AnyObject]) -> Void{
-        println("Data--> \(data)")
-        UDMUser.shareManager.initInfoUserWith(info: data)
+        
+        UDMUser.shareManager.isLoginSuccess = true
+        
+        guard let Cdata = data["data"] as? [String: AnyObject] else {
+            println("Not found data caches")
+            return
+        }
+        let dataCache = UDMInfoDictionaryBuilder.shareInstance.builderRUser(with: Cdata, password: textBoxPassword.text)
+        println("dataCache--> \(dataCache)")
+        
+        CacheManager.shareInstance.update(with: dataCache, type: UDMConfig.APIService.ModelName.User)
+        CacheManager.shareInstance.updatePassword(with: self.textBoxPassword.text!)
+       
+        //------------------------------------------------------------------------------------------
+        let data = UDMInfoDictionaryBuilder.shareInstance.getCategoryList(with: UDMConfig.ParentIDRoot)
+        UDMService.shareInstance.getListDataFromServer(with: data, Completion: { (data, success) in
+            if success {
+                
+                guard let Cdata = data["data"] as? [[String: AnyObject]] else {
+                    println("Not found data caches")
+                    return
+                }
+                println("dataCache--> \(Cdata)")
+                
+                CacheManager.shareInstance.updateList(with: Cdata, type: UDMConfig.APIService.ModelName.User)
+                
+                let categoryList = CacheManager.shareInstance.getRCategoryList()
+                
+                for category in categoryList! {
+                    println("Category list: ---> \n \(category)")
+                }
+                
+            } else {
+                UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                println("ERROR message: \(data["message"]!)")
+            }
+            
+        })
+//------------------------------------------------------------------------------------------
         
         var viewControllers = self.navigationController?.viewControllers
         viewControllers?.removeLast(2)
@@ -179,5 +216,27 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
         }
         
         return false
+    }
+    
+    // MARK: Handling event
+    
+    @IBAction func actionResetPassword(sender: AnyObject) {
+        UDMAlert.textInput(title: "Reset password", placeholder: "Input your email", oldText: "", dismissTitle: "Send", inViewController: self) { (text) in
+            
+            UDMHUD.showActivityIndicator()
+            
+            let data = UDMInfoDictionaryBuilder.shareInstance.resetPassword(withEmail: text)
+            
+            UDMService.shareInstance.signInAndSignUpAccount(with: data, Completion: { data, success in
+                UDMHUD.hideActivityIndicator({ 
+                    if success {
+                        println("Send email message: \(data["message"]!)")
+                    } else {
+                        UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                        println("ERROR message: \(data["message"]!)")
+                    }
+                })
+            })
+        }
     }
 }
