@@ -6,37 +6,48 @@
 //  Copyright © 2016 XUANVINHTD. All rights reserved.
 //
 
-final class CouresListViewController: UIViewController {
+final class CouresListViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
     @IBOutlet weak var courseTable: UITableView!
     
-    var courseList: [String] = []
+    var courseArr: [RCourse] = []
+    
+    // MARK: - Initialzation
+    static func createInstance() -> UIViewController {
+        return MainStoryboard.instantiateViewControllerWithIdentifier("CouresListViewControllerID") as! CouresListViewController
+    }
+    
+    func configItems() {
+        courseTable.estimatedRowHeight = 44.0
+        courseTable.rowHeight = UITableViewAutomaticDimension
+    }
     
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         println("Init screen CouresListViewController")
-        
-        courseTable.estimatedRowHeight = 44.0
-        courseTable.rowHeight = UITableViewAutomaticDimension
-        
-        courseList = ["1","2","3","4","5","6","7", "8", "9"]
+
+        configItems()
     }
+
 }
 // MARK: - Table view
 extension CouresListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return courseList.count
+        return courseArr.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cellCourse = tableView.dequeueReusableCellWithIdentifier(CourseCell.ReuseIdentifier) as? CourseCell
+        var cellCourse: CourseCell? = tableView.dequeueReusableCellWithIdentifier(CourseCell.ReuseIdentifier) as? CourseCell
         if cellCourse == nil {
             tableView.registerNib(UINib(nibName: CourseCell.NibName, bundle: nil), forCellReuseIdentifier: CourseCell.ReuseIdentifier)
             cellCourse = tableView.dequeueReusableCellWithIdentifier(CourseCell.ReuseIdentifier) as? CourseCell
         }
+        cellCourse?.title.text = courseArr[indexPath.row].title
+        cellCourse?.teacherName.text = "VINH"
+        
         return cellCourse!
     }
     

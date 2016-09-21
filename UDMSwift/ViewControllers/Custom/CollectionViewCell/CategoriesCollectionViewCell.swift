@@ -15,6 +15,8 @@ class CategoriesCollectionViewCell: UICollectionViewCell , ReusableView {
     
     @IBOutlet weak var myImage: UIImageView!
     
+    var categorie: RCategory = RCategory()
+    
     // MARK: - Initialzation
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,11 +33,13 @@ class CategoriesCollectionViewCell: UICollectionViewCell , ReusableView {
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
+        
         let nameCategory = UILabel(frame: CGRectMake(0, 0, self.bounds.width, self.bounds.height))
         nameCategory.textColor = UIColor.whiteColor()
         nameCategory.textAlignment = .Center
         nameCategory.backgroundColor = UIColor.clearColor()
-        nameCategory.text = "mylabel text"
+        nameCategory.text = categorie.title
         self.myImage.addSubview(nameCategory)
     }
 }

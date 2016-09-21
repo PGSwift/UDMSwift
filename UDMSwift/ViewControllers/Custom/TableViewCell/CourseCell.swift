@@ -12,4 +12,8 @@ final class CourseCell: UITableViewCell, ReusableView {
     // MARK: - Properties
     static let ReuseIdentifier: String = "idCourseCell"
     static let NibName: String = "CourseCell"
+    
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var teacherName: UILabel!
+    
 }

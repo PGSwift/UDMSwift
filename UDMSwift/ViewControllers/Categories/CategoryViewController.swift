@@ -14,22 +14,18 @@ final class CategoryViewController: UIViewController, ViewControllerProtocol {
     private let heightCoursesSection = 260
     @IBOutlet weak var tableCategory: UITableView!
     
-    var arrCategory: [String] = []
+    var categoryArr: [RCategory] = []
     
     // MARK: - Initialzation
     static func createInstance() -> UIViewController {
-        return MainStoryboard.instantiateViewControllerWithIdentifier("") as! CategoryViewController
+        return MainStoryboard.instantiateViewControllerWithIdentifier("CategoryViewControllerID") as! CategoryViewController
     }
     
     func configItems() {
         self.tableCategory.tableFooterView = UIView()
         self.tableCategory.registerClass(UITableViewCell.self, forCellReuseIdentifier: "idDefauleCell")
     }
-    
-    func initData() {
-        arrCategory = ["v", "c", "d", "e", "f", "g", "v", "c", "d", "e", "f", "g", "x", "u", "l"]
-    }
-    
+
     // MARK: - View life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +34,7 @@ final class CategoryViewController: UIViewController, ViewControllerProtocol {
         
         configItems()
         
-        initData()
+        //initData()
     }
 }
 // MARK: - TableView
@@ -51,7 +47,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
         if section == 0 {
             return 1
         }
-        return arrCategory.count
+        return categoryArr.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -86,7 +82,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
             cellTable = UITableViewCell.init(style: .Default, reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)
         }
         cellTable!.accessoryType = .DisclosureIndicator
-        cellTable!.textLabel?.text = arrCategory[indexPath.row]
+        cellTable!.textLabel?.text = categoryArr[indexPath.row].title
         
         return cellTable!
     }
@@ -94,7 +90,7 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         guard let myCell = cell as? MainTableViewCell else {
             println("myCell cannot be nil here")
-            fatalError()
+            return
         }
         myCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.section)
     }

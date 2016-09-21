@@ -22,7 +22,7 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
     private var handlerNotificationDisConnetInternet: AnyObject?
     private var handlerNotificationGetDataCourseAndCategory: AnyObject?
     
-    var numberSecction = 0
+    var numberSecction = 3
 
     @IBOutlet weak var mainTableView: UITableView!
     
@@ -61,6 +61,7 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
                 CacheManager.shareInstance.updateList(with: Cdata, type: UDMConfig.APIService.ModelName.Category)
                 
                 if let categoryArr = CacheManager.shareInstance.getRCategoryList() {
+                    self.categoryArr = categoryArr
                     for category in categoryArr {
                         println("Category list: ---> \n \(category)")
                     }
@@ -86,9 +87,11 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
                 CacheManager.shareInstance.updateList(with: Cdata, type: UDMConfig.APIService.ModelName.Course)
                 
                 if let courseArr = CacheManager.shareInstance.getRCourseList() {
+                    self.courseArr = courseArr
                     for course in courseArr {
                         println("Course list: ---> \n \(course)")
                     }
+                    self.mainTableView.reloadData()
                 }
             } else {
                 UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
@@ -203,7 +206,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 viewHeader0?.contentView .addSubview(imageView)
                 
                 let button: UIButton = UIButton.init(frame: CGRect(x: UDMConfig.getScreenRect().width - 110, y: heightHeader0 - 40, width: 100, height: CGFloat(heightHeader)))
-                button.setTitleColor(UIColor.flatWhiteColor(), forState: .Normal)
+                button.setTitleColor(ChameleonManger.theme(), forState: .Normal)
                 button.layer.borderColor = UIColor.flatGreenColor().CGColor
                 button.layer.borderWidth = 1.5
                 button.layer.cornerRadius = 3.5
@@ -227,7 +230,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             viewHeader = UITableViewHeaderFooterView(reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)
             
             let button: UIButton = UIButton.init(frame: CGRect(x: CGFloat(UDMConfig.getScreenRect().width) - 110, y: 0, width: 100, height: CGFloat(heightHeader)))
-            button.setTitleColor(UIColor.flatWhiteColor(), forState: .Normal)
+            button.setTitleColor(ChameleonManger.theme(), forState: .Normal)
             button.layer.borderColor = UIColor.flatGreenColor().CGColor
             button.layer.borderWidth = 1.5
             button.layer.cornerRadius = 3.5
@@ -301,25 +304,41 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - action button
     func pressed(sender: UIButton!) {
         println("Seleted button with tab = \(sender.tag)")
+        if sender.titleLabel?.text == "button 1" {
+            let courseViewController: CouresListViewController = CouresListViewController.createInstance() as! CouresListViewController
+            courseViewController.courseArr = self.courseArr
+            self.navigationController?.pushViewController(courseViewController, animated: true)
+        } else {
+            let categoryViewController: CategoryViewController = CategoryViewController.createInstance() as! CategoryViewController
+            categoryViewController.categoryArr = self.categoryArr
+            self.navigationController?.pushViewController(categoryViewController, animated: true)
+        }
     }
 }
 // MARK: - CollectionView
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if collectionView.tag == 0 {
+            return courseArr.count
+        } else {
+            return categoryArr.count
+        }
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cellCollection = UICollectionViewCell.init()
         
         if collectionView.tag == 0 {
-            cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier(CoursesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath)
+            let courceCellCollection: CoursesCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(CoursesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath) as! CoursesCollectionViewCell
+            courceCellCollection.course = self.courseArr[indexPath.item]
+            return courceCellCollection
         } else if collectionView.tag == 1 {
-            cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath)
-        } else if collectionView.tag == 2 {
-            cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath)
+            let categoriCellCollection: CategoriesCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath) as! CategoriesCollectionViewCell
+            categoriCellCollection.categorie = categoryArr[indexPath.item]
+            return categoriCellCollection
+        } else {
+            let cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath)
+            return cellCollection
         }
-        return cellCollection
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
