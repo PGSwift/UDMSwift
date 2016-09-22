@@ -31,7 +31,8 @@ final class CacheManager {
         
         // Use the default directory, but replace the filename with the username
         config.fileURL = config.fileURL?.URLByDeletingLastPathComponent?.URLByAppendingPathComponent("\(UDMConfig.AppName).realm")
-        
+    
+        println("LINK REALM = \(config.fileURL)")
         // Set this as the configuration used for the default Realm
         Realm.Configuration.defaultConfiguration = config
     }
@@ -56,6 +57,12 @@ final class CacheManager {
                     break
                 case .Course:
                     realm.add(RCourse(value: data))
+                    break
+                case .Curriculums:
+                    realm.add(RCurruculum(value: data))
+                    break
+                case .Teacher:
+                    realm.add(RTeacher(value: data))
                     break
                 }
             }
@@ -88,6 +95,16 @@ final class CacheManager {
                         realm.add(RCourse(value: data), update: true)
                     }
                     break
+                case .Curriculums:
+                    for data in dataList {
+                        realm.add(RCurruculum(value: data), update: true)
+                    }
+                    break
+                case .Teacher:
+                    for data in dataList {
+                        realm.add(RTeacher(value: data), update: true)
+                    }
+                    break
                 }
             }
         } catch let error {
@@ -112,6 +129,12 @@ final class CacheManager {
                     break
                 case .Course:
                     realm.add(RCourse(value: data), update: true)
+                    break
+                case .Curriculums:
+                    realm.add(RCurruculum(value: data), update: true)
+                    break
+                case .Teacher:
+                    realm.add(RTeacher(value: data), update: true)
                     break
                 }
             }
@@ -138,6 +161,12 @@ final class CacheManager {
                 break
             case .Course:
                 obj = realm.objects(RCourse.self)
+                break
+            case .Curriculums:
+                 obj = realm.objects(RCurruculum.self)
+                break
+            case .Teacher:
+                obj = realm.objects(RTeacher.self)
                 break
             }
             
@@ -214,6 +243,29 @@ final class CacheManager {
         
         return realm.objects(RCourse.self).toArray(RCourse.self)
     }
-
+    // MARK: - Model RCurriculum
+    
+    func getRCurriculmList() ->[RCurruculum]? {
+        
+        guard let realm = self.realm else {
+            println("realm = nil")
+            return nil
+        }
+        
+        return realm.objects(RCurruculum.self).toArray(RCurruculum.self)
+    }
+    
+    // MARK: - Model RTeacher
+    
+    func getRTeacherList() -> Results<RTeacher>? {
+        
+        guard let realm = self.realm else {
+            println("realm = nil")
+            return nil
+        }
+        
+        return realm.objects(RTeacher.self)
+    }
+    
 }
 

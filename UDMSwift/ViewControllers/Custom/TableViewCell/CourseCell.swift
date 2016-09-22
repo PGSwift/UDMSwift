@@ -15,5 +15,6 @@ final class CourseCell: UITableViewCell, ReusableView {
     
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var teacherName: UILabel!
+    @IBOutlet weak var courseImage: UIImageView!
     
 }

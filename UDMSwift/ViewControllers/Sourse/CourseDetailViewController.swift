@@ -8,16 +8,90 @@
 
 import UIKit
 
-final class CourseDetailViewController: UIViewController {
+final class CourseDetailViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
     @IBOutlet weak var courseDetailTable: UITableView!
+    
+    var course = RCourse()
+    var teacher = RTeacher()
+    var curriculumnArr = [RCurruculum]()
+    
+    // MARK: - Initialzation
+    static func createInstance() -> UIViewController {
+        return MainStoryboard.instantiateViewControllerWithIdentifier("CourseDetailViewControllerID") as! CourseDetailViewController
+    }
+    
+    func configItems() {
+        courseDetailTable.estimatedRowHeight = 44.0
+        courseDetailTable.rowHeight = UITableViewAutomaticDimension
+    }
+    
+    func initData() {
+        //Get curriculumns
+        let data = UDMInfoDictionaryBuilder.shareInstance.getCourseDetail(with: UDMConfig.CourseIDRoot)
+        UDMService.shareInstance.getListDataFromServer(with: data, Completion: { (data, success) in
+            if success {
+                
+                guard let Cdata = data["data"] as? [[String: AnyObject]] else {
+                    println("Not found data caches")
+                    return
+                }
+                println("CurriculumnArr detail --> \(Cdata)")
+                
+                CacheManager.shareInstance.updateList(with: Cdata, type: UDMConfig.APIService.ModelName.Curriculums)
+                
+                if let curriculumnArr = CacheManager.shareInstance.getRCurriculmList() {
+                    self.curriculumnArr = curriculumnArr
+                    for cur in curriculumnArr {
+                        println("curriculumnArr list: ---> \n \(cur)")
+                    }
+                    self.courseDetailTable.reloadData()
+                }
+                
+            } else {
+                UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                println("ERROR message: \(data["message"]!)")
+            }
+        })
+        
+        // Get Teacher Info
+        let dataTeacher = UDMInfoDictionaryBuilder.shareInstance.getTeacherInfo(with: course.authorID)
+        UDMService.shareInstance.getListDataFromServer(with: dataTeacher, Completion: { (data, success) in
+            if success {
+                
+                guard let Cdata = data["data"] as? [String: AnyObject] else {
+                    println("Not found data caches")
+                    return
+                }
+                println("Teacher info --> \(Cdata)")
+                var changeData = Cdata
+                changeData.changeKey("description", to: "descriptions")
+                
+                CacheManager.shareInstance.update(with: changeData, type: UDMConfig.APIService.ModelName.Teacher)
+                
+                if let teacherArr = CacheManager.shareInstance.getRTeacherList() {
+                    for tearch in teacherArr {
+                        self.teacher = tearch
+                        println("Tearch list: ---> \n \(tearch)")
+                    }
+                    self.courseDetailTable.reloadData()
+                }
+                
+            } else {
+                UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                println("ERROR message: \(data["message"]!)")
+            }
+            
+        })
+
+    }
     
     // MARK: - Life view cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        courseDetailTable.estimatedRowHeight = 44.0
-        courseDetailTable.rowHeight = UITableViewAutomaticDimension
+        configItems()
+        initData()
     }
 }
 // MARK: - Table view
@@ -67,6 +141,8 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
                 cellCurriculum?.buttonSeeAll.tag = TabConfig.TabButtonSeeAll.Curriculum
                 cellCurriculum?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
+            cellCurriculum?.curriculumnArr = curriculumnArr
+            cellCurriculum?.reloadData()
             return cellCurriculum!
         case 3:
             var cellReviews = tableView.dequeueReusableCellWithIdentifier(CourseReviewsCell.ReuseIdentifier) as? CourseReviewsCell
@@ -85,6 +161,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
                 cellInstructor?.buttonSeeAll.tag = TabConfig.TabButtonSeeAll.Instructor
                 cellInstructor?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
+            cellInstructor?.teacher = teacher
             return cellInstructor!
         case 5:
             var cellCourse = tableView.dequeueReusableCellWithIdentifier(CourseCell.ReuseIdentifier) as? CourseCell

@@ -15,8 +15,9 @@ final class CategoryViewController: UIViewController, ViewControllerProtocol {
     @IBOutlet weak var tableCategory: UITableView!
     
     var categoryArr: [RCategory] = []
+    var courseArr: [RCourse] = []
     
-    // MARK: - Initialzation
+    // MARK: - Initialzzation
     static func createInstance() -> UIViewController {
         return MainStoryboard.instantiateViewControllerWithIdentifier("CategoryViewControllerID") as! CategoryViewController
     }
@@ -33,8 +34,6 @@ final class CategoryViewController: UIViewController, ViewControllerProtocol {
         println("Init Screen CategoryViewController")
         
         configItems()
-        
-        //initData()
     }
 }
 // MARK: - TableView
@@ -117,12 +116,12 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - CollectionView
 extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return self.courseArr.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cellCollection = UICollectionViewCell.init()
-            cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier(CoursesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath)
+        let cellCollection: CoursesCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(CoursesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath) as! CoursesCollectionViewCell
+        cellCollection.course = self.courseArr[indexPath.item]
         return cellCollection
     }
     

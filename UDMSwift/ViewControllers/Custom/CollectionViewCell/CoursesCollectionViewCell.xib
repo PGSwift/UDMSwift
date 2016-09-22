@@ -64,6 +64,7 @@
             </constraints>
             <size key="customSize" width="221" height="350"/>
             <connections>
+                <outlet property="courseImage" destination="qSn-yT-uLM" id="ea3-w5-LGK"/>
                 <outlet property="nameTeacher" destination="hE4-vl-gFA" id="VQL-Ej-svs"/>
                 <outlet property="newPrice" destination="N1S-Vb-b9a" id="OYN-sS-b7Z"/>
                 <outlet property="oldPrice" destination="Ga1-LG-VOA" id="BVd-rZ-A7q"/>

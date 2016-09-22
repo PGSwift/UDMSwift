@@ -81,6 +81,19 @@ final class UDMHelpers {
         return someDateTime
     }
     
+    static func getImageByURL(with url: String) -> UIImage {
+
+        if url == "" || !url.containsString("/") {
+            return UIImage(named: "default_avatar")!
+        } else {
+            guard let image = UIImage(data: NSData(contentsOfURL: NSURL(string: UDMConfig.APIService.rootDoman + url)!)!) as UIImage? else {
+                println("User cannot get avata to url = \(url)")
+                return UIImage(named: "default_avatar")!
+            }
+            return image
+        }
+    }
+    
     // MARK: - Validation
     static func isValidEmail(testStr:String) -> Bool {
         
@@ -102,5 +115,16 @@ final class UDMHelpers {
             return true
         }
         return false
+    }
+    
+    static func changeContentData(with data:[[String: AnyObject]]) -> [[String: AnyObject]]{
+        var result = [[String: AnyObject]]()
+        
+        for dic in data {
+            var dicChange = dic
+            dicChange.changeKey("description", to: "descriptions")
+            result.append(dicChange)
+        }
+        return result
     }
 }

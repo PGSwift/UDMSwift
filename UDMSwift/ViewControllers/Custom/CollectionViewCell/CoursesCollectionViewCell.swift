@@ -20,6 +20,8 @@ class CoursesCollectionViewCell: UICollectionViewCell, ReusableView {
     @IBOutlet weak var ratingControl: RatingControlView!
     var course: RCourse = RCourse()
     
+    @IBOutlet weak var courseImage: UIImageView!
+    
     // MARK: - Initialzation
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -49,10 +51,20 @@ class CoursesCollectionViewCell: UICollectionViewCell, ReusableView {
     
     func initData() {
         self.title.text = course.title
-        self.nameTeacher.text = "VINH"
+        self.nameTeacher.text = course.author
         self.newPrice.text = course.newPrice
         self.oldPrice.text = course.oldPrice
         self.ratingControl.rating = 2
+        
+        let url = self.course.thumbnail
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            
+            let img = UDMHelpers.getImageByURL(with: url)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.courseImage.image = img
+            })
+        }
     }
 
 }

@@ -30,6 +30,7 @@ final class UDMConfig {
     
     static let AppName = "UDMSwift"
     static let ParentIDRoot = "-1"
+    static let CourseIDRoot = "-1"
     
     static let CourseLimit = "10"
     static let CourseOffset = "10"
@@ -74,6 +75,7 @@ final class UDMConfig {
             case ChangePassword = "update_password"
             case ResetPassword = "reset_password"
             case GetData = "get"
+            case GetTeacherInfo = "get_teacherInfo"
         }
         
         // MARK: - Function name
@@ -81,6 +83,8 @@ final class UDMConfig {
             case User = "user"
             case Category = "category"
             case Course = "courses"
+            case Curriculums = "curriculums"
+            case Teacher = "teacher"
         }
         
         struct Account {

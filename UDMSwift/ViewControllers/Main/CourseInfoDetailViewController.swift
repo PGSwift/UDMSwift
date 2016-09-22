@@ -14,7 +14,7 @@ final class CourseInfoDetailViewController: UIViewController, ViewControllerProt
     
     // MARK: - Initialzation
     static func createInstance() -> UIViewController {
-        return MainStoryboard.instantiateViewControllerWithIdentifier("DetailListViewControllerID") as! CourseInfoDetailViewController
+        return MainStoryboard.instantiateViewControllerWithIdentifier("CourseInfoDetailViewControllerID") as! CourseInfoDetailViewController
     }
     
     // MARK: - View life cycle

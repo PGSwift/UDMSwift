@@ -15,5 +15,9 @@ extension Dictionary {
             self.updateValue(value, forKey: key)
         }
     }
-    
+
+    mutating func changeKey(from: Key, to: Key) {
+        self[to] = self[from]
+        self.removeValueForKey(from)
+    }
 }

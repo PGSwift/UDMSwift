@@ -21,10 +21,29 @@ final class CourseInstructorCell: UITableViewCell, ReusableView {
     @IBOutlet weak var textViewContent: UITextView!
     @IBOutlet weak var buttonSeeAll: UIButton!
     
+    var teacher = RTeacher()
+    
     // MARK: - Method
     override func awakeFromNib() {
         super.awakeFromNib()
         textViewContent.sizeToFit()
         textViewContent.scrollEnabled = false
+        
+    }
+    
+    override func layoutSubviews() {
+        nameIntructor.text = teacher.fullName
+        textViewContent.text = teacher.descriptions
+        
+        let url = teacher.avatar
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            
+            let img = UDMHelpers.getImageByURL(with: url)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                self.avataIntructor.image = img
+            })
+        }
+        
     }
 }

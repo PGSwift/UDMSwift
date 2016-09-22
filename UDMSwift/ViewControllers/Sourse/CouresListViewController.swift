@@ -46,12 +46,26 @@ extension CouresListViewController: UITableViewDelegate, UITableViewDataSource {
             cellCourse = tableView.dequeueReusableCellWithIdentifier(CourseCell.ReuseIdentifier) as? CourseCell
         }
         cellCourse?.title.text = courseArr[indexPath.row].title
-        cellCourse?.teacherName.text = "VINH"
+        cellCourse?.teacherName.text = courseArr[indexPath.row].author
+        
+        let url = self.courseArr[indexPath.row].thumbnail
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+            
+            let img = UDMHelpers.getImageByURL(with: url)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                cellCourse?.courseImage.image = img
+            })
+        }
         
         return cellCourse!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("Clicked cell row: \(indexPath.row)")
+        
+        let courseDetailViewController: CourseDetailViewController = CourseDetailViewController.createInstance() as! CourseDetailViewController
+        courseDetailViewController.course = courseArr[indexPath.row]
+        self.navigationController?.pushViewController(courseDetailViewController, animated: true)
     }
 }

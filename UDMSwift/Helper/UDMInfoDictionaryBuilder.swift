@@ -191,7 +191,7 @@ final class UDMInfoDictionaryBuilder {
     }
     
     // MARK: - Model Course
-    private func builderCourse(withModel model: String?, funcName: String?,token: String?, idCategory: String?, limit: String?, offset: String?) -> [String: String]{
+    private func builderCourse(withModel model: String?, funcName: String?,token: String?, idCategory: String?, courseID: String?, limit: String?, offset: String?) -> [String: String]{
         
         let commonDictionary = builder(withModel: model, funcName: funcName, token: token)
         var result: [String: String] = [:]
@@ -206,6 +206,10 @@ final class UDMInfoDictionaryBuilder {
             result["offset"] = _offset
         }
         
+        if let _courseID = courseID {
+            result["coursesID"] = _courseID
+        }
+        
         result.update(commonDictionary)
         
         return result
@@ -216,9 +220,44 @@ final class UDMInfoDictionaryBuilder {
         return builderCourse(withModel: UDMConfig.APIService.ModelName.Course.rawValue,
                                funcName: UDMConfig.APIService.FuncName.GetData.rawValue,
                                token: UDMUser.shareManager.inforUser().token,
-                               idCategory: idCategory,
+                               idCategory: idCategory, courseID: nil,
                                limit: limit,
                                offset: offset)
     }
     
+    // MARK: - Model Curriculums
+    func getCourseDetail(with courseID: String?) -> [String: String] {
+        
+        return builderCourse(withModel: UDMConfig.APIService.ModelName.Curriculums.rawValue,
+                             funcName: UDMConfig.APIService.FuncName.GetData.rawValue,
+                             token: UDMUser.shareManager.inforUser().token,
+                             idCategory: nil, courseID: courseID,
+                             limit: nil,
+                             offset: nil)
+    }
+    
+    // MARK: - Model Teacher
+    private func builderTeacher(withModel model: String?, funcName: String?,token: String?, teacherID: String?) -> [String: String]{
+        
+        let commonDictionary = builder(withModel: model, funcName: funcName, token: token)
+        var result: [String: String] = [:]
+        
+        if let _teacherID = teacherID {
+            result["teacherID"] = _teacherID
+        }
+        
+        result.update(commonDictionary)
+        
+        return result
+    }
+    
+    func getTeacherInfo(with teacherID: String?) -> [String: String] {
+        
+        return builderTeacher(withModel: UDMConfig.APIService.ModelName.Teacher.rawValue,
+                             funcName: UDMConfig.APIService.FuncName.GetTeacherInfo.rawValue,
+                             token: UDMUser.shareManager.inforUser().token,
+                             teacherID: teacherID)
+    }
+    
+
 }

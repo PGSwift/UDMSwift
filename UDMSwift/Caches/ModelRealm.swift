@@ -43,17 +43,46 @@ public class RCategory: Object {
 // MARK: - COURSE
 public class RCourse: Object {
     public dynamic var id = "0"
-    public dynamic var categoryID = "0"
     public dynamic var title = ""
-    public dynamic var teacherID = ""
+    public dynamic var author = ""
+    public dynamic var authorID = ""
+    public dynamic var descriptions = ""
     public dynamic var oldPrice = "0"
     public dynamic var newPrice = "0"
     public dynamic var thumbnail = ""
-    public dynamic var createdDate = ""
-    public dynamic var modified = "0"
+    public dynamic var sale = "0"
     public dynamic var rank = "0"
     public dynamic var review = ""
     public dynamic var student = "0"
+    
+    override public class func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+// MARK: - CURRICULUMS
+public class RCurruculum: Object {
+    public dynamic var id = "0"
+    public dynamic var ccourseID = ""
+    public dynamic var numbers = "0"
+    public dynamic var title = ""
+    public dynamic var type = "0"
+    public dynamic var timeVideo = ""
+    public dynamic var videoReview = ""
+    public dynamic var videoPlay = ""
+    
+    override public class func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+// MARK: - TEACHER
+public class RTeacher: Object {
+    public dynamic var id = "0"
+    public dynamic var fullName = ""
+    public dynamic var avatar = "0"
+    public dynamic var descriptions = ""
+    public dynamic var rank = "0"
     
     override public class func primaryKey() -> String? {
         return "id"

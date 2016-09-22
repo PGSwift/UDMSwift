@@ -84,7 +84,10 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
                 }
                 println("dataCache Course--> \(Cdata)")
                 
-                CacheManager.shareInstance.updateList(with: Cdata, type: UDMConfig.APIService.ModelName.Course)
+                let changeData = UDMHelpers.changeContentData(with: Cdata)
+                
+                
+                CacheManager.shareInstance.updateList(with: changeData, type: UDMConfig.APIService.ModelName.Course)
                 
                 if let courseArr = CacheManager.shareInstance.getRCourseList() {
                     self.courseArr = courseArr
@@ -311,6 +314,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let categoryViewController: CategoryViewController = CategoryViewController.createInstance() as! CategoryViewController
             categoryViewController.categoryArr = self.categoryArr
+            categoryViewController.courseArr = self.courseArr
             self.navigationController?.pushViewController(categoryViewController, animated: true)
         }
     }
@@ -333,7 +337,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return courceCellCollection
         } else if collectionView.tag == 1 {
             let categoriCellCollection: CategoriesCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath) as! CategoriesCollectionViewCell
+            
+            categoriCellCollection.nameCategory.text = categoryArr[indexPath.item].title
             categoriCellCollection.categorie = categoryArr[indexPath.item]
+            
             return categoriCellCollection
         } else {
             let cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath)

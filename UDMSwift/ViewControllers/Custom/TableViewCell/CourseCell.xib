@@ -68,6 +68,7 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="courseImage" destination="M7n-B5-zht" id="UJZ-uk-EjY"/>
                 <outlet property="teacherName" destination="bPE-nI-C4k" id="K4P-j3-foX"/>
                 <outlet property="title" destination="rXT-dn-H7V" id="XRS-OF-poO"/>
             </connections>

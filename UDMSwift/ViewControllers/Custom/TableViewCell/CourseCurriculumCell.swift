@@ -18,6 +18,8 @@ final class CourseCurriculumCell: UITableViewCell, ReusableView {
     @IBOutlet weak var buttonSeeAll: UIButton!
     @IBOutlet weak var tableCurriculum: UITableView!
     
+    var curriculumnArr = [RCurruculum]()
+    
     let tabLabel = 100
 
     // MARK: - Method init
@@ -26,11 +28,15 @@ final class CourseCurriculumCell: UITableViewCell, ReusableView {
         tableCurriculum.delegate = self
         tableCurriculum.dataSource = self
     }
+    
+    func reloadData() {
+        tableCurriculum.reloadData()
+    }
 }
 
 extension CourseCurriculumCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return curriculumnArr.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -42,20 +48,20 @@ extension CourseCurriculumCell: UITableViewDataSource, UITableViewDelegate {
             label.layer.cornerRadius = 12.5
             label.layer.borderWidth = 1.0
             label.layer.borderColor = UIColor.blackColor().CGColor
-            label.text = "0"
+            label.text = curriculumnArr[indexPath.row].numbers
             label.textAlignment = .Center
             label.tag = tabLabel
             label.backgroundColor = UIColor.clearColor()
             
             cellTable?.imageView?.addSubview(label)
-            cellTable?.detailTextLabel?.text = "122321332"
+            cellTable?.detailTextLabel?.text = "Video - " + curriculumnArr[indexPath.row].timeVideo
             // goi y : thay image co size phu hop va mau trang
         }
         if let labelNumber = cellTable?.imageView?.viewWithTag(tabLabel) as? UILabel {
             labelNumber.text = String(indexPath.row)
         }
         
-        cellTable?.textLabel?.text = String(indexPath.row)
+        cellTable?.textLabel?.text = curriculumnArr[indexPath.row].title
         return cellTable!
     }
     
