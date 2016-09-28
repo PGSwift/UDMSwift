@@ -11,6 +11,8 @@
 		4A1B71DA1D84EDB3006C3655 /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B71D91D84EDB3006C3655 /* ViewControllerProtocol.swift */; };
 		4A214A9A1D70765200525B06 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A214A991D70765200525B06 /* Teacher.swift */; };
 		4A214A9C1D70782F00525B06 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A214A9B1D70782F00525B06 /* Account.swift */; };
+		4A2DBD6A1D9C28EC00978A0E /* CategoriesCollectionViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DBD691D9C28EC00978A0E /* CategoriesCollectionViewMain.swift */; };
+		4A2DBD6C1D9C290B00978A0E /* CategoriesCollectionViewMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2DBD6B1D9C290B00978A0E /* CategoriesCollectionViewMain.xib */; };
 		4A351AEA1D675F780053B4A2 /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A351AE81D675F780053B4A2 /* ReviewsCell.swift */; };
 		4A351AEB1D675F780053B4A2 /* ReviewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A351AE91D675F780053B4A2 /* ReviewsCell.xib */; };
 		4A45354D1D61FAEF00CFFFC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45354C1D61FAEF00CFFFC5 /* AppDelegate.swift */; };
@@ -108,6 +110,8 @@
 		4A1B71D91D84EDB3006C3655 /* ViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerProtocol.swift; sourceTree = "<group>"; };
 		4A214A991D70765200525B06 /* Teacher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Teacher.swift; path = Account/Teacher.swift; sourceTree = SOURCE_ROOT; };
 		4A214A9B1D70782F00525B06 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Account/Account.swift; sourceTree = SOURCE_ROOT; };
+		4A2DBD691D9C28EC00978A0E /* CategoriesCollectionViewMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewMain.swift; sourceTree = "<group>"; };
+		4A2DBD6B1D9C290B00978A0E /* CategoriesCollectionViewMain.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesCollectionViewMain.xib; sourceTree = "<group>"; };
 		4A351AE81D675F780053B4A2 /* ReviewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
 		4A351AE91D675F780053B4A2 /* ReviewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewsCell.xib; sourceTree = "<group>"; };
 		4A4535491D61FAEF00CFFFC5 /* UDMSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UDMSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -349,6 +353,8 @@
 				4A4535701D6200F500CFFFC5 /* CategoriesCollectionViewCell.xib */,
 				4A4535731D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift */,
 				4A4535751D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib */,
+				4A2DBD691D9C28EC00978A0E /* CategoriesCollectionViewMain.swift */,
+				4A2DBD6B1D9C290B00978A0E /* CategoriesCollectionViewMain.xib */,
 			);
 			path = CollectionViewCell;
 			sourceTree = "<group>";
@@ -583,6 +589,7 @@
 				4A6E03771D66172B00C2717C /* CourseCell.xib in Resources */,
 				4A4535541D61FAEF00CFFFC5 /* Assets.xcassets in Resources */,
 				4A4535761D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib in Resources */,
+				4A2DBD6C1D9C290B00978A0E /* CategoriesCollectionViewMain.xib in Resources */,
 				4A6E03711D6616F300C2717C /* CourseDescriptionCell.xib in Resources */,
 				4A6E037B1D66181400C2717C /* CourseInstructorCell.xib in Resources */,
 				4A8075591D689FC6006536A8 /* GoogleService-Info.plist in Resources */,
@@ -711,6 +718,7 @@
 				4AEF4F071D6F570500800244 /* UDMLog.swift in Sources */,
 				9264E9F91D64500100D8B066 /* WishListViewController.swift in Sources */,
 				4A6E03691D66144200C2717C /* CourseCurriculumCell.swift in Sources */,
+				4A2DBD6A1D9C28EC00978A0E /* CategoriesCollectionViewMain.swift in Sources */,
 				4A7DD4AC1D680C2B00AB0BD2 /* SignInViewController.swift in Sources */,
 				4ACBE3201D787DB500360B9A /* CharacterSetRule.swift in Sources */,
 				4ACBE31E1D787DB500360B9A /* AlphaNumericRule.swift in Sources */,

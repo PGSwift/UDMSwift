@@ -31,4 +31,8 @@ final class ChameleonManger {
     static func toolBarTheme() -> UIColor {
         return FlatGreen()
     }
+    
+    static func backgroudTheme() -> UIColor {
+        return FlatWhite()
+    }
 }

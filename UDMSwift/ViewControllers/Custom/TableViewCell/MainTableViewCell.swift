@@ -40,6 +40,7 @@ final class MainTableViewCell: UITableViewCell, ReusableView {
         
         collecttionView.registerNib(UINib(nibName: CoursesCollectionViewCell.NibName, bundle: nil), forCellWithReuseIdentifier: CoursesCollectionViewCell.ReuseIdentifier)
         collecttionView.registerNib(UINib(nibName: CategoriesCollectionViewCell.NibName, bundle: nil), forCellWithReuseIdentifier: CategoriesCollectionViewCell.ReuseIdentifier)
+        collecttionView.registerNib(UINib(nibName: CategoriesCollectionViewMain.NibName, bundle: nil), forCellWithReuseIdentifier: CategoriesCollectionViewMain.ReuseIdentifier)
         
         self.contentView.addSubview(self.collecttionView)
         self.backgroundColor = UIColor.clearColor()

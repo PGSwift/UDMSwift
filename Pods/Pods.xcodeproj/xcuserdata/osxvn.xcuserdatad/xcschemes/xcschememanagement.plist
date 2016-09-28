@@ -24,6 +24,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>Cosmos.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>Freddy.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -67,6 +72,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>0BDBD0CC82C45C51D46D58DF0AD3F30B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>182752149D86582AC3B57E3A5D14CDF8</key>
 		<dict>
 			<key>primary</key>
@@ -87,7 +97,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>608B49B5DDACC601EE8044A1931993F9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7E5A9A586689410D6AF81848A38A2CAE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9B028036EB97F1E4990163B0AFE53A24</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -133,6 +158,11 @@
 			<true/>
 		</dict>
 		<key>FBD082A0D35F7917EAB9DD9D3CCA9976</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FEFE561FA5487E7156161CB5F1AA2C93</key>
 		<dict>
 			<key>primary</key>
 			<true/>

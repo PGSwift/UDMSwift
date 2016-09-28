@@ -13,7 +13,7 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
     private let heightHeader0:CGFloat = 300
     private let heightHeader = 40
     private let heightCoursesSection = 250
-    private let heightCategoriSection = 200
+    private let heightCategoriSection = 150
     private let tabButton = 101
     
     private var categoryArr: [RCategory] = []
@@ -336,7 +336,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             courceCellCollection.course = self.courseArr[indexPath.item]
             return courceCellCollection
         } else if collectionView.tag == 1 {
-            let categoriCellCollection: CategoriesCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath) as! CategoriesCollectionViewCell
+            let categoriCellCollection: CategoriesCollectionViewMain = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewMain.ReuseIdentifier, forIndexPath: indexPath) as! CategoriesCollectionViewMain
             
             categoriCellCollection.nameCategory.text = categoryArr[indexPath.item].title
             categoriCellCollection.categorie = categoryArr[indexPath.item]

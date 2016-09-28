@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cosmos
 
 class CoursesCollectionViewCell: UICollectionViewCell, ReusableView {
     // MARK: - Properties
@@ -17,7 +18,8 @@ class CoursesCollectionViewCell: UICollectionViewCell, ReusableView {
     @IBOutlet weak var nameTeacher: UILabel!
     @IBOutlet weak var oldPrice: UILabel!
     @IBOutlet weak var newPrice: UILabel!
-    @IBOutlet weak var ratingControl: RatingControlView!
+    @IBOutlet weak var ratingController: CosmosView!
+
     var course: RCourse = RCourse()
     
     @IBOutlet weak var courseImage: UIImageView!
@@ -31,11 +33,12 @@ class CoursesCollectionViewCell: UICollectionViewCell, ReusableView {
         self.layer.shadowOffset = CGSizeZero
         self.layer.shadowRadius = 2.0
         self.layer.shadowOpacity = 1
-        self.layer.shadowColor = UIColor.blackColor().CGColor
+        self.layer.shadowColor = UIColor.grayColor().CGColor
         
         self.layer.masksToBounds = false
         
-        self.backgroundColor = UIColor.flatGreenColor()
+        self.newPrice.textColor = ChameleonManger.textTheme()
+        self.backgroundColor = ChameleonManger.backgroudTheme()
         
 //        blueView.layer.shadowColor = UIColor.blackColor().CGColor
 //        blueView.layer.shadowOffset = CGSize(width: 3, height: 3)
@@ -54,7 +57,7 @@ class CoursesCollectionViewCell: UICollectionViewCell, ReusableView {
         self.nameTeacher.text = course.author
         self.newPrice.text = course.newPrice
         self.oldPrice.text = course.oldPrice
-        self.ratingControl.rating = 2
+        self.ratingController.rating = 3.5
         
         let url = self.course.thumbnail
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {

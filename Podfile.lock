@@ -4,6 +4,7 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
+  - Cosmos (1.2.3)
   - FirebaseAnalytics (3.2.0):
     - FirebaseInstanceID (~> 1.0)
     - GoogleInterchangeUtilities (~> 1.2)
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire
   - ChameleonFramework/Swift
+  - Cosmos (~> 1.2)
   - Google/SignIn
   - ReachabilitySwift
   - RealmSwift
@@ -51,6 +53,7 @@ SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Cosmos: efddd01b729956ad6335bc58bc92e5735a1d12a3
   FirebaseAnalytics: 6f75b04e6bfb8e0b6e9ef298e04c24eea3b13863
   FirebaseInstanceID: d014d574053a2fe84478f12f7bae96979e7051bb
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
@@ -65,6 +68,6 @@ SPEC CHECKSUMS:
   Realm: 9d5c46a4d7d27958530a8dfc58f63a99e5c2cba3
   RealmSwift: 82f3ac5e24530143dddfde2033acc0d308f27d96
 
-PODFILE CHECKSUM: 95042fa2208ec49fdeb992502343886fb5348fcb
+PODFILE CHECKSUM: 1cecaf71c3d6b99ac0efc76edb69be87232d17e9
 
 COCOAPODS: 1.0.0
