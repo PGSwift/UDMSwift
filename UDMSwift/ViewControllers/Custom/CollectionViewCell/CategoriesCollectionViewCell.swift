@@ -16,6 +16,8 @@ class CategoriesCollectionViewCell: UICollectionViewCell , ReusableView {
     @IBOutlet weak var myImage: UIImageView!
     var nameCategory: UILabel!
     
+    var rect: CGRect!
+    
     var categorie: RCategory = RCategory()
     
     // MARK: - Initialzation
@@ -31,17 +33,19 @@ class CategoriesCollectionViewCell: UICollectionViewCell , ReusableView {
         markView.alpha = 0.5
         
         self.myImage.addSubview(markView)
-         nameCategory = UILabel(frame: CGRectMake(0, 0, self.bounds.width, self.bounds.height))
-//        nameCategory.textColor = UIColor.whiteColor()
-//        nameCategory.textAlignment = .Center
-//        nameCategory.backgroundColor = UIColor.clearColor()
-//        nameCategory.text = categorie.title
-        //self.myImage.addSubview(nameCategory)
+         nameCategory = UILabel(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        nameCategory.textColor = UIColor.whiteColor()
+        nameCategory.textAlignment = .Center
+        nameCategory.backgroundColor = UIColor.clearColor()
+        nameCategory.text = categorie.title
+        self.myImage.addSubview(nameCategory)
     }
     
     override func layoutSubviews() {
        // super.layoutSubviews()
         //nameCategory = UILabel(frame: CGRectMake(0, 0, self.bounds.width, self.bounds.height))
+        nameCategory.frame = rect
+        nameCategory.text = categorie.title
         nameCategory.textColor = UIColor.whiteColor()
         nameCategory.textAlignment = .Center
         nameCategory.backgroundColor = UIColor.clearColor()

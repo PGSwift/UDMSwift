@@ -7,22 +7,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCourseCurriculumCell" rowHeight="489" id="clm-rE-Yjo" customClass="CourseCurriculumCell" customModule="UDMSwift" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="385" height="489"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="idCourseCurriculumCell" rowHeight="443" id="clm-rE-Yjo" customClass="CourseCurriculumCell" customModule="UDMSwift" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="385" height="443"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="clm-rE-Yjo" id="M6s-cU-enh">
-                <rect key="frame" x="0.0" y="0.0" width="385" height="488"/>
+                <rect key="frame" x="0.0" y="0.0" width="385" height="442"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUf-iQ-ee6">
-                        <rect key="frame" x="171" y="8" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="grouped" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="hV5-RH-YFu">
-                        <rect key="frame" x="8" y="37" width="369" height="380"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <rect key="frame" x="8" y="8" width="369" height="380"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="380" id="3b9-5S-gVm"/>
                         </constraints>
@@ -32,17 +26,15 @@
                         </connections>
                     </tableView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4W6-db-UGu">
-                        <rect key="frame" x="169" y="427" width="47" height="53"/>
+                        <rect key="frame" x="169" y="398" width="47" height="36"/>
                         <state key="normal" title="See All"/>
                     </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="aUf-iQ-ee6" firstAttribute="centerX" secondItem="M6s-cU-enh" secondAttribute="centerX" id="3Eq-1g-8V1"/>
                     <constraint firstAttribute="trailing" secondItem="hV5-RH-YFu" secondAttribute="trailing" constant="8" id="89o-2T-N9I"/>
-                    <constraint firstItem="hV5-RH-YFu" firstAttribute="top" secondItem="aUf-iQ-ee6" secondAttribute="bottom" constant="8" id="HUH-KN-hqk"/>
+                    <constraint firstItem="hV5-RH-YFu" firstAttribute="top" secondItem="M6s-cU-enh" secondAttribute="top" constant="8" id="G88-u4-Cbx"/>
                     <constraint firstAttribute="bottom" secondItem="4W6-db-UGu" secondAttribute="bottom" constant="8" id="Kyf-QJ-Qfx"/>
                     <constraint firstItem="4W6-db-UGu" firstAttribute="top" secondItem="hV5-RH-YFu" secondAttribute="bottom" constant="10" id="TK5-HB-o6J"/>
-                    <constraint firstItem="aUf-iQ-ee6" firstAttribute="top" secondItem="M6s-cU-enh" secondAttribute="top" constant="8" id="hWm-XE-c56"/>
                     <constraint firstItem="4W6-db-UGu" firstAttribute="centerX" secondItem="M6s-cU-enh" secondAttribute="centerX" id="szQ-i1-5Rr"/>
                     <constraint firstItem="hV5-RH-YFu" firstAttribute="leading" secondItem="M6s-cU-enh" secondAttribute="leading" constant="8" id="yFb-h7-EgY"/>
                 </constraints>
@@ -50,9 +42,8 @@
             <connections>
                 <outlet property="buttonSeeAll" destination="4W6-db-UGu" id="ahh-iU-mFZ"/>
                 <outlet property="tableCurriculum" destination="hV5-RH-YFu" id="25H-dw-t4i"/>
-                <outlet property="titleCurriculumCell" destination="aUf-iQ-ee6" id="WaA-aK-Gn8"/>
             </connections>
-            <point key="canvasLocation" x="580.5" y="434.5"/>
+            <point key="canvasLocation" x="580.5" y="411.5"/>
         </tableViewCell>
     </objects>
 </document>

@@ -12,4 +12,5 @@ pod 'ChameleonFramework/Swift'
 pod 'ActionSheetPicker-3.0'
 pod 'RealmSwift'
 pod 'Cosmos', '~> 1.2'
+pod 'Player'
 end

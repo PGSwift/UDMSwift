@@ -35,4 +35,8 @@ final class ChameleonManger {
     static func backgroudTheme() -> UIColor {
         return FlatWhite()
     }
+    
+    static func grayTheme() -> UIColor {
+        return FlatGray()
+    }
 }

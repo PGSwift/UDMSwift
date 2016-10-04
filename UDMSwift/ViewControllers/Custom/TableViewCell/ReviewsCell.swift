@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import Cosmos
 
 final class ReviewsCell: UITableViewCell, ReusableView {
     // MARK: - Properties
     static let ReuseIdentifier: String = "idReviewsCell"
     static let NibName: String = "ReviewsCell"
     
-    @IBOutlet weak var labelStar: UILabel!
+
+    @IBOutlet weak var ratingControl: CosmosView!
     @IBOutlet weak var nameReviewer: UILabel!
     @IBOutlet weak var dateReview: UILabel!
     @IBOutlet weak var textViewContents: UITextView!

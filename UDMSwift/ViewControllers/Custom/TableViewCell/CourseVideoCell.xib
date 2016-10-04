@@ -20,61 +20,81 @@
                             <constraint firstAttribute="height" constant="184" id="fMh-gp-X7a"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILC-Cm-LKm">
-                        <rect key="frame" x="8" y="192" width="40" height="15"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTT-it-RvC">
-                        <rect key="frame" x="8" y="215" width="115" height="26"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label NAME" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTT-it-RvC">
+                        <rect key="frame" x="8" y="216" width="445" height="23"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xex-qd-5Hx" userLabel="100 VND">
-                        <rect key="frame" x="8" y="295" width="29" height="20"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2V-RW-B49">
-                        <rect key="frame" x="8" y="249" width="55" height="21"/>
-                        <color key="backgroundColor" red="0.67884751450000003" green="1" blue="0.41213792960000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="8" y="286" width="29" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPj-hh-mzN">
-                        <rect key="frame" x="407" y="285" width="46" height="30"/>
-                        <state key="normal" title="Button"/>
+                        <rect key="frame" x="423" y="286" width="30" height="30"/>
+                        <state key="normal" title="Buy"/>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILC-Cm-LKm">
+                        <rect key="frame" x="8" y="192" width="42" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.51784205439999997" green="0.58159953360000005" blue="0.58617168659999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jgu-Sw-GTo" customClass="CosmosView" customModule="Cosmos">
+                        <rect key="frame" x="8" y="247" width="140" height="24"/>
+                        <color key="tintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
+                                <color key="value" red="0.23018704349999999" green="0.77713233230000001" blue="0.31589496140000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
+                                <color key="value" red="0.23018704349999999" green="0.77713233230000001" blue="0.31589496140000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
+                                <color key="value" red="0.23018704349999999" green="0.77713233230000001" blue="0.31589496140000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                <integer key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                <integer key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                <real key="value" value="24"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                <real key="value" value="3.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="r2V-RW-B49" firstAttribute="top" secondItem="qTT-it-RvC" secondAttribute="bottom" constant="8" id="2lg-d8-yNS"/>
-                    <constraint firstItem="xex-qd-5Hx" firstAttribute="leading" secondItem="ILC-Cm-LKm" secondAttribute="leading" id="Dxj-Td-N54"/>
-                    <constraint firstAttribute="bottom" secondItem="hPj-hh-mzN" secondAttribute="bottom" constant="8" id="EOI-jt-jci"/>
-                    <constraint firstAttribute="bottom" secondItem="xex-qd-5Hx" secondAttribute="bottom" constant="8" id="GHy-7d-xwW"/>
-                    <constraint firstItem="qTT-it-RvC" firstAttribute="leading" secondItem="ILC-Cm-LKm" secondAttribute="leading" id="IHl-bs-KEV"/>
+                    <constraint firstItem="xex-qd-5Hx" firstAttribute="top" secondItem="Jgu-Sw-GTo" secondAttribute="bottom" constant="15" id="1fz-O4-UxO"/>
+                    <constraint firstItem="ILC-Cm-LKm" firstAttribute="top" secondItem="8yu-9s-gkC" secondAttribute="bottom" constant="8" id="9gh-9A-aaX"/>
+                    <constraint firstItem="qTT-it-RvC" firstAttribute="leading" secondItem="kcw-0A-cV7" secondAttribute="leading" constant="8" id="CKf-OX-S1K"/>
+                    <constraint firstItem="hPj-hh-mzN" firstAttribute="top" secondItem="xex-qd-5Hx" secondAttribute="top" id="EW4-HN-40P"/>
+                    <constraint firstItem="Jgu-Sw-GTo" firstAttribute="leading" secondItem="kcw-0A-cV7" secondAttribute="leading" constant="8" id="H4H-Fv-1qR"/>
+                    <constraint firstItem="qTT-it-RvC" firstAttribute="top" secondItem="ILC-Cm-LKm" secondAttribute="bottom" constant="8" id="LN8-wt-EhL"/>
                     <constraint firstItem="8yu-9s-gkC" firstAttribute="leading" secondItem="kcw-0A-cV7" secondAttribute="leading" id="LmO-0r-oQA"/>
-                    <constraint firstItem="qTT-it-RvC" firstAttribute="top" secondItem="ILC-Cm-LKm" secondAttribute="bottom" constant="8" id="MHL-Bh-tov"/>
-                    <constraint firstItem="ILC-Cm-LKm" firstAttribute="leading" secondItem="kcw-0A-cV7" secondAttribute="leading" constant="8" id="UdO-7I-kdD"/>
-                    <constraint firstAttribute="trailing" secondItem="hPj-hh-mzN" secondAttribute="trailing" constant="8" id="abT-c0-U9h"/>
+                    <constraint firstItem="Jgu-Sw-GTo" firstAttribute="top" secondItem="qTT-it-RvC" secondAttribute="bottom" constant="8" id="OOa-ka-A3E"/>
+                    <constraint firstItem="xex-qd-5Hx" firstAttribute="leading" secondItem="kcw-0A-cV7" secondAttribute="leading" constant="8" id="OnC-Wc-ool"/>
+                    <constraint firstItem="ILC-Cm-LKm" firstAttribute="leading" secondItem="kcw-0A-cV7" secondAttribute="leading" constant="8" id="Qdb-dg-Hij"/>
                     <constraint firstItem="8yu-9s-gkC" firstAttribute="top" secondItem="kcw-0A-cV7" secondAttribute="top" id="bJN-SA-Jj8"/>
-                    <constraint firstItem="ILC-Cm-LKm" firstAttribute="top" secondItem="8yu-9s-gkC" secondAttribute="bottom" constant="8" id="bRX-hD-sxS"/>
-                    <constraint firstItem="qTT-it-RvC" firstAttribute="top" secondItem="ILC-Cm-LKm" secondAttribute="bottom" constant="8" id="gXQ-vc-jki"/>
-                    <constraint firstItem="xex-qd-5Hx" firstAttribute="top" secondItem="r2V-RW-B49" secondAttribute="bottom" constant="25" id="hUG-Wx-RTu"/>
+                    <constraint firstAttribute="trailing" secondItem="qTT-it-RvC" secondAttribute="trailing" constant="8" id="cL3-nb-iu5"/>
                     <constraint firstAttribute="trailing" secondItem="8yu-9s-gkC" secondAttribute="trailing" id="hWy-SN-evZ"/>
-                    <constraint firstItem="r2V-RW-B49" firstAttribute="leading" secondItem="ILC-Cm-LKm" secondAttribute="leading" id="tpt-DY-Ohq"/>
+                    <constraint firstAttribute="bottom" secondItem="xex-qd-5Hx" secondAttribute="bottom" constant="16" id="tm4-3k-GeM"/>
+                    <constraint firstAttribute="trailing" secondItem="hPj-hh-mzN" secondAttribute="trailing" constant="8" id="vq4-tU-uWV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="buttonBuy" destination="hPj-hh-mzN" id="NMR-Y6-8KI"/>
-                <outlet property="costSourse" destination="xex-qd-5Hx" id="5Oa-3A-lYI"/>
+                <outlet property="costSourse" destination="xex-qd-5Hx" id="Z6R-G3-2U7"/>
                 <outlet property="courseName" destination="qTT-it-RvC" id="LNx-8A-dL9"/>
                 <outlet property="courseVideo" destination="8yu-9s-gkC" id="Wce-2n-YYL"/>
                 <outlet property="labelPesonName" destination="ILC-Cm-LKm" id="blr-mL-uEz"/>
-                <outlet property="labelReiviewCourse" destination="r2V-RW-B49" id="ezB-gF-m7r"/>
+                <outlet property="ratingControl" destination="Jgu-Sw-GTo" id="rlO-bH-H6M"/>
             </connections>
             <point key="canvasLocation" x="753.5" y="369"/>
         </tableViewCell>

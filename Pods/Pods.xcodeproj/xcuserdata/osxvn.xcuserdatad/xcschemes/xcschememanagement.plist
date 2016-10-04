@@ -39,6 +39,16 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
+		<key>PBJVideoPlayer.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
+		<key>Player.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 		<key>Pods-UDMSwift.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -67,12 +77,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>04F129D1D1A938DE5889FADB1866D001</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>053617A05C5A952CF2888B88D119FE01</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>0BDBD0CC82C45C51D46D58DF0AD3F30B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>152F7E32D811F00FCEC7A44E819B9B77</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -92,6 +112,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3EC23B8C87C91269A2014FA0010D0FC8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5172ACAB7FEA22813859DC97CA0AA16F</key>
 		<dict>
 			<key>primary</key>
@@ -102,7 +127,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>666BAF88087926A304C314D639AAB8B5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>74BDE5EB0BB3CFCB6EE2405B094E42F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7BAB7D5A20E9C984B7AE2F98BD5CFC55</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,7 +172,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>C1E63A1BF93FD336FEC6B7950AA018F2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C5CBCAA97E951CC882334464FBDF983D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CAD99F4CAC0B54DCC4575D6DDBC9D0B0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -152,7 +202,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>EAC92DAD949A466BA0ED28D5CAA80D0D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EEE4BFE3AC283ECEA2CF60A4C399216A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F7C347D0381578D110D70CF6FFCCB02D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

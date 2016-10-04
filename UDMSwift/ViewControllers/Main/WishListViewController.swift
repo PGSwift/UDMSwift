@@ -109,8 +109,9 @@ extension WishListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cellCollection = UICollectionViewCell.init()
-        cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath)
+        var cellCollection: CategoriesCollectionViewCell!
+        cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath) as! CategoriesCollectionViewCell
+        cellCollection.rect = CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width / 3) - 15, height: 80)
         return cellCollection
     }
     

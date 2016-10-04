@@ -14,6 +14,9 @@ extension String {
         
         let formatter = NSDateFormatter()
         formatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+        if value == "" {
+            return "2016/01/01"
+        }
         let someDateTime = formatter.dateFromString(value)
         
         formatter.dateFormat = UDMConfig.formatDate

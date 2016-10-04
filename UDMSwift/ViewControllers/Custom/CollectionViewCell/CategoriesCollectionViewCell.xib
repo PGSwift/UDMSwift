@@ -14,14 +14,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="233" height="127"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="x" translatesAutoresizingMaskIntoConstraints="NO" id="aoG-o3-5Zo">
-                        <rect key="frame" x="0.0" y="0.0" width="233" height="127"/>
+                        <rect key="frame" x="0.0" y="0.0" width="93" height="88"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="aoG-o3-5Zo" secondAttribute="trailing" id="461-2q-Ckx"/>
-                <constraint firstAttribute="bottom" secondItem="aoG-o3-5Zo" secondAttribute="bottom" id="6Iy-gB-iGH"/>
+                <constraint firstAttribute="trailing" secondItem="aoG-o3-5Zo" secondAttribute="trailing" constant="140" id="461-2q-Ckx"/>
+                <constraint firstAttribute="bottom" secondItem="aoG-o3-5Zo" secondAttribute="bottom" constant="39" id="6Iy-gB-iGH"/>
                 <constraint firstItem="aoG-o3-5Zo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CrX-pD-gRP"/>
                 <constraint firstItem="aoG-o3-5Zo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Gnb-xD-DDQ"/>
             </constraints>

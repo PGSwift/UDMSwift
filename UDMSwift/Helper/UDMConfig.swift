@@ -30,7 +30,7 @@ final class UDMConfig {
     
     static let AppName = "UDMSwift"
     static let ParentIDRoot = "-1"
-    static let CourseIDRoot = "-1"
+    static let CourseIDRoot = "1"
     
     static let CourseLimit = "10"
     static let CourseOffset = "10"
@@ -60,7 +60,7 @@ final class UDMConfig {
     // MARK: - API
     struct APIService {
         
-        static let rootDoman = "http://61.28.226.18"
+        static let rootDoman = "http://61.28.226.35:8012"
         static let doman = "\(rootDoman)/server/api/"
         
         static func urlUpdateBulder(withFunc funcName: String, token: String) -> String{

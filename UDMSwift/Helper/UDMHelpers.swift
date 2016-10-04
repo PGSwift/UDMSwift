@@ -82,15 +82,20 @@ final class UDMHelpers {
     }
     
     static func getImageByURL(with url: String) -> UIImage {
-
+        
         if url == "" || !url.containsString("/") {
             return UIImage(named: "default_avatar")!
         } else {
-            guard let image = UIImage(data: NSData(contentsOfURL: NSURL(string: UDMConfig.APIService.rootDoman + url)!)!) as UIImage? else {
-                println("User cannot get avata to url = \(url)")
-                return UIImage(named: "default_avatar")!
+            if let urlImage = NSURL(string: UDMConfig.APIService.rootDoman + url) {
+                if let data = NSData(contentsOfURL: urlImage) {
+                    guard let image = UIImage(data: data) as UIImage? else {
+                        println("User cannot get avata to url = \(url)")
+                        return UIImage(named: "default_avatar")!
+                    }
+                    return image
+                }
             }
-            return image
+            return UIImage(named: "default_avatar")!
         }
     }
     

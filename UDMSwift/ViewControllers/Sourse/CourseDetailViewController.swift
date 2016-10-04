@@ -13,8 +13,11 @@ final class CourseDetailViewController: UIViewController, ViewControllerProtocol
     @IBOutlet weak var courseDetailTable: UITableView!
     
     var course = RCourse()
+    var courseArr: [RCourse] = []
     var teacher = RTeacher()
     var curriculumnArr = [RCurruculum]()
+    
+    private var handlerNotificationPlayVideo: AnyObject?
     
     // MARK: - Initialzation
     static func createInstance() -> UIViewController {
@@ -22,6 +25,8 @@ final class CourseDetailViewController: UIViewController, ViewControllerProtocol
     }
     
     func configItems() {
+        self.automaticallyAdjustsScrollViewInsets = false
+        courseDetailTable.contentInset = UIEdgeInsetsZero;
         courseDetailTable.estimatedRowHeight = 44.0
         courseDetailTable.rowHeight = UITableViewAutomaticDimension
     }
@@ -67,6 +72,8 @@ final class CourseDetailViewController: UIViewController, ViewControllerProtocol
                 var changeData = Cdata
                 changeData.changeKey("description", to: "descriptions")
                 
+                changeData.removeValueNil()
+                
                 CacheManager.shareInstance.update(with: changeData, type: UDMConfig.APIService.ModelName.Teacher)
                 
                 if let teacherArr = CacheManager.shareInstance.getRTeacherList() {
@@ -83,7 +90,38 @@ final class CourseDetailViewController: UIViewController, ViewControllerProtocol
             }
             
         })
-
+        
+    }
+    
+    // MARK: - Notification
+    struct Notification {
+        static let PlayVideo = "NotificationPlayVideo"
+    }
+    
+    func registerNotification() {
+        
+        handlerNotificationPlayVideo = NSNotificationCenter.defaultCenter().addObserverForName(CourseDetailViewController.Notification.PlayVideo, object: nil, queue: nil, usingBlock: { notification in
+            
+            println("Class: \(NSStringFromClass(self.dynamicType)) recived: \(notification.name)")
+            
+            guard let user = notification.userInfo else {
+                println("Not found userInfo")
+                return
+            }
+            
+            let url = user["URLVIDEO"] as! String
+            
+            let videoViewController = VideoViewController.createInstance() as! VideoViewController
+            videoViewController.strUrl = url
+            self.navigationController?.pushViewController(videoViewController, animated: true)
+        })
+    }
+    
+    func deregisterNotification() {
+        
+        if let _ = handlerNotificationPlayVideo {
+            NSNotificationCenter.defaultCenter().removeObserver(handlerNotificationPlayVideo!)
+        }
     }
     
     // MARK: - Life view cycle
@@ -92,10 +130,16 @@ final class CourseDetailViewController: UIViewController, ViewControllerProtocol
         
         configItems()
         initData()
+        registerNotification()
+    }
+    
+    deinit {
+        deregisterNotification()
     }
 }
 // MARK: - Table view
 extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 6
     }
@@ -105,6 +149,13 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             return 5
         }
         return 1
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 5 {
+            return 20.0
+        }
+        return 1.0
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -123,8 +174,24 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
                 cellVideo = tableView.dequeueReusableCellWithIdentifier(CourseVideoCell.ReuseIdentifier) as? CourseVideoCell
                 cellVideo?.buttonBuy.addTarget(self, action: #selector(CourseDetailViewController.actionButtonBuy(_:)), forControlEvents: .TouchUpInside)
             }
+            
+            cellVideo?.courseName.text = course.title
+            cellVideo?.costSourse.text = "$" + course.newPrice
+            cellVideo?.labelPesonName.text = course.author
+            
+            let url = course.thumbnail
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                
+                let img = UDMHelpers.getImageByURL(with: url)
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    cellVideo?.courseVideo.image = img
+                })
+            }
+            
             return cellVideo!
         case 1:
+            
             var cellDescription = tableView.dequeueReusableCellWithIdentifier(CourseDescriptionCell.ReuseIdentifier) as? CourseDescriptionCell
             if cellDescription == nil {
                 tableView.registerNib(UINib(nibName: CourseDescriptionCell.NibName, bundle: nil), forCellReuseIdentifier: CourseDescriptionCell.ReuseIdentifier)
@@ -132,6 +199,8 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
                 cellDescription?.buttonSeeAll.tag = TabConfig.TabButtonSeeAll.Description
                 cellDescription?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
+            cellDescription?.textViewContent.text = course.descriptions
+            
             return cellDescription!
         case 2:
             var cellCurriculum = tableView.dequeueReusableCellWithIdentifier(CourseCurriculumCell.ReuseIdentifier) as? CourseCurriculumCell
@@ -164,17 +233,34 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             cellInstructor?.teacher = teacher
             return cellInstructor!
         case 5:
-            var cellCourse = tableView.dequeueReusableCellWithIdentifier(CourseCell.ReuseIdentifier) as? CourseCell
+            var cellCourse = tableView.dequeueReusableCellWithIdentifier(CourseCellDetail.ReuseIdentifier) as? CourseCellDetail
             if cellCourse == nil {
-                tableView.registerNib(UINib(nibName: CourseCell.NibName, bundle: nil), forCellReuseIdentifier: CourseCell.ReuseIdentifier)
-                cellCourse = tableView.dequeueReusableCellWithIdentifier(CourseCell.ReuseIdentifier) as? CourseCell
+                tableView.registerNib(UINib(nibName: CourseCellDetail.NibName, bundle: nil), forCellReuseIdentifier: CourseCellDetail.ReuseIdentifier)
+                cellCourse = tableView.dequeueReusableCellWithIdentifier(CourseCellDetail.ReuseIdentifier) as? CourseCellDetail
             }
+            let course = courseArr[indexPath.row]
+            
+            cellCourse?.title.text = course.title
+            cellCourse?.teacherName.text = course.author
+            cellCourse?.moneyTextField.text = course.oldPrice
+            cellCourse?.moneyNew.text = course.newPrice
+            
+            let url = self.courseArr[indexPath.row].thumbnail
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+                
+                let img = UDMHelpers.getImageByURL(with: url)
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    cellCourse?.courseImage.image = img
+                })
+            }
+
             return cellCourse!
         default:
             println("Cannot create cell table at section: \(indexPath.section)")
             break
         }
-
+        
         var cellTable = tableView.dequeueReusableCellWithIdentifier(UDMConfig.HeaderCellID.defaulCell)
         if cellTable == nil {
             cellTable = UITableViewCell.init(style: .Default, reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)

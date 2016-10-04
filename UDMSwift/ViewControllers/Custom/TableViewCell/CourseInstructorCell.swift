@@ -35,6 +35,9 @@ final class CourseInstructorCell: UITableViewCell, ReusableView {
         nameIntructor.text = teacher.fullName
         textViewContent.text = teacher.descriptions
         
+        avataIntructor.layer.cornerRadius = avataIntructor.frame.width / 2
+        avataIntructor.clipsToBounds = true
+        
         let url = teacher.avatar
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             

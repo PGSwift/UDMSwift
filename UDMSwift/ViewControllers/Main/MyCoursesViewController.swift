@@ -12,7 +12,9 @@ final class MyCoursesViewController: UIViewController, ViewControllerProtocol {
     
     // MARK: - Properties
     private let heightHeader: CGFloat = 250
-    private let heightSection: CGFloat = 650
+    private let heightSection: CGFloat = 200
+    
+    private var categoryArr: [RCategory] = []
     
     @IBOutlet weak var scoursesTableView: UITableView!
     
@@ -31,6 +33,39 @@ final class MyCoursesViewController: UIViewController, ViewControllerProtocol {
         self.navigationItem.setRightBarButtonItems([rightAddBarButtonItem, rightSearchBarButtonItem], animated: true)
     }
     
+    func initData() {
+        if !UDMUser.shareManager.isLoginSuccess {
+            return
+        }
+        
+        let data = UDMInfoDictionaryBuilder.shareInstance.getCategoryList(with: UDMConfig.ParentIDRoot)
+        UDMService.shareInstance.getListDataFromServer(with: data, Completion: { (data, success) in
+            if success {
+                
+                guard let Cdata = data["data"] as? [[String: AnyObject]] else {
+                    println("Not found data caches")
+                    return
+                }
+                println("dataCache Category--> \(Cdata)")
+                
+                CacheManager.shareInstance.updateList(with: Cdata, type: UDMConfig.APIService.ModelName.Category)
+                
+                if let categoryArr = CacheManager.shareInstance.getRCategoryList() {
+                    self.categoryArr = categoryArr
+                    for category in categoryArr {
+                        println("Category list: ---> \n \(category)")
+                    }
+                    self.scoursesTableView.reloadData()
+                }
+                
+            } else {
+                UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                println("ERROR message: \(data["message"]!)")
+            }
+            
+        })
+    }
+    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +73,7 @@ final class MyCoursesViewController: UIViewController, ViewControllerProtocol {
         println("Init screen MyCoursesViewController")
         
         configItems()
+        initData()
     }
     
     // MARK: - Event Handling
@@ -56,10 +92,13 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 44
+        }
         return heightSection
     }
     
@@ -68,6 +107,12 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cellTableDefault = UITableViewCell.init(style: UITableViewCellStyle.Default, reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)
+            cellTableDefault.backgroundColor = UIColor.flatWhiteColor()
+            cellTableDefault.textLabel?.text = "ho xuan vinh demo"
+            return cellTableDefault
+        }
         var cellTable = tableView.dequeueReusableCellWithIdentifier(MainTableViewCell.ReuseIdentifier) as? MainTableViewCell
         if cellTable == nil {
             self.scoursesTableView.registerClass(MainTableViewCell.self, forCellReuseIdentifier: MainTableViewCell.ReuseIdentifier)
@@ -79,20 +124,20 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
         return cellTable!
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var cellHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier(UDMConfig.HeaderCellID.defaulCell) as UITableViewHeaderFooterView?
-        if cellHeader == nil {
-            cellHeader = UITableViewHeaderFooterView.init(reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)
-            cellHeader!.backgroundColor = UIColor.blueColor()
-            cellHeader!.textLabel?.text = "ho xuan vinh demo"
-        }
-        return cellHeader!
-    }
+//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        var cellHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier(UDMConfig.HeaderCellID.defaulCell) as UITableViewHeaderFooterView?
+//        if cellHeader == nil {
+//            cellHeader = UITableViewHeaderFooterView.init(reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)
+//            cellHeader!.backgroundColor = UIColor.blackColor()
+//            cellHeader!.textLabel?.text = "ho xuan vinh demo"
+//        }
+//        return cellHeader!
+//    }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         guard let tableViewCell = cell as? MainTableViewCell else {
             println("MainTableViewCell cannot be nil at MyCoursesViewController")
-            fatalError()
+            return
         }
         tableViewCell.setCollectionViewDataSourceDelegate(self, forRow: indexPath.row)
     }
@@ -106,8 +151,8 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
             println("Layout cellConfig cannot be nil at MyCoursesViewController")
             fatalError()
         }
-        let frameUICollection = CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: Int(heightSection))
-        let sizeItemCollection = CGSize(width: Int(UDMConfig.getScreenRect().width / 3) - 15, height: 80)
+        let frameUICollection = CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: Int(100)) // FIXXXXX
+        let sizeItemCollection = CGSize(width: Int(UDMConfig.getScreenRect().width / 3) - 30, height: 80)
         
         cellConfig.collecttionView.frame = frameUICollection
         layout.itemSize = sizeItemCollection
@@ -116,12 +161,13 @@ extension MyCoursesViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - CollectionView
 extension MyCoursesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 21
+        return categoryArr.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        var cellCollection = UICollectionViewCell.init()
-        cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath)
+        let cellCollection: CategoriesCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath) as! CategoriesCollectionViewCell
+        cellCollection.categorie = categoryArr[indexPath.row]
+        cellCollection.rect = CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width / 3) - 30, height: 80)
         return cellCollection
     }
     

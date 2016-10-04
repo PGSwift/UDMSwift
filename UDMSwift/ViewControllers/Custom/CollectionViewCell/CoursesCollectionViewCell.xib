@@ -26,7 +26,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hE4-vl-gFA">
-                        <rect key="frame" x="8" y="149" width="205" height="16"/>
+                        <rect key="frame" x="8" y="134" width="205" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.51784205439999997" green="0.58159953360000005" blue="0.58617168659999996" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -38,7 +38,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ccM-kp-HDB" customClass="CosmosView" customModule="Cosmos">
-                        <rect key="frame" x="8" y="170" width="205" height="15"/>
+                        <rect key="frame" x="8" y="155" width="205" height="15"/>
                         <color key="tintColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="VXo-z0-7RO"/>
@@ -78,7 +78,7 @@
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="j4i-Ub-r9p" secondAttribute="trailing" constant="8" id="3J7-V2-Mec"/>
-                <constraint firstItem="hE4-vl-gFA" firstAttribute="top" secondItem="j4i-Ub-r9p" secondAttribute="bottom" constant="25" id="5wr-p0-b8F"/>
+                <constraint firstItem="hE4-vl-gFA" firstAttribute="top" secondItem="j4i-Ub-r9p" secondAttribute="bottom" constant="10" id="5wr-p0-b8F"/>
                 <constraint firstItem="N1S-Vb-b9a" firstAttribute="top" secondItem="Ga1-LG-VOA" secondAttribute="bottom" constant="4" id="98w-ke-cWZ"/>
                 <constraint firstAttribute="trailing" secondItem="qSn-yT-uLM" secondAttribute="trailing" id="Bzq-Ju-of9"/>
                 <constraint firstItem="ccM-kp-HDB" firstAttribute="top" secondItem="hE4-vl-gFA" secondAttribute="bottom" constant="5" id="ClT-SK-oyy"/>

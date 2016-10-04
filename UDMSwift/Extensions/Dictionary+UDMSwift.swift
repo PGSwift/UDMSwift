@@ -21,3 +21,17 @@ extension Dictionary {
         self.removeValueForKey(from)
     }
 }
+
+extension Dictionary {
+    
+    mutating func removeValueNil()  {
+        for (key, value) in self {
+            if let unwrappedValue = value as? AnyObject {
+                print("Unwrapped value for '\(key)' is '\(unwrappedValue)'")
+            } else {
+                self.removeValueForKey(key)
+                print("Value for '\(key)' is nil")
+            }
+        }
+    }
+}

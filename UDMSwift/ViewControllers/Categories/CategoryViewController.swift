@@ -23,6 +23,9 @@ final class CategoryViewController: UIViewController, ViewControllerProtocol {
     }
     
     func configItems() {
+        self.automaticallyAdjustsScrollViewInsets = false
+        self.tableCategory.contentInset = UIEdgeInsetsZero;
+        
         self.tableCategory.tableFooterView = UIView()
         self.tableCategory.registerClass(UITableViewCell.self, forCellReuseIdentifier: "idDefauleCell")
     }
@@ -58,9 +61,9 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Secction 1"
+            return "Popular Courses"
         }
-        return "section 2"
+        return "Browse Subcategories"
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -96,6 +99,10 @@ extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("Selected row: \(indexPath.row) in section: \(indexPath.section)")
+        let courseViewController: CouresListViewController = CouresListViewController.createInstance() as! CouresListViewController
+        courseViewController.courseArr = self.courseArr
+        courseViewController.title = self.categoryArr[indexPath.row].title
+        self.navigationController?.pushViewController(courseViewController, animated: true)
     }
     // MARK: - Config cell
     func configTableViewCellCollectionView(with cellConfig:MainTableViewCell ,at index: NSIndexPath) {
@@ -127,5 +134,23 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         print("Clicked CollectionView view at row \(collectionView.tag) and index path \(indexPath)")
+        if collectionView.tag == 0 {
+            let courseDetailViewController: CourseDetailViewController = CourseDetailViewController.createInstance() as! CourseDetailViewController
+            courseDetailViewController.course = courseArr[indexPath.row]
+            
+            var courseArrSmall = [RCourse]()
+            for (index, course) in courseArr.enumerate() {
+                if index > 5 {
+                    break
+                }
+                courseArrSmall.append(course)
+            }
+            courseDetailViewController.courseArr = courseArrSmall
+            self.navigationController?.pushViewController(courseDetailViewController, animated: true)
+        }
+        
+        if collectionView.tag == 1 {
+            
+        }
     }
 }

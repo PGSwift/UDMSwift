@@ -39,14 +39,21 @@ extension CouresListViewController: UITableViewDelegate, UITableViewDataSource {
         return courseArr.count
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 120
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cellCourse: CourseCell? = tableView.dequeueReusableCellWithIdentifier(CourseCell.ReuseIdentifier) as? CourseCell
         if cellCourse == nil {
             tableView.registerNib(UINib(nibName: CourseCell.NibName, bundle: nil), forCellReuseIdentifier: CourseCell.ReuseIdentifier)
             cellCourse = tableView.dequeueReusableCellWithIdentifier(CourseCell.ReuseIdentifier) as? CourseCell
         }
-        cellCourse?.title.text = courseArr[indexPath.row].title
-        cellCourse?.teacherName.text = courseArr[indexPath.row].author
+        let course = courseArr[indexPath.row]
+        cellCourse?.title.text = course.title
+        cellCourse?.teacherName.text = course.author
+        cellCourse?.moneyTextField.text = "$" +  course.newPrice
+        cellCourse?.moneyNew.text = "$" + course.oldPrice
         
         let url = self.courseArr[indexPath.row].thumbnail
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -66,6 +73,15 @@ extension CouresListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let courseDetailViewController: CourseDetailViewController = CourseDetailViewController.createInstance() as! CourseDetailViewController
         courseDetailViewController.course = courseArr[indexPath.row]
+        
+        var courseArrSmall = [RCourse]()
+        for (index, course) in courseArr.enumerate() {
+            if index > 5 {
+                break
+            }
+            courseArrSmall.append(course)
+        }
+        courseDetailViewController.courseArr = courseArrSmall
         self.navigationController?.pushViewController(courseDetailViewController, animated: true)
     }
 }

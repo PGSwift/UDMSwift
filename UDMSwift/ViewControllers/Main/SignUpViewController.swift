@@ -152,7 +152,7 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
             isError = true
         }
         
-        if !UDMHelpers.checkMinLength(textBoxPassword, minLength: 7) {
+        if !UDMHelpers.checkMinLength(textBoxPassword, minLength: 3) {
             strError += "\nPassword must be >= 8 length"
             isError = true
         }
@@ -164,7 +164,7 @@ class SignUpViewController: UIViewController, ViewControllerProtocol, UITextFiel
 
         if !flat {
             
-            if !UDMHelpers.checkMinLength(textBoxRePassword, minLength: 7) {
+            if !UDMHelpers.checkMinLength(textBoxRePassword, minLength: 3) {
                 strError += "\nRePassword must be >= 8 length"
                 isError = true
             }

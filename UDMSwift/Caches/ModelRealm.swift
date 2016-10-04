@@ -20,7 +20,7 @@ public class RUser: Object {
     public dynamic var phoneNumber = ""
     public dynamic var token = ""
     public dynamic var level = 0
-    public dynamic var money = 0
+    public dynamic var money = ""
     public dynamic var avatar = ""
     
     override public class func primaryKey() -> String? {

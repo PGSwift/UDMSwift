@@ -28,6 +28,7 @@ final class CourseReviewsCell: UITableViewCell, ReusableView {
         tableReviews.rowHeight = UITableViewAutomaticDimension
         tableReviews.dataSource = self
         tableReviews.delegate = self
+        tableReviews.contentInset = UIEdgeInsetsZero;
         
         arrayReview = ["1", "2", "3", "4", "5", "6", "7"]
     }
@@ -36,6 +37,10 @@ final class CourseReviewsCell: UITableViewCell, ReusableView {
 extension CourseReviewsCell : UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayReview.count
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

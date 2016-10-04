@@ -12,7 +12,7 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
     private let heightHeader0:CGFloat = 300
     private let heightHeader = 40
-    private let heightCoursesSection = 250
+    private let heightCoursesSection = 280
     private let heightCategoriSection = 150
     private let tabButton = 101
     
@@ -138,7 +138,7 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println("Init main screen)")
+        println("Init main screen")
         
         registerNotification()
         
@@ -286,19 +286,20 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             println("CellConfig cannot be nil at MainViewController")
             fatalError()
         }
+        buttonDetalt.restorationIdentifier = String(index)
         
         switch index {
         case 0:
-            cellConfig.textLabel?.text = "On Sale1111"
-            buttonDetalt.setTitle("button 1", forState: .Normal)
+            cellConfig.textLabel?.text = "On Sale"
+            buttonDetalt.setTitle("See All", forState: .Normal)
             break
         case 1:
-            cellConfig.textLabel?.text = "On Sale222"
-            buttonDetalt.setTitle("button 2", forState: .Normal)
+            cellConfig.textLabel?.text = "Browse Categories"
+            buttonDetalt.frame = CGRectZero
             break
         case 2:
-            cellConfig.textLabel?.text = "On Sale333"
-            buttonDetalt.setTitle("button 3", forState: .Normal)
+            cellConfig.textLabel?.text = "Other Students Are Viewing"
+            buttonDetalt.setTitle("See All", forState: .Normal)
             break
         default:
             break
@@ -307,15 +308,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - action button
     func pressed(sender: UIButton!) {
         println("Seleted button with tab = \(sender.tag)")
-        if sender.titleLabel?.text == "button 1" {
+        if sender.restorationIdentifier == "0" || sender.restorationIdentifier == "2"{
             let courseViewController: CouresListViewController = CouresListViewController.createInstance() as! CouresListViewController
             courseViewController.courseArr = self.courseArr
             self.navigationController?.pushViewController(courseViewController, animated: true)
-        } else {
-            let categoryViewController: CategoryViewController = CategoryViewController.createInstance() as! CategoryViewController
-            categoryViewController.categoryArr = self.categoryArr
-            categoryViewController.courseArr = self.courseArr
-            self.navigationController?.pushViewController(categoryViewController, animated: true)
         }
     }
 }
@@ -324,8 +320,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView.tag == 0 {
             return courseArr.count
-        } else {
+        } else if collectionView.tag == 1 {
             return categoryArr.count
+        } else {
+            return courseArr.count
         }
     }
     
@@ -343,12 +341,50 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
             
             return categoriCellCollection
         } else {
-            let cellCollection = collectionView.dequeueReusableCellWithReuseIdentifier(CategoriesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath)
-            return cellCollection
+            let courceCellCollection: CoursesCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier(CoursesCollectionViewCell.ReuseIdentifier, forIndexPath: indexPath) as! CoursesCollectionViewCell
+            courceCellCollection.course = self.courseArr[indexPath.item]
+            return courceCellCollection
         }
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         println("Click collectionView at row \(collectionView.tag) and index path \(indexPath)")
+        if collectionView.tag == 0 { // Courses
+            let courseDetailViewController: CourseDetailViewController = CourseDetailViewController.createInstance() as! CourseDetailViewController
+            courseDetailViewController.course = courseArr[indexPath.row]
+            
+            var courseArrSmall = [RCourse]()
+            for (index, course) in courseArr.enumerate() {
+                if index > 5 {
+                    break
+                }
+                courseArrSmall.append(course)
+            }
+            courseDetailViewController.courseArr = courseArrSmall
+            self.navigationController?.pushViewController(courseDetailViewController, animated: true)
+        }
+        
+        if collectionView.tag == 1 { // Categories
+            let categoryViewController: CategoryViewController = CategoryViewController.createInstance() as! CategoryViewController
+            categoryViewController.categoryArr = self.categoryArr
+            categoryViewController.courseArr = self.courseArr
+            categoryViewController.title = self.categoryArr[indexPath.row].title
+            self.navigationController?.pushViewController(categoryViewController, animated: true)
+        }
+        
+        if collectionView.tag == 2 { // Courses
+            let courseDetailViewController: CourseDetailViewController = CourseDetailViewController.createInstance() as! CourseDetailViewController
+            courseDetailViewController.course = courseArr[indexPath.row]
+            
+            var courseArrSmall = [RCourse]()
+            for (index, course) in courseArr.enumerate() {
+                if index > 5 {
+                    break
+                }
+                courseArrSmall.append(course)
+            }
+            courseDetailViewController.courseArr = courseArrSmall
+            self.navigationController?.pushViewController(courseDetailViewController, animated: true)
+        }
     }
 }

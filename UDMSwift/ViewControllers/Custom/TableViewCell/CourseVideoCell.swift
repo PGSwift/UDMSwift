@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cosmos
 
 final class CourseVideoCell: UITableViewCell, ReusableView {
     // MARK: - Properties
@@ -16,10 +17,10 @@ final class CourseVideoCell: UITableViewCell, ReusableView {
     @IBOutlet weak var courseVideo: UIImageView!
     @IBOutlet weak var courseName: UILabel!
     @IBOutlet weak var labelPesonName: UILabel!
-    @IBOutlet weak var labelReiviewCourse: UILabel!
     @IBOutlet weak var costSourse: UILabel!
     @IBOutlet weak var buttonBuy: UIButton!
     
+    @IBOutlet weak var ratingControl: CosmosView!
     // MARK: - Method
     override func awakeFromNib() {
         super.awakeFromNib()

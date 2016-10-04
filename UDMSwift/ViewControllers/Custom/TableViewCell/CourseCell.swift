@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Cosmos
 
 final class CourseCell: UITableViewCell, ReusableView {
     // MARK: - Properties
@@ -16,5 +17,14 @@ final class CourseCell: UITableViewCell, ReusableView {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var teacherName: UILabel!
     @IBOutlet weak var courseImage: UIImageView!
+    @IBOutlet weak var moneyTextField: UILabel!
+    @IBOutlet weak var moneyNew: UILabel!
+    @IBOutlet weak var ratingControl: CosmosView!
+    // MARK: - Initialzation
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        moneyTextField.textColor = ChameleonManger.textTheme()
+        
+    }
     
 }

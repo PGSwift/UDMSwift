@@ -155,11 +155,11 @@ final class UDMInfoDictionaryBuilder {
         }
         
         if let _money = data["money"] {
-            result["money"] = Int(_money as! String)
+            result["money"] = _money
         }
         
         if let _level = data["level"] {
-            result["level"] = Int(_level as! String)
+            result["level"] = _level
         }
 
         result.update(commonDictionary)
