@@ -1487,6 +1487,24 @@
             </objects>
             <point key="canvasLocation" x="-711" y="481"/>
         </scene>
+        <!--Stream Video View Controller-->
+        <scene sceneID="Vp0-bc-AL7">
+            <objects>
+                <viewController storyboardIdentifier="StreamVideoViewControllerID" id="AU5-2Z-ZWQ" customClass="StreamVideoViewController" customModule="UDMSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YlJ-bm-yPf"/>
+                        <viewControllerLayoutGuide type="bottom" id="3zj-E1-vk7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="P6G-hP-eZm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="38O-pB-Fne" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-684" y="1202"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="MIU-a2-Ziu">
             <objects>
