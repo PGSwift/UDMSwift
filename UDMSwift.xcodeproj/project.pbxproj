@@ -30,11 +30,121 @@
 		4A515A131D6B6BF900D043DC /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A515A121D6B6BF900D043DC /* SignUpViewController.swift */; };
 		4A5B7EF41D903F1800275788 /* Results+UDMSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5B7EF31D903F1800275788 /* Results+UDMSwift.swift */; };
 		4A5C50331D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C50321D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift */; };
-		4A6458521DA68A940007BEB8 /* R5Streaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6458511DA68A940007BEB8 /* R5Streaming.framework */; };
-		4A6458541DA68BF90007BEB8 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6458531DA68BF90007BEB8 /* OpenAL.framework */; };
-		4A6458561DA68C170007BEB8 /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6458551DA68C170007BEB8 /* libiconv.2.4.0.tbd */; };
-		4A6458581DA68C1E0007BEB8 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6458571DA68C1E0007BEB8 /* libstdc++.6.0.9.tbd */; };
 		4A64585A1DA69A720007BEB8 /* R5StreamingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6458591DA69A720007BEB8 /* R5StreamingManager.swift */; };
+		4A64585C1DA6A1080007BEB8 /* CustomVideoSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A64585B1DA6A1080007BEB8 /* CustomVideoSource.swift */; };
+		4A69B9931DAD3654009ACC18 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B9921DAD3654009ACC18 /* OpenAL.framework */; };
+		4A69B9951DAD3669009ACC18 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B9941DAD3669009ACC18 /* CoreFoundation.framework */; };
+		4A69B9971DAD3675009ACC18 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B9961DAD3675009ACC18 /* QuartzCore.framework */; };
+		4A69B99B1DAD36ED009ACC18 /* R5Streaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B99A1DAD36ED009ACC18 /* R5Streaming.framework */; };
+		4A69B99D1DAD370E009ACC18 /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B99C1DAD370E009ACC18 /* libiconv.2.4.0.tbd */; };
+		4A69B99F1DAD3722009ACC18 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B99E1DAD3722009ACC18 /* libstdc++.6.0.9.tbd */; };
+		4A69B9A31DAD3E63009ACC18 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE7B16D1D8D810B0004ACB0 /* CacheManager.swift */; };
+		4A69B9A41DAD3E63009ACC18 /* TestAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB1C1D69B6BB007615C8 /* TestAppViewController.swift */; };
+		4A69B9A51DAD3E63009ACC18 /* UDMHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF4F0A1D6F591300800244 /* UDMHUD.swift */; };
+		4A69B9A61DAD3E63009ACC18 /* RatingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB131D694AD4007615C8 /* RatingControlView.swift */; };
+		4A69B9A71DAD3E63009ACC18 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3141D787DB500360B9A /* Rule.swift */; };
+		4A69B9A81DAD3E63009ACC18 /* ValidationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE2FD1D787DB500360B9A /* ValidationDelegate.swift */; };
+		4A69B9A91DAD3E63009ACC18 /* AlphaRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3041D787DB500360B9A /* AlphaRule.swift */; };
+		4A69B9AA1DAD3E63009ACC18 /* ExactLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3081D787DB500360B9A /* ExactLengthRule.swift */; };
+		4A69B9AB1DAD3E63009ACC18 /* ValidatorDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3001D787DB500360B9A /* ValidatorDictionary.swift */; };
+		4A69B9AC1DAD3E63009ACC18 /* RequiredRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3131D787DB500360B9A /* RequiredRule.swift */; };
+		4A69B9AD1DAD3E63009ACC18 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9FD1D64626F00D8B066 /* CategoryViewController.swift */; };
+		4A69B9AE1DAD3E63009ACC18 /* SearchCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F11D64188500D8B066 /* SearchCoursesViewController.swift */; };
+		4A69B9AF1DAD3E63009ACC18 /* Validatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE2FC1D787DB500360B9A /* Validatable.swift */; };
+		4A69B9B01DAD3E63009ACC18 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACAD981D8CE2CD003E34A7 /* ReachabilityManager.swift */; };
+		4A69B9B11DAD3E63009ACC18 /* UDMHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF36B3F1D6F438200138BF7 /* UDMHelpers.swift */; };
+		4A69B9B21DAD3E63009ACC18 /* R5StreamingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6458591DA69A720007BEB8 /* R5StreamingManager.swift */; };
+		4A69B9B31DAD3E63009ACC18 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4535671D61FE7700CFFFC5 /* MainViewController.swift */; };
+		4A69B9B41DAD3E63009ACC18 /* Results+UDMSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5B7EF31D903F1800275788 /* Results+UDMSwift.swift */; };
+		4A69B9B51DAD3E63009ACC18 /* ReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A351AE81D675F780053B4A2 /* ReviewsCell.swift */; };
+		4A69B9B61DAD3E63009ACC18 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A214A9B1D70782F00525B06 /* Account.swift */; };
+		4A69B9B71DAD3E63009ACC18 /* StreamVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEAA34D1DA4165F00CC5659 /* StreamVideoViewController.swift */; };
+		4A69B9B81DAD3E63009ACC18 /* ChameleonFrameworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8ABF7C1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift */; };
+		4A69B9B91DAD3E63009ACC18 /* AlamofireManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8ABF7A1D83BBEC0025D6CA /* AlamofireManager.swift */; };
+		4A69B9BA1DAD3E63009ACC18 /* ViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B71D91D84EDB3006C3655 /* ViewControllerProtocol.swift */; };
+		4A69B9BB1DAD3E63009ACC18 /* MyCoursesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D18E451D630CC000E7793C /* MyCoursesViewController.swift */; };
+		4A69B9BC1DAD3E63009ACC18 /* UDMService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB251D6A1C66007615C8 /* UDMService.swift */; };
+		4A69B9BD1DAD3E63009ACC18 /* AccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC855211D71C5FC00B6D4B8 /* AccountSettingViewController.swift */; };
+		4A69B9BE1DAD3E63009ACC18 /* FullNameRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE30A1D787DB500360B9A /* FullNameRule.swift */; };
+		4A69B9BF1DAD3E63009ACC18 /* CoursesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45356B1D6200B800CFFFC5 /* CoursesCollectionViewCell.swift */; };
+		4A69B9C01DAD3E63009ACC18 /* CourseCellDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC5A6841DA143E300092A00 /* CourseCellDetail.swift */; };
+		4A69B9C11DAD3E63009ACC18 /* Dictionary+UDMSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8ABF781D839D940025D6CA /* Dictionary+UDMSwift.swift */; };
+		4A69B9C21DAD3E63009ACC18 /* CourseDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB161D69795E007615C8 /* CourseDetailViewController.swift */; };
+		4A69B9C31DAD3E63009ACC18 /* ConfirmRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3061D787DB500360B9A /* ConfirmRule.swift */; };
+		4A69B9C41DAD3E63009ACC18 /* CourseDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03661D6613C400C2717C /* CourseDescriptionCell.swift */; };
+		4A69B9C51DAD3E63009ACC18 /* ValidationRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3151D787DB500360B9A /* ValidationRule.swift */; };
+		4A69B9C61DAD3E63009ACC18 /* MaxLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE30E1D787DB500360B9A /* MaxLengthRule.swift */; };
+		4A69B9C71DAD3E63009ACC18 /* HexColorRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE30B1D787DB500360B9A /* HexColorRule.swift */; };
+		4A69B9C81DAD3E63009ACC18 /* CourseReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E036A1D66148D00C2717C /* CourseReviewsCell.swift */; };
+		4A69B9C91DAD3E63009ACC18 /* MinLengthRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE30F1D787DB500360B9A /* MinLengthRule.swift */; };
+		4A69B9CA1DAD3E63009ACC18 /* EdidAccountSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3321D7890FA00360B9A /* EdidAccountSettingViewController.swift */; };
+		4A69B9CB1DAD3E63009ACC18 /* CourseVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03641D6612EC00C2717C /* CourseVideoCell.swift */; };
+		4A69B9CC1DAD3E63009ACC18 /* ISBNRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE30D1D787DB500360B9A /* ISBNRule.swift */; };
+		4A69B9CD1DAD3E63009ACC18 /* CouresListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB151D69795E007615C8 /* CouresListViewController.swift */; };
+		4A69B9CE1DAD3E63009ACC18 /* CourseInstructorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03781D66181400C2717C /* CourseInstructorCell.swift */; };
+		4A69B9CF1DAD3E63009ACC18 /* PhoneNumberRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3111D787DB500360B9A /* PhoneNumberRule.swift */; };
+		4A69B9D01DAD3E63009ACC18 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4535781D6202B800CFFFC5 /* MainTableViewCell.swift */; };
+		4A69B9D11DAD3E63009ACC18 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEAA34B1DA407FC00CC5659 /* VideoViewController.swift */; };
+		4A69B9D21DAD3E63009ACC18 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A515A121D6B6BF900D043DC /* SignUpViewController.swift */; };
+		4A69B9D31DAD3E63009ACC18 /* ValidationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE2FE1D787DB500360B9A /* ValidationError.swift */; };
+		4A69B9D41DAD3E63009ACC18 /* FloatRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3091D787DB500360B9A /* FloatRule.swift */; };
+		4A69B9D51DAD3E63009ACC18 /* DetailListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8075621D68B55F006536A8 /* DetailListViewController.swift */; };
+		4A69B9D61DAD3E63009ACC18 /* UDMInfoDictionaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C50321D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift */; };
+		4A69B9D71DAD3E63009ACC18 /* CommonCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A4535731D62019900CFFFC5 /* CommonCategoriesCollectionViewCell.swift */; };
+		4A69B9D81DAD3E63009ACC18 /* EmptyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1A42351D88549A00FF5522 /* EmptyViewController.swift */; };
+		4A69B9D91DAD3E63009ACC18 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB231D6A1BB0007615C8 /* StorageService.swift */; };
+		4A69B9DA1DAD3E63009ACC18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45354C1D61FAEF00CFFFC5 /* AppDelegate.swift */; };
+		4A69B9DB1DAD3E63009ACC18 /* CourseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E036C1D66160E00C2717C /* CourseCell.swift */; };
+		4A69B9DC1DAD3E63009ACC18 /* Teacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A214A991D70765200525B06 /* Teacher.swift */; };
+		4A69B9DD1DAD3E63009ACC18 /* PasswordRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3101D787DB500360B9A /* PasswordRule.swift */; };
+		4A69B9DE1DAD3E63009ACC18 /* EmailRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3071D787DB500360B9A /* EmailRule.swift */; };
+		4A69B9DF1DAD3E63009ACC18 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC2FB191D6979CE007615C8 /* ReusableView.swift */; };
+		4A69B9E01DAD3E63009ACC18 /* String+UDMSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AACAD9A1D8CE75E003E34A7 /* String+UDMSwift.swift */; };
+		4A69B9E11DAD3E63009ACC18 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE2FF1D787DB500360B9A /* Validator.swift */; };
+		4A69B9E21DAD3E63009ACC18 /* RegexRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3121D787DB500360B9A /* RegexRule.swift */; };
+		4A69B9E31DAD3E63009ACC18 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A45356F1D6200F500CFFFC5 /* CategoriesCollectionViewCell.swift */; };
+		4A69B9E41DAD3E63009ACC18 /* ZipCodeRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3161D787DB500360B9A /* ZipCodeRule.swift */; };
+		4A69B9E51DAD3E63009ACC18 /* CourseInfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A8075601D68B1C5006536A8 /* CourseInfoDetailViewController.swift */; };
+		4A69B9E61DAD3E63009ACC18 /* IPV4Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE30C1D787DB500360B9A /* IPV4Rule.swift */; };
+		4A69B9E71DAD3E63009ACC18 /* CustomVideoSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A64585B1DA6A1080007BEB8 /* CustomVideoSource.swift */; };
+		4A69B9E81DAD3E63009ACC18 /* UDMLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF4F061D6F570500800244 /* UDMLog.swift */; };
+		4A69B9E91DAD3E63009ACC18 /* WishListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F81D64500100D8B066 /* WishListViewController.swift */; };
+		4A69B9EA1DAD3E63009ACC18 /* CourseCurriculumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03681D66144200C2717C /* CourseCurriculumCell.swift */; };
+		4A69B9EB1DAD3E63009ACC18 /* CategoriesCollectionViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2DBD691D9C28EC00978A0E /* CategoriesCollectionViewMain.swift */; };
+		4A69B9EC1DAD3E63009ACC18 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A7DD4AB1D680C2B00AB0BD2 /* SignInViewController.swift */; };
+		4A69B9ED1DAD3E63009ACC18 /* CharacterSetRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3051D787DB500360B9A /* CharacterSetRule.swift */; };
+		4A69B9EE1DAD3E63009ACC18 /* AlphaNumericRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACBE3031D787DB500360B9A /* AlphaNumericRule.swift */; };
+		4A69B9EF1DAD3E63009ACC18 /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC8551F1D71C5DC00B6D4B8 /* SettingDetailViewController.swift */; };
+		4A69B9F01DAD3E63009ACC18 /* UDMAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AEF4F081D6F571C00800244 /* UDMAlert.swift */; };
+		4A69B9F11DAD3E63009ACC18 /* UDMConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A80755E1D68AC5C006536A8 /* UDMConfig.swift */; };
+		4A69B9F21DAD3E63009ACC18 /* ModelRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE7B16B1D8D80E40004ACB0 /* ModelRealm.swift */; };
+		4A69B9F31DAD3E63009ACC18 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9264E9F61D644F1500D8B066 /* SettingViewController.swift */; };
+		4A69B9F51DAD3E63009ACC18 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B99E1DAD3722009ACC18 /* libstdc++.6.0.9.tbd */; };
+		4A69B9F61DAD3E63009ACC18 /* libiconv.2.4.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B99C1DAD370E009ACC18 /* libiconv.2.4.0.tbd */; };
+		4A69B9F71DAD3E63009ACC18 /* R5Streaming.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B99A1DAD36ED009ACC18 /* R5Streaming.framework */; };
+		4A69B9F81DAD3E63009ACC18 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B9961DAD3675009ACC18 /* QuartzCore.framework */; };
+		4A69B9F91DAD3E63009ACC18 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B9941DAD3669009ACC18 /* CoreFoundation.framework */; };
+		4A69B9FA1DAD3E63009ACC18 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B9921DAD3654009ACC18 /* OpenAL.framework */; };
+		4A69B9FB1DAD3E63009ACC18 /* Pods_UDMSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE630F250369024552306D0C /* Pods_UDMSwift.framework */; };
+		4A69B9FC1DAD3E63009ACC18 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A8075691D68BAD2006536A8 /* FBSDKCoreKit.framework */; };
+		4A69B9FD1DAD3E63009ACC18 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A80756A1D68BAD2006536A8 /* FBSDKLoginKit.framework */; };
+		4A69B9FE1DAD3E63009ACC18 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A80756D1D68BB91006536A8 /* Bolts.framework */; };
+		4A69BA001DAD3E63009ACC18 /* CourseCurriculumCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6E03721D66170500C2717C /* CourseCurriculumCell.xib */; };
+		4A69BA011DAD3E63009ACC18 /* CourseVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6E036E1D6616D300C2717C /* CourseVideoCell.xib */; };
+		4A69BA021DAD3E63009ACC18 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A4535651D61FE4600CFFFC5 /* Main.storyboard */; };
+		4A69BA031DAD3E63009ACC18 /* CategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4535701D6200F500CFFFC5 /* CategoriesCollectionViewCell.xib */; };
+		4A69BA041DAD3E63009ACC18 /* CoursesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A45356C1D6200B800CFFFC5 /* CoursesCollectionViewCell.xib */; };
+		4A69BA051DAD3E63009ACC18 /* ReviewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A351AE91D675F780053B4A2 /* ReviewsCell.xib */; };
+		4A69BA061DAD3E63009ACC18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A4535551D61FAEF00CFFFC5 /* LaunchScreen.storyboard */; };
+		4A69BA071DAD3E63009ACC18 /* CourseReviewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6E03741D66171800C2717C /* CourseReviewsCell.xib */; };
+		4A69BA081DAD3E63009ACC18 /* CourseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6E03761D66172B00C2717C /* CourseCell.xib */; };
+		4A69BA091DAD3E63009ACC18 /* CourseCellDetail.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC5A6821DA1439900092A00 /* CourseCellDetail.xib */; };
+		4A69BA0A1DAD3E63009ACC18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A4535531D61FAEF00CFFFC5 /* Assets.xcassets */; };
+		4A69BA0B1DAD3E63009ACC18 /* CommonCategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4535751D6201C300CFFFC5 /* CommonCategoriesCollectionViewCell.xib */; };
+		4A69BA0C1DAD3E63009ACC18 /* CategoriesCollectionViewMain.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2DBD6B1D9C290B00978A0E /* CategoriesCollectionViewMain.xib */; };
+		4A69BA0D1DAD3E63009ACC18 /* CourseDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6E03701D6616F300C2717C /* CourseDescriptionCell.xib */; };
+		4A69BA0E1DAD3E63009ACC18 /* CourseInstructorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6E03791D66181400C2717C /* CourseInstructorCell.xib */; };
+		4A69BA0F1DAD3E63009ACC18 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A8075581D689FC6006536A8 /* GoogleService-Info.plist */; };
 		4A6E03651D6612EC00C2717C /* CourseVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03641D6612EC00C2717C /* CourseVideoCell.swift */; };
 		4A6E03671D6613C400C2717C /* CourseDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03661D6613C400C2717C /* CourseDescriptionCell.swift */; };
 		4A6E03691D66144200C2717C /* CourseCurriculumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6E03681D66144200C2717C /* CourseCurriculumCell.swift */; };
@@ -140,11 +250,17 @@
 		4A515A121D6B6BF900D043DC /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4A5B7EF31D903F1800275788 /* Results+UDMSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Results+UDMSwift.swift"; sourceTree = "<group>"; };
 		4A5C50321D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMInfoDictionaryBuilder.swift; sourceTree = "<group>"; };
-		4A6458511DA68A940007BEB8 /* R5Streaming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = R5Streaming.framework; sourceTree = "<group>"; };
-		4A6458531DA68BF90007BEB8 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OpenAL.framework; sourceTree = "<group>"; };
-		4A6458551DA68C170007BEB8 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = libiconv.2.4.0.tbd; sourceTree = "<group>"; };
-		4A6458571DA68C1E0007BEB8 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = "sourcecode.text-based-dylib-definition"; path = "libstdc++.6.0.9.tbd"; sourceTree = "<group>"; };
 		4A6458591DA69A720007BEB8 /* R5StreamingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R5StreamingManager.swift; sourceTree = "<group>"; };
+		4A64585B1DA6A1080007BEB8 /* CustomVideoSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVideoSource.swift; sourceTree = "<group>"; };
+		4A69B9921DAD3654009ACC18 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		4A69B9941DAD3669009ACC18 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		4A69B9961DAD3675009ACC18 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		4A69B9981DAD3694009ACC18 /* R5Streaming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = R5Streaming.framework; path = ../../GuMee/GuMee/R5Streaming.framework; sourceTree = "<group>"; };
+		4A69B99A1DAD36ED009ACC18 /* R5Streaming.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = R5Streaming.framework; path = UDMSwift/R5Streaming.framework; sourceTree = "<group>"; };
+		4A69B99C1DAD370E009ACC18 /* libiconv.2.4.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.2.4.0.tbd; path = usr/lib/libiconv.2.4.0.tbd; sourceTree = SDKROOT; };
+		4A69B99E1DAD3722009ACC18 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		4A69BA151DAD3E63009ACC18 /* UDMSwift Teacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UDMSwift Teacher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A69BA161DAD3E63009ACC18 /* UDMSwift teacher.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "UDMSwift teacher.plist"; path = "/Users/osxvn/Desktop/GitHub2016/UDMSwift/UDMSwift teacher.plist"; sourceTree = "<absolute>"; };
 		4A6E03641D6612EC00C2717C /* CourseVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseVideoCell.swift; sourceTree = "<group>"; };
 		4A6E03661D6613C400C2717C /* CourseDescriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseDescriptionCell.swift; sourceTree = "<group>"; };
 		4A6E03681D66144200C2717C /* CourseCurriculumCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseCurriculumCell.swift; sourceTree = "<group>"; };
@@ -231,14 +347,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A69B99F1DAD3722009ACC18 /* libstdc++.6.0.9.tbd in Frameworks */,
+				4A69B99D1DAD370E009ACC18 /* libiconv.2.4.0.tbd in Frameworks */,
+				4A69B99B1DAD36ED009ACC18 /* R5Streaming.framework in Frameworks */,
+				4A69B9971DAD3675009ACC18 /* QuartzCore.framework in Frameworks */,
+				4A69B9951DAD3669009ACC18 /* CoreFoundation.framework in Frameworks */,
+				4A69B9931DAD3654009ACC18 /* OpenAL.framework in Frameworks */,
 				B01DA42C595FBB70139A4F79 /* Pods_UDMSwift.framework in Frameworks */,
 				4A80756B1D68BAD2006536A8 /* FBSDKCoreKit.framework in Frameworks */,
 				4A80756C1D68BAD2006536A8 /* FBSDKLoginKit.framework in Frameworks */,
-				4A6458541DA68BF90007BEB8 /* OpenAL.framework in Frameworks */,
-				4A6458561DA68C170007BEB8 /* libiconv.2.4.0.tbd in Frameworks */,
 				4A80756E1D68BB91006536A8 /* Bolts.framework in Frameworks */,
-				4A6458521DA68A940007BEB8 /* R5Streaming.framework in Frameworks */,
-				4A6458581DA68C1E0007BEB8 /* libstdc++.6.0.9.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A69B9F41DAD3E63009ACC18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A69B9F51DAD3E63009ACC18 /* libstdc++.6.0.9.tbd in Frameworks */,
+				4A69B9F61DAD3E63009ACC18 /* libiconv.2.4.0.tbd in Frameworks */,
+				4A69B9F71DAD3E63009ACC18 /* R5Streaming.framework in Frameworks */,
+				4A69B9F81DAD3E63009ACC18 /* QuartzCore.framework in Frameworks */,
+				4A69B9F91DAD3E63009ACC18 /* CoreFoundation.framework in Frameworks */,
+				4A69B9FA1DAD3E63009ACC18 /* OpenAL.framework in Frameworks */,
+				4A69B9FB1DAD3E63009ACC18 /* Pods_UDMSwift.framework in Frameworks */,
+				4A69B9FC1DAD3E63009ACC18 /* FBSDKCoreKit.framework in Frameworks */,
+				4A69B9FD1DAD3E63009ACC18 /* FBSDKLoginKit.framework in Frameworks */,
+				4A69B9FE1DAD3E63009ACC18 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,6 +392,13 @@
 		3E01993272E45336A60C63AD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A69B99E1DAD3722009ACC18 /* libstdc++.6.0.9.tbd */,
+				4A69B99C1DAD370E009ACC18 /* libiconv.2.4.0.tbd */,
+				4A69B99A1DAD36ED009ACC18 /* R5Streaming.framework */,
+				4A69B9981DAD3694009ACC18 /* R5Streaming.framework */,
+				4A69B9961DAD3675009ACC18 /* QuartzCore.framework */,
+				4A69B9941DAD3669009ACC18 /* CoreFoundation.framework */,
+				4A69B9921DAD3654009ACC18 /* OpenAL.framework */,
 				CE630F250369024552306D0C /* Pods_UDMSwift.framework */,
 			);
 			name = Frameworks;
@@ -269,6 +411,7 @@
 				4A45354A1D61FAEF00CFFFC5 /* Products */,
 				391D6DA63AF1EC7A05BC353E /* Pods */,
 				3E01993272E45336A60C63AD /* Frameworks */,
+				4A69BA161DAD3E63009ACC18 /* UDMSwift teacher.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -276,6 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				4A4535491D61FAEF00CFFFC5 /* UDMSwift.app */,
+				4A69BA151DAD3E63009ACC18 /* UDMSwift Teacher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -421,16 +565,13 @@
 			children = (
 				4ACBE2FA1D787DB500360B9A /* SwiftValidator */,
 				4A80756D1D68BB91006536A8 /* Bolts.framework */,
-				4A6458511DA68A940007BEB8 /* R5Streaming.framework */,
-				4A6458551DA68C170007BEB8 /* libiconv.2.4.0.tbd */,
-				4A6458571DA68C1E0007BEB8 /* libstdc++.6.0.9.tbd */,
-				4A6458531DA68BF90007BEB8 /* OpenAL.framework */,
 				4A8075691D68BAD2006536A8 /* FBSDKCoreKit.framework */,
 				4A80756A1D68BAD2006536A8 /* FBSDKLoginKit.framework */,
 				4A8ABF7A1D83BBEC0025D6CA /* AlamofireManager.swift */,
 				4A8ABF7C1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift */,
 				4AACAD981D8CE2CD003E34A7 /* ReachabilityManager.swift */,
 				4A6458591DA69A720007BEB8 /* R5StreamingManager.swift */,
+				4A64585B1DA6A1080007BEB8 /* CustomVideoSource.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -570,6 +711,26 @@
 			productReference = 4A4535491D61FAEF00CFFFC5 /* UDMSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
+		4A69B9A01DAD3E63009ACC18 /* UDMSwift Teacher */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A69BA121DAD3E63009ACC18 /* Build configuration list for PBXNativeTarget "UDMSwift Teacher" */;
+			buildPhases = (
+				4A69B9A11DAD3E63009ACC18 /* 📦 Check Pods Manifest.lock */,
+				4A69B9A21DAD3E63009ACC18 /* Sources */,
+				4A69B9F41DAD3E63009ACC18 /* Frameworks */,
+				4A69B9FF1DAD3E63009ACC18 /* Resources */,
+				4A69BA101DAD3E63009ACC18 /* 📦 Embed Pods Frameworks */,
+				4A69BA111DAD3E63009ACC18 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "UDMSwift Teacher";
+			productName = UDMSwift;
+			productReference = 4A69BA151DAD3E63009ACC18 /* UDMSwift Teacher.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -600,6 +761,7 @@
 			projectRoot = "";
 			targets = (
 				4A4535481D61FAEF00CFFFC5 /* UDMSwift */,
+				4A69B9A01DAD3E63009ACC18 /* UDMSwift Teacher */,
 			);
 		};
 /* End PBXProject section */
@@ -628,10 +790,78 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4A69B9FF1DAD3E63009ACC18 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A69BA001DAD3E63009ACC18 /* CourseCurriculumCell.xib in Resources */,
+				4A69BA011DAD3E63009ACC18 /* CourseVideoCell.xib in Resources */,
+				4A69BA021DAD3E63009ACC18 /* Main.storyboard in Resources */,
+				4A69BA031DAD3E63009ACC18 /* CategoriesCollectionViewCell.xib in Resources */,
+				4A69BA041DAD3E63009ACC18 /* CoursesCollectionViewCell.xib in Resources */,
+				4A69BA051DAD3E63009ACC18 /* ReviewsCell.xib in Resources */,
+				4A69BA061DAD3E63009ACC18 /* LaunchScreen.storyboard in Resources */,
+				4A69BA071DAD3E63009ACC18 /* CourseReviewsCell.xib in Resources */,
+				4A69BA081DAD3E63009ACC18 /* CourseCell.xib in Resources */,
+				4A69BA091DAD3E63009ACC18 /* CourseCellDetail.xib in Resources */,
+				4A69BA0A1DAD3E63009ACC18 /* Assets.xcassets in Resources */,
+				4A69BA0B1DAD3E63009ACC18 /* CommonCategoriesCollectionViewCell.xib in Resources */,
+				4A69BA0C1DAD3E63009ACC18 /* CategoriesCollectionViewMain.xib in Resources */,
+				4A69BA0D1DAD3E63009ACC18 /* CourseDescriptionCell.xib in Resources */,
+				4A69BA0E1DAD3E63009ACC18 /* CourseInstructorCell.xib in Resources */,
+				4A69BA0F1DAD3E63009ACC18 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		14DC4979EE2893A0D6FCDB7B /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UDMSwift/Pods-UDMSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4A69B9A11DAD3E63009ACC18 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4A69BA101DAD3E63009ACC18 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UDMSwift/Pods-UDMSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4A69BA111DAD3E63009ACC18 /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -751,6 +981,7 @@
 				4ACBE3311D787DB500360B9A /* ZipCodeRule.swift in Sources */,
 				4A8075611D68B1C5006536A8 /* CourseInfoDetailViewController.swift in Sources */,
 				4ACBE3271D787DB500360B9A /* IPV4Rule.swift in Sources */,
+				4A64585C1DA6A1080007BEB8 /* CustomVideoSource.swift in Sources */,
 				4AEF4F071D6F570500800244 /* UDMLog.swift in Sources */,
 				9264E9F91D64500100D8B066 /* WishListViewController.swift in Sources */,
 				4A6E03691D66144200C2717C /* CourseCurriculumCell.swift in Sources */,
@@ -763,6 +994,94 @@
 				4A80755F1D68AC5C006536A8 /* UDMConfig.swift in Sources */,
 				4AE7B16C1D8D80E40004ACB0 /* ModelRealm.swift in Sources */,
 				9264E9F71D644F1500D8B066 /* SettingViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4A69B9A21DAD3E63009ACC18 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4A69B9A31DAD3E63009ACC18 /* CacheManager.swift in Sources */,
+				4A69B9A41DAD3E63009ACC18 /* TestAppViewController.swift in Sources */,
+				4A69B9A51DAD3E63009ACC18 /* UDMHUD.swift in Sources */,
+				4A69B9A61DAD3E63009ACC18 /* RatingControlView.swift in Sources */,
+				4A69B9A71DAD3E63009ACC18 /* Rule.swift in Sources */,
+				4A69B9A81DAD3E63009ACC18 /* ValidationDelegate.swift in Sources */,
+				4A69B9A91DAD3E63009ACC18 /* AlphaRule.swift in Sources */,
+				4A69B9AA1DAD3E63009ACC18 /* ExactLengthRule.swift in Sources */,
+				4A69B9AB1DAD3E63009ACC18 /* ValidatorDictionary.swift in Sources */,
+				4A69B9AC1DAD3E63009ACC18 /* RequiredRule.swift in Sources */,
+				4A69B9AD1DAD3E63009ACC18 /* CategoryViewController.swift in Sources */,
+				4A69B9AE1DAD3E63009ACC18 /* SearchCoursesViewController.swift in Sources */,
+				4A69B9AF1DAD3E63009ACC18 /* Validatable.swift in Sources */,
+				4A69B9B01DAD3E63009ACC18 /* ReachabilityManager.swift in Sources */,
+				4A69B9B11DAD3E63009ACC18 /* UDMHelpers.swift in Sources */,
+				4A69B9B21DAD3E63009ACC18 /* R5StreamingManager.swift in Sources */,
+				4A69B9B31DAD3E63009ACC18 /* MainViewController.swift in Sources */,
+				4A69B9B41DAD3E63009ACC18 /* Results+UDMSwift.swift in Sources */,
+				4A69B9B51DAD3E63009ACC18 /* ReviewsCell.swift in Sources */,
+				4A69B9B61DAD3E63009ACC18 /* Account.swift in Sources */,
+				4A69B9B71DAD3E63009ACC18 /* StreamVideoViewController.swift in Sources */,
+				4A69B9B81DAD3E63009ACC18 /* ChameleonFrameworkManager.swift in Sources */,
+				4A69B9B91DAD3E63009ACC18 /* AlamofireManager.swift in Sources */,
+				4A69B9BA1DAD3E63009ACC18 /* ViewControllerProtocol.swift in Sources */,
+				4A69B9BB1DAD3E63009ACC18 /* MyCoursesViewController.swift in Sources */,
+				4A69B9BC1DAD3E63009ACC18 /* UDMService.swift in Sources */,
+				4A69B9BD1DAD3E63009ACC18 /* AccountSettingViewController.swift in Sources */,
+				4A69B9BE1DAD3E63009ACC18 /* FullNameRule.swift in Sources */,
+				4A69B9BF1DAD3E63009ACC18 /* CoursesCollectionViewCell.swift in Sources */,
+				4A69B9C01DAD3E63009ACC18 /* CourseCellDetail.swift in Sources */,
+				4A69B9C11DAD3E63009ACC18 /* Dictionary+UDMSwift.swift in Sources */,
+				4A69B9C21DAD3E63009ACC18 /* CourseDetailViewController.swift in Sources */,
+				4A69B9C31DAD3E63009ACC18 /* ConfirmRule.swift in Sources */,
+				4A69B9C41DAD3E63009ACC18 /* CourseDescriptionCell.swift in Sources */,
+				4A69B9C51DAD3E63009ACC18 /* ValidationRule.swift in Sources */,
+				4A69B9C61DAD3E63009ACC18 /* MaxLengthRule.swift in Sources */,
+				4A69B9C71DAD3E63009ACC18 /* HexColorRule.swift in Sources */,
+				4A69B9C81DAD3E63009ACC18 /* CourseReviewsCell.swift in Sources */,
+				4A69B9C91DAD3E63009ACC18 /* MinLengthRule.swift in Sources */,
+				4A69B9CA1DAD3E63009ACC18 /* EdidAccountSettingViewController.swift in Sources */,
+				4A69B9CB1DAD3E63009ACC18 /* CourseVideoCell.swift in Sources */,
+				4A69B9CC1DAD3E63009ACC18 /* ISBNRule.swift in Sources */,
+				4A69B9CD1DAD3E63009ACC18 /* CouresListViewController.swift in Sources */,
+				4A69B9CE1DAD3E63009ACC18 /* CourseInstructorCell.swift in Sources */,
+				4A69B9CF1DAD3E63009ACC18 /* PhoneNumberRule.swift in Sources */,
+				4A69B9D01DAD3E63009ACC18 /* MainTableViewCell.swift in Sources */,
+				4A69B9D11DAD3E63009ACC18 /* VideoViewController.swift in Sources */,
+				4A69B9D21DAD3E63009ACC18 /* SignUpViewController.swift in Sources */,
+				4A69B9D31DAD3E63009ACC18 /* ValidationError.swift in Sources */,
+				4A69B9D41DAD3E63009ACC18 /* FloatRule.swift in Sources */,
+				4A69B9D51DAD3E63009ACC18 /* DetailListViewController.swift in Sources */,
+				4A69B9D61DAD3E63009ACC18 /* UDMInfoDictionaryBuilder.swift in Sources */,
+				4A69B9D71DAD3E63009ACC18 /* CommonCategoriesCollectionViewCell.swift in Sources */,
+				4A69B9D81DAD3E63009ACC18 /* EmptyViewController.swift in Sources */,
+				4A69B9D91DAD3E63009ACC18 /* StorageService.swift in Sources */,
+				4A69B9DA1DAD3E63009ACC18 /* AppDelegate.swift in Sources */,
+				4A69B9DB1DAD3E63009ACC18 /* CourseCell.swift in Sources */,
+				4A69B9DC1DAD3E63009ACC18 /* Teacher.swift in Sources */,
+				4A69B9DD1DAD3E63009ACC18 /* PasswordRule.swift in Sources */,
+				4A69B9DE1DAD3E63009ACC18 /* EmailRule.swift in Sources */,
+				4A69B9DF1DAD3E63009ACC18 /* ReusableView.swift in Sources */,
+				4A69B9E01DAD3E63009ACC18 /* String+UDMSwift.swift in Sources */,
+				4A69B9E11DAD3E63009ACC18 /* Validator.swift in Sources */,
+				4A69B9E21DAD3E63009ACC18 /* RegexRule.swift in Sources */,
+				4A69B9E31DAD3E63009ACC18 /* CategoriesCollectionViewCell.swift in Sources */,
+				4A69B9E41DAD3E63009ACC18 /* ZipCodeRule.swift in Sources */,
+				4A69B9E51DAD3E63009ACC18 /* CourseInfoDetailViewController.swift in Sources */,
+				4A69B9E61DAD3E63009ACC18 /* IPV4Rule.swift in Sources */,
+				4A69B9E71DAD3E63009ACC18 /* CustomVideoSource.swift in Sources */,
+				4A69B9E81DAD3E63009ACC18 /* UDMLog.swift in Sources */,
+				4A69B9E91DAD3E63009ACC18 /* WishListViewController.swift in Sources */,
+				4A69B9EA1DAD3E63009ACC18 /* CourseCurriculumCell.swift in Sources */,
+				4A69B9EB1DAD3E63009ACC18 /* CategoriesCollectionViewMain.swift in Sources */,
+				4A69B9EC1DAD3E63009ACC18 /* SignInViewController.swift in Sources */,
+				4A69B9ED1DAD3E63009ACC18 /* CharacterSetRule.swift in Sources */,
+				4A69B9EE1DAD3E63009ACC18 /* AlphaNumericRule.swift in Sources */,
+				4A69B9EF1DAD3E63009ACC18 /* SettingDetailViewController.swift in Sources */,
+				4A69B9F01DAD3E63009ACC18 /* UDMAlert.swift in Sources */,
+				4A69B9F11DAD3E63009ACC18 /* UDMConfig.swift in Sources */,
+				4A69B9F21DAD3E63009ACC18 /* ModelRealm.swift in Sources */,
+				4A69B9F31DAD3E63009ACC18 /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,6 +1196,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UDMSwift/Library",
+					"$(PROJECT_DIR)/UDMSwift",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"UDMTEACHER=0",
 				);
 				INFOPLIST_FILE = UDMSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -903,6 +1228,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/UDMSwift/Library",
+					"$(PROJECT_DIR)/UDMSwift",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"UDMTEACHER=0",
+					"COCOAPODS=1",
 				);
 				INFOPLIST_FILE = UDMSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -911,6 +1242,69 @@
 					"$(PROJECT_DIR)/UDMSwift/Library",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = vinh.UDMSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "UDMSwift/Helper/UDMSwift-Bridging-Header.h";
+			};
+			name = Release;
+		};
+		4A69BA131DAD3E63009ACC18 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AA6C0C05FE1FD4C1259ECFA9 /* Pods-UDMSwift.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UDMSwift/Library",
+					"$(PROJECT_DIR)/UDMSwift",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"UDMTEACHER=1",
+				);
+				INFOPLIST_FILE = "UDMSwift teacher.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UDMSwift/Library",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vinh.UDMSwiftTeacher;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "UDMSwift/Helper/UDMSwift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4A69BA141DAD3E63009ACC18 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D08753B785755DECEA78367 /* Pods-UDMSwift.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UDMSwift/Library",
+					"$(PROJECT_DIR)/UDMSwift",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"UDMTEACHER=1",
+				);
+				INFOPLIST_FILE = "UDMSwift teacher.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/UDMSwift/Library",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = vinh.UDMSwiftTeacher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "UDMSwift/Helper/UDMSwift-Bridging-Header.h";
@@ -934,6 +1328,15 @@
 			buildConfigurations = (
 				4A45355C1D61FAEF00CFFFC5 /* Debug */,
 				4A45355D1D61FAEF00CFFFC5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A69BA121DAD3E63009ACC18 /* Build configuration list for PBXNativeTarget "UDMSwift Teacher" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A69BA131DAD3E63009ACC18 /* Debug */,
+				4A69BA141DAD3E63009ACC18 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

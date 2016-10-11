@@ -40,6 +40,25 @@ class StreamVideoViewController: UIViewController, ViewControllerProtocol {
 
         
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        configItems()
+        
+        setupDefaultR5VideoViewController()
+        
+        // Set up the configuration
+        let config = getConfig()
+        // Set up the connection and stream
+        let connection = R5Connection(config: config)
+        
+        setupPublisher(connection)
+        // show preview and debug info
+        
+        self.currentView!.attachStream(publishStream!)
+        
+        self.publishStream!.publish(R5StreamingManager.shareInstance.streamName1, type: R5RecordTypeLive)
+    }
 
     /*
     // MARK: - Navigation

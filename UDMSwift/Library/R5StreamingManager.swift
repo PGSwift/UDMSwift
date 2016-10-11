@@ -21,8 +21,8 @@ final class R5StreamingManager {
     var camera_height = 0
     
     var hostName = ""
-    var streamName1 = ""
-    var streamName2 = ""
+    var streamName1 = "vinh1"
+    var streamName2 = "vinh2"
     
     var isDebugView = true
     var onVideo = true
