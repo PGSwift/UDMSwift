@@ -12,10 +12,11 @@ final class R5StreamingManager {
     // MARK: - Properties
     static let shareInstance = R5StreamingManager()
     
-    var port: Int32 = 0
-    var context = ""
-    var buffer_time:Float = 0.0
-    var bitrate = 0
+    var ip = "61.28.226.35"
+    var port: Int32 = 8554
+    var context = "live"
+    var buffer_time:Float = 1.0
+    var bitrate = 750
     
     var camera_width = 0
     var camera_height = 0

@@ -133,6 +133,12 @@ final class CourseDetailViewController: UIViewController, ViewControllerProtocol
         registerNotification()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     deinit {
         deregisterNotification()
     }
@@ -172,6 +178,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             if cellVideo == nil {
                 tableView.registerNib(UINib(nibName: CourseVideoCell.NibName, bundle: nil), forCellReuseIdentifier: CourseVideoCell.ReuseIdentifier)
                 cellVideo = tableView.dequeueReusableCellWithIdentifier(CourseVideoCell.ReuseIdentifier) as? CourseVideoCell
+                cellVideo?.selectionStyle = .None
                 cellVideo?.buttonBuy.addTarget(self, action: #selector(CourseDetailViewController.actionButtonBuy(_:)), forControlEvents: .TouchUpInside)
             }
             
@@ -197,6 +204,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
                 tableView.registerNib(UINib(nibName: CourseDescriptionCell.NibName, bundle: nil), forCellReuseIdentifier: CourseDescriptionCell.ReuseIdentifier)
                 cellDescription = tableView.dequeueReusableCellWithIdentifier(CourseDescriptionCell.ReuseIdentifier) as? CourseDescriptionCell
                 cellDescription?.buttonSeeAll.tag = TabConfig.TabButtonSeeAll.Description
+                cellDescription?.selectionStyle = .None
                 cellDescription?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
             cellDescription?.textViewContent.text = course.descriptions
@@ -207,6 +215,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             if cellCurriculum == nil {
                 tableView.registerNib(UINib(nibName: CourseCurriculumCell.NibName, bundle: nil), forCellReuseIdentifier: CourseCurriculumCell.ReuseIdentifier)
                 cellCurriculum = tableView.dequeueReusableCellWithIdentifier(CourseCurriculumCell.ReuseIdentifier) as? CourseCurriculumCell
+                cellCurriculum?.selectionStyle = .None
                 cellCurriculum?.buttonSeeAll.tag = TabConfig.TabButtonSeeAll.Curriculum
                 cellCurriculum?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
@@ -219,6 +228,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
                 tableView.registerNib(UINib(nibName: CourseReviewsCell.NibName, bundle: nil), forCellReuseIdentifier: CourseReviewsCell.ReuseIdentifier)
                 cellReviews = tableView.dequeueReusableCellWithIdentifier(CourseReviewsCell.ReuseIdentifier) as? CourseReviewsCell
                 cellReviews?.buttonSeeAll.tag = TabConfig.TabButtonSeeAll.Review
+                cellReviews?.selectionStyle = .None
                 cellReviews?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
             return cellReviews!
@@ -228,6 +238,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
                 tableView.registerNib(UINib(nibName: CourseInstructorCell.NibName, bundle: nil), forCellReuseIdentifier: CourseInstructorCell.ReuseIdentifier)
                 cellInstructor = tableView.dequeueReusableCellWithIdentifier(CourseInstructorCell.ReuseIdentifier) as? CourseInstructorCell
                 cellInstructor?.buttonSeeAll.tag = TabConfig.TabButtonSeeAll.Instructor
+                cellInstructor?.selectionStyle = .None
                 cellInstructor?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
             cellInstructor?.teacher = teacher
@@ -271,7 +282,23 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section < 5 {
+            return
+        }
         println("Click row \(indexPath.section)")
+        
+        let courseDetailViewController: CourseDetailViewController = CourseDetailViewController.createInstance() as! CourseDetailViewController
+        courseDetailViewController.course = courseArr[indexPath.row]
+        
+        var courseArrSmall = [RCourse]()
+        for (index, course) in courseArr.enumerate() {
+            if index > 5 {
+                break
+            }
+            courseArrSmall.append(course)
+        }
+        courseDetailViewController.courseArr = courseArrSmall
+        self.navigationController?.pushViewController(courseDetailViewController, animated: true)
     }
     // MARK: - Event handling
     func actionButtonBuy(sender: UIButton) {
@@ -282,15 +309,24 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
         switch sender.tag {
         case TabConfig.TabButtonSeeAll.Description:
             println("show page See all Description!")
+            let courseInfoDetailViewController = CourseInfoDetailViewController.createInstance()
+            self.navigationController?.pushViewController(courseInfoDetailViewController, animated: true)
             break
         case TabConfig.TabButtonSeeAll.Curriculum:
             println("show page See all Curriculum!")
+            let curriculumnListViewController = CurriculumnListViewController.createInstance() as! CurriculumnListViewController
+            curriculumnListViewController.curriculumnArr = curriculumnArr
+            self.navigationController?.pushViewController(curriculumnListViewController, animated: true)
             break
         case TabConfig.TabButtonSeeAll.Review:
             println("show page See all Review!")
+            let reviewListViewController = ReviewListViewController.createInstance()
+            self.navigationController?.pushViewController(reviewListViewController, animated: true)
             break
         case TabConfig.TabButtonSeeAll.Instructor:
             println("show page See all Instructor!")
+            let courseInfoDetailViewController = CourseInfoDetailViewController.createInstance()
+            self.navigationController?.pushViewController(courseInfoDetailViewController, animated: true)
             break
         default:
             println("Click button See all Not Found action!")

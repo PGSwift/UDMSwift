@@ -1,40 +1,37 @@
 //
-//  CourseReviewsCell.swift
+//  ReviewListViewController.swift
 //  UDMSwift
 //
-//  Created by OSXVN on 8/18/16.
+//  Created by OSXVN on 10/12/16.
 //  Copyright © 2016 XUANVINHTD. All rights reserved.
 //
 
 import UIKit
 
-final class CourseReviewsCell: UITableViewCell, ReusableView {
+class ReviewListViewController: UIViewController, ViewControllerProtocol {
+
     // MARK: - Properties
-    static let ReuseIdentifier: String = "idCourseReviewsCell"
-    static let NibName: String = "CourseReviewsCell"
-    
-    @IBOutlet weak var titleReview: UILabel!
-    @IBOutlet weak var scoresReviews: UILabel!
-    @IBOutlet weak var tableReviews: UITableView!
-    @IBOutlet weak var buttonSeeAll: UIButton!
-    
     var arrayReview = [String]()
     
     // MARK: - Initialzation
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    static func createInstance() -> UIViewController {
+        return MainStoryboard.instantiateViewControllerWithIdentifier("ReviewListViewControllerID") as! ReviewListViewController
+    }
+    @IBOutlet weak var tableReviews: UITableView!
+    
+    // MARK: - Life view cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         tableReviews.estimatedRowHeight = 44.0
         tableReviews.rowHeight = UITableViewAutomaticDimension
-        tableReviews.dataSource = self
-        tableReviews.delegate = self
         tableReviews.contentInset = UIEdgeInsetsZero
-        
-        arrayReview = ["1", "2", "3", "4", "5", "6", "7"]
+        arrayReview = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
     }
 }
+
 // MARK: - Table View
-extension CourseReviewsCell : UITableViewDelegate, UITableViewDataSource {
+extension ReviewListViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayReview.count
     }
@@ -46,7 +43,7 @@ extension CourseReviewsCell : UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cellTable = tableView.dequeueReusableCellWithIdentifier(ReviewsCell.ReuseIdentifier) as? ReviewsCell
         if cellTable == nil {
-            tableReviews.registerNib(UINib(nibName: ReviewsCell.NibName, bundle: nil), forCellReuseIdentifier: ReviewsCell.ReuseIdentifier)
+            tableView.registerNib(UINib(nibName: ReviewsCell.NibName, bundle: nil), forCellReuseIdentifier: ReviewsCell.ReuseIdentifier)
             cellTable = tableView.dequeueReusableCellWithIdentifier(ReviewsCell.ReuseIdentifier) as? ReviewsCell
         }
         return cellTable!

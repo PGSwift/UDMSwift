@@ -26,7 +26,7 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
 
     @IBOutlet weak var mainTableView: UITableView!
     
-    // MARK: Initialzation
+    // MARK: - Initialzation
     static func createInstance() -> UIViewController {
         return MainStoryboard.instantiateViewControllerWithIdentifier("MainViewControllerID") as! MainViewController
     }
@@ -104,7 +104,7 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
         })
     }
     
-    // MARK: Notification
+    // MARK: - Notification
     func registerNotification() {
 
         handlerNotificationDisConnetInternet = NSNotificationCenter.defaultCenter().addObserverForName(UDMConfig.Notification.DisconnetedInternet, object: nil, queue: nil, usingBlock: { notification in
@@ -145,6 +145,12 @@ final class MainViewController: UIViewController, ViewControllerProtocol {
         configItems()
         
         initData()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     deinit {
@@ -307,6 +313,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     // MARK: - action button
     func pressed(sender: UIButton!) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         println("Seleted button with tab = \(sender.tag)")
         if sender.restorationIdentifier == "0" || sender.restorationIdentifier == "2"{
             let courseViewController: CouresListViewController = CouresListViewController.createInstance() as! CouresListViewController
@@ -348,6 +355,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
         println("Click collectionView at row \(collectionView.tag) and index path \(indexPath)")
         if collectionView.tag == 0 { // Courses
             let courseDetailViewController: CourseDetailViewController = CourseDetailViewController.createInstance() as! CourseDetailViewController

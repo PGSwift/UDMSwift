@@ -225,6 +225,16 @@ final class UDMInfoDictionaryBuilder {
                                offset: offset)
     }
     
+    func getCourseLiveList() -> [String: String] {
+        
+        return builderCourse(withModel: UDMConfig.APIService.ModelName.Course.rawValue,
+                             funcName: UDMConfig.APIService.FuncName.GetCouseLive.rawValue,
+                             token: UDMUser.shareManager.inforUser().token,
+                             idCategory: nil, courseID: nil,
+                             limit: nil,
+                             offset: nil)
+    }
+    
     // MARK: - Model Curriculums
     func getCourseDetail(with courseID: String?) -> [String: String] {
         

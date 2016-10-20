@@ -75,6 +75,7 @@ final class UDMConfig {
             case ChangePassword = "update_password"
             case ResetPassword = "reset_password"
             case GetData = "get"
+            case GetCouseLive = "get_live"
             case GetTeacherInfo = "get_teacherInfo"
         }
         
