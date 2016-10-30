@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4A4535481D61FAEF00CFFFC5"
-               BuildableName = "UDMSwift.app"
-               BlueprintName = "UDMSwift"
+               BuildableName = "UDMSwiftTeacher.app"
+               BlueprintName = "UDMSwiftTeacher"
                ReferencedContainer = "container:UDMSwift.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4A4535481D61FAEF00CFFFC5"
-            BuildableName = "UDMSwift.app"
-            BlueprintName = "UDMSwift"
+            BuildableName = "UDMSwiftTeacher.app"
+            BlueprintName = "UDMSwiftTeacher"
             ReferencedContainer = "container:UDMSwift.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4A4535481D61FAEF00CFFFC5"
-            BuildableName = "UDMSwift.app"
-            BlueprintName = "UDMSwift"
+            BuildableName = "UDMSwiftTeacher.app"
+            BlueprintName = "UDMSwiftTeacher"
             ReferencedContainer = "container:UDMSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4A4535481D61FAEF00CFFFC5"
-            BuildableName = "UDMSwift.app"
-            BlueprintName = "UDMSwift"
+            BuildableName = "UDMSwiftTeacher.app"
+            BlueprintName = "UDMSwiftTeacher"
             ReferencedContainer = "container:UDMSwift.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

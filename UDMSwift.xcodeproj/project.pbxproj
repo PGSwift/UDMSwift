@@ -132,7 +132,7 @@
 		4A351AE81D675F780053B4A2 /* ReviewsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsCell.swift; sourceTree = "<group>"; };
 		4A351AE91D675F780053B4A2 /* ReviewsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewsCell.xib; sourceTree = "<group>"; };
 		4A3C404A1DB902DA00C599E8 /* ListStreamVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListStreamVideoViewController.swift; sourceTree = "<group>"; };
-		4A4535491D61FAEF00CFFFC5 /* UDMSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UDMSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A4535491D61FAEF00CFFFC5 /* UDMSwiftTeacher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UDMSwiftTeacher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A45354C1D61FAEF00CFFFC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4A4535531D61FAEF00CFFFC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A4535561D61FAEF00CFFFC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -299,7 +299,7 @@
 		4A45354A1D61FAEF00CFFFC5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4A4535491D61FAEF00CFFFC5 /* UDMSwift.app */,
+				4A4535491D61FAEF00CFFFC5 /* UDMSwiftTeacher.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -574,9 +574,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4A4535481D61FAEF00CFFFC5 /* UDMSwift */ = {
+		4A4535481D61FAEF00CFFFC5 /* UDMSwiftTeacher */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4A45355B1D61FAEF00CFFFC5 /* Build configuration list for PBXNativeTarget "UDMSwift" */;
+			buildConfigurationList = 4A45355B1D61FAEF00CFFFC5 /* Build configuration list for PBXNativeTarget "UDMSwiftTeacher" */;
 			buildPhases = (
 				F1CA742594A7B03B363EC39C /* 📦 Check Pods Manifest.lock */,
 				4A4535451D61FAEF00CFFFC5 /* Sources */,
@@ -589,9 +589,9 @@
 			);
 			dependencies = (
 			);
-			name = UDMSwift;
+			name = UDMSwiftTeacher;
 			productName = UDMSwift;
-			productReference = 4A4535491D61FAEF00CFFFC5 /* UDMSwift.app */;
+			productReference = 4A4535491D61FAEF00CFFFC5 /* UDMSwiftTeacher.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -623,7 +623,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4A4535481D61FAEF00CFFFC5 /* UDMSwift */,
+				4A4535481D61FAEF00CFFFC5 /* UDMSwiftTeacher */,
 			);
 		};
 /* End PBXProject section */
@@ -920,7 +920,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/UDMSwift/Library",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = vinh.UDMSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = vinh.UDMSwiftTeacher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "UDMSwift/Helper/UDMSwift-Bridging-Header.h";
@@ -952,7 +952,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/UDMSwift/Library",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = vinh.UDMSwift;
+				PRODUCT_BUNDLE_IDENTIFIER = vinh.UDMSwiftTeacher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "UDMSwift/Helper/UDMSwift-Bridging-Header.h";
@@ -971,7 +971,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4A45355B1D61FAEF00CFFFC5 /* Build configuration list for PBXNativeTarget "UDMSwift" */ = {
+		4A45355B1D61FAEF00CFFFC5 /* Build configuration list for PBXNativeTarget "UDMSwiftTeacher" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4A45355C1D61FAEF00CFFFC5 /* Debug */,

@@ -10,9 +10,10 @@ import UIKit
 
 class ListStreamVideoViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
-    var streamVideoInfoList: [[String: AnyObject]] = [[String: AnyObject]]()
+    @IBOutlet weak var nameTextField: UITextField!
     
-    @IBOutlet weak var tableStream: UITableView!
+    @IBOutlet weak var descriptionTextField: UITextView!
+    
     
     // MARK: - Initialzation
     static func createInstance() -> UIViewController {
@@ -20,24 +21,15 @@ class ListStreamVideoViewController: UIViewController, ViewControllerProtocol {
     }
 
     func initData() {
-        // Get Teacher Info
-        let listStreamData = UDMInfoDictionaryBuilder.shareInstance.getCourseLiveList()
-        UDMService.shareInstance.getListDataFromServer(with: listStreamData, Completion: { (data, success) in
-            if success {
-                
-                guard let Cdata = data["data"] as? [[String: AnyObject]] else {
-                    println("Not found data caches")
-                    return
-                }
-                println("List Stream Course info --> \(Cdata)")
-                self.streamVideoInfoList = Cdata
-                self.tableStream.reloadData()
-            } else {
-                UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
-                println("ERROR message: \(data["message"]!)")
-            }
-            
-        })
+       
+    }
+    
+    func configItems() {
+        // Init screen Sign
+        let signInViewController = SignInViewController.createInstance()
+        self.navigationController?.pushViewController(signInViewController, animated: true)
+        
+        self.navigationItem.title = "Featured"
     }
     
     // MARK: - View life cycle
@@ -46,50 +38,23 @@ class ListStreamVideoViewController: UIViewController, ViewControllerProtocol {
         
         println("Init main ListStreamVideoViewController")
         
+        configItems()
         initData()
     }
-}
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
 
-// MARK: - Table view
-extension ListStreamVideoViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return streamVideoInfoList.count
-    }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cellTable = tableView.dequeueReusableCellWithIdentifier(UDMConfig.HeaderCellID.defaulCell)
-        if cellTable == nil {
-            cellTable = UITableViewCell.init(style: .Subtitle, reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)
-            cellTable?.textLabel?.text = ""
-            cellTable?.detailTextLabel?.text = ""
-            cellTable?.imageView?.image = UIImage(named: "x")
-        }
+    @IBAction func actionCreateStream(sender: AnyObject) {
         
-        if let url = streamVideoInfoList[indexPath.row]["thumbnail"] as? String {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                
-                let img = UDMHelpers.getImageByURL(with: url)
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    cellTable?.imageView?.image = img
-                })
-            }
-        }
-        
-        if let title = streamVideoInfoList[indexPath.row]["title"] as? String {
-            cellTable?.textLabel?.text = title
-        }
-        
-        if let detailTitle = streamVideoInfoList[indexPath.row]["description"] as? String {
-            cellTable?.detailTextLabel?.text = detailTitle
-        }
-        
-        return cellTable!
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("Clicked cell row: \(indexPath.row)")
         let streamVideoViewController = StreamVideoViewController.createInstance()
         self.navigationController?.pushViewController(streamVideoViewController, animated: true)
+        
+        println("name stream: \(self.nameTextField.text)")
+        println("Discription stream: \(self.descriptionTextField.text)")
     }
 }

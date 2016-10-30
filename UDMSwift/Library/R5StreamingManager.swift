@@ -18,10 +18,10 @@ final class R5StreamingManager {
     var buffer_time:Float = 1.0
     var bitrate = 750
     
-    var camera_width = 0
-    var camera_height = 0
+    var camera_width = 640
+    var camera_height = 360
     
-    var hostName = ""
+    var hostName = "61.28.226.35"
     var streamName1 = "vinh1"
     var streamName2 = "vinh2"
     
