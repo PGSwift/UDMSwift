@@ -77,7 +77,7 @@ final class AlamofireManager {
         Alamofire.request(.POST, url, parameters: paramater, encoding: encode)
             .responseJSON { response in
                 
-                print(response.request)
+                print("---> URL: \(response.request)")
                 
                 if response.result.isSuccess {
                     guard let resultQ = UDMHelpers.convertStringToDictionary(String(data: response.data!, encoding:NSUTF8StringEncoding)!) else {

@@ -35,6 +35,7 @@
 		4A5C50331D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C50321D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift */; };
 		4A64585A1DA69A720007BEB8 /* R5StreamingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6458591DA69A720007BEB8 /* R5StreamingManager.swift */; };
 		4A64585C1DA6A1080007BEB8 /* CustomVideoSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A64585B1DA6A1080007BEB8 /* CustomVideoSource.swift */; };
+		4A65B7621DD3642000CFAA3B /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A65B7611DD3642000CFAA3B /* RatingViewController.swift */; };
 		4A69B9931DAD3654009ACC18 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B9921DAD3654009ACC18 /* OpenAL.framework */; };
 		4A69B9951DAD3669009ACC18 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B9941DAD3669009ACC18 /* CoreFoundation.framework */; };
 		4A69B9971DAD3675009ACC18 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A69B9961DAD3675009ACC18 /* QuartzCore.framework */; };
@@ -151,6 +152,7 @@
 		4A5C50321D81BB26007F65E1 /* UDMInfoDictionaryBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDMInfoDictionaryBuilder.swift; sourceTree = "<group>"; };
 		4A6458591DA69A720007BEB8 /* R5StreamingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R5StreamingManager.swift; sourceTree = "<group>"; };
 		4A64585B1DA6A1080007BEB8 /* CustomVideoSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomVideoSource.swift; sourceTree = "<group>"; };
+		4A65B7611DD3642000CFAA3B /* RatingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		4A69B9921DAD3654009ACC18 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		4A69B9941DAD3669009ACC18 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		4A69B9961DAD3675009ACC18 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -559,6 +561,7 @@
 				4AC2FB161D69795E007615C8 /* CourseDetailViewController.swift */,
 				4A17A6D81DAE852E003927BB /* ReviewListViewController.swift */,
 				4A17A6DA1DAE8C70003927BB /* CurriculumnListViewController.swift */,
+				4A65B7611DD3642000CFAA3B /* RatingViewController.swift */,
 			);
 			path = Sourse;
 			sourceTree = "<group>";
@@ -728,6 +731,7 @@
 				4A5B7EF41D903F1800275788 /* Results+UDMSwift.swift in Sources */,
 				4A351AEA1D675F780053B4A2 /* ReviewsCell.swift in Sources */,
 				4A214A9C1D70782F00525B06 /* Account.swift in Sources */,
+				4A65B7621DD3642000CFAA3B /* RatingViewController.swift in Sources */,
 				4AEAA34E1DA4165F00CC5659 /* StreamVideoViewController.swift in Sources */,
 				4A8ABF7D1D83BC0B0025D6CA /* ChameleonFrameworkManager.swift in Sources */,
 				4A8ABF7B1D83BBEC0025D6CA /* AlamofireManager.swift in Sources */,

@@ -26,6 +26,11 @@ class CurriculumnListViewController: UIViewController, ViewControllerProtocol {
         
         curriculmnTableView.contentInset = UIEdgeInsetsZero;
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "Curriculmn List"
+    }
 }
 
 extension CurriculumnListViewController: UITableViewDataSource, UITableViewDelegate {

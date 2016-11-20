@@ -10,10 +10,10 @@ import UIKit
 
 final class MainViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
-    private let heightHeader0:CGFloat = 300
+    private let heightHeader0:CGFloat = 100
     private let heightHeader = 40
     private let heightCoursesSection = 280
-    private let heightCategoriSection = 150
+    private let heightCategoriSection = 100
     private let tabButton = 101
     
     private var categoryArr: [RCategory] = []
@@ -172,13 +172,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 || indexPath.section == 2 {
             return CGFloat(heightCoursesSection)
         }
+//        else if indexPath.section == 2 {
+//            return CGFloat(heightCoursesSection)
+//        }
         return CGFloat(heightCategoriSection)
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return heightHeader0
-        }
+//        if section == 0 {
+//            return heightHeader0
+//        }
         return CGFloat(heightHeader)
     }
     
@@ -205,40 +208,40 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         // Custommer header 0
-        var viewHeader0 = tableView.dequeueReusableHeaderFooterViewWithIdentifier(UDMConfig.HeaderCellID.defaulCell0)
-        if section == 0 {
-            if viewHeader0 == nil {
-                viewHeader0 = UITableViewHeaderFooterView(reuseIdentifier: UDMConfig.HeaderCellID.defaulCell0)
-                
-                let imageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: Int(heightHeader0 - 50)))
-                imageView.image = UIImage(named: "x")
-                viewHeader0?.contentView .addSubview(imageView)
-                
-                let button: UIButton = UIButton.init(frame: CGRect(x: UDMConfig.getScreenRect().width - 110, y: heightHeader0 - 40, width: 100, height: CGFloat(heightHeader)))
-                button.setTitleColor(ChameleonManger.theme(), forState: .Normal)
-                button.layer.borderColor = UIColor.flatGreenColor().CGColor
-                button.layer.borderWidth = 1.5
-                button.layer.cornerRadius = 3.5
-                button.layer.masksToBounds = true
-                button.tag = tabButton
-                button.addTarget(self, action: #selector(MainViewController.pressed(_:)), forControlEvents: .TouchUpInside)
-                
-                viewHeader0!.contentView.insertSubview(button, atIndex: 1)
-                
-                configTableViewCellNormal(with: viewHeader0!, at: section)
-                
-                return viewHeader0
-            } else {
-                configTableViewCellNormal(with: viewHeader0!, at: section)
-                return viewHeader0
-            }
-        }
+//        var viewHeader0 = tableView.dequeueReusableHeaderFooterViewWithIdentifier(UDMConfig.HeaderCellID.defaulCell0)
+//        if section == 0 {
+//            if viewHeader0 == nil {
+//                viewHeader0 = UITableViewHeaderFooterView(reuseIdentifier: UDMConfig.HeaderCellID.defaulCell0)
+//                
+//                let imageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: Int(heightHeader0 - 50)))
+//                imageView.image = UIImage(named: "x")
+//                viewHeader0?.contentView .addSubview(imageView)
+//                
+//                let button: UIButton = UIButton.init(frame: CGRect(x: UDMConfig.getScreenRect().width - 110, y: heightHeader0 - 40, width: 100, height: CGFloat(heightHeader)))
+//                button.setTitleColor(ChameleonManger.theme(), forState: .Normal)
+//                button.layer.borderColor = UIColor.flatGreenColor().CGColor
+//                button.layer.borderWidth = 1.5
+//                button.layer.cornerRadius = 3.5
+//                button.layer.masksToBounds = true
+//                button.tag = tabButton
+//                button.addTarget(self, action: #selector(MainViewController.pressed(_:)), forControlEvents: .TouchUpInside)
+//                
+//                viewHeader0!.contentView.insertSubview(button, atIndex: 1)
+//                
+//                configTableViewCellNormal(with: viewHeader0!, at: section)
+//                
+//                return viewHeader0
+//            } else {
+//                configTableViewCellNormal(with: viewHeader0!, at: section)
+//                return viewHeader0
+//            }
+//        }
         
         var viewHeader = tableView.dequeueReusableHeaderFooterViewWithIdentifier(UDMConfig.HeaderCellID.defaulCell)
         if viewHeader == nil {
             viewHeader = UITableViewHeaderFooterView(reuseIdentifier: UDMConfig.HeaderCellID.defaulCell)
             
-            let button: UIButton = UIButton.init(frame: CGRect(x: CGFloat(UDMConfig.getScreenRect().width) - 110, y: 0, width: 100, height: CGFloat(heightHeader)))
+            let button: UIButton = UIButton.init(frame: CGRect(x: CGFloat(UDMConfig.getScreenRect().width) - 110, y: 5, width: 90, height: CGFloat(heightHeader - 5)))
             button.setTitleColor(ChameleonManger.theme(), forState: .Normal)
             button.layer.borderColor = UIColor.flatGreenColor().CGColor
             button.layer.borderWidth = 1.5
@@ -276,8 +279,8 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             sizeItemCollection = CGSize(width: Int(UDMConfig.getScreenRect().width / 3), height: heightCoursesSection)
             break
         case 1:
-            frameUICollection = CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: heightCategoriSection + 20)
-            sizeItemCollection = CGSize(width: Int(UDMConfig.getScreenRect().width / 3), height: heightCategoriSection)
+            frameUICollection = CGRect(x: 0, y: 0, width: Int(UDMConfig.getScreenRect().width), height: heightCategoriSection + 20 )
+            sizeItemCollection = CGSize(width: Int(UDMConfig.getScreenRect().width / 3 - 30 ), height: heightCategoriSection)
             break
         default:
             break

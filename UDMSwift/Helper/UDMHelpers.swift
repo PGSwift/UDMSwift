@@ -14,6 +14,10 @@ final class UDMUser: NSObject {
     
     static let shareManager = UDMUser()
     
+    private override init() {
+        
+    }
+    
     var isLoginSuccess = false
     
     func inforUser() -> RUser! {

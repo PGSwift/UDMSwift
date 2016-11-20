@@ -47,11 +47,26 @@ public struct UDMService {
         executeUploadAPI(with: info, url: urlUpdate, andCompletion: completion)
     }
     
+    func ratingCourses(with info: [String: String]?, coursesID: String, Completion completion: ((data: [String: AnyObject], success: Bool) ->Void)?) {
+        
+        let urlUpdate = UDMConfig.APIService.urlRatingBulder(withFunc: UDMConfig.APIService.FuncName.RateCourses.rawValue, coursesID: coursesID, token: UDMUser.shareManager.inforUser().token)
+        
+        executeUploadAPI(with: info, url: urlUpdate, andCompletion: completion)
+    }
+    
     func changeAndResetPassword(with info: [String: String]?, Completion completion: ((data: [String: AnyObject], success: Bool) ->Void)?) {
         executeRequestAPI(with: info, andCompletion: completion)
     }
     
     func getListDataFromServer(with info: [String: String]?, Completion completion: ((data: [String: AnyObject], success: Bool) ->Void)?) {
+        executeRequestAPI(with: info, andCompletion: completion)
+    }
+    
+    func buyCourses(with info: [String: String]?, Completion completion: ((data: [String: AnyObject], success: Bool) ->Void)?) {
+        executeRequestAPI(with: info, andCompletion: completion)
+    }
+    
+    func commonRequest(with info: [String: String]?, Completion completion: ((data: [String: AnyObject], success: Bool) ->Void)?) {
         executeRequestAPI(with: info, andCompletion: completion)
     }
     

@@ -15,10 +15,14 @@ final class ReviewsCell: UITableViewCell, ReusableView {
     static let NibName: String = "ReviewsCell"
     
 
+    @IBOutlet weak var noReviews: UILabel!
     @IBOutlet weak var ratingControl: CosmosView!
     @IBOutlet weak var nameReviewer: UILabel!
     @IBOutlet weak var dateReview: UILabel!
     @IBOutlet weak var textViewContents: UITextView!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
     
     // MARK: - Method init
     override func awakeFromNib() {

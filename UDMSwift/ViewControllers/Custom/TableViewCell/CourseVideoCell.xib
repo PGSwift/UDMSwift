@@ -32,9 +32,10 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPj-hh-mzN">
-                        <rect key="frame" x="423" y="286" width="30" height="30"/>
-                        <state key="normal" title="Buy"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPj-hh-mzN">
+                        <rect key="frame" x="406" y="286" width="25" height="25"/>
+                        <state key="normal" image="Buy"/>
+                        <state key="selected" image="imageWhite_1"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ILC-Cm-LKm">
                         <rect key="frame" x="8" y="192" width="42" height="16"/>
@@ -69,6 +70,13 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Qs-2c-wnR">
+                        <rect key="frame" x="406" y="241" width="25" height="25"/>
+                        <state key="normal" image="Hearts"/>
+                        <state key="disabled" image="ImageWhite"/>
+                        <state key="selected" image="HeartsFill"/>
+                        <state key="highlighted" image="HeartsFill"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="xex-qd-5Hx" firstAttribute="top" secondItem="Jgu-Sw-GTo" secondAttribute="bottom" constant="15" id="1fz-O4-UxO"/>
@@ -76,19 +84,22 @@
                     <constraint firstItem="qTT-it-RvC" firstAttribute="leading" secondItem="kcw-0A-cV7" secondAttribute="leading" constant="8" id="CKf-OX-S1K"/>
                     <constraint firstItem="hPj-hh-mzN" firstAttribute="top" secondItem="xex-qd-5Hx" secondAttribute="top" id="EW4-HN-40P"/>
                     <constraint firstItem="Jgu-Sw-GTo" firstAttribute="leading" secondItem="kcw-0A-cV7" secondAttribute="leading" constant="8" id="H4H-Fv-1qR"/>
+                    <constraint firstItem="hPj-hh-mzN" firstAttribute="top" secondItem="9Qs-2c-wnR" secondAttribute="bottom" constant="20" id="KrQ-mk-N7z"/>
                     <constraint firstItem="qTT-it-RvC" firstAttribute="top" secondItem="ILC-Cm-LKm" secondAttribute="bottom" constant="8" id="LN8-wt-EhL"/>
                     <constraint firstItem="8yu-9s-gkC" firstAttribute="leading" secondItem="kcw-0A-cV7" secondAttribute="leading" id="LmO-0r-oQA"/>
                     <constraint firstItem="Jgu-Sw-GTo" firstAttribute="top" secondItem="qTT-it-RvC" secondAttribute="bottom" constant="8" id="OOa-ka-A3E"/>
                     <constraint firstItem="xex-qd-5Hx" firstAttribute="leading" secondItem="kcw-0A-cV7" secondAttribute="leading" constant="8" id="OnC-Wc-ool"/>
+                    <constraint firstAttribute="trailing" secondItem="9Qs-2c-wnR" secondAttribute="trailing" constant="30" id="PRg-uh-B05"/>
                     <constraint firstItem="ILC-Cm-LKm" firstAttribute="leading" secondItem="kcw-0A-cV7" secondAttribute="leading" constant="8" id="Qdb-dg-Hij"/>
                     <constraint firstItem="8yu-9s-gkC" firstAttribute="top" secondItem="kcw-0A-cV7" secondAttribute="top" id="bJN-SA-Jj8"/>
                     <constraint firstAttribute="trailing" secondItem="qTT-it-RvC" secondAttribute="trailing" constant="8" id="cL3-nb-iu5"/>
                     <constraint firstAttribute="trailing" secondItem="8yu-9s-gkC" secondAttribute="trailing" id="hWy-SN-evZ"/>
                     <constraint firstAttribute="bottom" secondItem="xex-qd-5Hx" secondAttribute="bottom" constant="16" id="tm4-3k-GeM"/>
-                    <constraint firstAttribute="trailing" secondItem="hPj-hh-mzN" secondAttribute="trailing" constant="8" id="vq4-tU-uWV"/>
+                    <constraint firstAttribute="trailing" secondItem="hPj-hh-mzN" secondAttribute="trailing" constant="30" id="vq4-tU-uWV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="addButton" destination="9Qs-2c-wnR" id="ETL-E9-Qk7"/>
                 <outlet property="buttonBuy" destination="hPj-hh-mzN" id="NMR-Y6-8KI"/>
                 <outlet property="costSourse" destination="xex-qd-5Hx" id="Z6R-G3-2U7"/>
                 <outlet property="courseName" destination="qTT-it-RvC" id="LNx-8A-dL9"/>
@@ -100,6 +111,11 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Buy" width="25" height="25"/>
+        <image name="Hearts" width="25" height="25"/>
+        <image name="HeartsFill" width="25" height="25"/>
+        <image name="ImageWhite" width="50" height="50"/>
+        <image name="imageWhite_1" width="30" height="30"/>
         <image name="x" width="616" height="357"/>
     </resources>
 </document>

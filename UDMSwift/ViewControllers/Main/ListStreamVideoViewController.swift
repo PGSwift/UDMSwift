@@ -10,10 +10,9 @@ import UIKit
 
 class ListStreamVideoViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
-    var streamVideoInfoList: [[String: AnyObject]] = [[String: AnyObject]]()
+    var streamVideoInfoList = [[String: AnyObject]]()
     
     @IBOutlet weak var tableStream: UITableView!
-    
     // MARK: - Initialzation
     static func createInstance() -> UIViewController {
         return MainStoryboard.instantiateViewControllerWithIdentifier("ListStreamVideoViewControllerID") as! ListStreamVideoViewController
@@ -40,6 +39,10 @@ class ListStreamVideoViewController: UIViewController, ViewControllerProtocol {
         })
     }
     
+    func configItems() {
+        tableStream.tableFooterView = UIView()
+    }
+    
     // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,13 +50,25 @@ class ListStreamVideoViewController: UIViewController, ViewControllerProtocol {
         println("Init main ListStreamVideoViewController")
         
         initData()
+        configItems()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "Stream List"
+    }
+    // MARK: - Handling Event
+    
 }
 
 // MARK: - Table view
 extension ListStreamVideoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return streamVideoInfoList.count
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 70
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

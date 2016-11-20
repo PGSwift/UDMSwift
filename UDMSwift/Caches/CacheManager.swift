@@ -64,6 +64,12 @@ final class CacheManager {
                 case .Teacher:
                     realm.add(RTeacher(value: data))
                     break
+                case .MyCourse:
+                    realm.add(RMyCourse(value: data))
+                    break
+                case .WishList:
+                    realm.add(RWishList(value: data))
+                    break
                 }
             }
         } catch let error {
@@ -105,6 +111,16 @@ final class CacheManager {
                         realm.add(RTeacher(value: data), update: true)
                     }
                     break
+                case .MyCourse:
+                    for data in dataList {
+                        realm.add(RMyCourse(value: data), update: true)
+                    }
+                    break
+                case .WishList:
+                    for data in dataList {
+                        realm.add(RWishList(value: data), update: true)
+                    }
+                    break
                 }
             }
         } catch let error {
@@ -136,6 +152,12 @@ final class CacheManager {
                 case .Teacher:
                     realm.add(RTeacher(value: data), update: true)
                     break
+                case .MyCourse:
+                    realm.add(RMyCourse(value: data), update: true)
+                    break
+                case .WishList:
+                    realm.add(RWishList(value: data), update: true)
+                    break
                 }
             }
         } catch let error {
@@ -150,28 +172,49 @@ final class CacheManager {
         }
         
         do {
-            var obj: AnyObject
-            
             switch type {
             case .User:
-                obj = realm.objects(RUser.self)
+                let obj = realm.objects(RUser.self)
+                try realm.write{
+                    realm.delete(obj)
+                }
                 break
             case .Category:
-                obj = realm.objects(RCategory.self)
+                let obj = realm.objects(RCategory.self)
+                try realm.write{
+                    realm.delete(obj)
+                }
                 break
             case .Course:
-                obj = realm.objects(RCourse.self)
+                let obj = realm.objects(RCourse.self)
+                try realm.write{
+                    realm.delete(obj)
+                }
                 break
             case .Curriculums:
-                 obj = realm.objects(RCurruculum.self)
+                 let obj = realm.objects(RCurruculum.self)
+                 try realm.write{
+                    realm.delete(obj)
+                 }
                 break
             case .Teacher:
-                obj = realm.objects(RTeacher.self)
+                let obj = realm.objects(RTeacher.self)
+                try realm.write{
+                    realm.delete(obj)
+                }
                 break
-            }
-            
-            try realm.write{
-                realm.delete(obj as! Object)
+            case .MyCourse:
+                let obj = realm.objects(RMyCourse.self)
+                try realm.write{
+                    realm.delete(obj)
+                }
+                break
+            case .WishList:
+                let obj = realm.objects(RWishList.self)
+                try realm.write{
+                    realm.delete(obj)
+                }
+                break
             }
         } catch let error {
             println("Cannot clean all cache with error: \(error)")
@@ -243,6 +286,31 @@ final class CacheManager {
         
         return realm.objects(RCourse.self).toArray(RCourse.self)
     }
+    
+    // MARK: - Model RMyCourse
+    
+    func getRMyCourseList() ->[RMyCourse]? {
+        
+        guard let realm = self.realm else {
+            println("realm = nil")
+            return nil
+        }
+        
+        return realm.objects(RMyCourse.self).toArray(RMyCourse.self)
+    }
+    
+    // MARK: - Model RWishList
+    
+    func getRWishList() ->[RWishList]? {
+        
+        guard let realm = self.realm else {
+            println("realm = nil")
+            return nil
+        }
+        
+        return realm.objects(RWishList.self).toArray(RWishList.self)
+    }
+    
     // MARK: - Model RCurriculum
     
     func getRCurriculmList() ->[RCurruculum]? {

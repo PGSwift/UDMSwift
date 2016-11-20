@@ -60,6 +60,46 @@ public class RCourse: Object {
     }
 }
 
+// MARK: - MY COURSE
+public class RMyCourse: Object {
+    public dynamic var id = "0"
+    public dynamic var title = ""
+    public dynamic var author = ""
+    public dynamic var authorID = ""
+    public dynamic var descriptions = ""
+    public dynamic var oldPrice = "0"
+    public dynamic var newPrice = "0"
+    public dynamic var thumbnail = ""
+    public dynamic var sale = "0"
+    public dynamic var rank = "0"
+    public dynamic var review = ""
+    public dynamic var student = "0"
+    
+    override public class func primaryKey() -> String? {
+        return "id"
+    }
+}
+
+// MARK: - WishList
+public class RWishList: Object {
+    public dynamic var id = "0"
+    public dynamic var title = ""
+    public dynamic var author = ""
+    public dynamic var authorID = ""
+    public dynamic var descriptions = ""
+    public dynamic var oldPrice = "0"
+    public dynamic var newPrice = "0"
+    public dynamic var thumbnail = ""
+    public dynamic var sale = "0"
+    public dynamic var rank = "0"
+    public dynamic var review = ""
+    public dynamic var student = "0"
+    
+    override public class func primaryKey() -> String? {
+        return "id"
+    }
+}
+
 // MARK: - CURRICULUMS
 public class RCurruculum: Object {
     public dynamic var id = "0"

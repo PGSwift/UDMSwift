@@ -28,6 +28,11 @@ class ReviewListViewController: UIViewController, ViewControllerProtocol {
         tableReviews.contentInset = UIEdgeInsetsZero
         arrayReview = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.title = "Review List"
+    }
 }
 
 // MARK: - Table View

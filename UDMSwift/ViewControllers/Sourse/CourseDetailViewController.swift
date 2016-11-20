@@ -13,9 +13,15 @@ final class CourseDetailViewController: UIViewController, ViewControllerProtocol
     @IBOutlet weak var courseDetailTable: UITableView!
     
     var course = RCourse()
+    var inforDetail:[[String: AnyObject]] = [[:]]
     var courseArr: [RCourse] = []
     var teacher = RTeacher()
     var curriculumnArr = [RCurruculum]()
+    var isRemoveWishList = false
+    
+    var isBuy = false
+    var isWishList = false
+    var coursesDetail = ""
     
     private var handlerNotificationPlayVideo: AnyObject?
     
@@ -32,8 +38,9 @@ final class CourseDetailViewController: UIViewController, ViewControllerProtocol
     }
     
     func initData() {
+
         //Get curriculumns
-        let data = UDMInfoDictionaryBuilder.shareInstance.getCourseDetail(with: UDMConfig.CourseIDRoot)
+        let data = UDMInfoDictionaryBuilder.shareInstance.getCurriculums(with: UDMConfig.CourseIDRoot)
         UDMService.shareInstance.getListDataFromServer(with: data, Completion: { (data, success) in
             if success {
                 
@@ -81,6 +88,7 @@ final class CourseDetailViewController: UIViewController, ViewControllerProtocol
                         self.teacher = tearch
                         println("Tearch list: ---> \n \(tearch)")
                     }
+                    
                     self.courseDetailTable.reloadData()
                 }
                 
@@ -88,9 +96,45 @@ final class CourseDetailViewController: UIViewController, ViewControllerProtocol
                 UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
                 println("ERROR message: \(data["message"]!)")
             }
-            
         })
         
+        // Get detail courses
+        let dataDetail = UDMInfoDictionaryBuilder.shareInstance.getCoursesDetail(with: course.id)
+        
+        UDMService.shareInstance.getListDataFromServer(with: dataDetail, Completion: { (data, success) in
+            if success {
+                
+                guard let Cdata = data["data"] as? [[String: AnyObject]] else {
+                    println("Not found data caches")
+                    return
+                }
+                self.inforDetail = Cdata
+                println("Courses detail --> \(Cdata)")
+                
+                for value in self.inforDetail {
+                    if let _isBuy = value["buy"] as? Int {
+                        if _isBuy == 1 {
+                            self.isBuy = true
+                        }
+                    }
+                    if let _isWishList = value["wishList"] as? Int {
+                        if _isWishList == 1 {
+                            self.isWishList = true
+                        }
+                    }
+                    
+                    self.coursesDetail = (value["description"] as? String) ?? ""
+                }
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.courseDetailTable.reloadData()
+                })
+                
+            } else {
+                UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                println("ERROR message: \(data["message"]!)")
+            }
+        })
     }
     
     // MARK: - Notification
@@ -129,13 +173,13 @@ final class CourseDetailViewController: UIViewController, ViewControllerProtocol
         super.viewDidLoad()
         
         configItems()
-        initData()
+        //initData()
         registerNotification()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+        initData()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
@@ -152,7 +196,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 5 {
-            return 5
+            return courseArr.count
         }
         return 1
     }
@@ -179,7 +223,34 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
                 tableView.registerNib(UINib(nibName: CourseVideoCell.NibName, bundle: nil), forCellReuseIdentifier: CourseVideoCell.ReuseIdentifier)
                 cellVideo = tableView.dequeueReusableCellWithIdentifier(CourseVideoCell.ReuseIdentifier) as? CourseVideoCell
                 cellVideo?.selectionStyle = .None
+                if isRemoveWishList {
+                    cellVideo?.addButton.addTarget(self, action: #selector(CourseDetailViewController.actionButtonRemoveWishList(_:)), forControlEvents: .TouchUpInside)
+                    cellVideo?.addButton.selected = true
+                } else {
+                    cellVideo?.addButton.addTarget(self, action: #selector(CourseDetailViewController.actionButtonAddWishList(_:)), forControlEvents: .TouchUpInside)
+                    cellVideo?.addButton.setTitle("", forState: UIControlState.Normal)
+                }
                 cellVideo?.buttonBuy.addTarget(self, action: #selector(CourseDetailViewController.actionButtonBuy(_:)), forControlEvents: .TouchUpInside)
+                cellVideo?.buttonBuy.selected = false
+                
+                cellVideo?.ratingControl.didFinishTouchingCosmos = { rate in
+                    println("number rating == \(rate)")
+                    dispatch_async(dispatch_get_main_queue(), {
+                        let ratingViewController = RatingViewController.createInstance() as! RatingViewController
+                        ratingViewController.idCourses = self.course.id
+                        self.navigationController?.pushViewController(ratingViewController, animated: true)
+                        //self.presentViewController(ratingViewController, animated: true, completion: nil)
+                    })
+                }
+            }
+            
+            if isBuy {
+                cellVideo?.buttonBuy.selected = true
+            }
+            
+            if isWishList && !isRemoveWishList {
+                cellVideo?.addButton.selected = true
+                cellVideo?.addButton.addTarget(self, action: #selector(CourseDetailViewController.actionButtonRemoveWishList(_:)), forControlEvents: .TouchUpInside)
             }
             
             cellVideo?.courseName.text = course.title
@@ -207,7 +278,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
                 cellDescription?.selectionStyle = .None
                 cellDescription?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
-            cellDescription?.textViewContent.text = course.descriptions
+            cellDescription?.textViewContent.text = self.coursesDetail
             
             return cellDescription!
         case 2:
@@ -221,6 +292,13 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             }
             cellCurriculum?.curriculumnArr = curriculumnArr
             cellCurriculum?.reloadData()
+            
+            if !isBuy {
+                cellCurriculum?.userInteractionEnabled = false
+            } else {
+                cellCurriculum?.userInteractionEnabled = true
+            }
+            
             return cellCurriculum!
         case 3:
             var cellReviews = tableView.dequeueReusableCellWithIdentifier(CourseReviewsCell.ReuseIdentifier) as? CourseReviewsCell
@@ -231,6 +309,8 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
                 cellReviews?.selectionStyle = .None
                 cellReviews?.buttonSeeAll.addTarget(self, action: #selector(CourseDetailViewController.actionButtonSeeAll(_:)), forControlEvents: .TouchUpInside)
             }
+            cellReviews?.idCourses = course.id
+            cellReviews?.reloadData()
             return cellReviews!
         case 4:
             var cellInstructor = tableView.dequeueReusableCellWithIdentifier(CourseInstructorCell.ReuseIdentifier) as? CourseInstructorCell
@@ -255,6 +335,7 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             cellCourse?.teacherName.text = course.author
             cellCourse?.moneyTextField.text = course.oldPrice
             cellCourse?.moneyNew.text = course.newPrice
+            cellCourse?.ratingControl.rating = Double(course.review) ?? 3.5
             
             let url = self.courseArr[indexPath.row].thumbnail
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -303,13 +384,91 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
     // MARK: - Event handling
     func actionButtonBuy(sender: UIButton) {
         println("Click button buy!")
+        
+        let userMoney = Int(UDMUser.shareManager.inforUser().money)
+        let price = Int(course.newPrice)
+        
+        if userMoney >= price {
+            let data = UDMInfoDictionaryBuilder.shareInstance.buyCourses(withCourseId: course.id)
+            UDMService.shareInstance.buyCourses(with: data, Completion: { (data, success) in
+                if success {
+                    UDMAlert.alert(title: "Buy", message: "Buy courses success!!!!", dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        sender.selected = true
+                        self.isBuy = true
+                        self.courseDetailTable.reloadData()
+                    })
+                    println("Buy courses success!!!!")
+                } else {
+                    UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        sender.selected = false
+                    })
+                    println("ERROR message: \(data["message"]!)")
+                }
+            })
+        } else {
+            UDMAlert.alert(title: "Error", message: "You not enough money", dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+            dispatch_async(dispatch_get_main_queue(), {
+                sender.selected = false
+            })
+        }
+    }
+    
+    func actionButtonAddWishList(sender: UIButton) {
+        println("Click button Add wishList!")
+        
+        if sender.selected {
+            actionButtonRemoveWishList(sender)
+        } else {
+            let data = UDMInfoDictionaryBuilder.shareInstance.addWishList(withCourseId: course.id)
+            UDMService.shareInstance.commonRequest(with: data, Completion: { (data, success) in
+                if success {
+                    UDMAlert.alert(title: "Add", message: "Add wishlist success!!!!", dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        sender.selected = true
+                    })
+                    println("Add wishlist success!!!!")
+                } else {
+                    UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        sender.selected = false
+                    })
+                    println("ERROR message: \(data["message"]!)")
+                }
+            })
+        }
+    }
+    
+    func actionButtonRemoveWishList(sender: UIButton) {
+        
+        let data = UDMInfoDictionaryBuilder.shareInstance.removeWishList(withCourseId: course.id)
+        UDMService.shareInstance.commonRequest(with: data, Completion: { (data, success) in
+            if success {
+                UDMAlert.alert(title: "Remove", message: "Remove wishlist success!!!!", dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                
+                    dispatch_async(dispatch_get_main_queue(), {
+                    sender.selected = false
+                    })
+                
+                println("Remove wishlist success!!!!")
+            } else {
+                UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
+                
+                dispatch_async(dispatch_get_main_queue(), {
+                    sender.selected = true
+                })
+                println("ERROR message: \(data["message"]!)")
+            }
+        })
     }
     
     func actionButtonSeeAll(sender: UIButton) {
         switch sender.tag {
         case TabConfig.TabButtonSeeAll.Description:
             println("show page See all Description!")
-            let courseInfoDetailViewController = CourseInfoDetailViewController.createInstance()
+            let courseInfoDetailViewController = CourseInfoDetailViewController.createInstance() as! CourseInfoDetailViewController
+            courseInfoDetailViewController.detailString = "1234"
             self.navigationController?.pushViewController(courseInfoDetailViewController, animated: true)
             break
         case TabConfig.TabButtonSeeAll.Curriculum:
@@ -325,7 +484,8 @@ extension CourseDetailViewController: UITableViewDelegate, UITableViewDataSource
             break
         case TabConfig.TabButtonSeeAll.Instructor:
             println("show page See all Instructor!")
-            let courseInfoDetailViewController = CourseInfoDetailViewController.createInstance()
+            let courseInfoDetailViewController = CourseInfoDetailViewController.createInstance() as! CourseInfoDetailViewController
+            courseInfoDetailViewController.teacher = teacher
             self.navigationController?.pushViewController(courseInfoDetailViewController, animated: true)
             break
         default:

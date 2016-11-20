@@ -15,26 +15,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2015/10/10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4X-qb-Gvm">
-                        <rect key="frame" x="92" y="40" width="72" height="17"/>
+                        <rect key="frame" x="248" y="37" width="72" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.51784205439999997" green="0.58159953360000005" blue="0.58617168659999996" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="amX-v4-w3M">
-                        <rect key="frame" x="8" y="68" width="397" height="70"/>
+                        <rect key="frame" x="8" y="69" width="397" height="69"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure </string>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xuan Vinh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7b-VG-H2o">
-                        <rect key="frame" x="8" y="40" width="76" height="20"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FPD-Dd-X0P" customClass="CosmosView" customModule="Cosmos">
-                        <rect key="frame" x="8" y="8" width="140" height="24"/>
+                        <rect key="frame" x="8" y="37" width="140" height="24"/>
                         <color key="tintColor" red="0.90823972230000005" green="0.92638683320000004" blue="0.93171715740000005" alpha="1" colorSpace="calibratedRGB"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
@@ -60,25 +55,52 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CbY-Ec-STZ">
+                        <rect key="frame" x="8" y="8" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xuan Vinh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k7b-VG-H2o">
+                        <rect key="frame" x="156" y="37" width="76" height="20"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" red="0.51784205439999997" green="0.58159953360000005" blue="0.58617168659999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No reviews..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeW-qj-VYq">
+                        <rect key="frame" x="148" y="37" width="116" height="24"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="DeW-qj-VYq" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-24" id="2Q6-Ud-FSb"/>
+                    <constraint firstItem="FPD-Dd-X0P" firstAttribute="top" secondItem="CbY-Ec-STZ" secondAttribute="bottom" constant="8" id="3B3-H5-LaU"/>
+                    <constraint firstAttribute="bottom" secondItem="amX-v4-w3M" secondAttribute="bottom" constant="8" id="3cl-ST-9Ql"/>
+                    <constraint firstAttribute="trailing" secondItem="amX-v4-w3M" secondAttribute="trailing" constant="8" id="63a-78-TWL"/>
+                    <constraint firstItem="CbY-Ec-STZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="AlK-mq-VAu"/>
                     <constraint firstAttribute="bottom" secondItem="amX-v4-w3M" secondAttribute="bottom" constant="8" id="AqA-Zd-wmb"/>
-                    <constraint firstItem="h4X-qb-Gvm" firstAttribute="top" secondItem="k7b-VG-H2o" secondAttribute="top" id="GE7-Mo-VZU"/>
-                    <constraint firstItem="FPD-Dd-X0P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="HDf-xt-gfd"/>
+                    <constraint firstItem="FPD-Dd-X0P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Lfo-9F-vvQ"/>
                     <constraint firstAttribute="trailing" secondItem="amX-v4-w3M" secondAttribute="trailing" constant="8" id="MoZ-RS-bt5"/>
-                    <constraint firstItem="k7b-VG-H2o" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="ScB-E4-0VI"/>
-                    <constraint firstItem="amX-v4-w3M" firstAttribute="top" secondItem="k7b-VG-H2o" secondAttribute="bottom" constant="8" id="Uj8-O5-cY8"/>
-                    <constraint firstItem="k7b-VG-H2o" firstAttribute="top" secondItem="FPD-Dd-X0P" secondAttribute="bottom" constant="8" id="dUb-Vy-Cai"/>
-                    <constraint firstItem="FPD-Dd-X0P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="qY6-J3-cvY"/>
-                    <constraint firstItem="h4X-qb-Gvm" firstAttribute="leading" secondItem="k7b-VG-H2o" secondAttribute="trailing" constant="8" id="vOO-6l-oYe"/>
+                    <constraint firstItem="amX-v4-w3M" firstAttribute="top" secondItem="FPD-Dd-X0P" secondAttribute="bottom" constant="8" id="Qjg-J5-ZZm"/>
+                    <constraint firstItem="DeW-qj-VYq" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="WFR-q1-3Wz"/>
+                    <constraint firstItem="h4X-qb-Gvm" firstAttribute="leading" secondItem="k7b-VG-H2o" secondAttribute="trailing" constant="16" id="ZiM-3A-n5u"/>
+                    <constraint firstItem="CbY-Ec-STZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="njX-Vs-Skf"/>
+                    <constraint firstItem="h4X-qb-Gvm" firstAttribute="top" secondItem="k7b-VG-H2o" secondAttribute="top" id="tY3-N6-fYJ"/>
+                    <constraint firstItem="k7b-VG-H2o" firstAttribute="leading" secondItem="FPD-Dd-X0P" secondAttribute="trailing" constant="8" id="voy-Pt-aun"/>
                     <constraint firstItem="amX-v4-w3M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="wyD-c1-4ax"/>
+                    <constraint firstItem="k7b-VG-H2o" firstAttribute="top" secondItem="FPD-Dd-X0P" secondAttribute="top" id="xML-Xi-eyS"/>
+                    <constraint firstItem="amX-v4-w3M" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="y4b-FU-oi7"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dateReview" destination="h4X-qb-Gvm" id="37a-tQ-vCP"/>
                 <outlet property="nameReviewer" destination="k7b-VG-H2o" id="MtP-sd-5Z8"/>
+                <outlet property="noReviews" destination="DeW-qj-VYq" id="PG4-pX-jeg"/>
                 <outlet property="ratingControl" destination="FPD-Dd-X0P" id="Pzb-rq-9jp"/>
                 <outlet property="textViewContents" destination="amX-v4-w3M" id="tNF-Ev-nPr"/>
+                <outlet property="titleLabel" destination="CbY-Ec-STZ" id="uks-ra-KC1"/>
             </connections>
             <point key="canvasLocation" x="479.5" y="378.5"/>
         </tableViewCell>

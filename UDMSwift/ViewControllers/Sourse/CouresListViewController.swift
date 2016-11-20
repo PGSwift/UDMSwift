@@ -55,6 +55,8 @@ extension CouresListViewController: UITableViewDelegate, UITableViewDataSource {
         cellCourse?.moneyTextField.text = "$" +  course.newPrice
         cellCourse?.moneyNew.text = "$" + course.oldPrice
         
+        cellCourse?.ratingControl.rating = Double(course.review) ?? 3.5
+        
         let url = self.courseArr[indexPath.row].thumbnail
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             

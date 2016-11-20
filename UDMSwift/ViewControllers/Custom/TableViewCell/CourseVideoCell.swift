@@ -19,6 +19,8 @@ final class CourseVideoCell: UITableViewCell, ReusableView {
     @IBOutlet weak var labelPesonName: UILabel!
     @IBOutlet weak var costSourse: UILabel!
     @IBOutlet weak var buttonBuy: UIButton!
+
+    @IBOutlet weak var addButton: UIButton!
     
     @IBOutlet weak var ratingControl: CosmosView!
     // MARK: - Method

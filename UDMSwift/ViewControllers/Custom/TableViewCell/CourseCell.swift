@@ -24,6 +24,7 @@ final class CourseCell: UITableViewCell, ReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         moneyTextField.textColor = ChameleonManger.textTheme()
+        ratingControl.userInteractionEnabled = false
         
     }
     

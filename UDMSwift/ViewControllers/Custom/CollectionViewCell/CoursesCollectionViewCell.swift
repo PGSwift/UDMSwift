@@ -57,7 +57,8 @@ class CoursesCollectionViewCell: UICollectionViewCell, ReusableView {
         self.nameTeacher.text = course.author
         self.newPrice.text = course.newPrice
         self.oldPrice.text = course.oldPrice
-        self.ratingController.rating = 3.5
+        self.ratingController.userInteractionEnabled = false
+        self.ratingController.rating = Double(course.review) ?? 3.5
         
         let url = self.course.thumbnail
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {

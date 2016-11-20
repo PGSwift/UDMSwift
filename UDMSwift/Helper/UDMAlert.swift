@@ -50,7 +50,7 @@ final class UDMAlert {
                 textField.text = oldText
             })
             
-            let action: UIAlertAction = UIAlertAction(title: title, style: .Default, handler: { action in
+            let action: UIAlertAction = UIAlertAction(title: dismissTitle, style: .Default, handler: { action in
                 guard let finishedAction = finishedAction else {
                     println("Not found action of Alert Text Input")
                     return

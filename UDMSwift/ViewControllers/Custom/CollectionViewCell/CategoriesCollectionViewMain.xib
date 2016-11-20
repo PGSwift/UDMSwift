@@ -15,13 +15,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d3V-Bj-UCD">
-                        <rect key="frame" x="0.0" y="0.0" width="130" height="100"/>
+                        <rect key="frame" x="10" y="5" width="50" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="100" id="hZ3-jx-KPh"/>
+                            <constraint firstAttribute="height" constant="50" id="hZ3-jx-KPh"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyZ-us-noW">
-                        <rect key="frame" x="46" y="105" width="38" height="18"/>
+                        <rect key="frame" x="16" y="60" width="38" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -29,11 +29,11 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="d3V-Bj-UCD" firstAttribute="leading" secondItem="Zd2-Qx-a45" secondAttribute="leading" id="66C-NM-sTa"/>
+                <constraint firstItem="d3V-Bj-UCD" firstAttribute="leading" secondItem="Zd2-Qx-a45" secondAttribute="leading" constant="10" id="66C-NM-sTa"/>
                 <constraint firstItem="pyZ-us-noW" firstAttribute="top" secondItem="d3V-Bj-UCD" secondAttribute="bottom" constant="5" id="Exa-Ow-qpE"/>
-                <constraint firstItem="d3V-Bj-UCD" firstAttribute="top" secondItem="Zd2-Qx-a45" secondAttribute="top" id="LP9-XV-6YV"/>
+                <constraint firstItem="d3V-Bj-UCD" firstAttribute="top" secondItem="Zd2-Qx-a45" secondAttribute="top" constant="5" id="LP9-XV-6YV"/>
                 <constraint firstItem="pyZ-us-noW" firstAttribute="centerX" secondItem="d3V-Bj-UCD" secondAttribute="centerX" id="Y6Q-BE-GAX"/>
-                <constraint firstAttribute="trailing" secondItem="d3V-Bj-UCD" secondAttribute="trailing" constant="50" id="lxL-TS-PMx"/>
+                <constraint firstAttribute="trailing" secondItem="d3V-Bj-UCD" secondAttribute="trailing" constant="120" id="lxL-TS-PMx"/>
             </constraints>
             <size key="customSize" width="180" height="153"/>
             <connections>

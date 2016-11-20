@@ -67,6 +67,10 @@ final class UDMConfig {
             return "\(doman)index.php?func=\(funcName)&model=user&token=\(token)"
         }
         
+        static func urlRatingBulder(withFunc funcName: String, coursesID: String,token: String) -> String{
+            return "\(doman)index.php?func=\(funcName)&model=courses&token=\(token)&coursesID=\(coursesID)"
+        }
+        
         // MARK: - Function name
         enum FuncName: String {
             case LoginMail = "login_email"
@@ -76,6 +80,15 @@ final class UDMConfig {
             case ResetPassword = "reset_password"
             case GetData = "get"
             case GetCouseLive = "get_live"
+            case GetCourseDetail = "get_detail"
+            case GetMyCourseList = "get_my_courses"
+            case GetMyCourseDetai = "get_my_courses_detail"
+            case GetRateList = "get_rate"
+            case GetMyWishList = "get_my_wishList"
+            case BuyCourses = "buy"
+            case AddWishList = "add_wishList"
+            case RemoveWishList = "remove_wishList"
+            case RateCourses = "rate"
             case GetTeacherInfo = "get_teacherInfo"
         }
         
@@ -84,6 +97,8 @@ final class UDMConfig {
             case User = "user"
             case Category = "category"
             case Course = "courses"
+            case MyCourse = "MyCourses"
+            case WishList = "WishList"
             case Curriculums = "curriculums"
             case Teacher = "teacher"
         }

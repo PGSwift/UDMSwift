@@ -167,6 +167,26 @@ final class UDMInfoDictionaryBuilder {
         return result
     }
     
+    // MARK: - Rating
+    func builderRating(withTitle title: String?, description: String?, value: String?) -> [String: String]{
+        
+        var result: [String: String] = [:]
+        
+        if let _title = title {
+            result["title"] = _title
+        }
+        
+        if let _description = description {
+            result["description"] = _description
+        }
+        
+        if let _value = value {
+            result["value"] = _value
+        }
+        
+        return result
+    }
+    
     // MARK: - Model Category
     private func builderCategory(withModel model: String?, funcName: String?,token: String?, idParent: String?) -> [String: String]{
         
@@ -225,6 +245,76 @@ final class UDMInfoDictionaryBuilder {
                                offset: offset)
     }
     
+    func getMyCourseList() -> [String: String] {
+        
+        return builderCourse(withModel: UDMConfig.APIService.ModelName.Course.rawValue,
+                             funcName: UDMConfig.APIService.FuncName.GetMyCourseList.rawValue,
+                             token: UDMUser.shareManager.inforUser().token,
+                             idCategory: nil, courseID: nil,
+                             limit: nil,
+                             offset: nil)
+    }
+    
+    func getRateList(withCourseId id: String) -> [String: String] {
+        
+        return builderCourse(withModel: UDMConfig.APIService.ModelName.Course.rawValue,
+                             funcName: UDMConfig.APIService.FuncName.GetRateList.rawValue,
+                             token: UDMUser.shareManager.inforUser().token,
+                             idCategory: nil, courseID: id,
+                             limit: nil,
+                             offset: nil)
+    }
+    
+    func getWishList() -> [String: String] {
+        
+        return builderCourse(withModel: UDMConfig.APIService.ModelName.Course.rawValue,
+                             funcName: UDMConfig.APIService.FuncName.GetMyWishList.rawValue,
+                             token: UDMUser.shareManager.inforUser().token,
+                             idCategory: nil, courseID: nil,
+                             limit: nil,
+                             offset: nil)
+    }
+    
+    func buyCourses(withCourseId id: String) -> [String: String] {
+        
+        return builderCourse(withModel: UDMConfig.APIService.ModelName.Course.rawValue,
+                             funcName: UDMConfig.APIService.FuncName.BuyCourses.rawValue,
+                             token: UDMUser.shareManager.inforUser().token,
+                             idCategory: nil, courseID: id,
+                             limit: nil,
+                             offset: nil)
+    }
+    
+    func addWishList(withCourseId id: String) -> [String: String] {
+        
+        return builderCourse(withModel: UDMConfig.APIService.ModelName.Course.rawValue,
+                             funcName: UDMConfig.APIService.FuncName.AddWishList.rawValue,
+                             token: UDMUser.shareManager.inforUser().token,
+                             idCategory: nil, courseID: id,
+                             limit: nil,
+                             offset: nil)
+    }
+    
+    func removeWishList(withCourseId id: String) -> [String: String] {
+        
+        return builderCourse(withModel: UDMConfig.APIService.ModelName.Course.rawValue,
+                             funcName: UDMConfig.APIService.FuncName.RemoveWishList.rawValue,
+                             token: UDMUser.shareManager.inforUser().token,
+                             idCategory: nil, courseID: id,
+                             limit: nil,
+                             offset: nil)
+    }
+    
+    func rateCourses(withCourseId id: String) -> [String: String] {
+        
+        return builderCourse(withModel: UDMConfig.APIService.ModelName.Course.rawValue,
+                             funcName: UDMConfig.APIService.FuncName.RateCourses.rawValue,
+                             token: UDMUser.shareManager.inforUser().token,
+                             idCategory: nil, courseID: id,
+                             limit: nil,
+                             offset: nil)
+    }
+    
     func getCourseLiveList() -> [String: String] {
         
         return builderCourse(withModel: UDMConfig.APIService.ModelName.Course.rawValue,
@@ -235,8 +325,17 @@ final class UDMInfoDictionaryBuilder {
                              offset: nil)
     }
     
+    func getCoursesDetail(with courseID: String?) -> [String: String] {
+        return builderCourse(withModel: UDMConfig.APIService.ModelName.Course.rawValue,
+                             funcName: UDMConfig.APIService.FuncName.GetCourseDetail.rawValue,
+                             token: UDMUser.shareManager.inforUser().token,
+                             idCategory: nil, courseID: courseID,
+                             limit: nil,
+                             offset: nil)
+    }
+    
     // MARK: - Model Curriculums
-    func getCourseDetail(with courseID: String?) -> [String: String] {
+    func getCurriculums(with courseID: String?) -> [String: String] {
         
         return builderCourse(withModel: UDMConfig.APIService.ModelName.Curriculums.rawValue,
                              funcName: UDMConfig.APIService.FuncName.GetData.rawValue,
