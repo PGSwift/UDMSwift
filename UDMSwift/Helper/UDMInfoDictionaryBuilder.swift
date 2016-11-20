@@ -82,7 +82,7 @@ final class UDMInfoDictionaryBuilder {
     
     func login(withEmail email: String, password: String) -> [String: String] {
         
-        return builderUser(withModel: UDMConfig.APIService.ModelName.User.rawValue,
+        return builderUser(withModel: UDMConfig.APIService.ModelName.Teacher.rawValue,
                            funcName: UDMConfig.APIService.FuncName.LoginMail.rawValue,
                            token: nil,
                            email: email,
@@ -92,7 +92,7 @@ final class UDMInfoDictionaryBuilder {
     
     func signin(withFullName fullName: String, email: String, password: String) -> [String: String] {
         
-        return builderUser(withModel: UDMConfig.APIService.ModelName.User.rawValue,
+        return builderUser(withModel: UDMConfig.APIService.ModelName.Teacher.rawValue,
                            funcName: UDMConfig.APIService.FuncName.RegisterEmail.rawValue,
                            token: nil,
                            email: email,
@@ -116,7 +116,7 @@ final class UDMInfoDictionaryBuilder {
     
     func updatePassword(withOldPassword oldPassworld: String, newPassworld: String) -> [String: String] {
         
-        return builderUser(withModel: UDMConfig.APIService.ModelName.User.rawValue,
+        return builderUser(withModel: UDMConfig.APIService.ModelName.Teacher.rawValue,
                            funcName: UDMConfig.APIService.FuncName.ChangePassword.rawValue,
                            token: UDMUser.shareManager.inforUser().token,
                            email: nil,
@@ -126,7 +126,7 @@ final class UDMInfoDictionaryBuilder {
     
     func resetPassword(withEmail email: String) -> [String: String] {
         
-        return builderUser(withModel: UDMConfig.APIService.ModelName.User.rawValue,
+        return builderUser(withModel: UDMConfig.APIService.ModelName.Teacher.rawValue,
                            funcName: UDMConfig.APIService.FuncName.ResetPassword.rawValue,
                            token:nil,
                            email: email,

@@ -39,8 +39,12 @@ class StreamVideoViewController: UIViewController, ViewControllerProtocol {
         super.viewDidLoad()
         
         AVAudioSession.sharedInstance().requestRecordPermission { (gotPerm: Bool) -> Void in
+            
         };
+        
         r5_set_log_level((Int32)(r5_log_level_debug.rawValue))
+        
+        self.view.autoresizesSubviews = true
         
     }
     
@@ -52,96 +56,23 @@ class StreamVideoViewController: UIViewController, ViewControllerProtocol {
             
         };
         
-        let urlString = "http://" + (R5StreamingManager.shareInstance.ip) + ":5080/cluster"
         
-        NSURLConnection.sendAsynchronousRequest(
-            NSURLRequest( URL: NSURL(string: urlString)! ),
-            queue: NSOperationQueue(),
-            completionHandler:{ (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
-                
-                if ((error) != nil) {
-                    NSLog("%@", error!);
-                    return;
-                }
-                
-                //   Convert our response to a usable NSString
-                let dataAsString = NSString( data: data!, encoding: NSUTF8StringEncoding)
-                
-                //   The string above is formatted like 99.98.97.96:1234, but we won't need the port portion
-                let ip = dataAsString?.substringToIndex((dataAsString?.rangeOfString(":").location)!)
-                NSLog("Retrieved %@ from %@, of which the usable IP is %@", dataAsString!, urlString, ip!);
-                
-                //   Setup a configuration object for our connection
-                let config = R5Configuration()
-                config.host = R5StreamingManager.shareInstance.ip
-                config.port = R5StreamingManager.shareInstance.port
-                config.contextName = R5StreamingManager.shareInstance.context
-                config.`protocol` = 1;
-                config.buffer_time = R5StreamingManager.shareInstance.buffer_time
-                
-                //   Create a new connection using the configuration above
-                let connection = R5Connection(config: config)
-                
-                //   UI updates must be asynchronous
-                dispatch_async(dispatch_get_main_queue(), {
-                    //   Create our new stream that will utilize that connection
-                    self.subscribeStream = R5Stream(connection: connection)
-                    
-                    //   Setup our listener to handle events from this stream
-                    self.subscribeStream!.delegate = self
-                    self.subscribeStream?.client = self
-                    
-                    //   Setup our R5VideoViewController to display the stream content
-                    self.setupDefaultR5VideoViewController()
-                    
-                    //   Attach the R5VideoViewController to our publishing stream
-                    self.currentView?.attachStream(self.subscribeStream)
-                    
-                    //   Start subscribing!!
-                    self.subscribeStream!.play("trantho")
-                    
-                    let label = UILabel(frame: CGRect(x: 0, y: self.view.frame.height-24, width: self.view.frame.width, height: 24))
-                    label.textAlignment = NSTextAlignment.Left
-                    label.backgroundColor = UIColor.lightGrayColor()
-                    label.text = "Connected to: " + ip!
-                    self.view.addSubview(label)
-                })
-        })
+        setupDefaultR5VideoViewController()
+        
+        // Set up the configuration
+        let config = getConfig()
+        // Set up the connection and stream
+        let connection = R5Connection(config: config)
+        
+        setupPublisher(connection)
+        // show preview and debug info
+        // self.publishStream?.getVideoSource().fps = 2;
+        self.currentView!.attachStream(publishStream!)
         
         
-//        setupDefaultR5VideoViewController()
-//        
-//        // Set up the configuration
-//        let config = getConfig()
-//        // Set up the connection and stream
-//        let connection = R5Connection(config: config)
-//        
-//        setupPublisher(connection)
-//        // show preview and debug info
-//        // self.publishStream?.getVideoSource().fps = 2;
-//        self.currentView!.attachStream(publishStream!)
-//        
-//        
-//        self.publishStream!.publish("vinh1", type: R5RecordTypeLive)
-        
-        
-//        AVAudioSession.sharedInstance().requestRecordPermission { (gotPerm: Bool) -> Void in
-//            
-//        };
-//        
-//        setupDefaultR5VideoViewController()
-//        
-//        // Set up the configuration
-//        let config = getConfig()
-//        // Set up the connection and stream
-//        let connection = R5Connection(config: config)
-//        
-//        setupPublisher(connection)
-//        // show preview and debug info
-//        
-//        self.currentView!.attachStream(publishStream!)
-//        
-//        self.publishStream!.publish(R5StreamingManager.shareInstance.streamName1, type: R5RecordTypeLive)
+        //self.publishStream!.publish(StreamTool.getParameter("streamName") as! String, type: R5RecordTypeLive)
+        self.publishStream!.publish(R5StreamingManager.shareInstance.streamName1, type: R5RecordTypeLive)
+
     }
 
     /*

@@ -10,33 +10,32 @@ import UIKit
 
 class ListStreamVideoViewController: UIViewController, ViewControllerProtocol {
     // MARK: - Properties
+<<<<<<< HEAD
     var streamVideoInfoList = [[String: AnyObject]]()
     
     @IBOutlet weak var tableStream: UITableView!
+=======
+    @IBOutlet weak var nameTextField: UITextField!
+    
+    @IBOutlet weak var descriptionTextField: UITextView!
+    
+    
+>>>>>>> origin/master
     // MARK: - Initialzation
     static func createInstance() -> UIViewController {
         return MainStoryboard.instantiateViewControllerWithIdentifier("ListStreamVideoViewControllerID") as! ListStreamVideoViewController
     }
 
     func initData() {
-        // Get Teacher Info
-        let listStreamData = UDMInfoDictionaryBuilder.shareInstance.getCourseLiveList()
-        UDMService.shareInstance.getListDataFromServer(with: listStreamData, Completion: { (data, success) in
-            if success {
-                
-                guard let Cdata = data["data"] as? [[String: AnyObject]] else {
-                    println("Not found data caches")
-                    return
-                }
-                println("List Stream Course info --> \(Cdata)")
-                self.streamVideoInfoList = Cdata
-                self.tableStream.reloadData()
-            } else {
-                UDMAlert.alert(title: "Error", message: data["message"] as! String, dismissTitle: "Cancel", inViewController: self, withDismissAction: nil)
-                println("ERROR message: \(data["message"]!)")
-            }
-            
-        })
+       
+    }
+    
+    func configItems() {
+        // Init screen Sign
+        let signInViewController = SignInViewController.createInstance()
+        self.navigationController?.pushViewController(signInViewController, animated: true)
+        
+        self.navigationItem.title = "Featured"
     }
     
     func configItems() {
@@ -49,6 +48,7 @@ class ListStreamVideoViewController: UIViewController, ViewControllerProtocol {
         
         println("Init main ListStreamVideoViewController")
         
+        configItems()
         initData()
         configItems()
     }
@@ -57,6 +57,7 @@ class ListStreamVideoViewController: UIViewController, ViewControllerProtocol {
         super.viewWillAppear(animated)
         self.navigationItem.title = "Stream List"
     }
+<<<<<<< HEAD
     // MARK: - Handling Event
     
 }
@@ -79,32 +80,22 @@ extension ListStreamVideoViewController: UITableViewDelegate, UITableViewDataSou
             cellTable?.detailTextLabel?.text = ""
             cellTable?.imageView?.image = UIImage(named: "x")
         }
-        
-        if let url = streamVideoInfoList[indexPath.row]["thumbnail"] as? String {
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
-                
-                let img = UDMHelpers.getImageByURL(with: url)
-                
-                dispatch_async(dispatch_get_main_queue(), {
-                    cellTable?.imageView?.image = img
-                })
-            }
-        }
-        
-        if let title = streamVideoInfoList[indexPath.row]["title"] as? String {
-            cellTable?.textLabel?.text = title
-        }
-        
-        if let detailTitle = streamVideoInfoList[indexPath.row]["description"] as? String {
-            cellTable?.detailTextLabel?.text = detailTitle
-        }
-        
-        return cellTable!
-    }
+=======
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        println("Clicked cell row: \(indexPath.row)")
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+>>>>>>> origin/master
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+
+    
+    @IBAction func actionCreateStream(sender: AnyObject) {
+        
         let streamVideoViewController = StreamVideoViewController.createInstance()
         self.navigationController?.pushViewController(streamVideoViewController, animated: true)
+        
+        println("name stream: \(self.nameTextField.text)")
+        println("Discription stream: \(self.descriptionTextField.text)")
     }
 }
